@@ -1,12 +1,13 @@
-// import Pokedex from './components/pokedex';
 import PokedexServer from './components/pokedex-server';
-import { Suspense } from 'react';
-import Loading from './components/poke-card/loading';
+import type { PokedexPoke } from '@/app/api/pokedex/route';
 
-export default function PokedexPage() {
-  return (
-    <Suspense fallback={<Loading />}>
-      <PokedexServer />
-    </Suspense>
-  );
+export const revalidate = 3600;
+
+export default async function PokedexPage() {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/pokedex`,
+  ).then((res) => res.json());
+  const pokeList: PokedexPoke[] = res.data;
+
+  return <PokedexServer pokeList={pokeList} />;
 }
