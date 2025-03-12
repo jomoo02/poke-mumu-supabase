@@ -1,5 +1,5 @@
 import SearchIcon from '@/app/icon/search';
-import Link from 'next/link';
+// import Link from 'next/link';
 import HomeButton from './home-button';
 
 export default function AppHeader() {

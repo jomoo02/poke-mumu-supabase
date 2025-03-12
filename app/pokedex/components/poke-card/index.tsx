@@ -10,10 +10,10 @@ interface PokeCardProps {
   sprite: string;
   pokeKey: string;
   no: number;
-  pokeStat: {
-    hp: number;
-    attack: number;
-  };
+  // pokeStat: {
+  //   hp: number;
+  //   attack: number;
+  // };
 }
 
 export default function PokeCard({
@@ -23,9 +23,12 @@ export default function PokeCard({
   type2,
   pokeKey,
   no,
-  pokeStat,
+  // pokeStat,
   sprite,
 }: PokeCardProps) {
+  const type = `${type1}-${type2}`;
+  // console.log(pokeStat);
+  // const hp = pokeStat.hp;
   const src = getHomePokeSprtieSrc(sprite);
   return (
     <div className="flex items-stretch h-16 hover:bg-blue-100">
@@ -48,6 +51,8 @@ export default function PokeCard({
           </div>
         </div>
       </div>
+      <div>{type}</div>
+      {/* <div>{hp}</div> */}
     </div>
   );
 }

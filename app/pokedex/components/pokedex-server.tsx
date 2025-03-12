@@ -18,7 +18,7 @@ export default async function PokedexServer() {
           type2={poke.type_2}
           pokeKey={poke.poke_key}
           form={poke.form}
-          pokeStat={poke.poke_stat[0]}
+          // pokeStat={poke.poke_stat[0]}
         />
       ))}
     </div>

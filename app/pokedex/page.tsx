@@ -1,4 +1,4 @@
-import Pokedex from './components/pokedex';
+// import Pokedex from './components/pokedex';
 import PokedexServer from './components/pokedex-server';
 import { Suspense } from 'react';
 import Loading from './components/poke-card/loading';

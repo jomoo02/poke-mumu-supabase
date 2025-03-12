@@ -6,13 +6,16 @@ interface PokeImageProps {
   alt: string;
 }
 
-export default function PokeImage({ src, alt }: PokeImageProps) {
+export default function PokeImage({
+  src = '/pokeball.svg',
+  alt,
+}: PokeImageProps) {
   return (
     <div className="w-[50px] h-[48px] xl:w-[58px] xl:h-[56px] relative">
       <Image
         placeholder="blur"
         blurDataURL="/pokeball.svg"
-        src="/pokeball.svg"
+        src={src}
         alt={alt}
         fill
         sizes="48px"
