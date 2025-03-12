@@ -1,11 +1,26 @@
-import PokedexServer from './components/pokedex-server';
-import type { PokedexPoke } from '@/app/api/pokedex/route';
 import { getPokeList } from './utils/get-poke';
+import PokeCard from './components/poke-card';
 
 export const revalidate = 3600;
 
 export default async function PokedexPage() {
-  const pokeList: PokedexPoke[] = await getPokeList();
+  const pokeList = await getPokeList();
 
-  return <PokedexServer pokeList={pokeList} />;
+  return (
+    <div>
+      {pokeList.map((poke) => (
+        <PokeCard
+          key={poke.id}
+          name={poke.name_ko || ''}
+          no={poke.no}
+          sprite={poke.sprite || ''}
+          type1={poke.type_1 || ''}
+          type2={poke.type_2}
+          pokeKey={poke.poke_key || ''}
+          form={poke.form}
+          // pokeStat={poke.poke_stat[0]}
+        />
+      ))}
+    </div>
+  );
 }
