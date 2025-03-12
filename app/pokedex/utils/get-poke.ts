@@ -2,7 +2,6 @@
 
 import { createClient } from '@/app/utils/supabase/server';
 import { Tables } from '@/types_db';
-import { QueryData } from '@supabase/supabase-js';
 
 type PokeStat = Tables<'poke_stat'>;
 type Poke = Tables<'poke'>;
