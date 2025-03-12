@@ -3,6 +3,7 @@
 import { createClient } from '@/app/utils/supabase/server';
 import { Tables } from '@/types_db';
 import { QueryData } from '@supabase/supabase-js';
+import { cache } from 'react';
 
 type PokeStat = Tables<'poke_stat'>;
 type Poke = Tables<'poke'>;
@@ -14,7 +15,7 @@ type TargetPoke = Omit<
 
 export type PokedexPoke = TargetPoke & { poke_stat: PokeStat[] };
 
-export async function getPokeList() {
+export async function fetchPokeList() {
   const supabase = await createClient();
 
   const pokeListQuery = supabase
@@ -54,3 +55,7 @@ export async function getPokeList() {
 
   return pokeList;
 }
+
+export const getPokeList = cache(async () => {
+  return await fetchPokeList();
+});
