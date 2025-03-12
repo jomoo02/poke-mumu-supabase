@@ -1,13 +1,11 @@
 import PokedexServer from './components/pokedex-server';
 import type { PokedexPoke } from '@/app/api/pokedex/route';
+import { getPokeList } from './utils/get-poke';
 
 export const revalidate = 3600;
 
 export default async function PokedexPage() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/pokedex`,
-  ).then((res) => res.json());
-  const pokeList: PokedexPoke[] = res.data;
+  const pokeList: PokedexPoke[] = await getPokeList();
 
   return <PokedexServer pokeList={pokeList} />;
 }

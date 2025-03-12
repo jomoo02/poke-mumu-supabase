@@ -1,11 +1,23 @@
 'use server';
 
 import { createClient } from '@/app/utils/supabase/server';
+import { Tables } from '@/types_db';
+import { QueryData } from '@supabase/supabase-js';
+
+type PokeStat = Tables<'poke_stat'>;
+type Poke = Tables<'poke'>;
+
+type TargetPoke = Omit<
+  Poke,
+  'created_at' | 'evolution_id' | 'name_en' | 'name_ja'
+>;
+
+export type PokedexPoke = TargetPoke & { poke_stat: PokeStat[] };
 
 export async function getPokeList() {
   const supabase = await createClient();
 
-  const { data, error } = await supabase
+  const pokeListQuery = supabase
     .from('poke')
     .select(
       `
@@ -29,9 +41,14 @@ export async function getPokeList() {
     )
     .order('id', { ascending: true });
 
+  const { data, error } = await pokeListQuery;
+
   if (error) {
     console.error(error);
     return [];
   }
-  return data;
+
+  const pokeList: PokedexPoke[] = data;
+
+  return pokeList;
 }
