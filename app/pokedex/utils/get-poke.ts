@@ -1,9 +1,8 @@
 'use server';
 
-import { createClient } from '@/app/utils/supabase/server';
+import { createClient } from '@/app/utils/supabase/client';
 import { Tables } from '@/types_db';
 import { QueryData } from '@supabase/supabase-js';
-import { cache } from 'react';
 
 type PokeStat = Tables<'poke_stat'>;
 type Poke = Tables<'poke'>;
@@ -15,8 +14,8 @@ type TargetPoke = Omit<
 
 export type PokedexPoke = TargetPoke & { poke_stat: PokeStat[] };
 
-export async function fetchPokeList() {
-  const supabase = await createClient();
+export async function getPokeList() {
+  const supabase = createClient();
 
   const pokeListQuery = supabase
     .from('poke')
@@ -55,7 +54,3 @@ export async function fetchPokeList() {
 
   return pokeList;
 }
-
-export const getPokeList = cache(async () => {
-  return await fetchPokeList();
-});

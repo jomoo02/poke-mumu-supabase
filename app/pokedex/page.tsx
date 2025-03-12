@@ -3,6 +3,10 @@ import PokeCard from './components/poke-card';
 
 export const revalidate = 3600;
 
+// export async function generateStaticParams() {
+//   return [];
+// }
+
 export default async function PokedexPage() {
   const pokeList = await getPokeList();
 
