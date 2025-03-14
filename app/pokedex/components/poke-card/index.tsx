@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import PokeImage from './poke-image';
 import { getHomePokeSprtieSrc } from '@/app/utils/get-sprite';
+import PokeTypeBadge from '@/app/components/badge/poke-type';
 
 interface PokeCardProps {
   name: string;
@@ -26,10 +27,8 @@ export default function PokeCard({
   // pokeStat,
   sprite,
 }: PokeCardProps) {
-  const type = `${type1}-${type2}`;
-  // console.log(pokeStat);
-  // const hp = pokeStat.hp;
   const src = getHomePokeSprtieSrc(sprite);
+
   return (
     <div className="flex items-stretch h-16 hover:bg-blue-100">
       <div className="min-w-[4rem] w-[4rem] xl:min-w-[4.5rem] xl:w-[4.5rem]  px-2.5 flex items-center text-[13px] xl:text-sm text-slate-600 font-semibold">
@@ -51,8 +50,10 @@ export default function PokeCard({
           </div>
         </div>
       </div>
-      <div>{type}</div>
-      {/* <div>{hp}</div> */}
+      <div className="min-w-24 w-24 px-2 flex flex-col gap-y-1 items-center justify-center">
+        <PokeTypeBadge type={type1} />
+        {type2 && <PokeTypeBadge type={type2} />}
+      </div>
     </div>
   );
 }
