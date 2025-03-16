@@ -2,6 +2,8 @@ import Link from 'next/link';
 import PokeImage from './poke-image';
 import { getHomePokeSprtieSrc } from '@/app/utils/get-sprite';
 import PokeTypeBadge from '@/app/components/badge/poke-type';
+import { formatPokedexNumber } from '@/app/utils/format-pokdex-number';
+import StatList from '../stat-list';
 
 interface PokeCardProps {
   name: string;
@@ -11,10 +13,14 @@ interface PokeCardProps {
   sprite: string;
   pokeKey: string;
   no: number;
-  // pokeStat: {
-  //   hp: number;
-  //   attack: number;
-  // };
+  pokeStat: {
+    attack: number;
+    defense: number;
+    hp: number;
+    special_attack: number;
+    special_defense: number;
+    speed: number;
+  } | null;
 }
 
 export default function PokeCard({
@@ -24,15 +30,16 @@ export default function PokeCard({
   type2,
   pokeKey,
   no,
-  // pokeStat,
+  pokeStat,
   sprite,
 }: PokeCardProps) {
   const src = getHomePokeSprtieSrc(sprite);
+  console.log(pokeStat);
 
   return (
     <div className="flex items-stretch h-16 hover:bg-blue-100">
       <div className="min-w-[4rem] w-[4rem] xl:min-w-[4.5rem] xl:w-[4.5rem]  px-2.5 flex items-center text-[13px] xl:text-sm text-slate-600 font-semibold">
-        {`#${no}`}
+        {`#${formatPokedexNumber(no)}`}
       </div>
       <div className="flex grow px-2">
         <div className="flex items-center px-2">
@@ -53,6 +60,9 @@ export default function PokeCard({
       <div className="min-w-24 w-24 px-2 flex flex-col gap-y-1 items-center justify-center">
         <PokeTypeBadge type={type1} />
         {type2 && <PokeTypeBadge type={type2} />}
+      </div>
+      <div className="flex">
+        <StatList stats={pokeStat} />
       </div>
     </div>
   );

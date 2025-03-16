@@ -26,7 +26,7 @@ export default function RootLayout({
       <body className={`${pretendard.className} antialiased`}>
         <SWRProvider>
           <AppHeader />
-          <main className="py-6 min-h-svh px-4 xl:max-w-screen-xl mx-auto">
+          <main className="py-6 px-1 lg:px-4 xl:max-w-screen-xl mx-auto">
             {children}
           </main>
         </SWRProvider>
