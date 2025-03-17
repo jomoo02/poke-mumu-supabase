@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import PokeImage from './poke-card/poke-image';
+import PokeImage from './poke-image';
 import { getHomePokeSprtieSrc } from '@/app/utils/get-sprite';
 import PokeTypeBadge from '@/app/components/badge/poke-type';
 import { formatPokedexNumber } from '@/app/utils/format-pokdex-number';
@@ -59,16 +59,16 @@ export default function PokedexTableRow({
   return (
     <tr className="h-[4.25rem] hover:bg-blue-100/80 border-b border-slate-300">
       <td>
-        <div className="px-2.5 text-sm text-slate-600 font-semibold">
-          {`#${formatPokedexNumber(no)}`}
+        <div className="pr-2.5 text-sm text-slate-600 font-semibold text-right ">
+          {formatPokedexNumber(no)}
         </div>
       </td>
       <td>
         <div className="flex">
-          <div className="px-2">
+          <div className="px-2 sm:px-3.5">
             <PokeImage src={src} alt={name} />
           </div>
-          <div className="flex flex-col justify-center px-3 xl:px-3.5">
+          <div className="flex flex-col justify-center px-1.5 sm:px-3 xl:px-3.5">
             <Link href={`/pokedex/${pokeKey}`}>
               <div className="font-bold text-blue-800 overflow-hidden text-ellipsis whitespace-nowrap max-w-full ">
                 {name}
@@ -81,7 +81,7 @@ export default function PokedexTableRow({
         </div>
       </td>
       <td>
-        <div className="px-2 flex flex-col gap-y-1 items-center justify-center">
+        <div className="flex flex-col gap-y-1 items-center justify-center">
           <PokeTypeBadge type={type1} />
           {type2 && <PokeTypeBadge type={type2} />}
         </div>

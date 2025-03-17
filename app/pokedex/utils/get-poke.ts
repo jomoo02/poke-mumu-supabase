@@ -2,7 +2,6 @@
 
 import { createClient } from '@/app/utils/supabase/client';
 import { Tables } from '@/types_db';
-import { QueryData } from '@supabase/supabase-js';
 
 type PokeStat = Tables<'poke_stat'>;
 type Poke = Tables<'poke'>;
@@ -12,12 +11,17 @@ type TargetPoke = Omit<
   'created_at' | 'evolution_id' | 'name_en' | 'name_ja'
 >;
 
-export type PokedexPoke = TargetPoke & { poke_stat: PokeStat[] };
+export type TargetPokeStat = Omit<
+  PokeStat,
+  'id' | 'poke_id' | 'created_at'
+> | null;
 
-export async function getPokeList() {
+export type PokedexPoke = TargetPoke & { poke_stat: TargetPokeStat };
+
+export async function getPokeList(): Promise<PokedexPoke[]> {
   const supabase = createClient();
 
-  const pokeListQuery = supabase
+  const { data, error } = await supabase
     .from('poke')
     .select(
       `
@@ -41,16 +45,10 @@ export async function getPokeList() {
     )
     .order('id', { ascending: true });
 
-  type PokeList = QueryData<typeof pokeListQuery>;
-
-  const { data, error } = await pokeListQuery;
-
   if (error) {
     console.error(error);
     return [];
   }
 
-  const pokeList: PokeList = data;
-
-  return pokeList;
+  return data;
 }
