@@ -3,49 +3,16 @@ import PokeImage from './poke-image';
 import { getHomePokeSprtieSrc } from '@/app/utils/get-sprite';
 import PokeTypeBadge from '@/app/components/badge/poke-type';
 import { formatPokedexNumber } from '@/app/utils/format-pokdex-number';
+import type { PokedexPoke } from '../utils/set-pokedex-poke-list';
 
 interface PokedexTableRowProps {
-  name: string;
-  form: string | null;
-  type1: string;
-  type2: string | null;
-  sprite: string;
-  pokeKey: string;
-  no: number;
-  pokeStat: {
-    attack: number;
-    defense: number;
-    hp: number;
-    special_attack: number;
-    special_defense: number;
-    speed: number;
-  } | null;
+  poke: PokedexPoke;
 }
 
-export default function PokedexTableRow({
-  name,
-  form,
-  type1,
-  type2,
-  pokeKey,
-  no,
-  pokeStat,
-  sprite,
-}: PokedexTableRowProps) {
+export default function PokedexTableRow({ poke }: PokedexTableRowProps) {
+  const { sprite, pokeKey, no, name, total, form, type1, type2, ...stats } =
+    poke;
   const src = getHomePokeSprtieSrc(sprite);
-
-  const stats = pokeStat
-    ? pokeStat
-    : {
-        hp: 0,
-        attack: 0,
-        defense: 0,
-        special_attack: 0,
-        special_defense: 0,
-        speed: 0,
-      };
-
-  const total = Object.values(stats).reduce((acc, cur) => acc + cur, 0);
 
   const statList = [
     { stat: 'hp', value: stats.hp },
@@ -59,7 +26,7 @@ export default function PokedexTableRow({
   return (
     <tr className="h-[4.25rem] hover:bg-blue-100/80 border-b border-slate-300">
       <td>
-        <div className="pr-2.5 text-sm text-slate-600 font-semibold text-right ">
+        <div className="pr-2.5 text-sm text-slate-600 font-semibold text-right">
           {formatPokedexNumber(no)}
         </div>
       </td>

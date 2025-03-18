@@ -16,9 +16,9 @@ export type TargetPokeStat = Omit<
   'id' | 'poke_id' | 'created_at'
 > | null;
 
-export type PokedexPoke = TargetPoke & { poke_stat: TargetPokeStat };
+export type PokeList = (TargetPoke & { poke_stat: TargetPokeStat })[];
 
-export async function getPokeList(): Promise<PokedexPoke[]> {
+export async function getPokeList(): Promise<PokeList> {
   const supabase = createClient();
 
   const { data, error } = await supabase
