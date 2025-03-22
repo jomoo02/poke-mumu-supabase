@@ -1,8 +1,9 @@
 import { useState, useMemo, useLayoutEffect } from 'react';
 import type { PokedexPoke } from '../utils/set-pokedex-poke-list';
+import sortPokeList from '../utils/sort-poke-list';
 
-type SortState = {
-  column: string | null;
+export type SortState = {
+  column: string;
   direction: 'asc' | 'desc';
 };
 
@@ -29,33 +30,13 @@ export default function usePokedexSort(pokeList: PokedexPoke[]) {
       return pokeList;
     }
 
-    return [...pokeList].sort((a, b) => {
-      const valueA = a[sortState.column as keyof PokedexPoke];
-      const valueB = b[sortState.column as keyof PokedexPoke];
-
-      if (valueA === null || valueB === null) {
-        return 0;
-      }
-
-      if (typeof valueA === 'number' && typeof valueB === 'number') {
-        return sortState.direction === 'asc'
-          ? valueA - valueB
-          : valueB - valueA;
-      }
-      if (typeof valueA === 'string' && typeof valueB === 'string') {
-        return sortState.direction === 'asc'
-          ? valueA.localeCompare(valueB)
-          : valueB.localeCompare(valueA);
-      }
-      return 0;
-    });
+    return sortPokeList(pokeList, sortState);
   }, [pokeList, sortState]);
 
-  // ✅ 정렬 후 스크롤 복원
   useLayoutEffect(() => {
     if (prevScrollY !== null) {
       window.scrollTo(0, prevScrollY);
-      setPrevScrollY(null); // 초기화
+      setPrevScrollY(null);
     }
   }, [sortedPokeList]);
 

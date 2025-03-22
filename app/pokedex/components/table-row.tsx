@@ -5,13 +5,14 @@ import PokeTypeBadge from '@/app/components/badge/poke-type';
 import { formatPokedexNumber } from '@/app/utils/format-pokdex-number';
 import type { PokedexPoke } from '../utils/set-pokedex-poke-list';
 
-interface PokedexTableRowProps {
+interface TableRowProps {
   poke: PokedexPoke;
 }
 
-export default function PokedexTableRow({ poke }: PokedexTableRowProps) {
+export default function TableRow({ poke }: TableRowProps) {
   const { sprite, pokeKey, no, name, total, form, type1, type2, ...stats } =
     poke;
+
   const src = getHomePokeSprtieSrc(sprite);
 
   const statList = [
@@ -24,11 +25,9 @@ export default function PokedexTableRow({ poke }: PokedexTableRowProps) {
   ];
 
   return (
-    <tr className="h-[4.25rem] hover:bg-blue-100/80 border-b border-slate-300">
-      <td>
-        <div className="pr-2.5 text-sm text-slate-600 font-semibold text-right">
-          {formatPokedexNumber(no)}
-        </div>
+    <tr className="h-[4.25rem] hover:bg-slate-200/40 border-b border-slate-300 transition-colors duration-100">
+      <td className="pr-2.5 text-sm text-slate-600 font-semibold text-right">
+        {formatPokedexNumber(no)}
       </td>
       <td>
         <div className="flex">

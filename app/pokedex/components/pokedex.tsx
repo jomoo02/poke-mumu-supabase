@@ -1,8 +1,8 @@
 'use client';
 
 import type { PokedexPoke } from '../utils/set-pokedex-poke-list';
-import PokedexTableHeader from './pokedex-table-header';
-import PokedexTableRow from './pokedex-table-row';
+import TableHeader from './table-header';
+import TableRow from './table-row';
 import usePokedexSort from '../hooks/usePokedexSort';
 
 interface PokedexProps {
@@ -10,18 +10,16 @@ interface PokedexProps {
 }
 
 export default function Pokedex({ pokeList }: PokedexProps) {
-  const pokeTest = pokeList;
-
-  const { sortedPokeList, toggleSort, sortState } = usePokedexSort(pokeTest);
+  const { sortedPokeList, toggleSort, sortState } = usePokedexSort(pokeList);
 
   return (
     <table>
       <thead className="sticky top-[55px] z-20">
-        <PokedexTableHeader toggleSort={toggleSort} sortState={sortState} />
+        <TableHeader sortState={sortState} setSortState={toggleSort} />
       </thead>
       <tbody>
         {sortedPokeList.map((poke) => (
-          <PokedexTableRow key={poke.id} poke={poke} />
+          <TableRow key={poke.id} poke={poke} />
         ))}
       </tbody>
     </table>
