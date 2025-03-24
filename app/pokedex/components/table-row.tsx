@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import PokeImage from './poke-image';
-import { getHomePokeSprtieSrc } from '@/app/utils/get-sprite';
+import { getHomePokeSprtieSrc } from '@/app/utils/sprite';
 import PokeTypeBadge from '@/app/components/badge/poke-type';
 import { formatPokedexNumber } from '@/app/utils/format-pokdex-number';
 import type { PokedexPoke } from '../utils/set-pokedex-poke-list';

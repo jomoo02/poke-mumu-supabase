@@ -1,6 +1,6 @@
-import CaretDownIcon from '@/app/icon/caret-down';
-import CaretUpIcon from '@/app/icon/caret-up';
-import CaretUpDownIcon from '@/app/icon/caret-up-down';
+import CaretDownIcon from '@/app/components/icon/caret-down';
+import CaretUpIcon from '@/app/components/icon/caret-up';
+import CaretUpDownIcon from '@/app/components/icon/caret-up-down';
 
 interface TableHeaderCellProps {
   id: string;

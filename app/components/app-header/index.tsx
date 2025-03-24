@@ -1,5 +1,5 @@
-import SearchIcon from '@/app/icon/search';
-// import Link from 'next/link';
+import SearchIcon from '@/app/components/icon/search';
+import Link from 'next/link';
 import HomeButton from './home-button';
 
 export default function AppHeader() {
@@ -8,10 +8,9 @@ export default function AppHeader() {
       <div className="mx-auto xl:max-w-screen-xl flex justify-between items-center h-full px-5">
         <HomeButton />
         <div>
-          <SearchIcon size="1.5rem" />
-          {/* <Link href="/search" scroll={false}>
+          <Link href="/search" scroll={false}>
             <SearchIcon size="1.5rem" />
-          </Link> */}
+          </Link>
         </div>
       </div>
     </header>

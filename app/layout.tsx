@@ -18,14 +18,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html lang="en">
       <body className={`${pretendard.className} antialiased`}>
         <SWRProvider>
           <AppHeader />
+          <div>{modal}</div>
           <main className="py-6 px-1 lg:px-4 xl:max-w-screen-xl mx-auto">
             {children}
           </main>
