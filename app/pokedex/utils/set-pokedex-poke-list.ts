@@ -1,4 +1,4 @@
-import type { PokeList } from './get-poke';
+import type { PokeList } from '../lib/poke';
 
 export type PokedexPoke = {
   form: string | null;

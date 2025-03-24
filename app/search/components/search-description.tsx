@@ -1,7 +1,5 @@
-import {
-  isIntegerInputText,
-  getPokeNameDirectionParticle,
-} from '../utils/search-description';
+import { checkTextIntergerType } from '@/app/utils/check-type';
+import { getDirectionalParticle } from '@/app/utils/word-particle';
 
 interface SearchDescriptionProps {
   inputValue: string;
@@ -16,9 +14,7 @@ export default function SearchDescription({
     return <span className="text-slate-600">최근 검색한 포켓몬</span>;
   }
 
-  const isInterger = isIntegerInputText(inputValue);
-
-  if (isInterger) {
+  if (checkTextIntergerType(inputValue)) {
     return (
       <>
         <span className="text-slate-600">도감 번호</span>
@@ -27,8 +23,9 @@ export default function SearchDescription({
       </>
     );
   }
-
-  const directionParticle = getPokeNameDirectionParticle(inputValue);
+  const directionParticle = !inputValue
+    ? ''
+    : getDirectionalParticle(inputValue) || '(으)로';
 
   return (
     <>

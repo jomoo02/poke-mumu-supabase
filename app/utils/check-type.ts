@@ -7,14 +7,25 @@ function containsKorean(text: string): boolean {
   return /[가-힣]/.test(text);
 }
 
-function checkTextNumberType(text: string) {
-  // 빈 문자열이면 false 반환
-  if (text.trim() === '') return false;
+export function checkTextIntergerType(text: string) {
+  // // 빈 문자열이면 false 반환
+  // if (text.trim() === '') return false;
 
-  // 숫자로 변환 후 NaN이 아닌지 확인
-  const num = Number(text);
+  // // 숫자로 변환 후 NaN이 아닌지 확인
+  // const num = Number(text);
 
-  return !Number.isNaN(num);
+  // return !Number.isNaN(num);
+  const numericValue = Number(text);
+
+  if (Number.isNaN(numericValue)) {
+    return false;
+  }
+
+  if (/^-?\d+$/.test(text)) {
+    return true;
+  }
+
+  return false;
 }
 
 function formatNoSpaceInputText(text: string = '') {
@@ -33,7 +44,7 @@ function checkEmptyText(text: string) {
 
 export {
   checkTextLanguageKo,
-  checkTextNumberType,
+  // checkTextNumberType,
   containsKorean,
   formatNoSpaceInputText,
   checkEmptyText,

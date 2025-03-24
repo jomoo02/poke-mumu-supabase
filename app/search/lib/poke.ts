@@ -4,14 +4,14 @@ import { createClient } from '@/app/utils/supabase/server';
 import { Tables } from '@/types_db';
 import {
   checkTextLanguageKo,
-  checkTextNumberType,
+  checkTextIntergerType,
 } from '@/app/utils/check-type';
 
 type Poke = Tables<'poke'>;
 export type SearchPoke = Omit<Poke, 'created_at' | 'evolution_id' | 'name_ja'>;
 
 function getSearchColumn(inputValue: string) {
-  if (checkTextNumberType(inputValue)) {
+  if (checkTextIntergerType(inputValue)) {
     return { column: 'no', value: inputValue };
   }
 
