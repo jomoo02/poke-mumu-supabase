@@ -1,8 +1,11 @@
+import PokeNavigation from './_navigation';
+
 export default async function Page({
   params,
 }: {
   params: Promise<{ pokekey: string }>;
 }) {
   const { pokekey } = await params;
-  return <div>{pokekey}</div>;
+
+  return <PokeNavigation pokeKey={pokekey} />;
 }

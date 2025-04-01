@@ -16,6 +16,8 @@ export type PokedexPoke = {
   special_defense: number;
   speed: number;
   total: number;
+  species: string;
+  species_id: number;
 };
 
 export default function setPokedexPokeList(pokeList: PokeList): PokedexPoke[] {
@@ -37,7 +39,9 @@ export default function setPokedexPokeList(pokeList: PokeList): PokedexPoke[] {
           total: 0,
         };
       }
+
       const total = Object.values(poke_stat).reduce((acc, cur) => acc + cur, 0);
+
       return {
         ...rest,
         ...poke_stat,
@@ -49,5 +53,6 @@ export default function setPokedexPokeList(pokeList: PokeList): PokedexPoke[] {
       };
     },
   );
+
   return pokedexPokeList;
 }

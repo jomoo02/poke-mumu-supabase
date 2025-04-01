@@ -960,6 +960,8 @@ export type Database = {
           name_ko: string
           no: number
           poke_key: string
+          species: string
+          species_id: number
           sprite: string
           type_1: string
           type_2: string | null
@@ -974,6 +976,8 @@ export type Database = {
           name_ko: string
           no: number
           poke_key: string
+          species?: string
+          species_id: number
           sprite: string
           type_1: string
           type_2?: string | null
@@ -988,11 +992,21 @@ export type Database = {
           name_ko?: string
           no?: number
           poke_key?: string
+          species?: string
+          species_id?: number
           sprite?: string
           type_1?: string
           type_2?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "poke_species_id_fkey"
+            columns: ["species_id"]
+            isOneToOne: false
+            referencedRelation: "species"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       poke_ability: {
         Row: {
@@ -1256,6 +1270,27 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      species: {
+        Row: {
+          id: number
+          name_ko: string
+          no: number
+          species: string
+        }
+        Insert: {
+          id?: number
+          name_ko: string
+          no: number
+          species: string
+        }
+        Update: {
+          id?: number
+          name_ko?: string
+          no?: number
+          species?: string
+        }
+        Relationships: []
       }
       type: {
         Row: {

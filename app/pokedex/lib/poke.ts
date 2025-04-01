@@ -33,6 +33,8 @@ export async function getPokeList(): Promise<PokeList> {
       form,
       type_1,
       type_2,
+      species,
+      species_id,
       poke_stat (
         hp,
         attack,
