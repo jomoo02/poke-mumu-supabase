@@ -7,7 +7,7 @@ export type SpeciesPoke = Tables<'species'>;
 
 export async function fetchNavPoke(
   species: string,
-): Promise<{ before: SpeciesPoke | null; next: SpeciesPoke | null } | null> {
+): Promise<{ prev: SpeciesPoke | null; next: SpeciesPoke | null } | null> {
   const supabase = createClient();
 
   const { data, error } = await supabase
@@ -31,12 +31,11 @@ export async function fetchNavPoke(
     return null;
   }
 
-  const before =
-    speciesData.find(({ no: beforeNo }) => beforeNo === no - 1) || null;
+  const prev = speciesData.find(({ no: prevNo }) => prevNo === no - 1) || null;
   const next = speciesData.find(({ no: nextNo }) => nextNo === no + 1) || null;
 
   return {
-    before,
+    prev,
     next,
   };
 }

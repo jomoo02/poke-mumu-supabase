@@ -8,7 +8,7 @@ interface NavButtonProps {
   poke: SpeciesPoke;
 }
 
-function Before({ poke }: NavButtonProps) {
+function Prev({ poke }: NavButtonProps) {
   const { species, no, name_ko: name } = poke;
 
   return (
@@ -49,7 +49,7 @@ function Next({ poke }: NavButtonProps) {
 }
 
 const NavButton = {
-  Before,
+  Prev,
   Next,
 };
 
