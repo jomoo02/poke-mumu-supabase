@@ -5,6 +5,9 @@ import { Tables } from '@/types_db';
 
 type PokeStat = Tables<'poke_stat'>;
 type Poke = Tables<'poke'>;
+type Species = Tables<'species'>;
+
+type TargetSpecies = Pick<Species, 'id' | 'species'>;
 
 type TargetPoke = Omit<
   Poke,
@@ -16,7 +19,9 @@ export type TargetPokeStat = Omit<
   'id' | 'poke_id' | 'created_at'
 > | null;
 
-export type PokeList = (TargetPoke & { poke_stat: TargetPokeStat })[];
+export type PokeList = (TargetPoke & { poke_stat: TargetPokeStat } & {
+  species: TargetSpecies;
+})[];
 
 export async function getPokeList(): Promise<PokeList> {
   const supabase = createClient();
@@ -33,8 +38,11 @@ export async function getPokeList(): Promise<PokeList> {
       form,
       type_1,
       type_2,
-      species,
       species_id,
+      species (
+        id,
+        species
+      ),
       poke_stat (
         hp,
         attack,

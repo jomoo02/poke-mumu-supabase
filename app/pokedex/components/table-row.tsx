@@ -10,8 +10,18 @@ interface TableRowProps {
 }
 
 export default function TableRow({ poke }: TableRowProps) {
-  const { sprite, pokeKey, no, name, total, form, type1, type2, ...stats } =
-    poke;
+  const {
+    sprite,
+    pokeKey,
+    no,
+    name,
+    total,
+    form,
+    type1,
+    type2,
+    species,
+    ...stats
+  } = poke;
 
   const src = getHomePokeSprtieSrc(sprite);
 
@@ -35,7 +45,7 @@ export default function TableRow({ poke }: TableRowProps) {
             <PokeImage src={src} alt={name} />
           </div>
           <div className="flex flex-col justify-center px-1.5 sm:px-3 xl:px-3.5">
-            <Link href={`/pokedex/${pokeKey}`}>
+            <Link href={`/pokedex/${species}/${pokeKey}`}>
               <div className="font-bold text-blue-800 overflow-hidden text-ellipsis whitespace-nowrap max-w-full ">
                 {name}
               </div>

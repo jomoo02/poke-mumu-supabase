@@ -1,6 +1,6 @@
 'use server';
 
-import { createClient } from '@/app/utils/supabase/client';
+import { createClient } from '@/app/utils/supabase/server';
 import { Tables } from '@/types_db';
 
 export type SpeciesPoke = Tables<'species'>;
@@ -8,10 +8,10 @@ export type SpeciesPoke = Tables<'species'>;
 export async function fetchNavPoke(
   species: string,
 ): Promise<{ prev: SpeciesPoke | null; next: SpeciesPoke | null } | null> {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { data, error } = await supabase
-    .from('poke')
+    .from('species')
     .select('no')
     .eq('species', species);
 

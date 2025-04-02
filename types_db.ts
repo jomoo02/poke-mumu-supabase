@@ -960,7 +960,6 @@ export type Database = {
           name_ko: string
           no: number
           poke_key: string
-          species: string
           species_id: number
           sprite: string
           type_1: string
@@ -976,7 +975,6 @@ export type Database = {
           name_ko: string
           no: number
           poke_key: string
-          species?: string
           species_id: number
           sprite: string
           type_1: string
@@ -992,7 +990,6 @@ export type Database = {
           name_ko?: string
           no?: number
           poke_key?: string
-          species?: string
           species_id?: number
           sprite?: string
           type_1?: string

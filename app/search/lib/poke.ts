@@ -8,7 +8,11 @@ import {
 } from '@/app/utils/check-type';
 
 type Poke = Tables<'poke'>;
-export type SearchPoke = Omit<Poke, 'created_at' | 'evolution_id' | 'name_ja'>;
+
+export type SearchPoke = Omit<
+  Poke,
+  'created_at' | 'evolution_id' | 'name_ja' | 'species_id'
+>;
 
 function getSearchColumn(inputValue: string) {
   if (checkTextIntergerType(inputValue)) {
@@ -29,6 +33,7 @@ export async function fetchSearchPoke(
   inputValue: string,
 ): Promise<SearchPoke[]> {
   const supabase = await createClient();
+
   const { column, value } = getSearchColumn(inputValue);
 
   const query = supabase

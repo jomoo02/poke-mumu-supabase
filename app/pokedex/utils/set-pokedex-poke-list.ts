@@ -22,7 +22,7 @@ export type PokedexPoke = {
 
 export default function setPokedexPokeList(pokeList: PokeList): PokedexPoke[] {
   const pokedexPokeList = pokeList.map(
-    ({ poke_key, name_ko, poke_stat, type_1, type_2, ...rest }) => {
+    ({ poke_key, name_ko, poke_stat, type_1, type_2, species, ...rest }) => {
       if (!poke_stat) {
         return {
           ...rest,
@@ -30,6 +30,7 @@ export default function setPokedexPokeList(pokeList: PokeList): PokedexPoke[] {
           name: name_ko,
           type1: type_1,
           type2: type_2,
+          species: species.species,
           attack: 0,
           defense: 0,
           hp: 0,
@@ -47,6 +48,7 @@ export default function setPokedexPokeList(pokeList: PokeList): PokedexPoke[] {
         ...poke_stat,
         total,
         pokeKey: poke_key,
+        species: species.species,
         name: name_ko,
         type1: type_1,
         type2: type_2,
