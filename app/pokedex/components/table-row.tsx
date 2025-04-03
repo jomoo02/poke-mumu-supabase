@@ -34,6 +34,11 @@ export default function TableRow({ poke }: TableRowProps) {
     { stat: 'speed', value: stats.speed },
   ];
 
+  const href =
+    species === pokeKey
+      ? `/pokedex/${species}`
+      : `/pokedex/${species}/${pokeKey}`;
+
   return (
     <tr className="h-[4.25rem] hover:bg-slate-200/40 border-b border-slate-300 transition-colors duration-100">
       <td className="pr-2.5 text-sm text-slate-600 font-semibold text-right">
@@ -45,7 +50,7 @@ export default function TableRow({ poke }: TableRowProps) {
             <PokeImage src={src} alt={name} />
           </div>
           <div className="flex flex-col justify-center px-1.5 sm:px-3 xl:px-3.5">
-            <Link href={`/pokedex/${species}/${pokeKey}`}>
+            <Link href={href}>
               <div className="font-bold text-blue-800 overflow-hidden text-ellipsis whitespace-nowrap max-w-full ">
                 {name}
               </div>

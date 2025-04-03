@@ -7,7 +7,7 @@ export default async function SpeciesLayout({
   params,
   children,
 }: {
-  params: Promise<{ species: string }>;
+  params: Promise<{ species: string; variant?: string }>;
   children: React.ReactNode;
 }) {
   const { species } = await params;
