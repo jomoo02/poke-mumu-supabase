@@ -52,6 +52,7 @@ export default async function SpeciesPage({
     )
     .eq('species_id', speciesId);
   if (error) {
+    console.log(error);
     return null;
   }
   console.log(data);

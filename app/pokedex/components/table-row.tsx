@@ -10,18 +10,8 @@ interface TableRowProps {
 }
 
 export default function TableRow({ poke }: TableRowProps) {
-  const {
-    sprite,
-    pokeKey,
-    no,
-    name,
-    total,
-    form,
-    type1,
-    type2,
-    species,
-    ...stats
-  } = poke;
+  const { sprite, pokeKey, no, name, total, form, type1, type2, ...stats } =
+    poke;
 
   const src = getHomePokeSprtieSrc(sprite);
 
@@ -34,10 +24,7 @@ export default function TableRow({ poke }: TableRowProps) {
     { stat: 'speed', value: stats.speed },
   ];
 
-  const href =
-    species === pokeKey
-      ? `/pokedex/${species}`
-      : `/pokedex/${species}/${pokeKey}`;
+  const href = `/pokedex/${no}/${pokeKey}`;
 
   return (
     <tr className="h-[4.25rem] hover:bg-slate-200/40 border-b border-slate-300 transition-colors duration-100">
