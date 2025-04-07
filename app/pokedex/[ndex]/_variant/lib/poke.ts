@@ -7,20 +7,8 @@ type Poke = Tables<'poke'>;
 
 export type VariantPoke = Pick<Poke, 'poke_key' | 'name_ko' | 'form'>;
 
-export async function fetchVariantPokeList(species: string) {
+export async function fetchVariantPokeList(ndex: number) {
   const supabase = await createClient();
-
-  const { data: speciesData, error: speciesError } = await supabase
-    .from('species')
-    .select('id')
-    .eq('species', species)
-    .maybeSingle();
-
-  if (speciesError || !speciesData) {
-    return null;
-  }
-
-  const speciesId = speciesData.id;
 
   const { data: variantPokeList, error: variantPokeError } = await supabase
     .from('poke')
@@ -31,7 +19,7 @@ export async function fetchVariantPokeList(species: string) {
       form
     `,
     )
-    .eq('species_id', speciesId)
+    .eq('no', ndex)
     .order('id', { ascending: true });
 
   if (variantPokeError) {

@@ -2,12 +2,12 @@ import ArrowLeftIcon from '@/app/components/icon/arrow-left';
 import ArrowRightIcon from '@/app/components/icon/arrow-right';
 
 interface LoadingProps {
-  ndex: string;
+  ndex: number;
 }
 
 export default function Loading({ ndex }: LoadingProps) {
-  const prevCondition = ndex !== '1';
-  const nextCondition = ndex !== '1025';
+  const prevCondition = ndex > 1;
+  const nextCondition = ndex < 1025;
 
   return (
     <div className="grid gap-y-3 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-0 ">
@@ -17,7 +17,7 @@ export default function Loading({ ndex }: LoadingProps) {
             <ArrowLeftIcon size="1.6rem" />
           </div>
           <div className="flex-1 flex justify-center items-center">
-            <div className="w-1/3 bg-slate-300/50 rounded-sm h-4 animate-pulse" />
+            <div className="w-[120px] bg-slate-300/50 rounded-sm h-4 animate-pulse" />
           </div>
         </div>
       )}
@@ -28,7 +28,7 @@ export default function Loading({ ndex }: LoadingProps) {
               <ArrowRightIcon size="1.6rem" />
             </div>
             <div className="flex-1 flex justify-center items-center">
-              <div className="w-1/3 bg-slate-300/50 rounded-sm h-4 animate-pulse" />
+              <div className="w-[120px] bg-slate-300/50 rounded-sm h-4 animate-pulse" />
             </div>
           </div>
         )}

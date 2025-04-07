@@ -2,7 +2,7 @@ import NavButton from './components/nav-button';
 import { fetchNavPoke } from './lib/poke';
 
 interface PokeNavigationProps {
-  ndex: string;
+  ndex: number;
 }
 
 export default async function PokeNavigation({ ndex }: PokeNavigationProps) {

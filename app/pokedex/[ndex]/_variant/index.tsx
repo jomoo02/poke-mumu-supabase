@@ -2,11 +2,11 @@ import VariantButton from './components/variant-button';
 import { fetchVariantPokeList } from './lib/poke';
 
 interface PokeVariantProps {
-  species: string;
+  ndex: number;
 }
 
-export default async function PokeVariant({ species }: PokeVariantProps) {
-  const variantPokeList = await fetchVariantPokeList(species);
+export default async function PokeVariant({ ndex }: PokeVariantProps) {
+  const variantPokeList = await fetchVariantPokeList(ndex);
 
   if (!variantPokeList) {
     return null;
@@ -17,10 +17,10 @@ export default async function PokeVariant({ species }: PokeVariantProps) {
       {variantPokeList.map(({ name_ko, form, poke_key }) => (
         <VariantButton
           key={poke_key}
+          ndex={ndex}
           name={name_ko}
-          form={form}
-          variant={poke_key}
-          species={species}
+          formText={form}
+          form={poke_key}
         />
       ))}
     </div>
