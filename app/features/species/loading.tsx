@@ -5,7 +5,7 @@ interface LoadingProps {
   ndex: number;
 }
 
-export default function Loading({ ndex }: LoadingProps) {
+function SpeciesNavLoading({ ndex }: LoadingProps) {
   const prevCondition = ndex > 1;
   const nextCondition = ndex < 1025;
 
@@ -17,7 +17,7 @@ export default function Loading({ ndex }: LoadingProps) {
             <ArrowLeftIcon size="1.6rem" />
           </div>
           <div className="flex-1 flex justify-center items-center">
-            <div className="w-[120px] bg-slate-300/50 rounded-sm h-4 animate-pulse" />
+            <div className="w-[120px] bg-slate-300/50 rounded-sm h-4" />
           </div>
         </div>
       )}
@@ -28,10 +28,25 @@ export default function Loading({ ndex }: LoadingProps) {
               <ArrowRightIcon size="1.6rem" />
             </div>
             <div className="flex-1 flex justify-center items-center">
-              <div className="w-[120px] bg-slate-300/50 rounded-sm h-4 animate-pulse" />
+              <div className="w-[120px] bg-slate-300/50 rounded-sm h-4" />
             </div>
           </div>
         )}
+      </div>
+    </div>
+  );
+}
+
+export default function Loading({ ndex }: LoadingProps) {
+  return (
+    <div className="grid gap-4 animate-pulse">
+      <SpeciesNavLoading ndex={ndex} />
+      <div className="w-full flex justify-center">
+        <div className="my-4 h-9 w-[80px] bg-slate-300/50 rounded-md" />
+      </div>
+      <div className="flex gap-x-2 w-full my-4 h-9">
+        <div className="px-3 lg:px-3.5 py-1 border-b-2 border-transparent bg-gray-200 rounded-md w-16 h-7" />
+        <div className="px-3 lg:px-3.5 py-1 border-b-2 border-transparent bg-gray-200 rounded-md w-20 h-7" />
       </div>
     </div>
   );

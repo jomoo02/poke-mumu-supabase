@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { formatPokedexNumber } from '@/app/utils/format-pokdex-number';
 import ArrowLeftIcon from '@/app/components/icon/arrow-left';
 import ArrowRightIcon from '@/app/components/icon/arrow-right';
-import type { SpeciesPoke } from '../lib/poke';
+import type { SpeciesPoke } from '../types';
 
 interface NavButtonProps {
   poke: SpeciesPoke;

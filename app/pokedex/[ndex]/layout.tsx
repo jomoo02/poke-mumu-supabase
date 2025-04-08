@@ -1,9 +1,6 @@
+import Loading from '@/app/features/species/loading';
+import SpeciesLayout from '@/app/features/species/species-layout';
 import { Suspense } from 'react';
-import PokeNavigation from './_navigation';
-import PokeVariant from './_variant';
-import NavigationLoading from './_navigation/components/loading';
-import PokeSpecies from './_species';
-import SpeciesLoading from './_species/components/loading';
 
 export default async function NdexLayout({
   children,
@@ -16,14 +13,9 @@ export default async function NdexLayout({
 
   return (
     <div>
-      <Suspense fallback={<NavigationLoading ndex={ndex} />}>
-        <PokeNavigation ndex={ndex} />
+      <Suspense fallback={<Loading ndex={ndex} />}>
+        <SpeciesLayout ndex={ndex} />
       </Suspense>
-      <Suspense fallback={<SpeciesLoading />}>
-        <PokeSpecies ndex={ndex} />
-      </Suspense>
-
-      <PokeVariant ndex={ndex} />
       {children}
     </div>
   );
