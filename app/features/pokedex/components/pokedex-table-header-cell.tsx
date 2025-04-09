@@ -41,7 +41,7 @@ export default function PokedexTableHeaderCell({
 
   return (
     <th
-      className={`border-r-2 border-white ${widthVariants[id] || widthVariants.default} ${displayVariants[id]} `}
+      className={`border-x-2 border-white ${widthVariants[id] || widthVariants.default} ${displayVariants[id]} `}
     >
       {isSortAble ? (
         <button
@@ -49,7 +49,9 @@ export default function PokedexTableHeaderCell({
           onClick={() => onClick(id)}
           className={buttonClassName}
         >
-          <span>{content}</span>
+          <span className="text-slate-700 text-sm font-semibold">
+            {content}
+          </span>
           {selectedId !== id ? (
             <CaretUpDownIcon />
           ) : direction === 'asc' ? (
@@ -59,7 +61,11 @@ export default function PokedexTableHeaderCell({
           )}
         </button>
       ) : (
-        <span>{content}</span>
+        <div className="bg-slate-200 h-10 flex items-center justify-center">
+          <span className="text-slate-700 text-sm font-semibold">
+            {content}
+          </span>
+        </div>
       )}
     </th>
   );

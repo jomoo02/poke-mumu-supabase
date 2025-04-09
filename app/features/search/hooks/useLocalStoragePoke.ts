@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import type { SearchPoke } from '../lib/poke';
+import type { SearchPoke } from '../types';
 
 const KEY = 'LOCAL_POKE';
 

@@ -27,10 +27,8 @@ export default function PokedexTableRow({ poke }: PokedexTableRowProps) {
   const href = `/pokedex/${no}/${pokeKey}`;
 
   return (
-    <tr className="h-[4.25rem] hover:bg-slate-200/40 border-b border-slate-300 transition-colors duration-100">
-      <td className="pr-2.5 text-sm text-slate-600 font-semibold text-right">
-        {formatPokedexNumber(no)}
-      </td>
+    <tr className="h-[4.25rem] hover:bg-blue-50/80 border-b border-slate-300 transition-colors duration-200">
+      <td className="pr-2.5 c-td-text text-right">{formatPokedexNumber(no)}</td>
       <td>
         <div className="flex">
           <div className="px-2 sm:px-3.5">
@@ -38,13 +36,9 @@ export default function PokedexTableRow({ poke }: PokedexTableRowProps) {
           </div>
           <div className="flex flex-col justify-center px-1.5 sm:px-3 xl:px-3.5">
             <Link href={href}>
-              <div className="font-bold text-blue-800 overflow-hidden text-ellipsis whitespace-nowrap max-w-full ">
-                {name}
-              </div>
+              <div className="font-bold text-blue-800 truncate">{name}</div>
             </Link>
-            {form && (
-              <div className="text-sm font-semibold text-slate-600">{form}</div>
-            )}
+            {form && <div className="c-td-text text-slate-500">{form}</div>}
           </div>
         </div>
       </td>
@@ -54,13 +48,13 @@ export default function PokedexTableRow({ poke }: PokedexTableRowProps) {
           {type2 && <PokeTypeBadge type={type2} />}
         </div>
       </td>
-      <td className="px-3 font-semibold text-slate-700 text-right text-sm hidden md:table-cell">
+      <td className="c-td-text px-3 text-right hidden md:table-cell">
         {total}
       </td>
       {statList.map(({ stat, value }) => (
         <td
           key={stat}
-          className="px-3 font-semibold text-slate-700 text-right text-sm hidden lg:table-cell"
+          className="c-td-text px-3 text-right hidden lg:table-cell"
         >
           {value}
         </td>

@@ -24,7 +24,7 @@ export default function PokedexTableHeader({
   ];
 
   return (
-    <tr className="h-10 text-nowrap text-sm text-slate-600 bg-slate-200">
+    <tr className="h-10 text-nowrap">
       {headerData.map(({ id, content, isSortAble }) => (
         <PokedexTableHeaderCell
           key={id}

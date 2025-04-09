@@ -1,18 +1,11 @@
 'use server';
 
 import { createClient } from '@/app/utils/supabase/server';
-import { Tables } from '@/types_db';
 import {
   checkTextLanguageKo,
   checkTextIntergerType,
 } from '@/app/utils/check-type';
-
-type Poke = Tables<'poke'>;
-
-export type SearchPoke = Omit<
-  Poke,
-  'created_at' | 'evolution_id' | 'name_ja' | 'species_id'
->;
+import type { SearchPoke } from '../types';
 
 function getSearchColumn(inputValue: string) {
   if (checkTextIntergerType(inputValue)) {

@@ -7,6 +7,9 @@
   span {
     @apply font-medium text-slate-800 text-sm lg:text-[15px];
   }
+  /* td {
+    @apply 
+  } */
 }
 
 @layer components {
@@ -15,11 +18,15 @@
   }
 
   .c-text-sm {
-    @apply text-slate-600 font-medium text-sm lg:text-[15px];
+    @apply text-slate-600 font-medium text-sm;
   }
 
   .c-text-xs {
     @apply font-medium text-xs lg:text-sm text-slate-500;
+  }
+
+  .c-td-text {
+    @apply font-semibold text-slate-700 text-sm;
   }
 
   .c-border-inner {

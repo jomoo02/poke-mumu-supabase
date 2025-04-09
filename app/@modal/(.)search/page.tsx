@@ -1,4 +1,5 @@
-import Search from '@/app/search/components/search';
+// import Search from '@/app/search/components/search';
+import Search from '@/app/features/search/containers/search';
 
 export default function Page() {
   return (

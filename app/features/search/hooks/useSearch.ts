@@ -1,9 +1,9 @@
 import { useState, ChangeEvent } from 'react';
 import useSWR from 'swr';
 import { useDebouncedCallback } from 'use-debounce';
-import { fetchSearchPoke } from '../lib/poke';
-import useLocalStoragePoke from './useLocalStoragePoke';
 import { checkEmptyText } from '@/app/utils/check-type';
+import { fetchSearchPoke } from '../api/search';
+import useLocalStoragePoke from './useLocalStoragePoke';
 
 export default function useSearch() {
   const [inputValue, setInputValue] = useState<string>('');

@@ -1,10 +1,10 @@
 'use client';
 
 import LoadingIcon from '@/app/components/icon/loading';
-import SearchDescription from './search-description';
-import SearchInput from './search-input';
+import SearchDescription from '../components/search-description';
+import SearchInput from '../components/search-input';
 import useSearch from '../hooks/useSearch';
-import SearchResult from './search-result';
+import SearchResult from '../components/search-result';
 import useCloseSearch from '../hooks/useCloseSearch';
 
 export default function Search() {

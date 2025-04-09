@@ -1,4 +1,4 @@
-import type { SearchPoke } from '../lib/poke';
+import type { SearchPoke } from '../types';
 import SearchResultPoke from './search-result-poke';
 
 interface SearchResultProps {
@@ -18,7 +18,7 @@ export default function SearchResult({
 
   if (isError) {
     return (
-      <div className="px-1 lg:px-2 w-full relative top-52 lg:top-36 text-center text-base text-slate-600">
+      <div className="px-1 lg:px-2 w-full relative top-52 lg:top-36 text-center c-text-base">
         에러 발생! 다시 검색해 주세요.
       </div>
     );
@@ -27,7 +27,7 @@ export default function SearchResult({
   return (
     <div>
       {result.length === 0 ? (
-        <div className="px-1 lg:px-2 w-full relative top-52 lg:top-36 text-center text-base text-slate-600">
+        <div className="px-1 lg:px-2 w-full relative top-52 lg:top-36 text-center c-text-base">
           {noPokeText}
         </div>
       ) : (

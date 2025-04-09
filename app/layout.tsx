@@ -29,9 +29,7 @@ export default function RootLayout({
         <SWRProvider>
           <AppHeader />
           <div>{modal}</div>
-          <main className="py-6 px-1 lg:px-4 xl:max-w-screen-xl mx-auto">
-            {children}
-          </main>
+          <main className="py-6 xl:max-w-screen-xl mx-auto">{children}</main>
         </SWRProvider>
       </body>
     </html>
