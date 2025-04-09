@@ -5,10 +5,10 @@ import { Suspense } from 'react';
 export default async function NdexLayout({
   children,
   params,
-}: Readonly<{
+}: {
   children: React.ReactNode;
   params: Promise<{ ndex: string }>;
-}>) {
+}) {
   const ndex = Number((await params).ndex);
 
   return (
