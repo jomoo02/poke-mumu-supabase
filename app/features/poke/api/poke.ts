@@ -10,6 +10,8 @@ export async function fetchPoke(pokeKey: string) {
     .select(
       `
         id,
+        type_1,
+        type_2,
         poke_stat (
           hp,
           attack,
