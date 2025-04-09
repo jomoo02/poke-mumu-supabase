@@ -2,21 +2,23 @@ import CaretDownIcon from '@/app/components/icon/caret-down';
 import CaretUpIcon from '@/app/components/icon/caret-up';
 import CaretUpDownIcon from '@/app/components/icon/caret-up-down';
 
-interface TableHeaderCellProps {
+interface PokedexTableHeaderCellProps {
   id: string;
   selectedId: string;
   direction: 'asc' | 'desc';
   content: string;
   onClick: (id: string) => void;
+  isSortAble: boolean;
 }
 
-export default function TableHeaderCell({
+export default function PokedexTableHeaderCell({
   id,
   selectedId,
   direction,
   content,
   onClick,
-}: TableHeaderCellProps) {
+  isSortAble,
+}: PokedexTableHeaderCellProps) {
   const widthVariants: Record<string, string> = {
     no: 'min-w-[4.25rem] w-[4.25rem] xl:min-w-[4.7rem]',
     name: 'w-full',
@@ -41,7 +43,7 @@ export default function TableHeaderCell({
     <th
       className={`border-r-2 border-white ${widthVariants[id] || widthVariants.default} ${displayVariants[id]} `}
     >
-      {id !== 'type' ? (
+      {isSortAble ? (
         <button
           type="button"
           onClick={() => onClick(id)}

@@ -1,15 +1,15 @@
 import Link from 'next/link';
-import PokeImage from './poke-image';
 import { getHomePokeSprtieSrc } from '@/app/utils/sprite';
 import PokeTypeBadge from '@/app/components/badge/poke-type';
 import { formatPokedexNumber } from '@/app/utils/format-pokdex-number';
-import type { PokedexPoke } from '../utils/set-pokedex-poke-list';
+import PokeImage from './poke-image';
+import type { PokedexPoke } from '../types';
 
-interface TableRowProps {
+interface PokedexTableRowProps {
   poke: PokedexPoke;
 }
 
-export default function TableRow({ poke }: TableRowProps) {
+export default function PokedexTableRow({ poke }: PokedexTableRowProps) {
   const { sprite, pokeKey, no, name, total, form, type1, type2, ...stats } =
     poke;
 

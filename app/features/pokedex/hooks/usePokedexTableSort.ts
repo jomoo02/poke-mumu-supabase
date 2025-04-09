@@ -1,6 +1,6 @@
 import { useState, useMemo, useLayoutEffect } from 'react';
-import type { PokedexPoke } from '../utils/set-pokedex-poke-list';
-import sortPokeList from '../utils/sort-poke-list';
+import type { PokedexPoke } from '../types';
+import sortPokeList from '../lib/sort-poke-list';
 
 export type SortState = {
   column: string;
@@ -30,7 +30,7 @@ export default function usePokedexSort(pokeList: PokedexPoke[]) {
       return pokeList;
     }
 
-    return sortPokeList(pokeList, sortState);
+    return sortPokeList(pokeList, sortState.column, sortState.direction);
   }, [pokeList, sortState]);
 
   useLayoutEffect(() => {

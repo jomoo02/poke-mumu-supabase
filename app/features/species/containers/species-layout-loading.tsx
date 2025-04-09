@@ -37,7 +37,7 @@ function SpeciesNavLoading({ ndex }: LoadingProps) {
   );
 }
 
-export default function Loading({ ndex }: LoadingProps) {
+export default function SpeciesLayoutLoading({ ndex }: LoadingProps) {
   return (
     <div className="grid gap-4 animate-pulse">
       <SpeciesNavLoading ndex={ndex} />
@@ -45,8 +45,8 @@ export default function Loading({ ndex }: LoadingProps) {
         <div className="my-4 h-9 w-[80px] bg-slate-300/50 rounded-md" />
       </div>
       <div className="flex gap-x-2 w-full my-4 h-9">
-        <div className="px-3 lg:px-3.5 py-1 border-b-2 border-transparent bg-gray-200 rounded-md w-16 h-7" />
-        <div className="px-3 lg:px-3.5 py-1 border-b-2 border-transparent bg-gray-200 rounded-md w-20 h-7" />
+        <div className="px-3 lg:px-3.5 py-1 border-b-2 border-transparent bg-gray-200 rounded-md w-16 h-8" />
+        <div className="px-3 lg:px-3.5 py-1 border-b-2 border-transparent bg-gray-200 rounded-md w-20 h-8" />
       </div>
     </div>
   );

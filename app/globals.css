@@ -1,1 +1,32 @@
 @import 'tailwindcss';
+
+@layer base {
+  h2 {
+    @apply text-slate-800 text-3xl font-bold;
+  }
+  span {
+    @apply font-medium text-slate-800 text-sm lg:text-[15px];
+  }
+}
+
+@layer components {
+  .c-text-base {
+    @apply font-medium text-slate-800 text-sm lg:text-[15px];
+  }
+
+  .c-text-sm {
+    @apply text-slate-600 font-medium text-sm lg:text-[15px];
+  }
+
+  .c-text-xs {
+    @apply font-medium text-xs lg:text-sm text-slate-500;
+  }
+
+  .c-border-inner {
+    @apply border border-slate-300;
+  }
+
+  .c-border-outer {
+    @apply border-2 border-slate-500;
+  }
+}

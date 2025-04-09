@@ -1,12 +1,10 @@
-import type { PokedexPoke } from './set-pokedex-poke-list';
-import type { SortState } from '../hooks/usePokedexSort';
+import type { PokedexPoke } from '../types';
 
 export default function sortPokeList(
   pokeList: PokedexPoke[],
-  sortSate: SortState,
+  column: string,
+  direction: 'asc' | 'desc',
 ) {
-  const { column, direction } = sortSate;
-
   return [...pokeList].sort((a, b) => {
     const valueA = a[column as keyof PokedexPoke];
     const valueB = b[column as keyof PokedexPoke];

@@ -2,10 +2,10 @@ import {
   fetchSpeciesNav,
   fetchSpeciesName,
   fetchSpeciesVarieties,
-} from './api/species';
-import SpeciesNav from './components/species-nav';
-import SpeciesTitle from './components/species-title';
-import VarietyList from './components/variety-list';
+} from '../api/species';
+import SpeciesNav from '../components/species-nav';
+import SpeciesTitle from '../components/species-title';
+import VarietyList from '../components/variety-list';
 
 interface SpeciesLayoutProps {
   ndex: number;
