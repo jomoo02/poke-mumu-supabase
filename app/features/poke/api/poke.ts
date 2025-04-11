@@ -19,6 +19,14 @@ export async function fetchPoke(pokeKey: string) {
           special_attack,
           special_defense,
           speed
+        ),
+        poke_ability (
+          slot,
+          ability (
+            name_ko,
+            flavor_text,
+            id
+          )
         )
     `,
     )

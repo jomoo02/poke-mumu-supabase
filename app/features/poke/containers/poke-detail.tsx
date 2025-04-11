@@ -2,6 +2,8 @@ import { fetchPoke } from '../api/poke';
 import Stats from '../modules/stats';
 import SectionHeader from '../components/section-header';
 import TypeDefense from '../modules/type-defense';
+import { formatPokeAbility } from '../lib/ability';
+import Abilities from '../modules/abilities';
 
 interface PokeDetailProps {
   pokeKey: string;
@@ -14,9 +16,12 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
     return null;
   }
 
-  const { type_1, type_2, poke_stat: pokeStats } = data;
+  const { type_1, type_2, poke_stat: pokeStats, poke_ability } = data;
 
   const types = type_2 ? [type_1, type_2] : [type_1];
+  console.log(poke_ability);
+  const abilities = formatPokeAbility(poke_ability);
+  console.log(abilities);
 
   return (
     <div>
@@ -30,6 +35,12 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
         <SectionHeader sectionTitle="방어 상성" />
         <div className="c-border-outer rounded-lg bg-white">
           <TypeDefense types={types} />
+        </div>
+      </div>
+      <div>
+        <SectionHeader sectionTitle="특성" />
+        <div className="c-border-outer rounded-lg bg-white grid divide-y divide-slate-300">
+          <Abilities abilities={abilities} />
         </div>
       </div>
     </div>
