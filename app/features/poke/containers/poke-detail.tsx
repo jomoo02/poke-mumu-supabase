@@ -19,9 +19,9 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
   const { type_1, type_2, poke_stat: pokeStats, poke_ability } = data;
 
   const types = type_2 ? [type_1, type_2] : [type_1];
-  console.log(poke_ability);
+  console.log(data);
   const abilities = formatPokeAbility(poke_ability);
-  console.log(abilities);
+  // console.log(abilities);
 
   return (
     <div>

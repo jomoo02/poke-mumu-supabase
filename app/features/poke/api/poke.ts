@@ -27,7 +27,8 @@ export async function fetchPoke(pokeKey: string) {
             flavor_text,
             id
           )
-        )
+        ),
+        evolution_id
     `,
     )
     .eq('poke_key', pokeKey)

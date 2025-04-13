@@ -1,48 +1,5 @@
-export const pokeTypeList = [
-  'normal',
-  'fire',
-  'water',
-  'grass',
-  'electric',
-  'ice',
-  'fighting',
-  'poison',
-  'ground',
-  'flying',
-  'psychic',
-  'bug',
-  'rock',
-  'ghost',
-  'dragon',
-  'dark',
-  'steel',
-  'fairy',
-  'unknown',
-] as const;
-
-export type PokeType = (typeof pokeTypeList)[number];
-
-export const pokeTypeKoMap: Record<PokeType, string> = {
-  normal: '노말',
-  fire: '불꽃',
-  water: '물',
-  grass: '풀',
-  electric: '전기',
-  ice: '얼음',
-  fighting: '격투',
-  poison: '독',
-  ground: '땅',
-  flying: '비행',
-  psychic: '에스퍼',
-  bug: '벌레',
-  rock: '바위',
-  ghost: '고스트',
-  dragon: '드래곤',
-  dark: '악',
-  steel: '강철',
-  fairy: '페어리',
-  unknown: '???',
-};
+import { POKE_TYPE_MAP_KO } from '@/app/data/type/type-ko';
+import { pokeTypeList, type PokeType } from '@/app/data/type/type';
 
 export const pokeTypeObj: Record<PokeType, PokeType> = Object.fromEntries(
   pokeTypeList.map((type) => [type, type]),
@@ -53,5 +10,5 @@ export function isPokeType(type: string): type is PokeType {
 }
 
 export function getPokeTypeKo(type: string): string {
-  return isPokeType(type) ? pokeTypeKoMap[type] : pokeTypeKoMap.unknown;
+  return isPokeType(type) ? POKE_TYPE_MAP_KO[type] : POKE_TYPE_MAP_KO.unknown;
 }

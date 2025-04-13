@@ -29,7 +29,7 @@ export default function SearchResultPoke({ poke }: SearchResultPokeProps) {
 
   return (
     <Link href={`/pokedex/${no}/${pokeKey}`} onClick={handleLinkOnClick}>
-      <div className="flex w-full h-full items-center overflow-hidden gap-x-2 sm:gap-x-3 px-1.5 xs:px-2.5 lg:px-3 active:bg-blue-200/50 hover:bg-blue-200/50">
+      <div className="flex w-full h-full items-center overflow-hidden gap-x-1 sm:gap-x-3 px-3 lg:px-5 active:bg-blue-200/50 hover:bg-blue-200/50">
         <div className="c-text-base w-9">{formatPokedexNumber(no)}</div>
         <div className="relative w-[50px] h-[50px] lg:w-[55px] lg:h-[55px] mx-1 lg:mx-2 flex-shrink-0">
           <Image

@@ -1,4 +1,5 @@
-import { pokeTypeObj, type PokeType } from '@/app/lib/poke-type';
+import { pokeTypeObj } from '@/app/lib/poke-type';
+import type { PokeType } from '@/app/data/type/type';
 
 export type EffectiveItem = 'superEffective' | 'notVeryEffective' | 'noEffect';
 export type EffectiveItemList = Partial<Record<EffectiveItem, PokeType[]>>;
