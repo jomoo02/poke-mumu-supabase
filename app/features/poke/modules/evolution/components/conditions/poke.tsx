@@ -1,7 +1,9 @@
+import Link from 'next/link';
 import {
-  PokeLinkWithParticleForAnd,
-  PokeLinkWithSubjectParticle,
-} from '@/app/components/link/poke/poke-link';
+  getSubjectParticle,
+  getParticleForAnd,
+} from '@/app/utils/word-particle';
+import { getPokedexPokeHref } from '@/app/utils/poke-link';
 import type { ConditionComponentProps } from '../../types';
 import {
   getTradeSpeciesText,
@@ -17,12 +19,16 @@ export function TradeSpecies({ value }: ConditionComponentProps) {
     return null;
   }
 
+  const particleForAnd = getParticleForAnd(speciesName);
+  const href = getPokedexPokeHref(speceisData);
+
   return (
-    <PokeLinkWithParticleForAnd
-      name={speciesName}
-      no={speceisData.no}
-      pokeKey={speceisData.pokeKey}
-    />
+    <>
+      <Link href={href} className="underline hover:text-blue-400">
+        {speciesName}
+      </Link>
+      {particleForAnd && <span>{particleForAnd}</span>}
+    </>
   );
 }
 
@@ -34,13 +40,15 @@ export function PartySpecies({ value }: ConditionComponentProps) {
     return null;
   }
 
+  const subjectParticle = getSubjectParticle(speciesName);
+  const href = getPokedexPokeHref(speceisData);
+
   return (
     <>
-      <PokeLinkWithSubjectParticle
-        name={speciesName}
-        no={speceisData.no}
-        pokeKey={speceisData.pokeKey}
-      />
+      <Link href={href} className="underline hover:text-blue-400">
+        {speciesName}
+      </Link>
+      {subjectParticle && <span>{subjectParticle}</span>}
       <span className="ml-1">있을 때</span>
     </>
   );

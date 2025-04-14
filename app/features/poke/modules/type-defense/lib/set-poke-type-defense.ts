@@ -1,4 +1,4 @@
-import { pokeTypeList, type PokeType } from '@/app/lib/poke-type';
+import { pokeTypeList, type PokeType } from '@/app/data/type/type';
 import { typeDefense } from '@/app/lib/poke-type/type-defense';
 
 // 초기 방어 상성 값을 생성

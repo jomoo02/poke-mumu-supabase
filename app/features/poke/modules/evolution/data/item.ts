@@ -50,10 +50,15 @@ const heldItemList = {
   'oval-stone': '동글동글돌',
 };
 
+const spinItemList = {
+  sweet: '사탕공예',
+};
+
 export const EVOLUTION_ITEM_LIST: Record<string, string> = {
   ...useItemList,
   ...tradeItemList,
   ...heldItemList,
+  ...spinItemList,
 };
 
 export type EvolutionItem = keyof typeof EVOLUTION_ITEM_LIST;

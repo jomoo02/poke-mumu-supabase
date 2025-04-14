@@ -99,10 +99,34 @@ export const EVOLUTION_LOCATION_KO: Record<EvolutionLocationKey, string> = {
   mountLanakila: '라나키라마운틴',
 };
 
-export const EVOLUTION_REGION_LOCATION_KO: Partial<
-  Record<EvolutionLocationKey, { region: string; location: string }[]>
+export const EVOLUTION_REGION_LOCATION_KO: Record<
+  EvolutionLocationKey,
+  {
+    title: string;
+    id: string;
+    locations: { region: string; location: string }[];
+  }
 > = {
-  mossyRock: mossyRockLocations,
-  icyRock: icyRockLocations,
-  magneticField: magneticFiledLocations,
+  mossyRock: {
+    id: 'mossyRock',
+    title: EVOLUTION_LOCATION_KO.mossyRock,
+    locations: mossyRockLocations,
+  },
+  icyRock: {
+    id: 'icyRock',
+    title: EVOLUTION_LOCATION_KO.icyRock,
+    locations: icyRockLocations,
+  },
+  magneticField: {
+    id: 'magneticField',
+    title: EVOLUTION_LOCATION_KO.magneticField,
+    locations: magneticFiledLocations,
+  },
+  mountLanakila: {
+    id: 'mountLanakila',
+    title: EVOLUTION_LOCATION_KO.mountLanakila,
+    locations: magneticFiledLocations.filter(
+      ({ region }) => region === 'Alola' || region === '알로라',
+    ),
+  },
 };

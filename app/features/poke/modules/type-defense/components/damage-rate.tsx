@@ -1,5 +1,4 @@
-import React from 'react';
-import type { PokeType } from '@/app/lib/poke-type';
+import type { PokeType } from '@/app/data/type/type';
 import PokeTypeBadge from '@/app/components/badge/poke-type';
 
 interface DamageRateProps {

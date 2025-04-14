@@ -46,7 +46,7 @@ export function Beauty({ value }: ConditionComponentProps) {
   return <span>{text}</span>;
 }
 
-export default function Happiness({ value }: ConditionComponentProps) {
+export function Happiness({ value }: ConditionComponentProps) {
   const text = getHappinessText(value);
 
   if (!text) {

@@ -10,5 +10,5 @@ export default function ItemLinkWithParticle({
 }: ItemLinkWithParticleProps) {
   const particle = getParticle(item);
 
-  return <ItemLink item={item}>{particle && <span>{particle}</span>}</ItemLink>;
+  return <ItemLink item={item}>{particle && <>{particle}</>}</ItemLink>;
 }

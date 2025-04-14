@@ -1,3 +1,5 @@
+import type { PokeType } from '@/app/data/type/type';
+import { POKE_TYPE_MAP_KO } from '@/app/data/type/type-ko';
 import {
   EVOLUTION_LOCATION,
   EVOLUTION_LOCATION_KO,
@@ -7,10 +9,9 @@ import { EVOLUTION_ITEM_LIST } from '../data/item';
 import type { ConditionValue } from '../types';
 import { REGION_LIST_KO, type Region } from '../data/region';
 import { EVOLUTION_MOVE_LIST } from '../data/move';
-import type { PokeType } from '@/app/data/type/type';
-import { POKE_TYPE_MAP_KO } from '@/app/data/type/type-ko';
 import { PARTY_SPECIES_KO, TRADE_SPECIES_KO } from '../data/species';
-import { TIME_OF_DAY_KO, TimeOfDay } from '../data/time-of-day';
+import { TIME_OF_DAY_KO, type TimeOfDay } from '../data/time-of-day';
+import { OTHER_POKE_CONTENT, type OtherPoke } from '../data/other-poke';
 
 export type ConditionText = string | null;
 
@@ -165,4 +166,39 @@ export function getNatureText(value: ConditionValue): ConditionText {
   const natureList = natureMap[value];
 
   return natureList;
+}
+
+export function getSpinText(value: ConditionValue): ConditionText {
+  if (typeof value !== 'string' || value !== 'sweet') {
+    return null;
+  }
+
+  return '지니게하고 L스틱으로 캐릭터를 계속 회전';
+}
+
+export function getTurnUpsideDownText(value: ConditionValue): ConditionText {
+  if (typeof value !== 'boolean' || !value) {
+    return null;
+  }
+
+  return '기기를 위아래 거꾸로 잡은 상태';
+}
+
+export function getRecoilDamageText(value: ConditionValue): ConditionText {
+  if (typeof value !== 'number') {
+    return null;
+  }
+
+  return `누적 반동 데미지 ${value} 이상 입은 상태에서`;
+}
+
+export function getOtherText(value: ConditionValue): ConditionText {
+  const isOtherPoke = (poke: string): poke is OtherPoke =>
+    poke in OTHER_POKE_CONTENT;
+
+  if (typeof value !== 'string' || !isOtherPoke(value)) {
+    return null;
+  }
+
+  return OTHER_POKE_CONTENT[value];
 }

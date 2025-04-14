@@ -2,8 +2,9 @@ import { fetchPoke } from '../api/poke';
 import Stats from '../modules/stats';
 import SectionHeader from '../components/section-header';
 import TypeDefense from '../modules/type-defense';
-import { formatPokeAbility } from '../lib/ability';
-import Abilities from '../modules/abilities';
+import Abilities from '../modules/abilities/containers/abilities';
+import EvolutionTree from '../modules/evolution/containers/evolution-tree';
+import Location from '../modules/evolution/containers/location';
 
 interface PokeDetailProps {
   pokeKey: string;
@@ -16,12 +17,16 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
     return null;
   }
 
-  const { type_1, type_2, poke_stat: pokeStats, poke_ability } = data;
+  const {
+    type_1,
+    type_2,
+    poke_ability,
+    evolution_id,
+    poke_stat: pokeStats,
+  } = data;
 
   const types = type_2 ? [type_1, type_2] : [type_1];
-  console.log(data);
-  const abilities = formatPokeAbility(poke_ability);
-  // console.log(abilities);
+  // console.log(data);
 
   return (
     <div>
@@ -40,9 +45,18 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
       <div>
         <SectionHeader sectionTitle="특성" />
         <div className="c-border-outer rounded-lg bg-white grid divide-y divide-slate-300">
-          <Abilities abilities={abilities} />
+          <Abilities abilities={poke_ability} />
         </div>
       </div>
+      {evolution_id && (
+        <div>
+          <SectionHeader sectionTitle="진화" />
+          <div className="c-border-outer rounded-lg bg-white py-2">
+            <EvolutionTree evolutionId={evolution_id} />
+          </div>
+          <Location evolutionId={evolution_id} />
+        </div>
+      )}
     </div>
   );
 }
