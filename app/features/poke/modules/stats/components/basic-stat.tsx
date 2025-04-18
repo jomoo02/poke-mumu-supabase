@@ -1,6 +1,6 @@
 import StatBar from './stat-bar';
 import { getKoStatText } from '../lib/stats';
-import type { Stat } from '../../../types/stats';
+import type { Stat } from '../types/stats';
 
 interface BasicStatProps {
   stat: Stat;

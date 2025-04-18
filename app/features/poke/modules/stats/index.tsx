@@ -1,4 +1,4 @@
-import type { PokeStats, Stat } from '../../types/stats';
+import type { PokeStats, Stat } from './types/stats';
 import BasicStat from './components/basic-stat';
 import TotalStat from './components/total-stat';
 import { calculateMaxStatValue, calculateTotalStatValue } from './lib/stats';

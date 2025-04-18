@@ -14,7 +14,7 @@ function Prev({ poke }: NavButtonProps) {
   return (
     <Link
       href={`/pokedex/${no}`}
-      className="flex rounded-lg h-[52px] md:h-14 lg:h-16 c-border-outer bg-white hover:bg-blue-50"
+      className="flex rounded-lg h-[52px] md:h-14 lg:h-16 c-border-outer bg-white hover:bg-blue-50 transition-colors duration-200"
       prefetch
     >
       <div className="flex justify-center items-center c-border-outer border-y-0 border-l-0 px-3 sm:px-4">
@@ -34,7 +34,7 @@ function Next({ poke }: NavButtonProps) {
   return (
     <Link
       href={`/pokedex/${no}`}
-      className="flex flex-row-reverse c-border-outer rounded-lg h-[52px] md:h-14 lg:h-16 bg-white hover:bg-blue-50"
+      className="flex flex-row-reverse c-border-outer rounded-lg h-[52px] md:h-14 lg:h-16 bg-white hover:bg-blue-50 transition-colors duration-200"
       prefetch
     >
       <div className="flex justify-center items-center c-border-outer border-y-0 border-r-0 px-3 sm:px-4">

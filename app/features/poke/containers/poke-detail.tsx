@@ -5,6 +5,7 @@ import TypeDefense from '../modules/type-defense';
 import Abilities from '../modules/abilities/containers/abilities';
 import EvolutionTree from '../modules/evolution/containers/evolution-tree';
 import Location from '../modules/evolution/containers/location';
+import Moves from '../modules/moves/containers/moves';
 
 interface PokeDetailProps {
   pokeKey: string;
@@ -22,6 +23,7 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
     type_2,
     poke_ability,
     evolution_id,
+    poke_moves_2: pokeMoves,
     poke_stat: pokeStats,
   } = data;
 
@@ -57,6 +59,12 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
           <Location evolutionId={evolution_id} />
         </div>
       )}
+      <div>
+        <SectionHeader sectionTitle="기술" />
+        <div>
+          <Moves pokeMoves={pokeMoves} />
+        </div>
+      </div>
     </div>
   );
 }

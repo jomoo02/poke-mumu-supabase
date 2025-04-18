@@ -1,4 +1,4 @@
-import type { Stat } from '../../../types/stats';
+import type { Stat } from '../types/stats';
 
 export function getKoStatText(stat: Stat) {
   const koStatMap: Record<Stat, string> = {
