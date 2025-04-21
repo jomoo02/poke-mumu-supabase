@@ -1,12 +1,13 @@
 'use server';
 
-import { createClient } from '@/app/utils/supabase/server';
+// import { createClient } from '@/app/utils/supabase/server';
+import { createClient } from '@/app/utils/supabase/client';
 import type { SpeciesPoke } from '../types';
 
 export async function fetchSpeciesNav(
   ndex: number,
 ): Promise<{ prev: SpeciesPoke | null; next: SpeciesPoke | null } | null> {
-  const supabase = await createClient();
+  const supabase = createClient();
 
   if (isNaN(ndex)) {
     return null;

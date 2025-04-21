@@ -1,32 +1,67 @@
 import { useMemo, useState } from 'react';
-import type { PokeMoveListItem } from '../types';
+import type { VersionGroup } from '@/app/data/version-group/version-group';
+import type { PokeMoveListItem, MoveMethod } from '../types';
+import {
+  groupMachineMovesByMachineType,
+  sortMoveMethodOrder,
+  sortMachineMoves,
+} from '../lib/version-moves';
+import { MACHINE_MOVE_SORT_ORDER, MOVE_SORT_ORDER } from '../data/sort-method';
 
 export default function useVersion(moves: PokeMoveListItem[]) {
-  const versions = moves
-    .sort((a, b) => a.order - b.order)
-    .map(({ versionGroup }) => versionGroup);
+  const versionGroups = useMemo(() => {
+    return moves
+      .map(({ versionGroup, order }) => ({ versionGroup, order }))
+      .sort((a, b) => a.order - b.order)
+      .map(({ versionGroup }) => versionGroup);
+  }, [moves]);
 
-  const initVersion = versions[0];
-
-  const [targetVersion, setTargetVersion] = useState(initVersion);
-
-  const targetMoves = useMemo(
-    () =>
-      moves.find(({ versionGroup }) => versionGroup === targetVersion)?.moves,
-    [targetVersion],
+  const [targetVersionGroup, setTargetVersion] = useState(
+    () => versionGroups[0],
   );
 
-  const handleTargetVersion = (version: string) => {
-    if (versions.includes(version)) {
-      setTargetVersion(version);
+  const targetMoves = useMemo(() => {
+    const foundMoves = moves.find(
+      ({ versionGroup }) => versionGroup === targetVersionGroup,
+    )?.moves;
+
+    if (foundMoves) {
+      return Object.entries(foundMoves).map(([method, foundPokeMoves]) => ({
+        method: method as MoveMethod,
+        moves: foundPokeMoves,
+      }));
+    }
+
+    return [];
+  }, [moves, targetVersionGroup]);
+
+  const machineMoves = useMemo(() => {
+    const machineMethodMoves =
+      targetMoves.find(({ method }) => method === 'machine')?.moves ?? [];
+
+    return sortMachineMoves(
+      groupMachineMovesByMachineType(machineMethodMoves),
+      MACHINE_MOVE_SORT_ORDER,
+    );
+  }, [targetMoves]);
+
+  const restMoves = sortMoveMethodOrder(
+    targetMoves.filter(({ method }) => method !== 'machine'),
+    MOVE_SORT_ORDER,
+  );
+
+  const handleTargetVersion = (versionGroup: VersionGroup) => {
+    if (versionGroups.includes(versionGroup)) {
+      setTargetVersion(versionGroup);
     }
   };
 
   return {
-    versions,
-    targetVersion,
-    targetMoves,
+    versionGroups,
+    targetVersionGroup,
     setTargetVersion,
     handleTargetVersion,
+    targetMachineMoves: machineMoves,
+    targetMoves: restMoves,
   };
 }

@@ -5,6 +5,7 @@ export type HeaderKey =
   | 'power'
   | 'accuracy'
   | 'level'
-  | 'hm'
-  | 'tm'
-  | 'tr';
+  | 'machine';
+// | 'hm'
+// | 'tm'
+// | 'tr';

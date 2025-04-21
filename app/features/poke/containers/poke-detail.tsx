@@ -28,7 +28,6 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
   } = data;
 
   const types = type_2 ? [type_1, type_2] : [type_1];
-  // console.log(data);
 
   return (
     <div>
@@ -61,7 +60,7 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
       )}
       <div>
         <SectionHeader sectionTitle="기술" />
-        <div>
+        <div className="c-border-outer rounded-lg bg-white">
           <Moves pokeMoves={pokeMoves} />
         </div>
       </div>

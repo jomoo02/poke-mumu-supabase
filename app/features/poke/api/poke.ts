@@ -1,9 +1,10 @@
 'use server';
 
-import { createClient } from '@/app/utils/supabase/server';
+// import { createClient } from '@/app/utils/supabase/server';
+import { createClient } from '@/app/utils/supabase/client';
 
 export async function fetchPoke(pokeKey: string) {
-  const supabase = await createClient();
+  const supabase = createClient();
 
   const { data, error } = await supabase
     .from('poke')

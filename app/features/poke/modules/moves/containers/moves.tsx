@@ -12,11 +12,16 @@ interface MovesProps {
 export default function Moves({ pokeMoves }: MovesProps) {
   const { gens, targetGen, setTargetGen, targetGenMoves } = useMoves(pokeMoves);
 
-  // console.log(gens, targetGen, targetGenMoves);                                       z
   return (
-    <div>
-      <GenList gens={gens} targetGen={targetGen} setTargetGen={setTargetGen} />
+    <>
+      <div className="px-2.5 lg:px-8 c-border-outer border-t-0 border-x-0 py-0.5">
+        <GenList
+          gens={gens}
+          targetGen={targetGen}
+          setTargetGen={setTargetGen}
+        />
+      </div>
       <VersionGroup key={targetGen} moves={targetGenMoves} />
-    </div>
+    </>
   );
 }

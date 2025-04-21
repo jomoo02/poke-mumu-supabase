@@ -1,6 +1,6 @@
 import SortIcon from '@/app/components/icon/sort-icon';
 import type { HeaderKey } from '../../types/move-table';
-import type { MoveMethod } from '../../types';
+import type { MachineType, MoveMethod } from '../../types';
 
 interface HeaderCellProps {
   content: string;
@@ -12,6 +12,7 @@ interface HeaderCellProps {
 
 interface TableHeaderProps {
   method: MoveMethod;
+  machineType?: MachineType;
   setSortOrder: (id: HeaderKey) => void;
   targetCell: HeaderKey;
   direction: 'asc' | 'desc';
@@ -30,10 +31,8 @@ function HeaderCell({
     damageClass: 'min-w-[5.25rem]',
     power: 'min-w-[5.25rem]',
     accuracy: 'min-w-[5.25rem]',
-    level: 'min-w-[3.35rem]',
-    hm: 'min-w-[3.35rem]',
-    tr: 'min-w-[3.35rem]',
-    tm: 'min-w-[3.35rem]',
+    level: 'min-w-[3.85rem]',
+    machine: 'min-w-[3.85rem]',
   } as const;
 
   const handleSortOrder = (heaerId: HeaderKey) => {
@@ -44,11 +43,11 @@ function HeaderCell({
 
   return (
     <th
-      className={`c-text-base h-[2.4rem] border p-0 border-slate-300 ${minWidthVariants[id]}`}
+      className={`c-text-base font-semibold h-[2.4rem] border p-0 border-slate-300 ${minWidthVariants[id]}`}
     >
       <button
         type="button"
-        className={`flex w-full h-full items-center justify-between px-1.5 ${isSelect ? 'bg-blue-100' : 'bg-slate-100'}`}
+        className={`flex w-full h-full items-center cursor-pointer justify-between transition-colors duration-200 px-2 ${isSelect ? 'bg-blue-100' : 'bg-slate-100'}`}
         onClick={() => handleSortOrder(id)}
       >
         {content}
@@ -63,10 +62,29 @@ export default function TableHeader({
   setSortOrder,
   targetCell,
   direction,
+  machineType,
 }: TableHeaderProps) {
   return (
     <thead>
       <tr className="text-nowrap">
+        {method === 'level_up' && (
+          <HeaderCell
+            id="level"
+            content="Lv."
+            targetCell={targetCell}
+            direction={direction}
+            setSortOrder={setSortOrder}
+          />
+        )}
+        {method === 'machine' && machineType && (
+          <HeaderCell
+            id="machine"
+            content={machineType}
+            targetCell={targetCell}
+            direction={direction}
+            setSortOrder={setSortOrder}
+          />
+        )}
         <HeaderCell
           id="name"
           content="기술"

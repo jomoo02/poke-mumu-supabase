@@ -5,7 +5,7 @@ export function getMoveTableTitle(
   machineType?: 'TM' | 'HM' | 'TR',
 ) {
   const moveMethodTitle: Record<string, string> = {
-    'level-up': '레벌 업으로 익히는 기술',
+    level_up: '레벌 업으로 익히는 기술',
     egg: '교배를 통해 유전 받을 수 있는 기술',
     tutor: 'NPC로부터 배울 수 있는 기술',
     reminder: '떠올리기로 익히는 기술',
@@ -24,7 +24,3 @@ export function getMoveTableTitle(
 
   return moveMethodTitle[method] || moveMethodTitle.default;
 }
-
-// export function getTableHeaderItemList(method: MoveMethod) {
-//   if (method)
-// }

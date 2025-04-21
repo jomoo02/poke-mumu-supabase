@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import type { PokeMoveTableWithVersion } from '../types';
 import { formatMovesFromTable } from '../lib/format';
 
 export default function useMoves(moves: PokeMoveTableWithVersion[]) {
-  const formattedMoves = formatMovesFromTable(moves);
+  const formattedMoves = useMemo(() => formatMovesFromTable(moves), [moves]);
 
   const gens = [...new Set(formattedMoves.map(({ gen }) => gen))].sort(
     (a, b) => a - b,
@@ -13,10 +13,13 @@ export default function useMoves(moves: PokeMoveTableWithVersion[]) {
 
   const [targetGen, setTargetGen] = useState(initTargetGen);
 
-  const targetGenMoves = formattedMoves.filter(({ gen }) => gen === targetGen);
+  const targetGenMoves = useMemo(
+    () => formattedMoves.filter(({ gen }) => gen === targetGen),
+    [targetGen, formattedMoves],
+  );
 
   const handleTargetGen = (gen: number) => {
-    if (gen >= 1 && gen <= 9 && gen !== targetGen) {
+    if (gens.includes(gen) && gen !== targetGen) {
       setTargetGen(gen);
     }
   };

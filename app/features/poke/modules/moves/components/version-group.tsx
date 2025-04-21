@@ -8,26 +8,48 @@ interface VersionGroupProps {
 }
 
 export default function VersionGroup({ moves }: VersionGroupProps) {
-  const { versions, targetMoves, targetVersion, setTargetVersion } =
-    useVersion(moves);
-
-  console.log(versions, targetMoves, targetVersion);
+  const {
+    versionGroups,
+    targetMachineMoves,
+    targetMoves,
+    targetVersionGroup,
+    setTargetVersion,
+  } = useVersion(moves);
 
   return (
     <>
       <div className="px-1 sm:px-2 lg:px-7 border-b-2 sm:pt-3 border-slate-500">
         <VersionList
-          versions={versions}
-          targetVersion={targetVersion}
+          versionGroups={versionGroups}
+          targetVersionGroup={targetVersionGroup}
           setTargetVersion={setTargetVersion}
         />
       </div>
-      <div className="px-1 xs:px-2 md:px-3 xl:px-7 pb-2">
-        <MoveTable
-          method="level_up"
-          moves={targetMoves.level_up}
-          key={targetVersion}
-        />
+      <div
+        key={targetVersionGroup}
+        className="px-1 xs:px-2 md:px-3 xl:px-7 pb-2 "
+      >
+        <div className="grid xl:grid-cols-2">
+          {targetMoves && (
+            <div className="overflow-x-hidden">
+              {targetMoves.map(({ method, moves }) => (
+                <MoveTable method={method} moves={moves} key={method} />
+              ))}
+            </div>
+          )}
+          {targetMachineMoves && (
+            <div className="overflow-x-hidden xl:grid xl:justify-end">
+              {targetMachineMoves.map(({ machineType, moves }) => (
+                <MoveTable
+                  key={machineType}
+                  moves={moves}
+                  method="machine"
+                  machineType={machineType}
+                />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </>
   );
