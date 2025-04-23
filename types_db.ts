@@ -1268,6 +1268,67 @@ export type Database = {
           },
         ];
       };
+      pokedex_info: {
+        Row: {
+          genera: string;
+          height: number;
+          id: number;
+          poke_id: number;
+          weight: number;
+        };
+        Insert: {
+          genera: string;
+          height: number;
+          id?: number;
+          poke_id: number;
+          weight: number;
+        };
+        Update: {
+          genera?: string;
+          height?: number;
+          id?: number;
+          poke_id?: number;
+          weight?: number;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'pokedex_info_poke_id_fkey';
+            columns: ['poke_id'];
+            isOneToOne: true;
+            referencedRelation: 'poke';
+            referencedColumns: ['id'];
+          },
+        ];
+      };
+      pokedex_number: {
+        Row: {
+          dex_number: number;
+          dex_type: string;
+          id: number;
+          poke_id: number | null;
+        };
+        Insert: {
+          dex_number: number;
+          dex_type: string;
+          id?: number;
+          poke_id?: number | null;
+        };
+        Update: {
+          dex_number?: number;
+          dex_type?: string;
+          id?: number;
+          poke_id?: number | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'pokedex_number_poke_id_fkey';
+            columns: ['poke_id'];
+            isOneToOne: false;
+            referencedRelation: 'poke';
+            referencedColumns: ['id'];
+          },
+        ];
+      };
       species: {
         Row: {
           id: number;

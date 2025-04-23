@@ -6,6 +6,7 @@ import Abilities from '../modules/abilities/containers/abilities';
 import EvolutionTree from '../modules/evolution/containers/evolution-tree';
 import Location from '../modules/evolution/containers/location';
 import Moves from '../modules/moves/containers/moves';
+import Information from '../modules/information/containers/information';
 
 interface PokeDetailProps {
   pokeKey: string;
@@ -28,9 +29,24 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
   } = data;
 
   const types = type_2 ? [type_1, type_2] : [type_1];
+  console.log(data.pokedex_info);
+  console.log(data.pokedex_number);
 
   return (
     <div>
+      <div>
+        <Information
+          types={types}
+          ndex={data.no}
+          name={data.name_ko}
+          form={data.form}
+          pokedexNumbers={data.pokedex_number}
+          effortValue={data.poke_effort_value}
+          detail={data.poke_detail}
+          breeding={data.poke_breeding}
+          pokedexInfo={data.pokedex_info}
+        />
+      </div>
       <div>
         <SectionHeader sectionTitle="능력치" />
         <div className="grid c-border-outer divide-y divide-slate-300 rounded-lg bg-white">

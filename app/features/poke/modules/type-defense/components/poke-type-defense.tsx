@@ -1,13 +1,19 @@
 import PokeTypeBadge from '@/app/components/badge/poke-type';
-import type { PokeType } from '@/app/data/type/type';
+import { isPokeType } from '@/app/lib/poke-type';
 import { setPokeTypeDefense } from '../lib/set-poke-type-defense';
 import DamageRate from './damage-rate';
 
 interface PokeTypeDefense {
-  pokeTypes: PokeType[];
+  pokeTypes: string[];
 }
 
 export default function PokeTypeDefense({ pokeTypes }: PokeTypeDefense) {
+  const check = pokeTypes.every(isPokeType);
+
+  if (!check) {
+    return null;
+  }
+
   const pokeTypeDefense = setPokeTypeDefense(pokeTypes);
 
   return (

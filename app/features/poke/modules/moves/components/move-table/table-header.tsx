@@ -26,11 +26,11 @@ function HeaderCell({
   setSortOrder,
 }: HeaderCellProps) {
   const minWidthVariants: Record<HeaderKey, string> = {
-    name: 'min-w-[10.2rem]',
+    name: 'min-w-[9.5rem] sm:min-w-[10.2rem]',
     type: 'min-w-[5.25rem]',
     damageClass: 'min-w-[5.25rem]',
-    power: 'min-w-[5.25rem]',
-    accuracy: 'min-w-[5.25rem]',
+    power: 'min-w-[5rem] sm:min-w-[5.25rem]',
+    accuracy: 'min-w-[5rem] sm:min-w-[5.25rem]',
     level: 'min-w-[3.85rem]',
     machine: 'min-w-[3.85rem]',
   } as const;

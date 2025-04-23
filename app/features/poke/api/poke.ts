@@ -13,6 +13,9 @@ export async function fetchPoke(pokeKey: string) {
         id,
         type_1,
         type_2,
+        no,
+        name_ko,
+        form,
         poke_stat (
           hp,
           attack,
@@ -39,6 +42,35 @@ export async function fetchPoke(pokeKey: string) {
             order
           ),
           moves
+        ),
+        pokedex_info (
+          id,
+          weight,
+          height,
+          genera
+        ),
+        pokedex_number (
+          id,
+          dex_type,
+          dex_number
+        ),
+        poke_breeding (
+          id,
+          egg_group_1,
+          egg_group_2,
+          gender_rate,
+          hatch_counter
+        ),
+        poke_effort_value (
+          id,
+          stat_name,
+          stat_value
+        ),
+        poke_detail (
+          id,
+          capture_rate,
+          growth_rate,
+          base_friendship
         )
     `,
     )

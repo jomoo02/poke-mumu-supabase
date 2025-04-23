@@ -1,9 +1,8 @@
+import { getStatKo } from '@/app/lib/stat';
 import StatBar from './stat-bar';
-import { getKoStatText } from '../lib/stats';
-import type { Stat } from '../types/stats';
 
 interface BasicStatProps {
-  stat: Stat;
+  stat: string;
   value: number;
   maxStatValue: number;
 }
@@ -13,7 +12,7 @@ export default function BasicStat({
   value,
   maxStatValue,
 }: BasicStatProps) {
-  const statText = getKoStatText(stat);
+  const statText = getStatKo(stat);
 
   return (
     <div className="grid grid-cols-5 py-[2.5px] sm:py-[5px] gap-x-0.5 sm:gap-x-3 items-center h-[30px] first:rounded-t-lg">

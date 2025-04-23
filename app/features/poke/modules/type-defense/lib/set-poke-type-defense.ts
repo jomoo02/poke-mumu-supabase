@@ -1,8 +1,10 @@
-import { pokeTypeList, type PokeType } from '@/app/data/type/type';
+import { getPokeTypeList, type PokeType } from '@/app/lib/poke-type';
 import { typeDefense } from '@/app/lib/poke-type/type-defense';
 
 // 초기 방어 상성 값을 생성
 function getInitialTypeDefense() {
+  const pokeTypeList = getPokeTypeList();
+
   return pokeTypeList
     .filter((type) => type !== 'unknown')
     .reduce(

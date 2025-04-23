@@ -1,4 +1,4 @@
-import type { PokeStats, Stat } from './types/stats';
+import type { PokeStats } from './types/stats';
 import BasicStat from './components/basic-stat';
 import TotalStat from './components/total-stat';
 import { calculateMaxStatValue, calculateTotalStatValue } from './lib/stats';
@@ -12,7 +12,7 @@ export default function Stats({ stats }: StatsProps) {
     return null;
   }
 
-  const statList: { stat: Stat; value: number }[] = [
+  const statList: { stat: string; value: number }[] = [
     { stat: 'hp', value: stats.hp },
     { stat: 'attack', value: stats.attack },
     { stat: 'defense', value: stats.defense },

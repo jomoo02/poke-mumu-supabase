@@ -1,5 +1,4 @@
-import type { PokeType } from '@/app/data/type/type';
-import { POKE_TYPE_MAP_KO } from '@/app/data/type/type-ko';
+import { getPokeTypeKo } from '@/app/lib/poke-type';
 import {
   EVOLUTION_LOCATION,
   EVOLUTION_LOCATION_KO,
@@ -93,14 +92,11 @@ export function getItemText(value: ConditionValue): ConditionText {
 }
 
 export function getTypeText(value: ConditionValue): ConditionText {
-  const isPokeType = (type: string): type is PokeType =>
-    type in POKE_TYPE_MAP_KO;
-
-  if (typeof value !== 'string' || !isPokeType(value)) {
+  if (typeof value !== 'string') {
     return null;
   }
 
-  return POKE_TYPE_MAP_KO[value];
+  return getPokeTypeKo(value);
 }
 
 export function getNeedsOverworldRainText(
