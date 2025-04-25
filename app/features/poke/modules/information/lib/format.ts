@@ -38,11 +38,13 @@ const formatPokedexInfo = (pokedexInfo: PokedexInfo | null) => {
 };
 
 const formatPokedexNumbers = (pokedexNumbers: PokedexNumber[]) => {
-  return pokedexNumbers.map(({ dex_type, dex_number, id }) => ({
-    id,
-    dex: getPokedexLabelKo(dex_type),
-    dexNumber: formatPokedexNumber(dex_number),
-  }));
+  return pokedexNumbers
+    .filter(({ dex_type }) => dex_type !== 'national')
+    .map(({ dex_type, dex_number, id }) => ({
+      id,
+      dex: getPokedexLabelKo(dex_type),
+      dexNumber: formatPokedexNumber(dex_number),
+    }));
 };
 
 export const formatBasic = ({
@@ -63,7 +65,7 @@ export const formatBasic = ({
   return {
     ...formatPokedexInfo(pokedexInfo),
     types,
-    ndex,
+    ndex: formatPokedexNumber(ndex),
     name,
     form,
     pokedexNumbers: formatPokedexNumbers(pokedexNumbers),
@@ -121,7 +123,9 @@ export const formatBreeding = (breeding: Breeding | null) => {
   const { egg_group_1, egg_group_2, gender_rate, hatch_counter } = breeding;
 
   return {
-    eggGroups: [egg_group_1, egg_group_2].map(getEggGroupKo),
+    eggGroups: [egg_group_1, egg_group_2]
+      .filter((eggGroup) => eggGroup)
+      .map(getEggGroupKo),
     genderRatio: formatGenderRatio(gender_rate),
     hatchCounter: hatch_counter ? String(hatch_counter) : NULL_CASE_CHAR,
   };

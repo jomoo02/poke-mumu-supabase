@@ -34,7 +34,7 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
 
   return (
     <div>
-      <div>
+      <div className="c-border-outer rounded-lg bg-white py-4">
         <Information
           types={types}
           ndex={data.no}

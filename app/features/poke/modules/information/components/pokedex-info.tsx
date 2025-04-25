@@ -4,7 +4,7 @@ import InfoItem from './info-item';
 interface PokedexInfo {
   info: {
     types: string[];
-    ndex: number;
+    ndex: string;
     name: string;
     form: string | null;
     height: string;

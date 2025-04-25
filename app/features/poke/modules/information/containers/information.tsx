@@ -1,3 +1,6 @@
+import BreedingInfo from '../components/breeding-info';
+import DetailInfo from '../components/detail-info';
+import ImageInfo from '../components/image-info';
 import Basic from '../components/pokedex-info';
 import { formatBasic, formatBreeding, formatDetail } from '../lib/format';
 import type {
@@ -31,17 +34,6 @@ export default function Information({
   breeding,
   pokedexInfo,
 }: InformationProps) {
-  // console.log(
-  //   types,
-  //   ndex,
-  //   name,
-  //   form,
-  //   pokedexNumbers,
-  //   effortValue,
-  //   detail,
-  //   breeding,
-  //   pokedexInfo,
-  // );
   const basic = formatBasic({
     pokedexInfo,
     pokedexNumbers,
@@ -54,15 +46,18 @@ export default function Information({
   const detailData = formatDetail(detail, effortValue);
 
   const breedingData = formatBreeding(breeding);
-  console.log(basic);
 
   console.log(detailData);
-  console.log(breedingData);
 
   return (
-    <div>
-      <div>
+    <div className="flex flex-col xl:flex-row">
+      <ImageInfo sprite="1" name={name} />
+      <div className="flex flex-col lg:flex-row gap-x-10">
         <Basic info={basic} />
+        <div className="flex flex-col lg:justify-between">
+          <DetailInfo detail={detailData} />
+          <BreedingInfo breeding={breedingData} />
+        </div>
       </div>
     </div>
   );

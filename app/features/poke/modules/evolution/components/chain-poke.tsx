@@ -1,8 +1,8 @@
 import Image from 'next/image';
+import { getHomePokeSprtieSrc } from '@/app/utils/sprite';
 import ChainPokeLink from './chain-poke-link';
 import { useChainMaxWidth, usePokeMap } from './chain.context';
 import type { Detail } from '../types/evolution';
-import { getHomePokeSprtieSrc } from '@/app/utils/sprite';
 import ChainPokeDetail from './chain-poke-detail';
 
 interface ChainPokeProps {
