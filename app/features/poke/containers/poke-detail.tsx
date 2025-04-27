@@ -29,8 +29,8 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
   } = data;
 
   const types = type_2 ? [type_1, type_2] : [type_1];
-  console.log(data.pokedex_info);
-  console.log(data.pokedex_number);
+  // console.log(data.pokedex_info);
+  // console.log(data.pokedex_number);
 
   return (
     <div>
@@ -49,9 +49,8 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
       </div>
       <div>
         <SectionHeader sectionTitle="능력치" />
-        <div className="grid c-border-outer divide-y divide-slate-300 rounded-lg bg-white">
-          <Stats stats={pokeStats} />
-        </div>
+        <Stats stats={pokeStats} />
+        {/* <div className="grid c-border-outer divide-y divide-slate-300 rounded-lg bg-white"></div> */}
       </div>
       <div>
         <SectionHeader sectionTitle="방어 상성" />

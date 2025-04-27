@@ -47,7 +47,7 @@ export default function Information({
 
   const breedingData = formatBreeding(breeding);
 
-  console.log(detailData);
+  // console.log(detailData);
 
   return (
     <div className="flex flex-col xl:flex-row xl:justify-around">

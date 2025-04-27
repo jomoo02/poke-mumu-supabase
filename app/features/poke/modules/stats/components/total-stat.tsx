@@ -13,6 +13,8 @@ export default function TotalStat({ totalStatValue }: TotalStatProps) {
           {totalStatValue}
         </div>
       </div>
+      <div>MIN</div>
+      <div>MAX</div>
     </div>
   );
 }

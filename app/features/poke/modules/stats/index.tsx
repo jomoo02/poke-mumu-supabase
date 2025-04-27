@@ -1,13 +1,20 @@
+'use client';
+
 import type { PokeStats } from './types/stats';
 import BasicStat from './components/basic-stat';
 import TotalStat from './components/total-stat';
 import { calculateMaxStatValue, calculateTotalStatValue } from './lib/stats';
+import useLevel from './hooks/useLevel';
+import Stat from './components/stat';
+import LevelSelector from './components/level-selector';
+// import LevelSelector2 from './components/level-selector-2';
 
 interface StatsProps {
   stats: PokeStats | null;
 }
 
 export default function Stats({ stats }: StatsProps) {
+  const { level, setLevel } = useLevel();
   if (!stats) {
     return null;
   }
@@ -26,16 +33,27 @@ export default function Stats({ stats }: StatsProps) {
   const totalStatValue = calculateTotalStatValue(statValueList);
 
   return (
-    <>
-      {statList.map(({ stat, value }) => (
-        <BasicStat
-          key={stat}
-          stat={stat}
-          value={value}
-          maxStatValue={maxStatValue}
+    <div className="relative">
+      <div className="flex justify-end absolute right-0 -top-9">
+        <LevelSelector
+          targetLevel={level}
+          setTargetLevel={setLevel}
+          levels={[50, 100]}
         />
-      ))}
-      <TotalStat totalStatValue={totalStatValue} />
-    </>
+      </div>
+
+      <div className="grid divide-y divide-slate-300 c-border-outer rounded-lg bg-white">
+        {statList.map(({ stat, value }) => (
+          <Stat
+            key={stat}
+            stat={stat}
+            targetLevel={level}
+            value={value}
+            maxStatValue={maxStatValue}
+          />
+        ))}
+        <TotalStat totalStatValue={totalStatValue} />
+      </div>
+    </div>
   );
 }
