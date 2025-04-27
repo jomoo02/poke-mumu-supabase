@@ -29,7 +29,7 @@ export async function fetchSpeciesNav(
 }
 
 export async function fetchSpeciesName(ndex: number) {
-  const supabase = await createClient();
+  const supabase = createClient();
 
   const { data, error } = await supabase
     .from('species')
@@ -45,7 +45,7 @@ export async function fetchSpeciesName(ndex: number) {
 }
 
 export async function fetchSpeciesVarieties(ndex: number) {
-  const supabase = await createClient();
+  const supabase = createClient();
 
   const { data: variantPokeList, error: variantPokeError } = await supabase
     .from('poke')

@@ -9,11 +9,11 @@ interface NavButtonProps {
 }
 
 function Prev({ poke }: NavButtonProps) {
-  const { no, name_ko: name } = poke;
+  const { no, species, name_ko: name } = poke;
 
   return (
     <Link
-      href={`/pokedex/${no}`}
+      href={`/pokedex/${no}/${species}`}
       className="flex rounded-lg h-[52px] md:h-14 lg:h-16 c-border-outer bg-white hover:bg-blue-50 transition-colors duration-200"
       prefetch
     >
@@ -29,11 +29,11 @@ function Prev({ poke }: NavButtonProps) {
 }
 
 function Next({ poke }: NavButtonProps) {
-  const { no, name_ko: name } = poke;
+  const { no, species, name_ko: name } = poke;
 
   return (
     <Link
-      href={`/pokedex/${no}`}
+      href={`/pokedex/${no}/${species}`}
       className="flex flex-row-reverse c-border-outer rounded-lg h-[52px] md:h-14 lg:h-16 bg-white hover:bg-blue-50 transition-colors duration-200"
       prefetch
     >

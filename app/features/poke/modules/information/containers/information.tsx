@@ -50,7 +50,7 @@ export default function Information({
   console.log(detailData);
 
   return (
-    <div className="flex flex-col xl:flex-row">
+    <div className="flex flex-col xl:flex-row xl:justify-around">
       <ImageInfo sprite="1" name={name} />
       <div className="flex flex-col lg:flex-row gap-x-10">
         <Basic info={basic} />

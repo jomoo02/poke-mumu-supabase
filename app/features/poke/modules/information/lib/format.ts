@@ -74,7 +74,7 @@ export const formatBasic = ({
 
 const formatEffortValue = (effortValues: EffortValue[]) =>
   effortValues.map(
-    ({ stat_name, stat_value }) => `${getStatKo(stat_name)} - ${stat_value}`,
+    ({ stat_name, stat_value }) => `${stat_value} ${getStatKo(stat_name)}`,
   );
 
 export const formatDetail = (
