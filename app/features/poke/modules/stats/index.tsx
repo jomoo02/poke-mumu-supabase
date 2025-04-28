@@ -1,7 +1,7 @@
 'use client';
 
 import type { PokeStats } from './types/stats';
-import BasicStat from './components/basic-stat';
+// import BasicStat from './components/basic-stat';
 import TotalStat from './components/total-stat';
 import { calculateMaxStatValue, calculateTotalStatValue } from './lib/stats';
 import useLevel from './hooks/useLevel';

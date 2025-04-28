@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { getHomePokeSprtieSrc } from '@/app/utils/sprite';
+// import { getHomePokeSprtieSrc } from '@/app/utils/sprite';
 import ChainPokeLink from './chain-poke-link';
 import { useChainMaxWidth, usePokeMap } from './chain.context';
 import type { Detail } from '../types/evolution';
@@ -23,11 +23,11 @@ export default function ChainPoke({
     return null;
   }
 
-  const { poke_key, name_ko, sprite, no, form } = pokeData;
+  const { poke_key, name_ko, no, form } = pokeData;
 
   const flexRow = chainMaxWidth === 8 ? '' : 'md:flex-row';
 
-  const src = getHomePokeSprtieSrc(sprite);
+  // const src = getHomePokeSprtieSrc(sprite);
 
   return (
     <div className={`flex flex-col justify-center items-center ${flexRow}`}>
