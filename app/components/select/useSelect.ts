@@ -10,6 +10,7 @@ export default function useSelect(height: number) {
 
   const open = () => {
     setIsOpen(true);
+    selectorRef.current?.focus();
   };
 
   const close = () => {

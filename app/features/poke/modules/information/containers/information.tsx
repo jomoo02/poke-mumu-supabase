@@ -21,6 +21,7 @@ interface InformationProps {
   detail: Detail | null;
   breeding: Breeding | null;
   pokedexInfo: PokedexInfo | null;
+  sprite: string;
 }
 
 export default function Information({
@@ -28,6 +29,7 @@ export default function Information({
   ndex,
   name,
   form,
+  sprite,
   pokedexNumbers,
   effortValue,
   detail,
@@ -51,7 +53,7 @@ export default function Information({
 
   return (
     <div className="flex flex-col xl:flex-row xl:justify-around">
-      <ImageInfo sprite="1" name={name} />
+      <ImageInfo sprite={sprite} name={name} />
       <div className="flex flex-col lg:flex-row gap-x-10">
         <Basic info={basic} />
         <div className="flex flex-col lg:justify-between">

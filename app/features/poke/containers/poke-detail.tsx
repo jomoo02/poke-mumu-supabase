@@ -24,6 +24,7 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
     type_2,
     poke_ability,
     evolution_id,
+    sprite,
     poke_moves_2: pokeMoves,
     poke_stat: pokeStats,
   } = data;
@@ -45,6 +46,7 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
           detail={data.poke_detail}
           breeding={data.poke_breeding}
           pokedexInfo={data.pokedex_info}
+          sprite={sprite}
         />
       </div>
       <div>

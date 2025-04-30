@@ -1,4 +1,4 @@
-// import { getHomePokeSprtieSrc } from '@/app/utils/sprite';
+import { getInfoPokeSpriteSrc } from '@/app/utils/sprite';
 import Image from 'next/image';
 
 interface ImageInfo {
@@ -6,12 +6,9 @@ interface ImageInfo {
   name: string;
 }
 
-export default function ImageInfo({
-  // sprite,
-  name,
-}: ImageInfo) {
-  // const src = getHomePokeSprtieSrc(sprite);
-  const src = '/pokeball.svg';
+export default function ImageInfo({ sprite, name }: ImageInfo) {
+  const src = getInfoPokeSpriteSrc(sprite);
+  // const src = '/pokeball.svg';
   const alt = name;
 
   return (

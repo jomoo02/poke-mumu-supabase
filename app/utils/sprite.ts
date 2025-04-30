@@ -3,3 +3,9 @@ export function getHomePokeSprtieSrc(sprite: string) {
 
   return src;
 }
+
+export function getInfoPokeSpriteSrc(sprite: string) {
+  const src = `https://raw.githubusercontent.com/jomoo02/poke_sprites/refs/heads/main/info/${sprite}.png`;
+
+  return src;
+}

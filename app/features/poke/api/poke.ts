@@ -16,6 +16,7 @@ export async function fetchPoke(pokeKey: string) {
         no,
         name_ko,
         form,
+        sprite,
         poke_stat (
           hp,
           attack,
