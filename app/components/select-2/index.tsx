@@ -1,18 +1,38 @@
-import useSelect from '@/app/components/select/useSelect';
+import useSelect from './useSelect';
 
-interface LevelSelectorProps {
+interface SelectProps {
   levels: number[];
   targetLevel: number;
   setTargetLevel: (level: number) => void;
 }
 
-export default function LevelSelector({
+export function SelectItem({
+  item,
+  onClickItem,
+}: {
+  item: string;
+  onClickItem: (item: string) => void;
+}) {
+  const handleItemClick = () => {
+    onClickItem(item);
+  };
+  return (
+    <div
+      className="w-full h-full text-center hover:bg-blue-100 py-1 first:rounded-t-sm last:rounded-b-sm "
+      onClick={handleItemClick}
+    >
+      <span>{item}</span>
+    </div>
+  );
+}
+
+export default function Select({
   levels,
   targetLevel,
   setTargetLevel,
-}: LevelSelectorProps) {
+}: SelectProps) {
   const itemHeight = 32.5;
-  const height = itemHeight * levels.length;
+  const height = itemHeight * 2;
 
   const { isOpen, show, position, selectorRef, buttonRef, open, close } =
     useSelect(height);
@@ -42,7 +62,7 @@ export default function LevelSelector({
           {levels.map((level) => (
             <li
               key={level}
-              className="w-full h-full text-center hover:bg-blue-100 py-1 first:rounded-t-sm  last:rounded-b-sm"
+              className="w-full h-full text-center hover:bg-blue-100 py-1 first:rounded-t-sm last:rounded-b-sm"
             >
               <button onClick={() => handleLevelClick(level)}>
                 Lv.{level}

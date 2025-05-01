@@ -44,7 +44,7 @@ const calculateStat = (
 export const calculateMaxStat = (
   stat: string,
   value: number,
-  level: 50 | 100,
+  level: number,
 ) => {
   if (stat === 'hp') {
     return calculateHpStat(value, 31, 252, level);
@@ -55,7 +55,7 @@ export const calculateMaxStat = (
 export const calculateMinStat = (
   stat: string,
   value: number,
-  level: 50 | 100,
+  level: number,
 ) => {
   if (stat === 'hp') {
     return calculateHpStat(value, 0, 0, level);

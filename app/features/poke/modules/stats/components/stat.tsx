@@ -5,7 +5,7 @@ import { calculateMinStat, calculateMaxStat } from '../lib/stats';
 interface StatProps {
   stat: string;
   value: number;
-  targetLevel: 50 | 100;
+  targetLevel: '50' | '100';
   maxStatValue: number;
 }
 
@@ -17,8 +17,10 @@ export default function Stat({
 }: StatProps) {
   const statText = getStatKo(stat);
 
-  const maxStat = calculateMaxStat(stat, value, targetLevel);
-  const minStat = calculateMinStat(stat, value, targetLevel);
+  const level = Number(targetLevel);
+
+  const maxStat = calculateMaxStat(stat, value, level);
+  const minStat = calculateMinStat(stat, value, level);
 
   return (
     <div className="flex py-[2.5px] sm:py-[5px] gap-x-0.5 sm:gap-x-3 items-center h-[30px] first:rounded-t-lg">

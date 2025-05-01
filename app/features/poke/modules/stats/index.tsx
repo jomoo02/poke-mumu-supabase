@@ -1,12 +1,15 @@
 'use client';
 
+// import Select from '@/app/components/select-2';
+import SelectItem from '@/app/components/select-2/select-item';
+import Select from '@/app/components/select-2/select';
 import type { PokeStats } from './types/stats';
 // import BasicStat from './components/basic-stat';
 import TotalStat from './components/total-stat';
 import { calculateMaxStatValue, calculateTotalStatValue } from './lib/stats';
 import useLevel from './hooks/useLevel';
 import Stat from './components/stat';
-import LevelSelector from './components/level-selector';
+// import LevelSelector from './components/level-selector';
 // import LevelSelector2 from './components/level-selector-2';
 
 interface StatsProps {
@@ -35,11 +38,10 @@ export default function Stats({ stats }: StatsProps) {
   return (
     <div className="relative">
       <div className="flex justify-end absolute right-0 -top-9">
-        <LevelSelector
-          targetLevel={level}
-          setTargetLevel={setLevel}
-          levels={[50, 100]}
-        />
+        <Select height={50} defaultValue={level} onSelect={setLevel}>
+          <SelectItem item="50">Lv.50</SelectItem>
+          <SelectItem item="100">Lv.100</SelectItem>
+        </Select>
       </div>
 
       <div className="grid divide-y divide-slate-300 c-border-outer rounded-lg bg-white">
