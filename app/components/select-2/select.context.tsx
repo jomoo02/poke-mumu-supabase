@@ -4,6 +4,7 @@ interface SelectContextProps {
   selectedValue: string;
   onSelect: (value: string) => void;
   close: () => void;
+  renderItem: (item: string) => string;
 }
 
 export const SelectContext = createContext<SelectContextProps | undefined>(

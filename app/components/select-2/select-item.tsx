@@ -1,3 +1,4 @@
+import CheckIcon from '../icon/check';
 import { useSelectContext } from './select.context';
 
 export default function SelectItem({
@@ -9,18 +10,26 @@ export default function SelectItem({
 }) {
   const { onSelect, selectedValue } = useSelectContext();
 
+  const isSelectedItem = selectedValue === item;
+
   const handleItemClick = () => {
     onSelect(item);
   };
 
   return (
     <div
-      className="w-full h-full text-center hover:bg-blue-100 py-1 first:rounded-t-sm last:rounded-b-sm "
+      className="w-full h-full text-center text-slate-700 font-medium text-sm py-1 rounded-sm flex px-2 items-center relative cursor-pointer bg-white hover:bg-blue-100"
       onClick={handleItemClick}
       tabIndex={-1}
-      aria-selected={selectedValue === item}
+      role="option"
+      aria-selected={isSelectedItem}
     >
-      {children}
+      <span>{children}</span>
+      {isSelectedItem && (
+        <div className="absolute right-1">
+          <CheckIcon size="0.9rem" stroke={2.5} color="#1d293d" />
+        </div>
+      )}
     </div>
   );
 }

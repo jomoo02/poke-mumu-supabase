@@ -1,23 +1,22 @@
 'use client';
 
-// import Select from '@/app/components/select-2';
-import SelectItem from '@/app/components/select-2/select-item';
-import Select from '@/app/components/select-2/select';
+// import SelectItem from '@/app/components/select-2/select-item';
+// import Select from '@/app/components/select-2/select';
+import Select from '@/app/components/select-3/select';
+import { SelectItem } from '@/app/components/select-3/select-item';
 import type { PokeStats } from './types/stats';
-// import BasicStat from './components/basic-stat';
 import TotalStat from './components/total-stat';
 import { calculateMaxStatValue, calculateTotalStatValue } from './lib/stats';
 import useLevel from './hooks/useLevel';
 import Stat from './components/stat';
-// import LevelSelector from './components/level-selector';
-// import LevelSelector2 from './components/level-selector-2';
 
 interface StatsProps {
   stats: PokeStats | null;
 }
 
 export default function Stats({ stats }: StatsProps) {
-  const { level, setLevel } = useLevel();
+  const { level, setLevel, renderItem } = useLevel();
+
   if (!stats) {
     return null;
   }
@@ -38,7 +37,7 @@ export default function Stats({ stats }: StatsProps) {
   return (
     <div className="relative">
       <div className="flex justify-end absolute right-0 -top-9">
-        <Select height={50} defaultValue={level} onSelect={setLevel}>
+        <Select value={level} onChange={setLevel} renderItem={renderItem}>
           <SelectItem item="50">Lv.50</SelectItem>
           <SelectItem item="100">Lv.100</SelectItem>
         </Select>

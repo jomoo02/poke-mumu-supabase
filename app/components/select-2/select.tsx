@@ -3,60 +3,65 @@
 // import { createPortal } from 'react-dom';
 import { SelectContext } from './select.context';
 import useSelect from './useSelect';
+import CaretDownIcon from '../icon/caret-down';
 
 interface SelectProps {
-  height: number;
   children: React.ReactNode;
-  defaultValue: string;
+  selectedValue: string;
   onSelect: (item: string) => void;
+  renderItem: (item: string) => string;
 }
 
 export default function Select({
-  height,
   children,
-  defaultValue,
+  selectedValue,
   onSelect,
+  renderItem,
 }: SelectProps) {
-  const {
-    isOpen,
-    show,
-    position,
-    selectorRef,
-    buttonRef,
-    open,
-    close,
-    // selectedItem,
-    // setSelectedItem,
-  } = useSelect(height);
+  const { isOpen, show, position, selectorRef, buttonRef, close, toggle } =
+    useSelect();
 
   const handlClickItem = (value: string) => {
     onSelect(value);
     close();
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    console.log(e.key);
+    if (e.key === 'Tab') {
+      console.log(e.key);
+      e.preventDefault();
+    }
+  };
+
   return (
     <SelectContext.Provider
       value={{
-        selectedValue: defaultValue,
+        selectedValue,
         onSelect: handlClickItem,
         close,
+        renderItem,
       }}
     >
-      <div className="relative" ref={selectorRef}>
+      <div className="relative w-24 min-h-8" ref={selectorRef}>
         <button
-          onClick={open}
+          onClick={toggle}
           ref={buttonRef}
-          className="flex justify-center w-full c-border-outer py-0.5 rounded-sm"
+          className="relative cursor-pointer flex items-center w-full h-full border border-slate-500 text-sm font-medium text-slate-700 py-0.5 px-2 rounded-sm "
         >
-          Lv.{defaultValue}
+          <span className="px-1">{renderItem(selectedValue)}</span>
+          <div className="absolute right-1">
+            <CaretDownIcon size="0.9rem" />
+          </div>
         </button>
 
         {isOpen && (
           <div
-            className={`absolute z-10 bg-white shadow-md border mt-1 w-full transition-all duration-200 origin-top
+            className={`absolute z-10 bg-white shadow-lg border border-slate-500 rounded-md grid gap-y-px p-1 my-0.5 w-full transition-all duration-200 origin-top
               ${show ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}
               ${position === 'bottom' ? 'top-full' : 'bottom-full'}
             `}
+            onKeyDown={handleKeyDown}
           >
             {children}
           </div>

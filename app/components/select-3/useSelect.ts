@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import useLockBodyScroll from '@/app/hooks/useLockBodyScroll';
 
-function useSelectOpen(
+export function useSelectOpen(
   ref: React.RefObject<HTMLElement | null>,
   close: () => void,
 ) {

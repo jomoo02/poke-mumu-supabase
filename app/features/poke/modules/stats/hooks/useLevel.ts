@@ -9,8 +9,11 @@ export default function useLevel() {
     }
   };
 
+  const renderItem = (level: string) => `Lv.${level}`;
+
   return {
     level,
+    renderItem,
     setLevel: handleLevel,
   };
 }
