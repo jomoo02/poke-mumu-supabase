@@ -7,8 +7,8 @@ interface ImageInfo {
 }
 
 export default function ImageInfo({ sprite, name }: ImageInfo) {
-  // const src = getInfoPokeSpriteSrc(sprite);
-  const src = '/pokeball.svg';
+  const src = getInfoPokeSpriteSrc(sprite);
+  // const src = '/pokeball.svg';
   const alt = name;
 
   return (
