@@ -1,7 +1,14 @@
 // Select.tsx (Compound Select with Keyboard Navigation)
 'use client';
 
-import { useRef, useState, useEffect, KeyboardEvent, useCallback } from 'react';
+import {
+  useRef,
+  useState,
+  useEffect,
+  KeyboardEvent,
+  useCallback,
+  useLayoutEffect,
+} from 'react';
 import { createPortal } from 'react-dom';
 import { SelectContext } from './select.context';
 import { useSelectOpen } from './useSelect';
@@ -19,11 +26,13 @@ export default function Select({
   children,
   renderItem,
 }: SelectProps) {
+  console.log(children);
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [itemValues, setItemValues] = useState<string[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
   const portalRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const open = () => {
     setIsOpen(true);
@@ -82,9 +91,9 @@ export default function Select({
 
   const [positionStyle, setPositionStyle] = useState<React.CSSProperties>({});
 
-  useEffect(() => {
-    if (isOpen && containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect();
+  useLayoutEffect(() => {
+    if (buttonRef.current && isOpen) {
+      const rect = buttonRef.current.getBoundingClientRect();
       setPositionStyle({
         position: 'absolute',
         top: rect.bottom + window.scrollY,
@@ -107,7 +116,9 @@ export default function Select({
       }}
     >
       <div className="relative w-24" ref={containerRef}>
-        <button onClick={open}>{value ?? 'Select...'}</button>
+        <button onClick={open} ref={buttonRef} className="w-full bg-blue-300">
+          {value ?? 'Select...'}
+        </button>
         {isOpen &&
           createPortal(
             <div

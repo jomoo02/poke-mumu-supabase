@@ -1,9 +1,11 @@
 'use client';
 
-// import SelectItem from '@/app/components/select-2/select-item';
-// import Select from '@/app/components/select-2/select';
-import Select from '@/app/components/select-3/select';
-import { SelectItem } from '@/app/components/select-3/select-item';
+import Select from '@/app/components/select-4/select';
+import SelectItem from '@/app/components/select-4/item';
+import SelectTrigger from '@/app/components/select-4/trigger';
+import SelectContent from '@/app/components/select-4/content';
+import SelectLabel from '@/app/components/select-4/label';
+
 import type { PokeStats } from './types/stats';
 import TotalStat from './components/total-stat';
 import { calculateMaxStatValue, calculateTotalStatValue } from './lib/stats';
@@ -15,7 +17,7 @@ interface StatsProps {
 }
 
 export default function Stats({ stats }: StatsProps) {
-  const { level, setLevel, renderItem } = useLevel();
+  const { level, setLevel } = useLevel();
 
   if (!stats) {
     return null;
@@ -37,9 +39,13 @@ export default function Stats({ stats }: StatsProps) {
   return (
     <div className="relative">
       <div className="flex justify-end absolute right-0 -top-9">
-        <Select value={level} onChange={setLevel} renderItem={renderItem}>
-          <SelectItem item="50">Lv.50</SelectItem>
-          <SelectItem item="100">Lv.100</SelectItem>
+        <Select value={level} onSelect={setLevel}>
+          <SelectTrigger>Lv.{level}</SelectTrigger>
+          <SelectContent>
+            <SelectLabel>Lv.</SelectLabel>
+            <SelectItem item="50">Lv.50</SelectItem>
+            <SelectItem item="100">Lv.100</SelectItem>
+          </SelectContent>
         </Select>
       </div>
 

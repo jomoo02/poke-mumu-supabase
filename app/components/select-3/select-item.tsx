@@ -20,6 +20,7 @@ export function SelectItem({
   useEffect(() => {
     registerItem(item);
   }, [item]);
+  console.log(activeIndex);
 
   useEffect(() => {
     if (isActive && ref.current)
