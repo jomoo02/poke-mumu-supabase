@@ -37,6 +37,9 @@ export default function useSelect(
 
   const onClose = () => {
     setIsOpen(false);
+    setTimeout(() => {
+      triggerRef.current?.focus({ preventScroll: true });
+    }, 0);
   };
 
   const handleOnSelect = (value: string) => {

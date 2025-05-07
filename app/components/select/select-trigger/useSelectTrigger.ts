@@ -1,14 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
 import { useTriggerRef, useSelectOpen } from '../select.context';
 
 export default function useSelectTrigger() {
   const { triggerRef } = useTriggerRef();
   const { onOpen, isOpen, onClose } = useSelectOpen();
 
-  const [shouldShowFocusRing, setShouldShowFocusRing] = useState(true);
-  const prevIsOpenRef = useRef<boolean>(isOpen);
-
-  const handleOnClick = () => {
+  const handleOnMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     if (isOpen) {
       onClose();
     } else {
@@ -16,30 +13,17 @@ export default function useSelectTrigger() {
     }
   };
 
-  const handleOnMouseDown = () => {
-    setShouldShowFocusRing(false);
-  };
+  const handleOnKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+    e.preventDefault();
 
-  useEffect(() => {
-    const wasOpen = prevIsOpenRef.current;
-    const isNowClosed = !isOpen;
-
-    if (wasOpen && isNowClosed) {
-      setShouldShowFocusRing(true);
-
-      requestAnimationFrame(() => {
-        triggerRef.current?.focus({ preventScroll: true });
-      });
+    if (e.key === 'Enter' && !isOpen) {
+      onOpen();
     }
-
-    prevIsOpenRef.current = isOpen;
-  }, [isOpen, triggerRef]);
-
+  };
   return {
     isOpen,
     triggerRef,
-    shouldShowFocusRing,
-    handleOnClick,
     handleOnMouseDown,
+    handleOnKeyDown,
   };
 }
