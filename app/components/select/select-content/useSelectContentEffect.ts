@@ -1,10 +1,17 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useTriggerRef, useSelectOpen, useContentRef } from '../select.context';
 
 export function useOnClickOutsideEffect() {
   const { isOpen, onClose } = useSelectOpen();
   const { contentRef } = useContentRef();
   const { triggerRef } = useTriggerRef();
+  const [openedAt, setOpenedAt] = useState(0);
+
+  useEffect(() => {
+    if (isOpen) {
+      setOpenedAt(Date.now());
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     if (!isOpen) {
@@ -12,6 +19,10 @@ export function useOnClickOutsideEffect() {
     }
 
     const handleClickOutside = (e: MouseEvent) => {
+      if (Date.now() - openedAt < 200) {
+        return;
+      }
+
       e.preventDefault();
       if (
         contentRef.current &&
@@ -27,7 +38,7 @@ export function useOnClickOutsideEffect() {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isOpen, contentRef, triggerRef, onClose]);
+  }, [isOpen, contentRef, triggerRef, onClose, openedAt]);
 }
 
 export function useOnResizeEffect() {
