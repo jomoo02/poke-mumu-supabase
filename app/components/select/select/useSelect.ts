@@ -14,6 +14,20 @@ export default function useSelect(
 
   useLockBodyScroll(isOpen);
 
+  const registerItem = useCallback(
+    (value: string) => {
+      setItemValues((prev) => {
+        if (!prev.includes(value)) {
+          return [...prev, value];
+        }
+        return prev;
+      });
+
+      return itemValues.indexOf(value);
+    },
+    [itemValues],
+  );
+
   const onOpen = () => {
     setIsOpen(true);
     setTimeout(() => {
@@ -24,21 +38,6 @@ export default function useSelect(
   const onClose = () => {
     setIsOpen(false);
   };
-
-  const registerItem = useCallback(
-    (value: string) => {
-      setItemValues((prev) => {
-        if (!prev.includes(value)) {
-          return [...prev, value];
-        }
-
-        return prev;
-      });
-
-      return itemValues.indexOf(value);
-    },
-    [itemValues],
-  );
 
   const handleOnSelect = (value: string) => {
     onSelect(value);
@@ -56,15 +55,15 @@ export default function useSelect(
 
   return {
     isOpen,
-    onOpen,
-    onClose,
-    activeIndex,
-    setActiveIndex,
     itemValues,
     containerRef,
     triggerRef,
-    registerItem,
     contentRef,
+    activeIndex,
+    setActiveIndex,
+    registerItem,
     handleOnSelect,
+    onOpen,
+    onClose,
   };
 }

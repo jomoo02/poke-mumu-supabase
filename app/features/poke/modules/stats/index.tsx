@@ -1,11 +1,13 @@
 'use client';
 
-import Select from '@/app/components/select-4/select';
-import SelectItem from '@/app/components/select-4/item';
-import SelectTrigger from '@/app/components/select-4/trigger';
-import SelectContent from '@/app/components/select-4/content';
-import SelectLabel from '@/app/components/select-4/label';
-
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+} from '@/app/components/select';
 import type { PokeStats } from './types/stats';
 import TotalStat from './components/total-stat';
 import { calculateMaxStatValue, calculateTotalStatValue } from './lib/stats';
@@ -42,13 +44,14 @@ export default function Stats({ stats }: StatsProps) {
         <Select value={level} onSelect={setLevel}>
           <SelectTrigger>Lv.{level}</SelectTrigger>
           <SelectContent>
-            <SelectLabel>Lv.</SelectLabel>
-            <SelectItem item="50">Lv.50</SelectItem>
-            <SelectItem item="100">Lv.100</SelectItem>
+            <SelectGroup>
+              <SelectLabel>Level</SelectLabel>
+              <SelectItem item="50">Lv.50</SelectItem>
+              <SelectItem item="100">Lv.100</SelectItem>
+            </SelectGroup>
           </SelectContent>
         </Select>
       </div>
-
       <div className="grid divide-y divide-slate-300 c-border-outer rounded-lg bg-white">
         {statList.map(({ stat, value }) => (
           <Stat

@@ -10,16 +10,16 @@ import {
 interface SelectContextValue {
   selectedValue: string | null;
   isOpen: boolean;
-  onSelect: (value: string) => void;
-  onOpen: () => void;
-  onClose: () => void;
   activeIndex: number;
   setActiveIndex: Dispatch<SetStateAction<number>>;
   itemValues: string[];
-  registerItem: (value: string) => number;
   containerRef: RefObject<HTMLDivElement | null>;
   triggerRef: RefObject<HTMLButtonElement | null>;
   contentRef: RefObject<HTMLDivElement | null>;
+  registerItem: (value: string) => number;
+  onSelect: (value: string) => void;
+  onOpen: () => void;
+  onClose: () => void;
 }
 
 const SelectContext = createContext<SelectContextValue | null>(null);
@@ -69,13 +69,11 @@ export function useTriggerRef() {
 
 export function useOnSelect() {
   const { onSelect } = useSelectContext();
-
   return { onSelect };
 }
 
 export function useContainerRef() {
   const { containerRef } = useSelectContext();
-
   return { containerRef };
 }
 

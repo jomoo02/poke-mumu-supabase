@@ -1,4 +1,4 @@
-import { SelectProvider } from './select.context';
+import { SelectProvider } from '../select.context';
 import useSelect from './useSelect';
 
 interface SelectProps {
@@ -10,16 +10,16 @@ interface SelectProps {
 export default function Select({ value, onSelect, children }: SelectProps) {
   const {
     isOpen,
-    onOpen,
-    onClose,
-    activeIndex,
-    setActiveIndex,
     itemValues,
     containerRef,
     triggerRef,
-    registerItem,
     contentRef,
+    activeIndex,
+    setActiveIndex,
+    registerItem,
     handleOnSelect,
+    onOpen,
+    onClose,
   } = useSelect(value, onSelect);
 
   return (
@@ -37,7 +37,7 @@ export default function Select({ value, onSelect, children }: SelectProps) {
       triggerRef={triggerRef}
       contentRef={contentRef}
     >
-      <div ref={containerRef} className="w-24">
+      <div ref={containerRef} className="w-32">
         {children}
       </div>
     </SelectProvider>

@@ -1,6 +1,6 @@
-import { useTriggerRef, useSelectOpen } from './select.context';
+import { useTriggerRef, useSelectOpen } from '../select.context';
 
-export default function useTrigger() {
+export default function useSelectTrigger() {
   const { triggerRef } = useTriggerRef();
   const { onOpen, isOpen, onClose } = useSelectOpen();
 
