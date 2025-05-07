@@ -37,7 +37,7 @@ export default function Select({ value, onSelect, children }: SelectProps) {
       triggerRef={triggerRef}
       contentRef={contentRef}
     >
-      <div ref={containerRef} className="w-32">
+      <div ref={containerRef} className="w-28 sm:w-32">
         {children}
       </div>
     </SelectProvider>
