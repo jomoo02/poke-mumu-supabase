@@ -10,10 +10,10 @@
     "generate-types": "npx supabase gen types typescript --project-id odiexbkgzfxfhoqgrova --schema public > types_db.ts"
   },
   "dependencies": {
-    "@supabase/ssr": "^0.5.2",
+    "@supabase/ssr": "^0.6.1",
     "@supabase/supabase-js": "^2.49.1",
     "@tabler/icons-react": "^3.31.0",
-    "next": "15.2.1",
+    "next": "15.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "swr": "^2.3.3",
@@ -22,11 +22,11 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4.1.4",
-    "@types/node": "^20",
+    "@types/node": "^22.15.17",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.2.1",
+    "eslint-config-next": "15.3.2",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-prettier": "^5.2.3",
     "tailwindcss": "^4.1.4",

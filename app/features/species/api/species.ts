@@ -1,13 +1,13 @@
 'use server';
 
 // import { createClient } from '@/app/utils/supabase/server';
-import { createClient } from '@/app/utils/supabase/client';
+import { createClient } from '@/app/utils/supabase/server';
 import type { SpeciesPoke } from '../types';
 
 export async function fetchSpeciesNav(
   ndex: number,
 ): Promise<{ prev: SpeciesPoke | null; next: SpeciesPoke | null } | null> {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   if (isNaN(ndex)) {
     return null;
@@ -29,7 +29,7 @@ export async function fetchSpeciesNav(
 }
 
 export async function fetchSpeciesName(ndex: number) {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { data, error } = await supabase
     .from('species')
@@ -45,7 +45,7 @@ export async function fetchSpeciesName(ndex: number) {
 }
 
 export async function fetchSpeciesVarieties(ndex: number) {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { data: variantPokeList, error: variantPokeError } = await supabase
     .from('poke')

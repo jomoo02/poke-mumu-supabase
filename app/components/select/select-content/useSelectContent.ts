@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 import { useSelectOpen, useContentRef } from '../select.context';
 import useSelectContentPosition from './useSelectContentPosition';
@@ -12,9 +14,9 @@ export default function useSelectContent() {
   const { contentRef } = useContentRef();
   const [show, setShow] = useState(false);
 
+  const { position } = useSelectContentPosition();
   const { handleKeyDown } = useHandleKeyDown();
   const { handleBlur } = useHandleBlur();
-  const { position } = useSelectContentPosition();
 
   useOnClickOutsideEffect();
   useOnResizeEffect();

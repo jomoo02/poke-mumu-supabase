@@ -19,21 +19,26 @@ export default function useSelectContentPosition() {
       const contentEl = contentRef.current;
       const contentHeight = contentEl.offsetHeight;
 
+      console.log(triggerRect.left, window.innerHeight, window.scrollY);
+
+      // const spaceBelow = height - triggerRect.bottom;
       const spaceBelow = window.innerHeight - triggerRect.bottom;
       const spaceAbove = triggerRect.top;
 
       const shouldOpenAbove =
         spaceBelow < contentHeight && spaceAbove > contentHeight;
 
-      const top = shouldOpenAbove
-        ? triggerRect.top + window.scrollY - contentHeight - 3
-        : triggerRect.bottom + window.scrollY + 3;
+      // const top = shouldOpenAbove
+      //   ? triggerRect.top + window.scrollY - contentHeight - 3
+      //   : triggerRect.bottom + window.scrollY + 3;
 
       requestAnimationFrame(() => {
         setPosition({
-          position: 'absolute',
-          top,
-          left: triggerRect.left + window.scrollX,
+          position: 'fixed', // 중요!
+          top: shouldOpenAbove
+            ? triggerRect.top - contentHeight - 3
+            : triggerRect.bottom + 3,
+          left: triggerRect.left,
           width: triggerRect.width,
           zIndex: 9999,
         });

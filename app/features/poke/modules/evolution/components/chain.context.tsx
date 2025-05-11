@@ -1,3 +1,5 @@
+'use client';
+
 import { useContext, createContext, useMemo } from 'react';
 import type { EvolutionPoke } from '../types/evolution';
 
