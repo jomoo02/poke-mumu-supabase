@@ -9,7 +9,7 @@ export default function SelectTrigger({}: SelectTriggerProps) {
   const { triggerRef, handleOnKeyDown, handleOnMouseDown, triggerContent } =
     useTrigger();
 
-  console.log(triggerContent);
+  // console.log(triggerContent);
 
   return (
     <button
@@ -20,7 +20,7 @@ export default function SelectTrigger({}: SelectTriggerProps) {
        outline-none focus:ring ring-slate-500`}
     >
       <span className="truncate font-medium text-sm text-slate-800">
-        {triggerContent}
+        {triggerContent || 'select Level'}
       </span>
       <CaretDownIcon size="0.9rem" color="#1d293d" />
     </button>

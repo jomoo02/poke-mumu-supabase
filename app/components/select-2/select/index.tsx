@@ -3,14 +3,23 @@ import useSelect from './useSelect';
 
 interface SelectProps {
   value: string;
-  onSelect: (value: string) => void | null;
+  onSelect?: (value: string) => void;
+  initValue?: string;
+  initialValue?: {
+    value: string;
+    content: React.ReactNode;
+  };
   children: React.ReactNode;
 }
 
-export default function Select({ value, onSelect, children }: SelectProps) {
+export default function Select({
+  onSelect,
+  children,
+  initialValue,
+}: SelectProps) {
   const {
     isOpen,
-    itemValues,
+    items,
     containerRef,
     triggerRef,
     contentRef,
@@ -21,9 +30,9 @@ export default function Select({ value, onSelect, children }: SelectProps) {
     onOpen,
     onClose,
     selectedValue,
-    itemValues2,
-    registerItem2,
-  } = useSelect(value, onSelect);
+    itemValueMap,
+    selectedContent,
+  } = useSelect({ onSelect, initialValue });
 
   return (
     <SelectProvider
@@ -34,13 +43,13 @@ export default function Select({ value, onSelect, children }: SelectProps) {
       onClose={onClose}
       activeIndex={activeIndex}
       setActiveIndex={setActiveIndex}
-      itemValues={itemValues}
+      items={items}
       registerItem={registerItem}
       containerRef={containerRef}
       triggerRef={triggerRef}
       contentRef={contentRef}
-      itemValues2={itemValues2}
-      registerIteme2={registerItem2}
+      itemValueMap={itemValueMap}
+      selectedContent={selectedContent}
     >
       <div ref={containerRef} className="w-28 sm:w-32">
         {children}

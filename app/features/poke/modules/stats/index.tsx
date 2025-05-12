@@ -7,7 +7,7 @@ import {
   SelectItem,
   SelectLabel,
   SelectTrigger,
-} from '@/app/components/select';
+} from '@/app/components/select-2';
 import type { PokeStats } from './types/stats';
 import TotalStat from './components/total-stat';
 import { calculateMaxStatValue, calculateTotalStatValue } from './lib/stats';
@@ -41,7 +41,14 @@ export default function Stats({ stats }: StatsProps) {
   return (
     <div className="relative">
       <div className="flex justify-end absolute right-0 -top-9">
-        <Select value={level} onSelect={setLevel}>
+        <Select
+          value={level}
+          initialValue={{
+            value: '50',
+            content: <>Lv.50</>,
+          }}
+          onSelect={setLevel}
+        >
           <SelectTrigger>Lv.{level}</SelectTrigger>
           <SelectContent>
             <SelectGroup>

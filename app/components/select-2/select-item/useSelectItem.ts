@@ -3,26 +3,23 @@ import {
   useActiveIndex,
   useOnSelect,
   useRegisterItem,
-  useItemValues,
+  useItems,
   useSelectedValue,
-  useRegisterItem2,
 } from '../select.context';
 
 export default function useSelectItem(item: string, children: React.ReactNode) {
   const { activeIndex, setActiveIndex } = useActiveIndex();
   const { onSelect } = useOnSelect();
   const { registerItem } = useRegisterItem();
-  const { itemValues } = useItemValues();
+  const { items } = useItems();
   const { selectedValue } = useSelectedValue();
   const itemRef = useRef<HTMLDivElement>(null);
 
-  const { registerIteme2 } = useRegisterItem2();
-
-  const index = itemValues.indexOf(item);
+  const index = items.indexOf(item);
   const isActive = activeIndex === index;
   const isSelected = selectedValue === item;
 
-  console.log(item, children);
+  console.log(index, isActive, isSelected);
 
   const handleOnClick = () => {
     onSelect(item);
@@ -45,9 +42,8 @@ export default function useSelectItem(item: string, children: React.ReactNode) {
   };
 
   useEffect(() => {
-    registerItem(item);
-    registerIteme2({ item, content: children });
-  }, [item, registerItem, registerIteme2, children]);
+    registerItem({ value: item, content: children });
+  }, [item, registerItem, children]);
 
   return {
     itemRef,

@@ -2,7 +2,7 @@ import { useLayoutEffect, useState, type CSSProperties } from 'react';
 import {
   useTriggerRef,
   useSelectOpen,
-  useItemValues,
+  useItems,
   useContentRef,
 } from '../select.context';
 
@@ -10,7 +10,7 @@ export default function useSelectContentPosition() {
   const { triggerRef } = useTriggerRef();
   const { contentRef } = useContentRef();
   const { isOpen } = useSelectOpen();
-  const { itemCount } = useItemValues();
+  const { itemCount } = useItems();
   const [position, setPosition] = useState<CSSProperties>({});
 
   useLayoutEffect(() => {
