@@ -1,11 +1,7 @@
 import useTrigger from './useSelectTrigger';
 import CaretDownIcon from '../../icon/caret-down';
 
-interface SelectTriggerProps {
-  children: React.ReactNode;
-}
-
-export default function SelectTrigger({}: SelectTriggerProps) {
+export default function SelectTrigger() {
   const { triggerRef, handleOnKeyDown, handleOnMouseDown, triggerContent } =
     useTrigger();
 
@@ -14,7 +10,7 @@ export default function SelectTrigger({}: SelectTriggerProps) {
       ref={triggerRef}
       onMouseDown={handleOnMouseDown}
       onKeyDown={handleOnKeyDown}
-      className="flex justify-between items-center pl-3 pr-2 w-full border-1 cursor-pointer border-slate-300 h-8 min-h-8 max-h-8 rounded-md outline-none focus:ring ring-slate-500"
+      className="flex justify-between items-center pl-3 pr-2 w-full border cursor-pointer border-slate-300 h-8 min-h-8 max-h-8 rounded-md outline-none focus:ring ring-slate-500"
     >
       <span className="truncate font-medium text-sm text-slate-800">
         {triggerContent}

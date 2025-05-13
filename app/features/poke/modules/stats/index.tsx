@@ -48,12 +48,12 @@ export default function Stats({ stats }: StatsProps) {
           }}
           onSelect={setLevel}
         >
-          <SelectTrigger>Lv.{level}</SelectTrigger>
+          <SelectTrigger />
           <SelectContent>
             <SelectGroup>
               <SelectLabel>Level</SelectLabel>
-              <SelectItem item="50">Lv.50</SelectItem>
-              <SelectItem item="100">Lv.100</SelectItem>
+              <SelectItem value="50">Lv.50</SelectItem>
+              <SelectItem value="100">Lv.100</SelectItem>
             </SelectGroup>
           </SelectContent>
         </Select>

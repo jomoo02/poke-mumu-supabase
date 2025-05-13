@@ -12,7 +12,7 @@ export default async function NdexLayout({
   const ndex = Number((await params).ndex);
 
   return (
-    <div>
+    <div className="px-3 lg:px-10">
       {/* <Suspense fallback={<SpeciesLayoutLoading ndex={ndex} />}> */}
       <SpeciesLayout ndex={ndex} />
       {/* </Suspense> */}

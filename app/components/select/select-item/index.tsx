@@ -2,11 +2,11 @@ import CheckIcon from '@/app/components/icon/check';
 import useSelectItem from './useSelectItem';
 
 interface SelectItemProps {
-  item: string;
+  value: string;
   children: React.ReactNode;
 }
 
-export default function SelectItem({ item, children }: SelectItemProps) {
+export default function SelectItem({ value, children }: SelectItemProps) {
   const {
     itemRef,
     isActive,
@@ -15,7 +15,7 @@ export default function SelectItem({ item, children }: SelectItemProps) {
     handleMouseEnter,
     handleMouseMove,
     handleMouseLeave,
-  } = useSelectItem(item, children);
+  } = useSelectItem(value, children);
 
   return (
     <div

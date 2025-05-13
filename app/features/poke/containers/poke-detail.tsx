@@ -1,12 +1,17 @@
 import { fetchPoke } from '../api/poke';
-import Stats from '../modules/stats';
-import SectionHeader from '../components/section-header';
-import TypeDefense from '../modules/type-defense';
-import Abilities from '../modules/abilities/containers/abilities';
-import EvolutionTree from '../modules/evolution/containers/evolution-tree';
-import Location from '../modules/evolution/containers/location';
-import Moves from '../modules/moves/containers/moves';
-import Information from '../modules/information/containers/information';
+// import Stats from '../modules/stats';
+import Stats from '../components/stats';
+// import TypeDefense from '../modules/type-defense';
+import TypeDefense from '../components/type-defense';
+
+// import SectionHeader from '../components/section-header';
+// import Abilities from '../modules/abilities/containers/abilities';
+import Abilities from '../components/abilities';
+
+// import EvolutionTree from '../modules/evolution/containers/evolution-tree';
+// import Location from '../modules/evolution/containers/location';
+// import Moves from '../modules/moves/containers/moves';
+// import Information from '../modules/information/containers/information';
 
 interface PokeDetailProps {
   pokeKey: string;
@@ -23,9 +28,9 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
     type_1,
     type_2,
     poke_ability,
-    evolution_id,
-    sprite,
-    poke_moves_2: pokeMoves,
+    // evolution_id,
+    // sprite,
+    // poke_moves_2: pokeMoves,
     poke_stat: pokeStats,
   } = data;
 
@@ -34,8 +39,8 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
   // console.log(data.pokedex_number);
 
   return (
-    <div>
-      <div className="c-border-outer rounded-lg bg-white py-4">
+    <div className="grid w-full">
+      {/* <div className="c-border-outer rounded-lg bg-white py-4">
         <Information
           types={types}
           ndex={data.no}
@@ -48,24 +53,21 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
           pokedexInfo={data.pokedex_info}
           sprite={sprite}
         />
-      </div>
-      <div>
-        <SectionHeader sectionTitle="능력치" />
-        <Stats stats={pokeStats} />
-        {/* <div className="grid c-border-outer divide-y divide-slate-300 rounded-lg bg-white"></div> */}
-      </div>
-      <div>
-        <SectionHeader sectionTitle="방어 상성" />
-        <div className="c-border-outer rounded-lg bg-white">
-          <TypeDefense types={types} />
-        </div>
-      </div>
+      </div> */}
+
+      <Stats stats={pokeStats} />
+      {/* <div className="grid c-border-outer divide-y divide-slate-300 rounded-lg bg-white"></div> */}
+
+      <TypeDefense types={types} />
+      <Abilities abilities={poke_ability} />
+      {/* 
       <div>
         <SectionHeader sectionTitle="특성" />
         <div className="c-border-outer rounded-lg bg-white grid divide-y divide-slate-300">
           <Abilities abilities={poke_ability} />
         </div>
       </div>
+      <
       {evolution_id && (
         <div>
           <SectionHeader sectionTitle="진화" />
@@ -80,7 +82,7 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
         <div className="c-border-outer rounded-lg bg-white">
           <Moves pokeMoves={pokeMoves} />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

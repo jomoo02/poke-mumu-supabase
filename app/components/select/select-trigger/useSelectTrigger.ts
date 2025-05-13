@@ -21,8 +21,6 @@ export default function useSelectTrigger() {
   };
 
   const handleOnKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-
     if (e.key === 'Enter' && !isOpen) {
       onOpen();
     }

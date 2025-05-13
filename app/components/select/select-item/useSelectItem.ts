@@ -7,7 +7,10 @@ import {
   useSelectedValue,
 } from '../select.context';
 
-export default function useSelectItem(item: string, children: React.ReactNode) {
+export default function useSelectItem(
+  value: string,
+  children: React.ReactNode,
+) {
   const { activeIndex, setActiveIndex } = useActiveIndex();
   const { onSelect } = useOnSelect();
   const { registerItem } = useRegisterItem();
@@ -15,12 +18,12 @@ export default function useSelectItem(item: string, children: React.ReactNode) {
   const { selectedValue } = useSelectedValue();
   const itemRef = useRef<HTMLDivElement>(null);
 
-  const index = items.indexOf(item);
+  const index = items.indexOf(value);
   const isActive = activeIndex === index;
-  const isSelected = selectedValue === item;
+  const isSelected = selectedValue === value;
 
   const handleOnClick = () => {
-    onSelect(item);
+    onSelect(value);
   };
 
   const handleMouseEnter = () => {
@@ -40,8 +43,8 @@ export default function useSelectItem(item: string, children: React.ReactNode) {
   };
 
   useEffect(() => {
-    registerItem({ value: item, content: children });
-  }, [item, registerItem, children]);
+    registerItem({ value, content: children });
+  }, [value, registerItem, children]);
 
   return {
     itemRef,

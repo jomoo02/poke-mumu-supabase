@@ -22,7 +22,7 @@ export default function SelectContent({ children }: SelectContentProps) {
       onKeyDown={handleKeyDown}
       onBlur={handleBlur}
       className={`bg-white shadow-xl p-1 w-full border border-slate-300 rounded-md outline-none focus:outline-none max-h-60 overflow-auto
-        transition-opacity duration-300 ease-out transform z-50 absolute
+        transition-opacity duration-200 ease-out transform z-50 absolute
         scale-95 opacity-0 ${show && 'scale-100 opacity-100'}
       `}
     >

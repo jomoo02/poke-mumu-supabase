@@ -1,6 +1,5 @@
 'use server';
 
-// import { createClient } from '@/app/utils/supabase/server';
 import { createClient } from '@/app/utils/supabase/server';
 import type { SpeciesPoke } from '../types';
 
