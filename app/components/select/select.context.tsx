@@ -7,22 +7,26 @@ import {
   SetStateAction,
 } from 'react';
 
+export type SelectItem = {
+  value: string;
+  content: React.ReactNode;
+};
+
 interface SelectContextValue {
   selectedValue: string | null;
   isOpen: boolean;
   activeIndex: number;
   setActiveIndex: Dispatch<SetStateAction<number>>;
-  itemValues: string[];
   containerRef: RefObject<HTMLDivElement | null>;
   triggerRef: RefObject<HTMLButtonElement | null>;
   contentRef: RefObject<HTMLDivElement | null>;
-  registerItem: (value: string) => number;
   onSelect: (value: string) => void;
   onOpen: () => void;
   onClose: () => void;
-
-  itemValues2: { item: string; content: React.ReactNode }[];
-  registerIteme2: (item: { item: string; content: React.ReactNode }) => number;
+  items: string[];
+  itemValueMap: Map<string, React.ReactNode>;
+  registerItem: (item: SelectItem) => void;
+  selectedContent: React.ReactNode | null;
 }
 
 const SelectContext = createContext<SelectContextValue | null>(null);
@@ -38,8 +42,8 @@ function useSelectContext() {
 }
 
 export function useSelectedValue() {
-  const { selectedValue } = useSelectContext();
-  return { selectedValue };
+  const { selectedValue, selectedContent } = useSelectContext();
+  return { selectedValue, selectedContent };
 }
 
 export function useSelectOpen() {
@@ -53,11 +57,11 @@ export function useActiveIndex() {
   return { activeIndex, setActiveIndex };
 }
 
-export function useItemValues() {
-  const { itemValues } = useSelectContext();
-  const itemCount = itemValues.length;
+export function useItems() {
+  const { items, itemValueMap } = useSelectContext();
+  const itemCount = items.length;
 
-  return { itemValues, itemCount };
+  return { items, itemCount, itemValueMap };
 }
 
 export function useRegisterItem() {
@@ -85,21 +89,6 @@ export function useContentRef() {
   return { contentRef };
 }
 
-// 추가
-export function useItemValues2() {
-  const { itemValues2 } = useSelectContext();
-  const itemCount = itemValues2.length;
-  return {
-    itemValues2,
-    itemCount,
-  };
-}
-
-export function useRegisterItem2() {
-  const { registerIteme2 } = useSelectContext();
-  return { registerIteme2 };
-}
-
 export function SelectProvider({
   children,
   selectedValue,
@@ -109,14 +98,13 @@ export function SelectProvider({
   onClose,
   activeIndex,
   setActiveIndex,
-  itemValues,
+  items,
+  itemValueMap,
   registerItem,
   triggerRef,
   containerRef,
   contentRef,
-  //추가
-  itemValues2,
-  registerIteme2,
+  selectedContent,
 }: SelectContextValue & { children: React.ReactNode }) {
   const value = useMemo(
     () => ({
@@ -127,14 +115,13 @@ export function SelectProvider({
       onClose,
       activeIndex,
       setActiveIndex,
-      itemValues,
+      items,
+      itemValueMap,
       registerItem,
       triggerRef,
       containerRef,
       contentRef,
-      //
-      itemValues2,
-      registerIteme2,
+      selectedContent,
     }),
     [
       selectedValue,
@@ -144,14 +131,13 @@ export function SelectProvider({
       onClose,
       activeIndex,
       setActiveIndex,
-      itemValues,
+      items,
+      itemValueMap,
       registerItem,
       triggerRef,
       containerRef,
       contentRef,
-      //
-      itemValues2,
-      registerIteme2,
+      selectedContent,
     ],
   );
 

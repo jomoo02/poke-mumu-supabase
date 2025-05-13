@@ -2,18 +2,14 @@ import {
   useTriggerRef,
   useSelectOpen,
   useSelectedValue,
-  useItemValues2,
 } from '../select.context';
 
 export default function useSelectTrigger() {
   const { triggerRef } = useTriggerRef();
   const { onOpen, isOpen, onClose } = useSelectOpen();
-  const { selectedValue } = useSelectedValue();
-  const { itemValues2 } = useItemValues2();
+  const { selectedValue, selectedContent } = useSelectedValue();
 
-  const triggerContent = itemValues2.find(
-    ({ item }) => item === selectedValue,
-  )?.content;
+  const triggerContent = selectedContent ?? 'select';
 
   const handleOnMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -31,14 +27,13 @@ export default function useSelectTrigger() {
       onOpen();
     }
   };
+
   return {
     isOpen,
     triggerRef,
     selectedValue,
     handleOnMouseDown,
     handleOnKeyDown,
-
-    //
     triggerContent,
   };
 }

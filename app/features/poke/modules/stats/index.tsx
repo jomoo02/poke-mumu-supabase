@@ -7,7 +7,7 @@ import {
   SelectItem,
   SelectLabel,
   SelectTrigger,
-} from '@/app/components/select-2';
+} from '@/app/components/select';
 import type { PokeStats } from './types/stats';
 import TotalStat from './components/total-stat';
 import { calculateMaxStatValue, calculateTotalStatValue } from './lib/stats';
@@ -42,8 +42,7 @@ export default function Stats({ stats }: StatsProps) {
     <div className="relative">
       <div className="flex justify-end absolute right-0 -top-9">
         <Select
-          value={level}
-          initialValue={{
+          initialItem={{
             value: '50',
             content: <>Lv.50</>,
           }}

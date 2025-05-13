@@ -2,7 +2,7 @@ import { type FocusEvent } from 'react';
 import {
   useSelectOpen,
   useActiveIndex,
-  useItemValues,
+  useItems,
   useOnSelect,
   useContainerRef,
 } from '../select.context';
@@ -10,7 +10,7 @@ import {
 export function useHandleKeyDown() {
   const { isOpen, onClose } = useSelectOpen();
   const { activeIndex, setActiveIndex } = useActiveIndex();
-  const { itemValues, itemCount } = useItemValues();
+  const { items, itemCount } = useItems();
   const { onSelect } = useOnSelect();
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
@@ -28,7 +28,7 @@ export function useHandleKeyDown() {
         setActiveIndex((prev: number) => (prev - 1 + itemCount) % itemCount);
         break;
       case 'Enter':
-        const value = itemValues[activeIndex];
+        const value = items[activeIndex];
         onSelect(value);
         break;
       case 'Escape':

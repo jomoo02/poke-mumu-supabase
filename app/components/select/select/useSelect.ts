@@ -1,56 +1,51 @@
-import { useState, useRef, useCallback, useEffect, ReactNode } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import useLockBodyScroll from '@/app/hooks/useLockBodyScroll';
+import type { SelectItem } from '../select.context';
 
-export default function useSelect(
-  value: string,
-  onSelect: (value: string) => void | null,
-) {
+export type InitialItem = {
+  value: string;
+  content: React.ReactNode;
+};
+
+export default function useSelect({
+  onSelect,
+  initialItem,
+}: {
+  onSelect: ((value: string) => void) | undefined;
+  initialItem: InitialItem | undefined;
+}) {
   const [isOpen, setIsOpen] = useState(false);
-  const [itemValues, setItemValues] = useState<string[]>([]);
   const [activeIndex, setActiveIndex] = useState(-1);
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
-  //
-  const [selectedValue, setSelectedValue] = useState<string>('');
-  const [itemValues2, setItemValues2] = useState<
-    { item: string; content: ReactNode }[]
-  >([]);
+  const [items, setItems] = useState<string[]>([]);
+  const [itemValueMap, setItemValueMap] = useState<
+    Map<string, React.ReactNode>
+  >(() => new Map());
+  const [selectedValue, setSelectedValue] = useState<string>(
+    initialItem?.value ?? '',
+  );
+  const [selectedContent, setSelectedContent] =
+    useState<React.ReactNode | null>(initialItem?.content ?? null);
 
   useLockBodyScroll(isOpen);
 
-  useEffect(() => {
-    setSelectedValue(itemValues[0]);
-  }, [itemValues]);
+  const registerItem = useCallback(({ value, content }: SelectItem) => {
+    setItems((prev) => {
+      const next = prev.includes(value) ? prev : [...prev, value];
 
-  const registerItem2 = useCallback(
-    (item: { item: string; content: ReactNode }) => {
-      setItemValues2((prev) => {
-        if (!prev.map((p) => p.item).includes(item.item)) {
-          return [...prev, item];
-        }
-        return prev;
-      });
+      return next;
+    });
 
-      return itemValues2.map(({ item }) => item).indexOf(item.item);
-    },
-    [itemValues2],
-  );
-
-  const registerItem = useCallback(
-    (value: string) => {
-      setItemValues((prev) => {
-        if (!prev.includes(value)) {
-          return [...prev, value];
-        }
-        return prev;
-      });
-
-      return itemValues.indexOf(value);
-    },
-    [itemValues],
-  );
+    setItemValueMap((prev) => {
+      if (!prev.has(value)) {
+        return new Map(prev).set(value, content);
+      }
+      return prev;
+    });
+  }, []);
 
   const onOpen = () => {
     setIsOpen(true);
@@ -66,26 +61,32 @@ export default function useSelect(
     }, 0);
   };
 
-  const handleOnSelect = (value: string) => {
+  const handleOnSelect = (targetItem: string) => {
     if (onSelect) {
-      onSelect(value);
+      onSelect(targetItem);
     }
-    setSelectedValue(value);
+    setSelectedValue(targetItem);
     onClose();
   };
 
   useEffect(() => {
     if (isOpen) {
-      const index = itemValues.findIndex((item) => item === value);
+      const index = items.findIndex((item) => item === selectedValue);
       setActiveIndex(index);
     } else {
       setActiveIndex(-1);
     }
-  }, [isOpen, itemValues, value]);
+  }, [isOpen, items, selectedValue]);
+
+  useEffect(() => {
+    if (selectedValue && itemValueMap.has(selectedValue)) {
+      setSelectedContent(itemValueMap.get(selectedValue)!);
+    }
+  }, [selectedValue, itemValueMap]);
 
   return {
     isOpen,
-    itemValues,
+    items,
     containerRef,
     triggerRef,
     contentRef,
@@ -96,9 +97,7 @@ export default function useSelect(
     onOpen,
     onClose,
     selectedValue,
-
-    //
-    itemValues2,
-    registerItem2,
+    itemValueMap,
+    selectedContent,
   };
 }
