@@ -6,7 +6,7 @@ import useSelectContentPosition from './useSelectContentPosition';
 import { useHandleKeyDown, useHandleBlur } from './useSelectContentHandlers';
 import {
   useOnClickOutsideEffect,
-  useOnResizeEffect,
+  // useOnResizeEffect,
 } from './useSelectContentEffect';
 
 export default function useSelectContent() {
@@ -19,7 +19,7 @@ export default function useSelectContent() {
   const { handleBlur } = useHandleBlur();
 
   useOnClickOutsideEffect();
-  useOnResizeEffect();
+  // useOnResizeEffect();
 
   useEffect(() => {
     if (isOpen) {
