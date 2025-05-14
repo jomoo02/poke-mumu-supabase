@@ -61,9 +61,9 @@ export default function useSelect({
 
   const onClose = () => {
     setIsOpen(false);
-    setTimeout(() => {
+    requestAnimationFrame(() => {
       triggerRef.current?.focus({ preventScroll: true });
-    }, 0);
+    });
   };
 
   const handleOnSelect = (targetItem: string) => {

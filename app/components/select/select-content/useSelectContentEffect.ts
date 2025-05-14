@@ -33,7 +33,9 @@ export function useOnClickOutsideEffect() {
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside, {
+      passive: true,
+    });
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
@@ -43,37 +45,24 @@ export function useOnClickOutsideEffect() {
   useEffect(() => {
     if (!isOpen) return;
 
-    let isTouchMoving = false;
-
-    const handleTouchMove = () => {
-      isTouchMoving = true;
-    };
-
     const handleTouchEnd = (e: TouchEvent) => {
-      if (isTouchMoving) {
-        isTouchMoving = false;
-        return;
-      }
-
       const target = e.target as Node;
 
       if (
         !contentRef.current?.contains(target) &&
         !triggerRef.current?.contains(target)
       ) {
+        e.preventDefault();
         onClose();
       }
     };
 
-    document.addEventListener('touchmove', handleTouchMove, { passive: true });
-
-    document.addEventListener('touchend', handleTouchEnd);
+    document.addEventListener('touchend', handleTouchEnd, { passive: false });
 
     return () => {
-      document.removeEventListener('touchmove', handleTouchMove);
       document.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [isOpen, onClose, contentRef, triggerRef]);
+  }, [isOpen, contentRef, triggerRef, onClose]);
 }
 
 export function useOnOrientationChangeEffect() {
