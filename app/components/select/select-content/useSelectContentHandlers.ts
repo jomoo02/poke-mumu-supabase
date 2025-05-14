@@ -1,4 +1,4 @@
-import { type FocusEvent } from 'react';
+import { useState, useEffect, type FocusEvent } from 'react';
 import {
   useSelectOpen,
   useActiveIndex,
@@ -44,9 +44,20 @@ export function useHandleKeyDown() {
 
 export function useHandleBlur() {
   const { containerRef } = useContainerRef();
-  const { onClose } = useSelectOpen();
+  const { onClose, isOpen } = useSelectOpen();
+  const [openAt, setOpenAt] = useState(0);
+
+  useEffect(() => {
+    if (isOpen) {
+      setOpenAt(Date.now());
+    }
+  }, [isOpen]);
 
   const handleBlur = (e: FocusEvent<HTMLDivElement>) => {
+    if (Date.now() - openAt < 300) {
+      return;
+    }
+
     const relatedTarget = e.relatedTarget as HTMLElement | null;
     const container = containerRef.current;
 

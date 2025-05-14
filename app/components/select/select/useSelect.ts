@@ -49,9 +49,14 @@ export default function useSelect({
 
   const onOpen = () => {
     setIsOpen(true);
-    setTimeout(() => {
-      contentRef.current?.focus({ preventScroll: true });
-    }, 0);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        contentRef.current?.focus({ preventScroll: true });
+      });
+    });
+    // setTimeout(() => {
+    //   contentRef.current?.focus({ preventScroll: true });
+    // }, 100);
   };
 
   const onClose = () => {
