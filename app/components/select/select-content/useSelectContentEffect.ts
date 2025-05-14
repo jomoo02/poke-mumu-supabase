@@ -23,7 +23,7 @@ export function useOnClickOutsideEffect() {
         return;
       }
 
-      e.preventDefault();
+      // e.preventDefault();
       if (
         contentRef.current &&
         !contentRef.current.contains(e.target as Node) &&
@@ -39,33 +39,93 @@ export function useOnClickOutsideEffect() {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isOpen, contentRef, triggerRef, onClose, openedAt]);
-}
-
-export function useOnResizeEffect() {
-  const { isOpen, onClose } = useSelectOpen();
-  const [openedAt, setOpenedAt] = useState(0);
-
-  useEffect(() => {
-    if (isOpen) {
-      setOpenedAt(Date.now());
-    }
-  }, [isOpen]);
 
   useEffect(() => {
     if (!isOpen) return;
 
-    const handleResize = () => {
-      const timeSinceOpen = Date.now() - openedAt;
-      console.log('resize');
-      if (timeSinceOpen < 500) {
-        // 무시 (모바일 키보드일 가능성 높음)
+    let isTouchMoving = false;
+
+    const handleTouchMove = () => {
+      isTouchMoving = true;
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      if (isTouchMoving) {
+        isTouchMoving = false;
         return;
       }
 
-      onClose();
+      const target = e.target as Node;
+
+      if (
+        !contentRef.current?.contains(target) &&
+        !triggerRef.current?.contains(target)
+      ) {
+        onClose();
+      }
+    };
+
+    document.addEventListener('touchmove', handleTouchMove, { passive: true });
+
+    document.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [isOpen, onClose, contentRef, triggerRef]);
+}
+
+export function useOnOrientationChangeEffect() {
+  const { isOpen, onClose } = useSelectOpen();
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    let lastOrientation = window.orientation;
+
+    const handleResize = () => {
+      // orientation 값이 바뀐 경우에만 닫기
+      const currentOrientation = window.orientation;
+      if (currentOrientation !== lastOrientation) {
+        lastOrientation = currentOrientation;
+        onClose();
+      }
     };
 
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [isOpen, onClose, openedAt]);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [isOpen, onClose]);
 }
+
+// export function useOnResizeEffect() {
+//   const { isOpen, onClose } = useSelectOpen();
+//   const [openedAt, setOpenedAt] = useState(0);
+
+//   useEffect(() => {
+//     if (isOpen) {
+//       setOpenedAt(Date.now());
+//     }
+//   }, [isOpen]);
+
+//   useEffect(() => {
+//     if (!isOpen) return;
+
+//     const handleResize = () => {
+//       const timeSinceOpen = Date.now() - openedAt;
+//       console.log('resize');
+//       if (timeSinceOpen < 500) {
+//         // 무시 (모바일 키보드일 가능성 높음)
+//         return;
+//       }
+
+//       onClose();
+//     };
+
+//     window.addEventListener('resize', handleResize);
+//     return () => window.removeEventListener('resize', handleResize);
+//   }, [isOpen, onClose, openedAt]);
+// }
