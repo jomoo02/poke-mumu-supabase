@@ -43,7 +43,9 @@ export function useOnClickOutsideEffect() {
   }, [isOpen, contentRef, triggerRef, onClose, openedAt]);
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen) {
+      return;
+    }
 
     const handleTouchEnd = (e: TouchEvent) => {
       const target = e.target as Node;
@@ -71,21 +73,16 @@ export function useOnOrientationChangeEffect() {
   useEffect(() => {
     if (!isOpen) return;
 
-    let lastOrientation = window.orientation;
-
-    const handleResize = () => {
-      // orientation 값이 바뀐 경우에만 닫기
-      const currentOrientation = window.orientation;
-      if (currentOrientation !== lastOrientation) {
-        lastOrientation = currentOrientation;
-        onClose();
-      }
+    const handleChange = () => {
+      onClose();
     };
 
-    window.addEventListener('resize', handleResize);
+    const orientation = screen.orientation;
+
+    orientation?.addEventListener?.('change', handleChange);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      orientation?.removeEventListener?.('change', handleChange);
     };
   }, [isOpen, onClose]);
 }
