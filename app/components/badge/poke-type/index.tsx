@@ -2,7 +2,7 @@
 import { getPokeTypeKo } from '@/app/lib/poke-type';
 
 interface PokeTypeBadgeProps {
-  type: string;
+  type: unknown;
   width?: string;
 }
 
@@ -10,7 +10,9 @@ export default function PokeTypeBadge({
   type,
   width = 'w-[60px] xs:w-[63px]',
 }: PokeTypeBadgeProps) {
-  const content = getPokeTypeKo(type);
+  const pokeType = typeof type === 'string' ? type : 'unknown';
+
+  const content = getPokeTypeKo(pokeType);
 
   const bgVariants: Record<string, string> = {
     normal: 'bg-[#949495]',
@@ -34,7 +36,7 @@ export default function PokeTypeBadge({
     unknown: 'bg-fuchsia-900',
   };
 
-  const bg = bgVariants[type] || bgVariants.unknown;
+  const bg = bgVariants[pokeType];
 
   return (
     <div

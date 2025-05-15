@@ -10,10 +10,13 @@ export default async function FormPage({
   const { form } = await params;
 
   return (
-    <div className="flex relative">
-      <Suspense fallback={<div>loading</div>}>
-        <PokeDetail pokeKey={form} />
-      </Suspense>
+    <div className="lg:flex relative">
+      <div>
+        <Suspense fallback={<div>loading</div>}>
+          <PokeDetail pokeKey={form} />
+        </Suspense>
+      </div>
+
       <Toc />
     </div>
   );

@@ -23,7 +23,7 @@ export default function Abilities({ abilities }: AbilitiesProps) {
   return (
     <div>
       <SectionHeader id="ability" sectionTitle="특성" />
-      <div className="border border-slate-500 bg-white rounded-lg shadow-md grid divide-y divide-slate-300">
+      <div className="border border-slate-500 bg-white rounded-lg shadow-md shadow-slate-300 grid divide-y divide-slate-300">
         {formattedAbilities.map(({ id, name, flavorText, isHidden }) => (
           <Ability
             key={id}

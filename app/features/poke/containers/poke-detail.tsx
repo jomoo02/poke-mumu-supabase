@@ -11,6 +11,7 @@ import Abilities from '../components/abilities';
 // import EvolutionTree from '../modules/evolution/containers/evolution-tree';
 // import Location from '../modules/evolution/containers/location';
 // import Moves from '../modules/moves/containers/moves';
+import Moves from '../components/moves';
 // import Information from '../modules/information/containers/information';
 
 interface PokeDetailProps {
@@ -30,7 +31,7 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
     poke_ability,
     // evolution_id,
     // sprite,
-    // poke_moves_2: pokeMoves,
+    poke_moves_2: pokeMoves,
     poke_stat: pokeStats,
   } = data;
 
@@ -39,7 +40,7 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
   // console.log(data.pokedex_number);
 
   return (
-    <div className="grid w-full">
+    <div>
       {/* <div className="c-border-outer rounded-lg bg-white py-4">
         <Information
           types={types}
@@ -83,6 +84,12 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
           <Moves pokeMoves={pokeMoves} />
         </div>
       </div> */}
+      <Moves pokeMoves={pokeMoves} />
+      <div>
+        {/* <SectionHeader sectionTitle="기술" /> */}
+
+        <div className="c-border-outer rounded-lg bg-white"></div>
+      </div>
     </div>
   );
 }

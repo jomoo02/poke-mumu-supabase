@@ -4,7 +4,7 @@ import CaretUpDownIcon from '@/app/components/icon/caret-up-down';
 
 interface SortIconProps {
   isSelect: boolean;
-  direction: 'asc' | 'desc';
+  direction: 'asc' | 'desc' | null;
   size?: string;
   color?: string;
 }
