@@ -2,7 +2,7 @@
 import { getPokeTypeKo } from '@/app/lib/poke-type';
 
 interface PokeTypeBadgeProps {
-  type: unknown;
+  type: string;
   width?: string;
 }
 
@@ -10,7 +10,7 @@ export default function PokeTypeBadge({
   type,
   width = 'w-[60px] xs:w-[63px]',
 }: PokeTypeBadgeProps) {
-  const pokeType = typeof type === 'string' ? type : 'unknown';
+  const pokeType = type ?? 'unknown';
 
   const content = getPokeTypeKo(pokeType);
 

@@ -3,10 +3,10 @@ import Image from 'next/image';
 export type DamageClass = 'physical' | 'special' | 'status';
 
 interface DamageClassBadgeProps {
-  damageClass: unknown;
+  damageClass: string;
 }
 
-const isValidDamageClass = (value: unknown): value is DamageClass => {
+const isValidDamageClass = (value: string): value is DamageClass => {
   return value === 'physical' || value === 'special' || value === 'status';
 };
 

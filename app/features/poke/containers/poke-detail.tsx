@@ -40,7 +40,7 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
   // console.log(data.pokedex_number);
 
   return (
-    <div>
+    <div className="w-full">
       {/* <div className="c-border-outer rounded-lg bg-white py-4">
         <Information
           types={types}

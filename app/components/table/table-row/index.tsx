@@ -4,5 +4,5 @@ interface TableRowProps {
 }
 
 export default function TableRow({ className, children }: TableRowProps) {
-  return <tr className={`${className} hover:bg-blue-100`}>{children}</tr>;
+  return <tr className={`${className} hover:bg-slate-50/80`}>{children}</tr>;
 }

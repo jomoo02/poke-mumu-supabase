@@ -17,8 +17,6 @@ export default function Table<T extends TableRow>({
   const { sortState, setSortState, targetHeaderKey, setTargetHeaderKey } =
     useTable(initialHeaderKey);
 
-  console.log(tableData);
-
   return (
     <TableProvider
       tableData={tableData}

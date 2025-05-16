@@ -9,7 +9,7 @@ export default function TableCell({
   children,
 }: TableCellProps) {
   return (
-    <td align={align} className={className}>
+    <td align={align} className={`${className} px-1.5`}>
       {children}
     </td>
   );

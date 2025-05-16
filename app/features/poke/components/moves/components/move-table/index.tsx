@@ -1,15 +1,129 @@
-import Level from './level';
-import NormalMoveTable from './normal-move-table';
-import type { PokeMove } from '../../types';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHeader,
+  TableHeaderCell,
+  TableRow,
+} from '@/app/components/table';
+import type { MachineType, PokeMove } from '../../types';
+import { sortMoveTable } from './move-table.utils';
+import PokeTypeBadge from '@/app/components/badge/poke-type';
+import DamageClassBadge from '@/app/components/badge/damage-class';
+import { FirstHeaderCell, FirstRowCell } from './first-cell';
+import Title from './title';
 
 interface MoveTableProps {
   method: string;
   moves: PokeMove[];
+  machineType?: MachineType;
 }
 
-export default function MoveTable({ method, moves }: MoveTableProps) {
+const setInitHeaderKey = (method: string) => {
   if (method === 'level_up') {
-    return <NormalMoveTable method={method} moves={moves} />;
+    return 'level';
   }
-  return <div>{method}</div>;
+  if (method === 'machine') {
+    return 'machine';
+  }
+  return 'name';
+};
+
+export default function MoveTable({
+  method,
+  moves,
+  machineType,
+}: MoveTableProps) {
+  const initialHeaderKey = setInitHeaderKey(method);
+  return (
+    <div className="overflow-hidden">
+      <Title method={method} machineType={machineType} />
+      <div className="overflow-x-auto">
+        <Table
+          tableData={moves}
+          initialHeaderKey={initialHeaderKey}
+          sortFn={sortMoveTable}
+        >
+          <TableHeader>
+            <FirstHeaderCell method={method} machineType={machineType} />
+            <TableHeaderCell
+              headerKey="name"
+              className="min-w-[10rem]"
+              sortAble
+            >
+              기술
+            </TableHeaderCell>
+            <TableHeaderCell
+              headerKey="type"
+              className="min-w-[5.25rem]"
+              sortAble
+            >
+              타입
+            </TableHeaderCell>
+            <TableHeaderCell
+              headerKey="damageClass"
+              className="min-w-[5.25rem]"
+              sortAble
+            >
+              분류
+            </TableHeaderCell>
+            <TableHeaderCell
+              headerKey="power"
+              className="min-w-[5.25rem]"
+              sortAble
+            >
+              위력
+            </TableHeaderCell>
+            <TableHeaderCell
+              headerKey="accuracy"
+              className="min-w-[5.25rem]"
+              sortAble
+            >
+              명중률
+            </TableHeaderCell>
+          </TableHeader>
+          <TableBody className="">
+            {(rows) =>
+              rows.map((row, index) => (
+                <TableRow key={index} className="h-9">
+                  <FirstRowCell method={method} move={row} />
+                  <TableCell className="border px-2 border-slate-300 text-nowrap text-[15px] font-medium text-slate-800">
+                    {row.name}
+                  </TableCell>
+                  <TableCell
+                    align="center"
+                    className="border px-2 border-slate-300 text-nowrap text-[15px] font-medium text-slate-800"
+                  >
+                    {typeof row.type === 'string' && (
+                      <PokeTypeBadge type={row.type} />
+                    )}
+                  </TableCell>
+                  <TableCell
+                    align="center"
+                    className="border px-2 border-slate-300 text-nowrap text-[15px] font-medium text-slate-800"
+                  >
+                    {typeof row.damage_class === 'string' && (
+                      <DamageClassBadge damageClass={row.damage_class} />
+                    )}
+                  </TableCell>
+                  <TableCell
+                    align="right"
+                    className="border px-2 border-slate-300 text-nowrap text-[15px] font-medium text-slate-800"
+                  >
+                    {row.power || '—'}
+                  </TableCell>
+                  <TableCell
+                    align="right"
+                    className="border px-2 border-slate-300 text-nowrap text-[15px] font-medium text-slate-800"
+                  >
+                    {row.accuracy || '—'}
+                  </TableCell>
+                </TableRow>
+              ))
+            }
+          </TableBody>
+        </Table>
+      </div>
+    </div>
+  );
 }
