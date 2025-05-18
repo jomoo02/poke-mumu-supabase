@@ -13,7 +13,7 @@ export default function TatgetMoves({ targetMoves }: TargetMovesProps) {
   const { moves, machineMoves } = useTargetMoves(targetMoves);
 
   return (
-    <div className="my-10 px-1 sm:px-2 lg:px-7 flex flex-wrap justify-around gap-y-10 w-full">
+    <div className="flex flex-col gap-y-10 w-full my-10">
       <div className="flex flex-col gap-y-10 overflow-auto">
         {moves.map(({ method, moves }) => (
           <MoveTable key={method} method={method} moves={moves} />

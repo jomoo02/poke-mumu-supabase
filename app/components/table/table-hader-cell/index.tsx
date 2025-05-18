@@ -27,7 +27,7 @@ export default function TableHeaderCell({
       {sortAble ? (
         <button
           onClick={handleOnClick}
-          className={`flex w-full hover:bg-slate-100 active:bg-slate-100 rounded-sm px-2 h-full items-center justify-between cursor-pointer focus:outline-none focus-visible:inset-ring ring-slate-500`}
+          className={`flex w-full hover:bg-slate-100 rounded-sm px-2 h-full items-center justify-between cursor-pointer focus:outline-none focus-visible:inset-ring ring-slate-500`}
         >
           <span className="font-medium text-slate-900 text-[15px]">
             {children}

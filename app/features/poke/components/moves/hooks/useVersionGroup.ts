@@ -1,5 +1,4 @@
 import { useMemo, useState } from 'react';
-import type { VersionGroup } from '@/app/data/version-group/version-group';
 import type { PokeMoveListItem, MoveMethod } from '../types';
 
 export default function useVersionGroup(moves: PokeMoveListItem[]) {
@@ -29,7 +28,7 @@ export default function useVersionGroup(moves: PokeMoveListItem[]) {
     return [];
   }, [moves, targetVersionGroup]);
 
-  const handleTargetVersion = (versionGroup: VersionGroup) => {
+  const handleTargetVersion = (versionGroup: string) => {
     if (versionGroups.includes(versionGroup)) {
       setTargetVersion(versionGroup);
     }
@@ -38,7 +37,6 @@ export default function useVersionGroup(moves: PokeMoveListItem[]) {
   return {
     versionGroups,
     targetVersionGroup,
-    setTargetVersion,
     handleTargetVersion,
     targetMoves,
   };

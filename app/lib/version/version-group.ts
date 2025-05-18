@@ -1,26 +1,32 @@
-export type VersionGroup =
-  | 'red-blue'
-  | 'yellow'
-  | 'gold-silver'
-  | 'crystal'
-  | 'ruby-sapphire'
-  | 'emerald'
-  | 'firered-leafgreen'
-  | 'diamond-pearl'
-  | 'platinum'
-  | 'heartgold-soulsilver'
-  | 'black-white'
-  | 'black-2-white-2'
-  | 'x-y'
-  | 'omega-ruby-alpha-sapphire'
-  | 'sun-moon'
-  | 'ultra-sun-ultra-moon'
-  | 'sword-shield'
-  | 'brilliant-diamond-and-shining-pearl'
-  | 'lets-go-pikachu-lets-go-eevee'
-  | 'scarlet-violet';
+import { createMapGetter } from '@/app/utils/create-map-getter';
 
-export const VERSION_GROUP_LIST_KO: Record<VersionGroup, string> = {
+const versionGroupList = [
+  'red-blue',
+  'yellow',
+  'gold-silver',
+  'crystal',
+  'ruby-sapphire',
+  'emerald',
+  'firered-leafgreen',
+  'diamond-pearl',
+  'platinum',
+  'heartgold-soulsilver',
+  'black-white',
+  'black-2-white-2',
+  'x-y',
+  'omega-ruby-alpha-sapphire',
+  'sun-moon',
+  'ultra-sun-ultra-moon',
+  'sword-shield',
+  'brilliant-diamond-and-shining-pearl',
+  'lets-go-pikachu-lets-go-eevee',
+  'scarlet-violet',
+  'unknown',
+] as const;
+
+export type VersionGroup = (typeof versionGroupList)[number];
+
+const versionGroupListKo: Record<VersionGroup, string> = {
   'red-blue': '레드/그린',
   yellow: '피카츄',
   'gold-silver': '골드/실버',
@@ -41,8 +47,13 @@ export const VERSION_GROUP_LIST_KO: Record<VersionGroup, string> = {
   'brilliant-diamond-and-shining-pearl': '브릴리언트 다이아몬드/샤이닝 펄',
   'lets-go-pikachu-lets-go-eevee': '레츠고! 피카츄/레츠고! 이브이',
   'scarlet-violet': '스칼렛/바이올렛',
+  unknown: 'unknown',
 };
 
+export const getVersionGroupList = () => [...versionGroupList];
+
 export const isVersionGroup = (value: string): value is VersionGroup => {
-  return value in VERSION_GROUP_LIST_KO;
+  return (versionGroupList as readonly string[]).includes(value);
 };
+
+export const getVersionGroupKo = createMapGetter(versionGroupListKo, 'unknown');

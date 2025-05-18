@@ -11,7 +11,7 @@ export default async function FormPage({
 
   return (
     <div className="lg:flex relative">
-      <div className="w-full">
+      <div className="w-full max-w-5xl mx-auto">
         <Suspense fallback={<div>loading</div>}>
           <PokeDetail pokeKey={form} />
         </Suspense>

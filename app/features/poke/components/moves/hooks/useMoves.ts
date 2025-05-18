@@ -27,7 +27,7 @@ export default function useMoves(moves: PokeMoveTableWithVersion[]) {
   return {
     gens,
     targetGen,
-    setTargetGen: handleTargetGen,
+    handleTargetGen,
     targetGenMoves,
   };
 }
