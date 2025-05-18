@@ -48,35 +48,35 @@ export default function MoveTable({
             <FirstHeaderCell method={method} machineType={machineType} />
             <TableHeaderCell
               headerKey="name"
-              className="min-w-[10rem]"
+              className="min-w-40 w-44 max-w-44"
               sortAble
             >
               기술
             </TableHeaderCell>
             <TableHeaderCell
               headerKey="type"
-              className="min-w-[5.25rem]"
+              className="min-w-20 w-24"
               sortAble
             >
               타입
             </TableHeaderCell>
             <TableHeaderCell
               headerKey="damageClass"
-              className="min-w-[5.25rem]"
+              className="min-w-20 w-24"
               sortAble
             >
               분류
             </TableHeaderCell>
             <TableHeaderCell
               headerKey="power"
-              className="min-w-[5.25rem]"
+              className="min-w-20 w-24"
               sortAble
             >
               위력
             </TableHeaderCell>
             <TableHeaderCell
               headerKey="accuracy"
-              className="min-w-[5.25rem]"
+              className="min-w-20 w-24"
               sortAble
             >
               명중률
@@ -87,12 +87,12 @@ export default function MoveTable({
               rows.map((row, index) => (
                 <TableRow key={index} className="h-9">
                   <FirstRowCell method={method} move={row} />
-                  <TableCell className="border px-2 border-slate-300 text-nowrap text-[15px] font-medium text-slate-800">
+                  <TableCell className="px-3 text-nowrap text-[15px] font-medium text-slate-800">
                     {row.name}
                   </TableCell>
                   <TableCell
                     align="center"
-                    className="border px-2 border-slate-300 text-nowrap text-[15px] font-medium text-slate-800"
+                    className="px-3 text-nowrap text-[15px] font-medium text-slate-800"
                   >
                     {typeof row.type === 'string' && (
                       <PokeTypeBadge type={row.type} />
@@ -100,7 +100,7 @@ export default function MoveTable({
                   </TableCell>
                   <TableCell
                     align="center"
-                    className="border px-2 border-slate-300 text-nowrap text-[15px] font-medium text-slate-800"
+                    className="px-3 text-nowrap text-[15px] font-medium text-slate-800"
                   >
                     {typeof row.damage_class === 'string' && (
                       <DamageClassBadge damageClass={row.damage_class} />
@@ -108,13 +108,13 @@ export default function MoveTable({
                   </TableCell>
                   <TableCell
                     align="right"
-                    className="border px-2 border-slate-300 text-nowrap text-[15px] font-medium text-slate-800"
+                    className="px-3 text-nowrap text-[15px] font-medium text-slate-800"
                   >
                     {row.power || '—'}
                   </TableCell>
                   <TableCell
                     align="right"
-                    className="border px-2 border-slate-300 text-nowrap text-[15px] font-medium text-slate-800"
+                    className="px-3 text-nowrap text-[15px] font-medium text-slate-800"
                   >
                     {row.accuracy || '—'}
                   </TableCell>

@@ -21,21 +21,21 @@ export default function TableHeaderCell({
 
   return (
     <th
-      className={`h-[2.4rem] border p-0 border-slate-300 select-none ${className}`}
+      className={`h-[2.4rem] select-none ${className} first:rounded-tl-md last:rounded-tr-md bg-slate-50`}
       aria-sort={ariaSort}
     >
       {sortAble ? (
         <button
           onClick={handleOnClick}
-          className={`flex w-full h-full px-1.5 items-center text-[15px] font-medium text-slate-900 justify-between cursor-pointer ${
-            isSorted ? 'bg-blue-100' : 'bg-slate-100 '
-          }`}
+          className={`flex w-full hover:bg-slate-100 active:bg-slate-100 rounded-sm px-2 h-full items-center justify-between cursor-pointer focus:outline-none focus-visible:inset-ring ring-slate-500`}
         >
-          {children}
-          <SortIcon isSelect={isSorted} direction={direction} />
+          <span className="font-medium text-slate-900 text-[15px]">
+            {children}
+          </span>
+          <SortIcon isSelect={isSorted} direction={direction} color="#404b5d" />
         </button>
       ) : (
-        <div className="flex items-center px-1.5 text-[15px] font-medium text-slate-900 bg-slate-100 h-full w-full">
+        <div className="flex justify-center items-center text-[15px] font-medium text-slate-900 h-full w-full">
           {children}
         </div>
       )}

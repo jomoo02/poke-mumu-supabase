@@ -26,7 +26,11 @@ export default function Table<T extends TableRow>({
       setTargetHeaderKey={setTargetHeaderKey}
       sortFn={sortFn}
     >
-      <table className="border border-slate-300 table-fixed">{children}</table>
+      <div className="flex">
+        <div className="border border-slate-300 rounded-md overflow-auto">
+          <table className=" table-fixed">{children}</table>
+        </div>
+      </div>
     </TableProvider>
   );
 }

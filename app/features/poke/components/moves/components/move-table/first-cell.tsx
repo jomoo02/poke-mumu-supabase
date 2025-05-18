@@ -13,14 +13,22 @@ interface FirstRowCellProps {
 export function FirstHeaderCell({ method, machineType }: FirstHeaderCellProps) {
   if (method === 'level_up') {
     return (
-      <TableHeaderCell headerKey="level" className="min-w-[3.85rem]" sortAble>
+      <TableHeaderCell
+        headerKey="level"
+        className="min-w-[4.5rem] w-20"
+        sortAble
+      >
         Lv.
       </TableHeaderCell>
     );
   }
   if (method === 'machine') {
     return (
-      <TableHeaderCell headerKey="machine" className="min-w-[3.85rem]" sortAble>
+      <TableHeaderCell
+        headerKey="machine"
+        className="min-w-[4.5rem] w-20"
+        sortAble
+      >
         {machineType}
       </TableHeaderCell>
     );
@@ -31,14 +39,14 @@ export function FirstHeaderCell({ method, machineType }: FirstHeaderCellProps) {
 export function FirstRowCell({ method, move }: FirstRowCellProps) {
   if (method === 'level_up') {
     return (
-      <TableCell className="border px-2 border-slate-300 text-nowrap text-[15px] font-medium text-slate-800">
+      <TableCell className="px-3 text-nowrap text-[15px] font-medium text-slate-800">
         {move.level}
       </TableCell>
     );
   }
   if (method === 'machine') {
     return (
-      <TableCell className="border px-2 border-slate-300 text-nowrap text-[15px] font-medium text-slate-800">
+      <TableCell className="px-3 text-nowrap text-[15px] font-medium text-slate-800">
         {move.machine_number}
       </TableCell>
     );
