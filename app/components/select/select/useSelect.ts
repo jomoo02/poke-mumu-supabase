@@ -64,8 +64,8 @@ export default function useSelect({
   };
 
   const handleOnSelect = (targetItem: string) => {
-    setSelectedValue(targetItem);
     onClose();
+    setSelectedValue(targetItem);
     if (onSelect) {
       onSelect(targetItem);
     }
