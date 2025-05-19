@@ -9,6 +9,7 @@ export default function useOptionBar(
     initialValue,
   );
   const itemRefs = useRef<Map<string, HTMLButtonElement | null>>(new Map());
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const registerItem = useCallback(
     (value: string, ref: HTMLButtonElement | null) => {
@@ -37,5 +38,6 @@ export default function useOptionBar(
     registerItem,
     items,
     itemRefs,
+    containerRef,
   };
 }

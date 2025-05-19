@@ -12,8 +12,14 @@ export default function OptionBar({
   onSelect,
   children,
 }: OptionBarProps) {
-  const { selectedValue, handleOnSelect, registerItem, items, itemRefs } =
-    useOptionBar(initialValue, onSelect);
+  const {
+    selectedValue,
+    handleOnSelect,
+    registerItem,
+    items,
+    itemRefs,
+    containerRef,
+  } = useOptionBar(initialValue, onSelect);
 
   return (
     <OptionBarProvider
@@ -22,6 +28,7 @@ export default function OptionBar({
       registerItem={registerItem}
       items={items}
       itemRefs={itemRefs}
+      containerRef={containerRef}
     >
       {children}
     </OptionBarProvider>
