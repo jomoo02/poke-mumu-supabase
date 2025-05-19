@@ -22,7 +22,7 @@ export default function SelectItem({ value, children }: SelectItemProps) {
       ref={itemRef}
       role="option"
       aria-selected={isSelected}
-      onPointerDown={handleOnClick}
+      onClick={handleOnClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onMouseMove={handleMouseMove}
