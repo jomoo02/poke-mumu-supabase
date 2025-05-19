@@ -54,9 +54,6 @@ export default function useSelect({
         contentRef.current?.focus({ preventScroll: true });
       });
     });
-    // setTimeout(() => {
-    //   contentRef.current?.focus({ preventScroll: true });
-    // }, 100);
   };
 
   const onClose = () => {
@@ -67,11 +64,11 @@ export default function useSelect({
   };
 
   const handleOnSelect = (targetItem: string) => {
+    onClose();
+    setSelectedValue(targetItem);
     if (onSelect) {
       onSelect(targetItem);
     }
-    setSelectedValue(targetItem);
-    onClose();
   };
 
   useEffect(() => {
