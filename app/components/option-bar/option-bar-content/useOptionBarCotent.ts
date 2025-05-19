@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 import {
   useContainerRef,
   useItem,
@@ -12,7 +12,7 @@ export function useScrollIntoViewOnActiveChange<T extends string>(
 ) {
   const hasScrolledInitially = useRef(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (selectedValue && itemRefs.current && containerRef.current) {
       const ref = itemRefs.current.get(selectedValue);
       const container = containerRef.current;
@@ -74,17 +74,17 @@ export default function useOptionBarContent() {
   const { selectedValue } = useSelectedValue();
 
   const { containerRef } = useContainerRef();
-  useScrollIntoViewOnActiveChange(selectedValue || '', itemRefs, containerRef);
-  useEffect(() => {
-    if (selectedValue) {
-      const ref = itemRefs.current.get(selectedValue);
-      ref?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'center',
-      });
-    }
-  }, [selectedValue, itemRefs]);
+  // useScrollIntoViewOnActiveChange(selectedValue || '', itemRefs, containerRef);
+  // useEffect(() = > {
+  //   if (selectedValue) {
+  //     const ref = itemRefs.current.get(selectedValue);
+  //     ref?.scrollIntoView({
+  //       behavior: 'smooth',
+  //       block: 'nearest',
+  //       inline: 'center',
+  //     });
+  //   }
+  // }, [selectedValue, itemRefs]);
 
   useEffect(() => {
     if (selectedValue && itemRefs.current && containerRef.current) {
