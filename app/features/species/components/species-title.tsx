@@ -3,5 +3,9 @@ interface SpeciesTitleProps {
 }
 
 export default function SpeciesTitle({ pokeName }: SpeciesTitleProps) {
-  return <h2 className="text-center my-4">{pokeName}</h2>;
+  return (
+    <h1 className="text-center my-4 text-slate-800 text-3xl font-bold">
+      {pokeName}
+    </h1>
+  );
 }

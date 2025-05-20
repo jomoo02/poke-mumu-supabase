@@ -3,16 +3,17 @@ import { fetchPoke } from '../api/poke';
 import Stats from '../components/stats';
 // import TypeDefense from '../modules/type-defense';
 import TypeDefense from '../components/type-defense';
+import Information from '../components/information';
 
 // import SectionHeader from '../components/section-header';
 // import Abilities from '../modules/abilities/containers/abilities';
 import Abilities from '../components/abilities';
 
 // import EvolutionTree from '../modules/evolution/containers/evolution-tree';
+import EvolutionTree from '../components/evolution';
 // import Location from '../modules/evolution/containers/location';
 // import Moves from '../modules/moves/containers/moves';
 import Moves from '../components/moves';
-// import Information from '../modules/information/containers/information';
 
 interface PokeDetailProps {
   pokeKey: string;
@@ -29,8 +30,8 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
     type_1,
     type_2,
     poke_ability,
-    // evolution_id,
-    // sprite,
+    evolution_id,
+    sprite,
     poke_moves_2: pokeMoves,
     poke_stat: pokeStats,
   } = data;
@@ -40,8 +41,8 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
   // console.log(data.pokedex_number);
 
   return (
-    <div className="w-full">
-      {/* <div className="c-border-outer rounded-lg bg-white py-4">
+    <div className="flex w-full">
+      <div className="w-full max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto">
         <Information
           types={types}
           ndex={data.no}
@@ -54,42 +55,17 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
           pokedexInfo={data.pokedex_info}
           sprite={sprite}
         />
-      </div> */}
 
-      <Stats stats={pokeStats} />
-      {/* <div className="grid c-border-outer divide-y divide-slate-300 rounded-lg bg-white"></div> */}
+        <Abilities abilities={poke_ability} />
+        <Stats stats={pokeStats} />
 
-      <TypeDefense types={types} />
-      <Abilities abilities={poke_ability} />
-      {/* 
-      <div>
-        <SectionHeader sectionTitle="특성" />
-        <div className="c-border-outer rounded-lg bg-white grid divide-y divide-slate-300">
-          <Abilities abilities={poke_ability} />
-        </div>
+        <TypeDefense types={types} />
+
+        <EvolutionTree evolutionId={evolution_id} />
+
+        <Moves pokeMoves={pokeMoves} />
       </div>
-      <
-      {evolution_id && (
-        <div>
-          <SectionHeader sectionTitle="진화" />
-          <div className="c-border-outer rounded-lg bg-white py-2">
-            <EvolutionTree evolutionId={evolution_id} />
-          </div>
-          <Location evolutionId={evolution_id} />
-        </div>
-      )}
-      <div>
-        <SectionHeader sectionTitle="기술" />
-        <div className="c-border-outer rounded-lg bg-white">
-          <Moves pokeMoves={pokeMoves} />
-        </div>
-      </div> */}
-      <Moves pokeMoves={pokeMoves} />
-      <div>
-        {/* <SectionHeader sectionTitle="기술" /> */}
-
-        <div className="c-border-outer rounded-lg bg-white"></div>
-      </div>
+      {/* <Toc /> */}
     </div>
   );
 }

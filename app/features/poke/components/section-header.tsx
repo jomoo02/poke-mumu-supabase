@@ -11,7 +11,7 @@ export default function SectionHeader({
 }: SectionHeaderProps) {
   return (
     <h2
-      className="text-2xl font-bold py-3 mt-10 scroll-mt-16 text-slate-800"
+      className="text-2xl font-bold py-3 mt-12 mb-4 scroll-mt-12 text-slate-800 pt-10"
       id={id}
     >
       <Link href={`#${id}`} className="outline-slate-800 rounded-sm p-0.5">

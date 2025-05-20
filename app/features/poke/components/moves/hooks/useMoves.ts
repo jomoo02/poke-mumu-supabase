@@ -1,6 +1,21 @@
 import { useMemo, useState } from 'react';
-import type { PokeMoveTableWithVersion } from '../types';
-import { formatMovesFromTable } from '../lib/format';
+import type { PokeMoveTableWithVersion, PokeMoveJsonByMethod } from '../types';
+
+// move table에서 가져온 데이터 포맷
+export const formatMovesFromTable = (
+  tableMoves: PokeMoveTableWithVersion[],
+) => {
+  return tableMoves
+    .map(({ version_group, moves, ...rest }) => ({
+      ...rest,
+      gen: version_group.generation,
+      versionGroupId: version_group.id,
+      versionGroup: version_group.identifier,
+      order: version_group.order,
+      moves: moves as PokeMoveJsonByMethod,
+    }))
+    .sort((a, b) => a.order - b.order);
+};
 
 export default function useMoves(moves: PokeMoveTableWithVersion[]) {
   const formattedMoves = useMemo(() => formatMovesFromTable(moves), [moves]);

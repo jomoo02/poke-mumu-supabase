@@ -44,6 +44,7 @@ const groupMachineMoves = (targetMove: TargetMove | undefined) => {
       moves: grouped[type],
     }));
 };
+
 export default function useTargetMoves(targetMoves: TargetMove[]) {
   const machineMoves = useMemo(
     () =>
