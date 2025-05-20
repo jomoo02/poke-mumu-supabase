@@ -35,8 +35,8 @@ export default function ChainPoke({
       <div className="min-w-20 max-w-24 xs:w-24 md:w-24 flex flex-col items-center justify-center">
         <div className="w-16 h-16 md:w-20 relative md:h-20">
           <Image
-            // src={src}
-            src="/pokeball.svg"
+            src={src}
+            // src="/pokeball.svg"
             alt={name_ko}
             fill
             sizes="70px"

@@ -1,5 +1,6 @@
 interface SpeciesTitleProps {
   pokeName: string;
+  no: number;
 }
 
 export default function SpeciesTitle({ pokeName }: SpeciesTitleProps) {

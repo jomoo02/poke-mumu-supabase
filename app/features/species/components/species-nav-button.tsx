@@ -14,14 +14,14 @@ function Prev({ poke }: NavButtonProps) {
   return (
     <Link
       href={`/pokedex/${no}/${species}`}
-      className="flex rounded-lg h-[52px] md:h-14 lg:h-16 c-border-outer bg-white hover:bg-blue-50 transition-colors duration-200"
+      className="flex rounded-lg bg-white hover:bg-neutral-300/40 transition-colors duration-200 py-2 sm:px-2"
       prefetch
     >
-      <div className="flex justify-center items-center c-border-outer border-y-0 border-l-0 px-3 sm:px-4">
-        <ArrowLeftIcon size="1.6rem" />
+      <div className="flex justify-center items-center pr-1 sm:pr-2">
+        <ArrowLeftIcon size="1.2rem" />
       </div>
-      <div className="flex-1 flex w-full h-full gap-x-1.5 justify-center items-center font-medium">
-        <span>{`#${formatPokedexNumber(no)}`}</span>
+      <div className="flex  h-full gap-x-1.5 justify-center items-center font-medium text-[15px] text-slate-800">
+        <span>{`${formatPokedexNumber(no)}`}</span>
         <span>{name}</span>
       </div>
     </Link>
@@ -34,14 +34,14 @@ function Next({ poke }: NavButtonProps) {
   return (
     <Link
       href={`/pokedex/${no}/${species}`}
-      className="flex flex-row-reverse c-border-outer rounded-lg h-[52px] md:h-14 lg:h-16 bg-white hover:bg-blue-50 transition-colors duration-200"
+      className="flex flex-row-reverse rounded-lg bg-white hover:bg-neutral-300/40 transition-colors duration-200 py-2 sm:px-2"
       prefetch
     >
-      <div className="flex justify-center items-center c-border-outer border-y-0 border-r-0 px-3 sm:px-4">
-        <ArrowRightIcon size="1.6rem" />
+      <div className="flex justify-center items-center pl-1 sm:pl-2">
+        <ArrowRightIcon size="1.2rem" />
       </div>
-      <div className="flex-1 flex w-full h-full gap-x-1.5 justify-center items-center font-medium">
-        <span>{`#${formatPokedexNumber(no)}`}</span>
+      <div className="flex h-full gap-x-1.5 justify-center items-center font-medium text-[15px] text-slate-800">
+        <span>{`${formatPokedexNumber(no)}`}</span>
         <span>{name}</span>
       </div>
     </Link>

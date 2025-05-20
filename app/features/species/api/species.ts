@@ -27,20 +27,28 @@ export async function fetchSpeciesNav(
   return { prev, next };
 }
 
-export async function fetchSpeciesName(ndex: number) {
+export async function fetchSpeciesTitle(ndex: number) {
   const supabase = await createClient();
 
   const { data, error } = await supabase
     .from('species')
-    .select(`name_ko`)
+    .select(
+      `
+      name_ko,
+      no
+      `,
+    )
     .eq('no', ndex)
     .maybeSingle();
 
   if (error || !data) {
-    return '';
+    return {
+      name_ko: '',
+      no: 0,
+    };
   }
 
-  return data.name_ko;
+  return data;
 }
 
 export async function fetchSpeciesVarieties(ndex: number) {

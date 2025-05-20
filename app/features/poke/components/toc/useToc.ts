@@ -16,7 +16,22 @@ export default function useToc() {
         content: el.textContent,
       }));
 
-      setTocs(newHeadings);
+      const headingMap = new Map<string, string | null>();
+
+      for (const { id, content } of newHeadings) {
+        if (!headingMap.has(id)) {
+          headingMap.set(id, content);
+        }
+      }
+
+      const uniqueHeadings = Array.from(headingMap.entries()).map(
+        ([id, content]) => ({
+          id,
+          content,
+        }),
+      );
+
+      setTocs(uniqueHeadings);
     };
 
     updateTocs(); // 초기 호출

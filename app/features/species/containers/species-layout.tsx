@@ -1,6 +1,6 @@
 import {
   fetchSpeciesNav,
-  fetchSpeciesName,
+  fetchSpeciesTitle,
   fetchSpeciesVarieties,
 } from '../api/species';
 import SpeciesNav from '../components/species-nav';
@@ -12,16 +12,16 @@ interface SpeciesLayoutProps {
 }
 
 export default async function SpeciesLayout({ ndex }: SpeciesLayoutProps) {
-  const [speciesNav, speciesName, speciesVarieties] = await Promise.all([
+  const [speciesNav, speciesTitle, speciesVarieties] = await Promise.all([
     fetchSpeciesNav(ndex),
-    fetchSpeciesName(ndex),
+    fetchSpeciesTitle(ndex),
     fetchSpeciesVarieties(ndex),
   ]);
 
   return (
     <div className="grid gap-4">
       <SpeciesNav speciesNav={speciesNav} />
-      <SpeciesTitle pokeName={speciesName} />
+      <SpeciesTitle pokeName={speciesTitle.name_ko} no={speciesTitle.no} />
       <VarietyList ndex={ndex} speciesVarieties={speciesVarieties} />
     </div>
   );
