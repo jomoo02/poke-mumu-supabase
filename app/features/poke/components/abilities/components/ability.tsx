@@ -16,7 +16,7 @@ export default function Ability({ isHidden, name, flavorText }: AbilityProps) {
         {isHidden && <div className="text-sm text-zinc-800">(숨겨진 특성)</div>}
       </div>
 
-      <div className="flex-1 p-2 md:p-3 flex items-center">
+      <div className="flex-1 p-3 flex items-center">
         <p className="text-pretty text-zinc-950">{flavorText}</p>
       </div>
     </div>
