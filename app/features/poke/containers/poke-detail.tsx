@@ -42,7 +42,7 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
 
   return (
     <div className="flex w-full">
-      <div className="w-full max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto">
+      <div className="w-full">
         <Information
           types={types}
           ndex={data.no}

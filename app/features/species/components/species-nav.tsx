@@ -16,12 +16,10 @@ export default function SpeciesNav({ speciesNav }: SpeciesNavProps) {
   const { prev, next } = speciesNav;
 
   return (
-    // <nav className="grid gap-y-3 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-0">
-    <nav className="flex justify-between">
+    <nav className="flex justify-between items-center">
       {prev ? <SpeciesNavButton.Prev poke={prev} /> : <div />}
-      <div className="lg:col-start-3 xl:col-start-3">
-        {next && <SpeciesNavButton.Next poke={next} />}
-      </div>
+
+      {next && <SpeciesNavButton.Next poke={next} />}
     </nav>
   );
 }

@@ -13,10 +13,10 @@ export default function Toc() {
       {tocs.map(({ id, content }) => (
         <div
           key={id}
-          className={`text-[15px] ${
+          className={`text-[15px] py-px ${
             activeId === id
               ? 'text-slate-900 font-semibold'
-              : 'text-slate-500 font-medium hover:text-slate-800'
+              : 'text-slate-500 font-medium hover:text-slate-800 transition hover:-translate-y-0.5'
           }`}
         >
           <Link href={`#${id}`}>{content}</Link>
