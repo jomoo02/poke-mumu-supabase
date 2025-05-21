@@ -25,12 +25,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${pretendard.className}`}>
+      <body className={`${pretendard.className} antialiased`}>
         <SWRProvider>
           <AppHeader />
           <div>{modal}</div>
           {/* <main className="py-6 xl:max-w-screen-xl mx-auto">{children}</main> */}
-          <main className="mx-auto">{children}</main>
+          <main className="my-6 mx-auto">{children}</main>
         </SWRProvider>
       </body>
     </html>

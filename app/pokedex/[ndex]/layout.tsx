@@ -20,10 +20,10 @@ export default async function NdexLayout({
     //   {children}
     // </div>
 
-    <div className="max-w-screen mx-auto lg:flex relative py-6 bg-blue-50/20">
+    <div className="max-w-screen mx-auto lg:flex relative">
       <div className="hidden xl:block min-w-40 w-40" />
 
-      <div className="w-full max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="w-full max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto px-3 sm:px-6">
         <SpeciesLayout ndex={ndex} />
         {/* </Suspense> */}
         {children}
