@@ -21,13 +21,13 @@ export default function TableHeaderCell({
 
   return (
     <th
-      className={`h-9 select-none ${className} first:rounded-tl-md last:rounded-tr-md `}
+      className={`select-none ${className} first:rounded-tl-md last:rounded-tr-md`}
       aria-sort={ariaSort}
     >
       {sortAble ? (
         <button
           onClick={handleOnClick}
-          className={`flex w-full hover:bg-zinc-100 rounded-sm px-2 h-full items-center justify-between cursor-pointer focus:outline-none focus-visible:inset-ring ring-slate-500`}
+          className={`flex w-full h-full hover:bg-zinc-100 rounded-sm px-2 items-center justify-between cursor-pointer focus:outline-none focus-visible:inset-ring ring-slate-500`}
         >
           <span className="font-medium text-zinc-950 text-[15px]">
             {children}

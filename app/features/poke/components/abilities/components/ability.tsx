@@ -11,7 +11,7 @@ export default function Ability({ isHidden, name, flavorText }: AbilityProps) {
         isHidden ? 'bg-blue-50/70' : 'bg-white'
       }`}
     >
-      <div className="w-[6.75rem] sm:w-[10.5rem] border-r border-slate-300 py-3 px-2 md:px-3 font-medium text-zinc-950 flex flex-col justify-center items-center text-center">
+      <div className="w-[6.75rem] sm:w-[10.5rem] border-r border-slate-300 py-3 px-2 md:px-3 text-zinc-950 flex flex-col justify-center items-center text-center">
         <div className="truncate w-full">{name}</div>
         {isHidden && <div className="text-sm text-zinc-800">(숨겨진 특성)</div>}
       </div>

@@ -15,7 +15,7 @@ export function FirstHeaderCell({ method, machineType }: FirstHeaderCellProps) {
     return (
       <TableHeaderCell
         headerKey="level"
-        className="min-w-[4.5rem] w-20"
+        className="min-w-[4.5rem] w-20 h-9.5"
         sortAble
       >
         Lv.
@@ -26,7 +26,7 @@ export function FirstHeaderCell({ method, machineType }: FirstHeaderCellProps) {
     return (
       <TableHeaderCell
         headerKey="machine"
-        className="min-w-[4.5rem] w-20"
+        className="min-w-[4.5rem] w-20 h-9.5"
         sortAble
       >
         {machineType}

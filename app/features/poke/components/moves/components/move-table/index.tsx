@@ -48,35 +48,35 @@ export default function MoveTable({
             <FirstHeaderCell method={method} machineType={machineType} />
             <TableHeaderCell
               headerKey="name"
-              className="min-w-40 w-44 max-w-44"
+              className="min-w-40 w-44 max-w-44 h-9.5"
               sortAble
             >
               기술
             </TableHeaderCell>
             <TableHeaderCell
               headerKey="type"
-              className="min-w-20 w-24"
+              className="min-w-20 w-24 h-9.5"
               sortAble
             >
               타입
             </TableHeaderCell>
             <TableHeaderCell
               headerKey="damageClass"
-              className="min-w-20 w-24"
+              className="min-w-20 w-24 h-9.5"
               sortAble
             >
               분류
             </TableHeaderCell>
             <TableHeaderCell
               headerKey="power"
-              className="min-w-20 w-24"
+              className="min-w-20 w-24 h-9.5"
               sortAble
             >
               위력
             </TableHeaderCell>
             <TableHeaderCell
               headerKey="accuracy"
-              className="min-w-20 w-24"
+              className="min-w-20 w-24 h-9.5"
               sortAble
             >
               명중률
