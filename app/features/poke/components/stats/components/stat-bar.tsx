@@ -21,9 +21,9 @@ export default function StatBar({ value, max }: StatBarProps) {
   })();
 
   return (
-    <svg width="100%" height="11">
+    <svg width="100%" height="12">
       <g className="bars">
-        <rect fill={barColor} width={width} height="11" rx="4" />
+        <rect fill={barColor} width={width} height="12" rx="4" />
       </g>
     </svg>
   );

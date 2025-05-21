@@ -12,9 +12,7 @@ export default function SelectTrigger() {
       onKeyDown={handleOnKeyDown}
       className="flex justify-between items-center pl-3 pr-2 w-full border cursor-pointer border-slate-300 h-8 min-h-8 max-h-8 rounded-md outline-none focus:ring ring-slate-500"
     >
-      <span className="truncate font-medium text-sm text-slate-700">
-        {triggerContent}
-      </span>
+      <span className="truncate text-sm text-zinc-950">{triggerContent}</span>
       <CaretDownIcon size="0.9rem" color="#1d293d" />
     </button>
   );
