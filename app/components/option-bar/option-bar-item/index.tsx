@@ -13,16 +13,12 @@ export default function OptionBarItem({ value, children }: OptionBarItemProps) {
       <button
         ref={buttonRef}
         onClick={handleOnClick}
-        className={`flex min-w-12  items-center justify-center-safe focus:outline-none focus-visible:ring ring-slate-500 cursor-pointer rounded-md px-2 py-1 h-[30px] transition duration-250 ${
-          isSelected ? 'bg-slate-800' : 'hover:bg-slate-100 '
+        className={`flex min-w-12  items-center justify-center-safe focus:outline-none focus-visible:ring ring-zinc-500 cursor-pointer rounded-md px-2 py-1 h-[30px] transition duration-250 ${
+          isSelected ? 'bg-zinc-200/70' : 'hover:bg-zinc-100 '
         } `}
         type="button"
       >
-        <span
-          className={`font-semibold text-sm text-nowrap ${
-            isSelected ? 'text-white' : 'text-slate-800'
-          }`}
-        >
+        <span className="font-medium text-[15px] text-nowrap text-zinc-950">
           {children}
         </span>
       </button>

@@ -87,12 +87,12 @@ export default function MoveTable({
               rows.map((row, index) => (
                 <TableRow key={index} className="h-9">
                   <FirstRowCell method={method} move={row} />
-                  <TableCell className="px-3 text-nowrap text-[15px] font-medium text-slate-800">
+                  <TableCell className="px-3 text-nowrap text-[15px] font-medium text-zinc-950">
                     {row.name}
                   </TableCell>
                   <TableCell
                     align="center"
-                    className="px-3 text-nowrap text-[15px] font-medium text-slate-800"
+                    className="px-3 text-nowrap text-[15px] text-zinc-950"
                   >
                     {typeof row.type === 'string' && (
                       <PokeTypeBadge type={row.type} />
@@ -100,7 +100,7 @@ export default function MoveTable({
                   </TableCell>
                   <TableCell
                     align="center"
-                    className="px-3 text-nowrap text-[15px] font-medium text-slate-800"
+                    className="px-3 text-nowrap text-[15px] text-zinc-950"
                   >
                     {typeof row.damage_class === 'string' && (
                       <DamageClassBadge damageClass={row.damage_class} />
@@ -108,13 +108,13 @@ export default function MoveTable({
                   </TableCell>
                   <TableCell
                     align="right"
-                    className="px-3 text-nowrap text-[15px] font-medium text-slate-800"
+                    className="px-3 text-nowrap text-[15px] text-zinc-950"
                   >
                     {row.power || '—'}
                   </TableCell>
                   <TableCell
                     align="right"
-                    className="px-3 text-nowrap text-[15px] font-medium text-slate-800"
+                    className="px-3 text-nowrap text-[15px] text-zinc-950"
                   >
                     {row.accuracy || '—'}
                   </TableCell>
