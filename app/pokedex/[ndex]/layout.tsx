@@ -20,7 +20,7 @@ export default async function NdexLayout({
     //   {children}
     // </div>
 
-    <div className="max-w-screen mx-auto lg:flex relative">
+    <div className="max-w-screen mx-auto lg:flex relative py-6 bg-blue-50/20">
       <div className="hidden xl:block min-w-40 w-40" />
 
       <div className="w-full max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto px-4 sm:px-6">
@@ -28,16 +28,6 @@ export default async function NdexLayout({
         {/* </Suspense> */}
         {children}
       </div>
-
-      {/* <Suspense fallback={<SpeciesLayoutLoading ndex={ndex} />}> */}
-      {/* <div className=""> */}
-
-      {/* </div> */}
-
-      {/* <Suspense fallback={<div>1</div>}>
-        {' '}
-        <LazyToc key={ndex} />
-      </Suspense> */}
       <Toc />
     </div>
   );

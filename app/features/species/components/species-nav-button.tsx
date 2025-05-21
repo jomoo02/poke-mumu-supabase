@@ -14,13 +14,13 @@ function Prev({ poke }: NavButtonProps) {
   return (
     <Link
       href={`/pokedex/${no}/${species}`}
-      className="flex rounded-lg bg-white hover:bg-neutral-300/40 transition-colors duration-200 py-2 sm:px-2"
+      className="flex rounded-lg bg-transparent hover:bg-neutral-300/40 transition-colors duration-200 py-2 sm:px-2"
       prefetch
     >
       <div className="flex justify-center items-center pr-1 sm:pr-2">
         <ArrowLeftIcon size="1.2rem" />
       </div>
-      <div className="flex  h-full gap-x-1.5 justify-center items-center font-medium text-[15px] text-slate-800">
+      <div className="flex  h-full gap-x-1.5 justify-center text-base items-center font-medium text-slate-800">
         <span>{`${formatPokedexNumber(no)}`}</span>
         <span>{name}</span>
       </div>
@@ -34,7 +34,7 @@ function Next({ poke }: NavButtonProps) {
   return (
     <Link
       href={`/pokedex/${no}/${species}`}
-      className="flex flex-row-reverse rounded-lg bg-white hover:bg-neutral-300/40 transition-colors duration-200 py-2 sm:px-2"
+      className="flex flex-row-reverse rounded-lg hover:bg-neutral-300/40 transition-colors duration-200 py-2 sm:px-2"
       prefetch
     >
       <div className="flex justify-center items-center pl-1 sm:pl-2">
