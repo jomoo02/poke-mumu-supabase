@@ -12,13 +12,11 @@ export default function Ability({ isHidden, name, flavorText }: AbilityProps) {
       }`}
     >
       <div className="w-[6.75rem] sm:w-[10.5rem] border-r border-slate-300 py-3 px-2 md:px-3 flex flex-col justify-center items-center text-center">
-        <div className="truncate text-zinc-900 font-medium w-full">{name}</div>
-        {isHidden && (
-          <div className="text-sm font-medium text-zinc-800">(숨겨진 특성)</div>
-        )}
+        <div className="truncate text-zinc-950 w-full">{name}</div>
+        {isHidden && <div className="text-sm text-zinc-800">(숨겨진 특성)</div>}
       </div>
 
-      <div className="flex-1 p-3 flex items-center">
+      <div className="flex-1 p-3 sm:p-4 flex items-center">
         <p className="text-pretty text-zinc-950">{flavorText}</p>
       </div>
     </div>
