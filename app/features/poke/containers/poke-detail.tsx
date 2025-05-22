@@ -14,7 +14,7 @@ import EvolutionTree from '../components/evolution';
 // import Location from '../modules/evolution/containers/location';
 // import Moves from '../modules/moves/containers/moves';
 import Moves from '../components/moves';
-import PokedexInfo from '../components/pokedex-infomation';
+import PokedexInformation from '../components/pokedex-information';
 interface PokeDetailProps {
   pokeKey: string;
 }
@@ -64,7 +64,7 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
           pokedexInfo={data.pokedex_info}
           sprite={sprite}
         />
-        <PokedexInfo pokedexData={pokedexData} sprite={sprite} />
+        <PokedexInformation pokedexData={pokedexData} sprite={sprite} />
 
         <Abilities abilities={poke_ability} />
         <Stats stats={pokeStats} />

@@ -1,7 +1,7 @@
 import PokeTypeBadge from '@/app/components/badge/poke-type';
-import SectionHeader from '../section-header';
 import type { PokedexInfo, PokedexNumber } from './types';
-import { formatData } from './utils';
+import SectionHeader from '../section-header';
+import { formatData } from './lib/format';
 import PokedexImage from './components/pokedex-image';
 import Info from './components/info';
 
@@ -14,15 +14,15 @@ export type PokedexData = {
   pokedexNumbers: PokedexNumber[];
 };
 
-interface PodexInfomationProps {
+interface PodexInformationProps {
   pokedexData: PokedexData;
   sprite: string;
 }
 
-export default function PokedexInfomation({
+export default function PokedexInformation({
   pokedexData,
   sprite,
-}: PodexInfomationProps) {
+}: PodexInformationProps) {
   const {
     name,
     ndex,
@@ -64,7 +64,7 @@ export default function PokedexInfomation({
                   {dex}
                 </span>
                 <span className="mx-1">:</span>
-                <span className="text-[15px] font-medium text-zinc-950">
+                <span className="text-[15px] font-medium text-zinc-900">
                   {dexNumber}
                 </span>
               </p>
