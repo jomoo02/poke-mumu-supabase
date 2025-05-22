@@ -38,7 +38,7 @@ export default function PokedexInfomation({
   return (
     <div>
       <SectionHeader id="pokedex-info" sectionTitle="도감 정보" />
-      <div className="flex flex-col md:flex-row border border-slate-300 p-1 md:p-6 lg:p-10 bg-white rounded-lg shadow-md shadow-slate-300">
+      <div className="flex flex-col md:flex-row border border-slate-300 px-1 py-6 md:px-6 lg:p-10 bg-white rounded-lg shadow-md shadow-slate-300">
         <PokedexImage src={src} alt={name} />
         <div className="flex-1 mx-4 xl:mx-14 2xl:ml-36">
           <Info subject="도감번호">No.{ndex}</Info>
