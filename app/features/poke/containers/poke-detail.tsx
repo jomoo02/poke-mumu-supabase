@@ -14,7 +14,7 @@ import EvolutionTree from '../components/evolution';
 // import Location from '../modules/evolution/containers/location';
 // import Moves from '../modules/moves/containers/moves';
 import Moves from '../components/moves';
-
+import PokedexInfo from '../components/pokedex-infomation';
 interface PokeDetailProps {
   pokeKey: string;
 }
@@ -37,6 +37,15 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
   } = data;
 
   const types = type_2 ? [type_1, type_2] : [type_1];
+
+  const pokedexData = {
+    no: data.no,
+    name_ko: data.name_ko,
+    form: data.form,
+    pokedexNumbers: data.pokedex_number,
+    pokedexInfo: data.pokedex_info,
+    types,
+  };
   // console.log(data.pokedex_info);
   // console.log(data.pokedex_number);
 
@@ -55,6 +64,7 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
           pokedexInfo={data.pokedex_info}
           sprite={sprite}
         />
+        <PokedexInfo pokedexData={pokedexData} sprite={sprite} />
 
         <Abilities abilities={poke_ability} />
         <Stats stats={pokeStats} />
