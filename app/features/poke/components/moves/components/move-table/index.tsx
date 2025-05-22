@@ -87,7 +87,7 @@ export default function MoveTable({
               rows.map((row, index) => (
                 <TableRow key={index} className="h-9">
                   <FirstRowCell method={method} move={row} />
-                  <TableCell className="px-3 text-nowrap text-[15px] text-zinc-950">
+                  <TableCell className="px-3 text-nowrap text-[15px] font-medium text-zinc-950">
                     {row.name}
                   </TableCell>
                   <TableCell

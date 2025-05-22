@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${pretendard.className} `}>
+      <body className={`${pretendard.className} antialiased`}>
         <SWRProvider>
           <AppHeader />
           <div>{modal}</div>
