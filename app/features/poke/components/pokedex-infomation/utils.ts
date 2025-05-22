@@ -29,13 +29,11 @@ const formatPokedexInfo = (pokedexInfo: PokedexInfo | null) => {
 };
 
 const formatPokedexNumbers = (pokedexNumbers: PokedexNumber[]) => {
-  return pokedexNumbers
-    .filter(({ dex_type }) => dex_type !== 'national')
-    .map(({ dex_type, dex_number, id }) => ({
-      id,
-      dex: getPokedexLabelKo(dex_type),
-      dexNumber: formatPokedexNumber(dex_number),
-    }));
+  return pokedexNumbers.map(({ dex_type, dex_number, id }) => ({
+    id,
+    dex: getPokedexLabelKo(dex_type),
+    dexNumber: formatPokedexNumber(dex_number),
+  }));
 };
 
 export const formatData = (data: PokedexData, sprite: string) => {

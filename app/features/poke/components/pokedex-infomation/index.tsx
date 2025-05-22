@@ -41,7 +41,7 @@ export default function PokedexInfomation({
       <div className="flex flex-col md:flex-row border border-slate-300 p-1 md:p-6 lg:p-10 bg-white rounded-lg shadow-md shadow-slate-300">
         <PokedexImage src={src} alt={name} />
         <div className="flex-1 mx-4 xl:mx-14 2xl:ml-36">
-          <Info subject="도감번호">{ndex}</Info>
+          <Info subject="도감번호">No.{ndex}</Info>
           <Info subject="이름">{name}</Info>
           <Info subject="분류">{genera}</Info>
           {form && <Info subject="모습">{form}</Info>}
@@ -60,7 +60,13 @@ export default function PokedexInfomation({
                 key={id}
                 className="flex items-center overflow-hidden p-0.5 text-pretty"
               >
-                {dex} : {dexNumber}
+                <span className="text-zinc-700 font-medium text-[15px]">
+                  {dex}
+                </span>
+                <span className="mx-1">:</span>
+                <span className="text-[15px] font-medium text-zinc-950">
+                  {dexNumber}
+                </span>
               </p>
             ))}
           </Info>
