@@ -16,6 +16,7 @@ import EvolutionTree from '../components/evolution';
 import Moves from '../components/moves';
 import PokedexInformation from '../components/pokedex-information';
 import RestInformation from '../components/rest-information';
+// import SectionContainer from '../components/section-container';
 
 interface PokeDetailProps {
   pokeKey: string;
@@ -75,7 +76,9 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
           effortValues={data.poke_effort_value}
           breeding={data.poke_breeding}
         />
+
         <Abilities abilities={poke_ability} />
+
         <Stats stats={pokeStats} />
 
         <TypeDefense types={types} />

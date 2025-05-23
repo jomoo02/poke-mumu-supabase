@@ -26,13 +26,19 @@ export default function Variety({ name, form, href, formText }: VarietyProps) {
   return (
     <Link
       href={href}
-      className={`px-3 lg:px-3.5 py-1 border-b-2  h-9 bg-white ${isActive ? 'border-blue-400' : 'border-transparent hover:border-slate-400'} text-nowrap c-text-base`}
+      className={`px-3.5 py-1 border-b-2 h-9 ring-offset-1 bg-white outline-none focus-visible:ring-2 ring-zinc-500 ${
+        isActive ? 'border-zinc-900' : 'border-transparent'
+      } text-nowrap font-medium`}
     >
-      <span className={`${isActive ? 'text-blue-600' : 'text-slate-700'}`}>
+      <span
+        className={`${
+          isActive ? 'text-zinc-900' : 'text-zinc-500 hover:text-zinc-900'
+        }`}
+      >
         {name}
       </span>
       {formText && (
-        <span className={`pl-0.5 ${isActive ? 'text-blue-600' : ''}`}>
+        <span className={`pl-0.5 ${isActive ? 'text-zinc-900' : ''}`}>
           ({formText})
         </span>
       )}

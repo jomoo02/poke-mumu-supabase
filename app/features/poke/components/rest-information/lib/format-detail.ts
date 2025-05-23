@@ -6,7 +6,7 @@ const NULL_CASE_CHAR = '—';
 
 const formatEffortValue = (effortValues: EffortValue[]) =>
   effortValues.map(
-    ({ stat_name, stat_value }) => `${stat_value} ${getStatKo(stat_name)}`,
+    ({ stat_name, stat_value }) => `${getStatKo(stat_name)} : ${stat_value}`,
   );
 
 export const formatDetail = (

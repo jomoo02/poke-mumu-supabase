@@ -17,7 +17,7 @@ export default function Moves({ pokeMoves }: MovesProps) {
   return (
     <div>
       <SectionHeader id="move" sectionTitle="기술" />
-      <div className="border border-slate-300 bg-white rounded-lg shadow-md shadow-slate-300 p-4 pt-1 lg:px-10">
+      <div className="b">
         <div className="my-4">
           <h3 className="text-zinc-950 text-lg font-semibold my-2">세대</h3>
           <div className="flex">

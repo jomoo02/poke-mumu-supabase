@@ -11,7 +11,7 @@ const pokedexLabelListKoMap: Record<string, string> = {
   'updated-johto': '하트골드/소울실버',
   'original-unova': '블랙/화이트',
   'updated-unova': '블랙2/화이트2',
-  'kalos-central': 'X/Y - 셑트럴칼로스',
+  'kalos-central': 'X/Y - 센트럴칼로스',
   'kalos-coastal': 'X/Y - 코스트칼로스',
   'kalos-mountain': 'X/Y - 마운틴칼로스',
   'updated-hoenn': '오메가루비/알파사파이어',

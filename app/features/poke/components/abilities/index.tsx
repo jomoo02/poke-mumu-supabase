@@ -1,5 +1,5 @@
 import SectionHeader from '../section-header';
-import Ability from './components/ability';
+import AbilityV2 from './components/ability-v2';
 import { formatPokeAbilities } from './lib/format-abilities';
 
 interface AbilitiesProps {
@@ -23,7 +23,17 @@ export default function Abilities({ abilities }: AbilitiesProps) {
   return (
     <div>
       <SectionHeader id="ability" sectionTitle="특성" />
-      <div className="border border-slate-300 bg-white rounded-lg shadow-md shadow-slate-300 grid divide-y divide-slate-300">
+      <div className="px-1">
+        {formattedAbilities.map(({ id, name, flavorText, isHidden }) => (
+          <AbilityV2
+            key={id}
+            name={name}
+            flavorText={flavorText}
+            isHidden={isHidden}
+          />
+        ))}
+      </div>
+      {/* <div className="border border-slate-300 bg-white rounded-lg shadow-md shadow-slate-300 grid divide-y divide-slate-300">
         {formattedAbilities.map(({ id, name, flavorText, isHidden }) => (
           <Ability
             key={id}
@@ -32,7 +42,8 @@ export default function Abilities({ abilities }: AbilitiesProps) {
             isHidden={isHidden}
           />
         ))}
-      </div>
+
+      </div> */}
     </div>
   );
 }

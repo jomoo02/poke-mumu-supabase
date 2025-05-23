@@ -1,6 +1,7 @@
 import type { Detail, EffortValue } from '../types';
 import { formatDetail } from '../lib/format-detail';
-import Info from './info';
+import InfoCard from './info-card';
+import InfoCardItem from './info-card-item';
 
 interface DetailInfoProps {
   detail: Detail | null;
@@ -20,20 +21,16 @@ export default function DetailInfo({ detail, effortValues }: DetailInfoProps) {
   const atLevel100Text = 'Lv.1 -> Lv.100';
 
   return (
-    <div className="lg:p-2">
-      <h3 className="text-xl font-bold text-zinc-950 pb-2 text-center">
-        훈련 정보
-      </h3>
-      <div className="px-1">
-        <Info subject="포획률">{captureRate}</Info>
-        <Info subject="노력치">
+    <div className="my-3 lg:col-start-3">
+      <InfoCard title="훈련 정보">
+        <InfoCardItem subject="포획률">{captureRate}</InfoCardItem>
+        <InfoCardItem subject="노력치">
           {formattedEffortValues.map((v) => (
             <div key={v}>{v}</div>
           ))}
-        </Info>
-
-        <Info subject="기초 친밀도">{baseFriendShip}</Info>
-        <Info subject="성장">
+        </InfoCardItem>
+        <InfoCardItem subject="기초 친밀도">{baseFriendShip}</InfoCardItem>
+        <InfoCardItem subject="성장">
           <div>
             <div className="truncate">{growthRate}</div>
             <p className="p-px text-[15px]">
@@ -43,8 +40,8 @@ export default function DetailInfo({ detail, effortValues }: DetailInfoProps) {
               {atLevel100Text} : {expPointAtLevel100.toLocaleString()}
             </p>
           </div>
-        </Info>
-      </div>
+        </InfoCardItem>
+      </InfoCard>
     </div>
   );
 }

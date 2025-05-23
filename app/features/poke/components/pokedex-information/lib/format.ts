@@ -2,7 +2,7 @@ import { formatPokedexNumber } from '@/app/utils/format-pokdex-number';
 import { getInfoPokeSpriteSrc } from '@/app/utils/sprite';
 import type { PokedexData } from '..';
 import type { PokedexInfo, PokedexNumber } from '../types';
-import { getPokedexLabelKo } from './pokdex-number';
+import { getPokedexLabelKo } from './pokdex-label';
 
 const formatMeasurement = (value: number, unit: string) => {
   const meters = value / 10;

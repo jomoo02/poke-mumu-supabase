@@ -27,7 +27,7 @@ export default function VarietyList({
   );
 
   return (
-    <div className="my-4 flex gap-x-2">
+    <div className="flex gap-x-2">
       {formattedVarietyList.map(({ pokeKey, name, href, formText, form }) => (
         <Variety
           key={pokeKey}
