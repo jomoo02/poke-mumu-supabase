@@ -23,5 +23,5 @@ export default function Title({ method, machineType }: TitleProps) {
     titleMap[method] ||
     titleMap.default;
 
-  return <h3 className="font-semibold my-2 text-lg text-zinc-950">{title}</h3>;
+  return <h3 className="font-semibold my-2 text-lg text-zinc-900">{title}</h3>;
 }

@@ -38,7 +38,7 @@ export default function PokedexInformation({
   return (
     <div>
       <SectionHeader id="pokedex-info" sectionTitle="도감 정보" />
-      <div className="flex gap-x-11 flex-col md:flex-row md:justify-around px-1 py-6 md:px-6 2xl:px-10 border border-slate-300 bg-white rounded-lg shadow-md shadow-slate-300">
+      <div className="flex gap-x-11 flex-col md:flex-row md:justify-around p-4 lg:p-5.5 border border-slate-300 bg-white rounded-lg shadow-md shadow-slate-300">
         <PokedexImage src={src} alt={name} />
         <div className="">
           <Info subject="도감번호">No.{ndex}</Info>
@@ -58,7 +58,7 @@ export default function PokedexInformation({
             {pokedexNumbers.map(({ dex, dexNumber, id }) => (
               <p
                 key={id}
-                className="flex items-center overflow-hidden p-0.5 text-pretty text-[15px] text-zinc-800 font-medium"
+                className="flex items-center overflow-hidden p-0.5 text-pretty text-[15px]"
               >
                 {`${dex} : ${dexNumber}`}
               </p>

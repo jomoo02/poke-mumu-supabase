@@ -3,7 +3,7 @@ import { fetchPoke } from '../api/poke';
 import Stats from '../components/stats';
 // import TypeDefense from '../modules/type-defense';
 import TypeDefense from '../components/type-defense';
-import Information from '../components/information';
+// import Information from '../components/information';
 
 // import SectionHeader from '../components/section-header';
 // import Abilities from '../modules/abilities/containers/abilities';
@@ -15,6 +15,8 @@ import EvolutionTree from '../components/evolution';
 // import Moves from '../modules/moves/containers/moves';
 import Moves from '../components/moves';
 import PokedexInformation from '../components/pokedex-information';
+import RestInformation from '../components/rest-information';
+
 interface PokeDetailProps {
   pokeKey: string;
 }
@@ -52,20 +54,27 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
   return (
     <div className="flex w-full">
       <div className="w-full">
-        <Information
-          types={types}
-          ndex={data.no}
-          name={data.name_ko}
-          form={data.form}
-          pokedexNumbers={data.pokedex_number}
-          effortValue={data.poke_effort_value}
-          detail={data.poke_detail}
-          breeding={data.poke_breeding}
-          pokedexInfo={data.pokedex_info}
-          sprite={sprite}
-        />
-        <PokedexInformation pokedexData={pokedexData} sprite={sprite} />
+        {/* <div className="hidden">
+          <Information
+            types={types}
+            ndex={data.no}
+            name={data.name_ko}
+            form={data.form}
+            pokedexNumbers={data.pokedex_number}
+            effortValue={data.poke_effort_value}
+            detail={data.poke_detail}
+            breeding={data.poke_breeding}
+            pokedexInfo={data.pokedex_info}
+            sprite={sprite}
+          />
+        </div> */}
 
+        <PokedexInformation pokedexData={pokedexData} sprite={sprite} />
+        <RestInformation
+          detail={data.poke_detail}
+          effortValues={data.poke_effort_value}
+          breeding={data.poke_breeding}
+        />
         <Abilities abilities={poke_ability} />
         <Stats stats={pokeStats} />
 

@@ -29,7 +29,7 @@ export default function TableHeaderCell({
           onClick={handleOnClick}
           className={`flex w-full h-full hover:bg-zinc-100 rounded-sm px-2 items-center justify-between cursor-pointer focus:outline-none focus-visible:inset-ring ring-slate-500`}
         >
-          <span className="font-medium text-zinc-950 text-[15px]">
+          <span className="font-medium text-zinc-900 text-[15px]">
             {children}
           </span>
           <SortIcon isSelect={isSorted} direction={direction} color="#404b5d" />

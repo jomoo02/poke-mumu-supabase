@@ -18,7 +18,7 @@ export default function OptionBarItem({ value, children }: OptionBarItemProps) {
         } `}
         type="button"
       >
-        <span className="font-medium text-[15px] text-nowrap text-zinc-950">
+        <span className="font-medium text-[15px] text-nowrap text-zinc-900">
           {children}
         </span>
       </button>

@@ -39,14 +39,14 @@ export function FirstHeaderCell({ method, machineType }: FirstHeaderCellProps) {
 export function FirstRowCell({ method, move }: FirstRowCellProps) {
   if (method === 'level_up') {
     return (
-      <TableCell className="px-3 text-nowrap text-[15px] text-zinc-950">
+      <TableCell className="px-3 text-nowrap text-[15px] text-zinc-900">
         {move.level}
       </TableCell>
     );
   }
   if (method === 'machine') {
     return (
-      <TableCell className="px-3 text-nowrap text-[15px] text-zinc-950">
+      <TableCell className="px-3 text-nowrap text-[15px] text-zinc-900">
         {move.machine_number}
       </TableCell>
     );

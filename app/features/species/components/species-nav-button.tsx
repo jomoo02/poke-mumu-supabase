@@ -19,7 +19,7 @@ function Prev({ poke }: NavButtonProps) {
       prefetch
     >
       <CaretLeftIcon size="1.1rem" color="#09090b" />
-      <p className="text-[15px] font-medium text-zinc-950 px-1">
+      <p className="text-[15px] font-medium text-zinc-900 px-1">
         {`${formatPokedexNumber(no)} ${name}`}
       </p>
     </Link>
@@ -36,7 +36,7 @@ function Next({ poke }: NavButtonProps) {
       prefetch
     >
       <CaretRightIcon size="1.1rem" color="#09090b" />
-      <p className="text-[15px] font-medium text-zinc-950 px-1 ">
+      <p className="text-[15px] font-medium text-zinc-900 px-1 ">
         {`${formatPokedexNumber(no)} ${name}`}
       </p>
     </Link>
