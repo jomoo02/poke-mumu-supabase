@@ -19,7 +19,7 @@ export default function Moves({ pokeMoves }: MovesProps) {
       <SectionHeader id="move" sectionTitle="기술" />
       <div className="b">
         <div className="my-4">
-          <h3 className="text-zinc-950 text-lg font-semibold my-2">세대</h3>
+          <h3 className="text-zinc-900 text-lg font-semibold my-2">세대</h3>
           <div className="flex">
             <OptionGen
               gens={gens}

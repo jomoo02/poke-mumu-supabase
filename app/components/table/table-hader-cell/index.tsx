@@ -35,7 +35,7 @@ export default function TableHeaderCell({
           <SortIcon isSelect={isSorted} direction={direction} color="#404b5d" />
         </button>
       ) : (
-        <div className="flex justify-center items-center text-[15px] font-medium text-zinc-950 h-full w-full">
+        <div className="flex justify-center items-center text-[15px] font-medium text-zinc-900 h-full w-full">
           {children}
         </div>
       )}

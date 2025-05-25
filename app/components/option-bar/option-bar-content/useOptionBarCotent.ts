@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
   useContainerRef,
   useItem,
@@ -8,9 +8,14 @@ import {
 export default function useOptionBarContent() {
   const { itemRefs } = useItem();
   const { selectedValue } = useSelectedValue();
-
   const { containerRef } = useContainerRef();
 
+  const [indicatorStyle, setIndicatorStyle] = useState({
+    left: 0,
+    width: 0,
+  });
+
+  // active 아이템 스크롤 처리
   useEffect(() => {
     if (selectedValue && itemRefs.current && containerRef.current) {
       const ref = itemRefs.current.get(selectedValue);
@@ -40,5 +45,23 @@ export default function useOptionBarContent() {
     }
   }, [selectedValue, containerRef, itemRefs]);
 
-  return { containerRef };
+  // indicatorStyle 계산
+  useEffect(() => {
+    if (selectedValue && itemRefs.current && containerRef.current) {
+      const ref = itemRefs.current.get(selectedValue);
+      const container = containerRef.current;
+
+      if (ref && container) {
+        const itemRect = ref.getBoundingClientRect();
+        const containerRect = container.getBoundingClientRect();
+
+        setIndicatorStyle({
+          left: itemRect.left - containerRect.left + container.scrollLeft,
+          width: itemRect.width,
+        });
+      }
+    }
+  }, [selectedValue, containerRef, itemRefs]);
+
+  return { containerRef, indicatorStyle };
 }

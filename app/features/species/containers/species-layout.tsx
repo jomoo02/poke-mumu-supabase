@@ -5,8 +5,8 @@ import {
 } from '../api/species';
 import SpeciesNav from '../components/species-nav';
 import SpeciesTitle from '../components/species-title';
-import VarietyList from '../components/variety-list';
-
+// import VarietyList from '../components/variety-list';
+import VarietyList from '../components/variety/variety-list';
 interface SpeciesLayoutProps {
   ndex: number;
 }
@@ -22,7 +22,9 @@ export default async function SpeciesLayout({ ndex }: SpeciesLayoutProps) {
     <div className="">
       <SpeciesNav speciesNav={speciesNav} />
       <SpeciesTitle pokeName={speciesTitle.name_ko} no={speciesTitle.no} />
-      <VarietyList ndex={ndex} speciesVarieties={speciesVarieties} />
+      {speciesVarieties && (
+        <VarietyList ndex={ndex} speciesVarieties={speciesVarieties} />
+      )}
     </div>
   );
 }

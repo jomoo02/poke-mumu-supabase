@@ -5,7 +5,7 @@ interface TableHeaderProps {
 export default function TableHeader({ children }: TableHeaderProps) {
   return (
     <thead>
-      <tr className="text-nowrap border-b border-slate-300">{children}</tr>
+      <tr className="text-nowrap border-b border-zinc-200">{children}</tr>
     </thead>
   );
 }

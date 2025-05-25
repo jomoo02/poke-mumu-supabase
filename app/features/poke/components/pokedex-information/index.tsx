@@ -37,7 +37,7 @@ export default function PokedexInformation({
 
   return (
     <div>
-      <SectionHeader id="pokedex-info" sectionTitle="도감 정보" />
+      <SectionHeader id="pokedex-info" sectionTitle="도감 정보" isFirst />
       <div className="flex gap-x-11 flex-col lg:flex-row lg:justify-around p-4">
         <PokedexImage src={src} alt={name} />
         <div>
