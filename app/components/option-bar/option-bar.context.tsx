@@ -4,9 +4,10 @@ interface OptionBarContextValue {
   selectedValue: string | undefined;
   onSelect: (value: string) => void;
   items: string[];
-  itemRefs: RefObject<Map<string, HTMLButtonElement | null>>;
+  itemRefs: RefObject<Map<string, HTMLDivElement | null>>;
   containerRef: RefObject<HTMLDivElement | null>;
-  registerItem: (value: string, ref: HTMLButtonElement | null) => void;
+  registerItem: (value: string, ref: HTMLDivElement | null) => void;
+  layoutId: string;
 }
 
 const OptionBarContext = createContext<OptionBarContextValue | null>(null);
@@ -46,6 +47,12 @@ export function useContainerRef() {
   return { containerRef };
 }
 
+export function useLayoutId() {
+  const { layoutId } = useOptionBarContext();
+
+  return { layoutId };
+}
+
 export function OptionBarProvider({
   children,
   selectedValue,
@@ -54,6 +61,7 @@ export function OptionBarProvider({
   registerItem,
   itemRefs,
   containerRef,
+  layoutId,
 }: OptionBarContextValue & { children: React.ReactNode }) {
   const value = useMemo(
     () => ({
@@ -64,6 +72,7 @@ export function OptionBarProvider({
       registerItem,
       itemRefs,
       containerRef,
+      layoutId,
     }),
     [
       children,
@@ -73,6 +82,7 @@ export function OptionBarProvider({
       registerItem,
       itemRefs,
       containerRef,
+      layoutId,
     ],
   );
 

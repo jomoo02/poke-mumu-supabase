@@ -8,11 +8,11 @@ export default function useOptionBar(
   const [selectedValue, setSelectedValue] = useState<string | undefined>(
     initialValue,
   );
-  const itemRefs = useRef<Map<string, HTMLButtonElement | null>>(new Map());
+  const itemRefs = useRef<Map<string, HTMLDivElement | null>>(new Map());
   const containerRef = useRef<HTMLDivElement>(null);
 
   const registerItem = useCallback(
-    (value: string, ref: HTMLButtonElement | null) => {
+    (value: string, ref: HTMLDivElement | null) => {
       setItems((prev) => {
         if (!prev.includes(value)) {
           return [...prev, value];

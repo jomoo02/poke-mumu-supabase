@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import {
   useContainerRef,
   useItem,
@@ -9,11 +9,6 @@ export default function useOptionBarContent() {
   const { itemRefs } = useItem();
   const { selectedValue } = useSelectedValue();
   const { containerRef } = useContainerRef();
-
-  const [indicatorStyle, setIndicatorStyle] = useState({
-    left: 0,
-    width: 0,
-  });
 
   // active 아이템 스크롤 처리
   useEffect(() => {
@@ -28,16 +23,16 @@ export default function useOptionBarContent() {
         const containerWidth = container.offsetWidth;
 
         // 아이템이 왼쪽 바깥에 있는 경우
-        if (itemLeft < containerScrollLeft) {
+        if (itemLeft - 20 < containerScrollLeft) {
           container.scrollTo({
-            left: itemLeft,
+            left: itemLeft - itemWidth,
             behavior: 'smooth',
           });
         }
         // 아이템이 오른쪽 바깥에 있는 경우
         else if (itemLeft + itemWidth > containerScrollLeft + containerWidth) {
           container.scrollTo({
-            left: itemLeft - containerWidth + itemWidth,
+            left: itemLeft - containerWidth + itemWidth * 2,
             behavior: 'smooth',
           });
         }
@@ -45,23 +40,5 @@ export default function useOptionBarContent() {
     }
   }, [selectedValue, containerRef, itemRefs]);
 
-  // indicatorStyle 계산
-  useEffect(() => {
-    if (selectedValue && itemRefs.current && containerRef.current) {
-      const ref = itemRefs.current.get(selectedValue);
-      const container = containerRef.current;
-
-      if (ref && container) {
-        const itemRect = ref.getBoundingClientRect();
-        const containerRect = container.getBoundingClientRect();
-
-        setIndicatorStyle({
-          left: itemRect.left - containerRect.left + container.scrollLeft,
-          width: itemRect.width,
-        });
-      }
-    }
-  }, [selectedValue, containerRef, itemRefs]);
-
-  return { containerRef, indicatorStyle };
+  return { containerRef };
 }

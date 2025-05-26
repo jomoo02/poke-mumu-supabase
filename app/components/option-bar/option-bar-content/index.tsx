@@ -1,24 +1,19 @@
-import { motion } from 'framer-motion';
 import useOptionBarCotent from './useOptionBarCotent';
 
 interface OptionBarContentProps {
+  id: string;
   children: React.ReactNode;
 }
 
 export default function OptionBarContent({ children }: OptionBarContentProps) {
-  const { containerRef, indicatorStyle } = useOptionBarCotent();
+  const { containerRef } = useOptionBarCotent();
 
   return (
     <div
       ref={containerRef}
-      className="relative border-zinc-200 border rounded-md p-1 overflow-auto scroll-smooth"
+      className="border-zinc-200 border rounded-md p-1 overflow-x-auto overflow-y-hidden scroll-smooth flex space-x-1"
     >
-      <motion.div
-        className="absolute bg-zinc-100 rounded-md z-0 border-0 h-[30px]"
-        animate={indicatorStyle}
-        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-      />
-      <div className="flex">{children}</div>
+      {children}
     </div>
   );
 }
