@@ -27,7 +27,7 @@ export default function OptionGen({
       onSelect={handleOnSelect}
       layoutId="gen-indicator"
     >
-      <OptionBarContent id="gen">
+      <OptionBarContent>
         {genStrigList.map((gen) => (
           <OptionBarItem key={gen} value={gen}>
             {gen}th

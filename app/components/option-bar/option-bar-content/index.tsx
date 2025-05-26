@@ -1,7 +1,6 @@
 import useOptionBarCotent from './useOptionBarCotent';
 
 interface OptionBarContentProps {
-  id: string;
   children: React.ReactNode;
 }
 
