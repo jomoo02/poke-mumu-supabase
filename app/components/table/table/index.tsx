@@ -6,6 +6,7 @@ interface TableProps<T> {
   sortFn?: (a: T, b: T, headerKey: string) => number;
   children: React.ReactNode;
   initialHeaderKey?: string;
+  resetTrigger?: string;
 }
 
 export default function Table<T extends TableRow>({
@@ -13,9 +14,10 @@ export default function Table<T extends TableRow>({
   sortFn,
   children,
   initialHeaderKey,
+  resetTrigger,
 }: TableProps<T>) {
   const { sortState, setSortState, targetHeaderKey, setTargetHeaderKey } =
-    useTable(initialHeaderKey);
+    useTable(initialHeaderKey, resetTrigger);
 
   return (
     <TableProvider
@@ -28,7 +30,7 @@ export default function Table<T extends TableRow>({
     >
       <div className="flex">
         <div className="border border-zinc-200 rounded-md overflow-auto">
-          <table className=" table-fixed">{children}</table>
+          <table className="table-fixed">{children}</table>
         </div>
       </div>
     </TableProvider>

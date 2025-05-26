@@ -14,10 +14,10 @@ export function VarietyItem({
   innerRef,
 }: VarietyItemProps) {
   return (
-    <div ref={innerRef} data-active={isActive} className="inline-block px-6">
+    <div ref={innerRef} data-active={isActive} className="h-10">
       <Link
         href={href}
-        className={`font-medium ${
+        className={`font-medium  w-full h-full flex items-center px-3.5 ${
           isActive ? 'text-zinc-900' : 'text-zinc-500 hover:text-zinc-900'
         }`}
       >

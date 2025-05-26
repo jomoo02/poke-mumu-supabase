@@ -3,7 +3,6 @@ import {
   useOnSelect,
   useItem,
   useSelectedValue,
-  useLayoutId,
   useContainerRef,
 } from '../option-bar.context';
 
@@ -12,7 +11,6 @@ export default function useOptionBarItem(value: string) {
   const { onSelect } = useOnSelect();
   const { registerItem } = useItem();
   const { selectedValue } = useSelectedValue();
-  const { layoutId } = useLayoutId();
   const { containerRef } = useContainerRef();
 
   const isSelected = selectedValue === value;
@@ -29,7 +27,6 @@ export default function useOptionBarItem(value: string) {
     isSelected,
     handleOnClick,
     itemRef,
-    layoutId,
     containerRef,
   };
 }

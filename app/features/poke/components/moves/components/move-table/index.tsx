@@ -17,6 +17,7 @@ interface MoveTableProps {
   method: string;
   moves: PokeMove[];
   machineType?: MachineType;
+  versionGroup: string;
 }
 
 const setInitHeaderKey = (method: string) => {
@@ -33,8 +34,10 @@ export default function MoveTable({
   method,
   moves,
   machineType,
+  versionGroup,
 }: MoveTableProps) {
   const initialHeaderKey = setInitHeaderKey(method);
+
   return (
     <div className="overflow-hidden">
       <Title method={method} machineType={machineType} />
@@ -43,6 +46,7 @@ export default function MoveTable({
           tableData={moves}
           initialHeaderKey={initialHeaderKey}
           sortFn={sortMoveTable}
+          resetTrigger={versionGroup}
         >
           <TableHeader>
             <FirstHeaderCell method={method} machineType={machineType} />

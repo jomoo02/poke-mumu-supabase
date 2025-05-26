@@ -11,6 +11,7 @@ export default function OptionBarContent({ children }: OptionBarContentProps) {
     <div
       ref={containerRef}
       className="border-zinc-200 border rounded-md p-1 overflow-x-auto overflow-y-hidden scroll-smooth flex space-x-1"
+      style={{ overflowAnchor: 'none' }}
     >
       {children}
     </div>

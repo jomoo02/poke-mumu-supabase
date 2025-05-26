@@ -5,7 +5,6 @@ import useMoves from './hooks/useMoves';
 import VersionGroup from './components/version-group';
 import SectionHeader from '../section-header';
 import OptionGen from './components/option-gen';
-import { LayoutGroup } from 'framer-motion';
 
 interface MovesProps {
   pokeMoves: PokeMoveTableWithVersion[];
@@ -18,20 +17,15 @@ export default function Moves({ pokeMoves }: MovesProps) {
   return (
     <div>
       <SectionHeader id="move" sectionTitle="기술" />
-      <LayoutGroup>
-        <div className="my-4">
-          <h3 className="text-zinc-900 text-lg font-semibold my-2">세대</h3>
-          <div className="flex">
-            <OptionGen
-              gens={gens}
-              targetGen={targetGen}
-              handleTargetGen={handleTargetGen}
-            />
-          </div>
-
-          <VersionGroup key={targetGen} moves={targetGenMoves} />
-        </div>
-      </LayoutGroup>
+      <div className="my-4">
+        <h3 className="text-zinc-900 text-lg font-semibold my-2">세대</h3>
+        <OptionGen
+          gens={gens}
+          targetGen={targetGen}
+          handleTargetGen={handleTargetGen}
+        />
+        <VersionGroup key={targetGen} moves={targetGenMoves} />
+      </div>
     </div>
   );
 }

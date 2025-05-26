@@ -4,14 +4,12 @@ import { OptionBarProvider } from '../option-bar.context';
 interface OptionBarProps {
   initialValue?: string;
   onSelect?: (value: string) => void;
-  layoutId: string;
   children: React.ReactNode;
 }
 
 export default function OptionBar({
   initialValue,
   onSelect,
-  layoutId,
   children,
 }: OptionBarProps) {
   const {
@@ -31,7 +29,6 @@ export default function OptionBar({
       items={items}
       itemRefs={itemRefs}
       containerRef={containerRef}
-      layoutId={layoutId}
     >
       {children}
     </OptionBarProvider>

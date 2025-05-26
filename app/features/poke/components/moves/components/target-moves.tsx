@@ -7,16 +7,25 @@ interface TargetMovesProps {
     method: string;
     moves: PokeMove[];
   }[];
+  versionGroup: string;
 }
 
-export default function TatgetMoves({ targetMoves }: TargetMovesProps) {
+export default function TargetMoves({
+  targetMoves,
+  versionGroup,
+}: TargetMovesProps) {
   const { moves, machineMoves } = useTargetMoves(targetMoves);
 
   return (
     <div className="flex flex-col gap-y-10 w-full my-10">
       <div className="flex flex-col gap-y-10 overflow-auto">
         {moves.map(({ method, moves }) => (
-          <MoveTable key={method} method={method} moves={moves} />
+          <MoveTable
+            key={method}
+            method={method}
+            moves={moves}
+            versionGroup={versionGroup}
+          />
         ))}
       </div>
 
@@ -27,6 +36,7 @@ export default function TatgetMoves({ targetMoves }: TargetMovesProps) {
             method={method}
             moves={moves}
             machineType={machineType}
+            versionGroup={versionGroup}
           />
         ))}
       </div>

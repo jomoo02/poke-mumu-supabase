@@ -33,18 +33,16 @@ export default function OptionVersionGroup({
   };
 
   return (
-    <OptionBar
-      initialValue={targetVersionGroup}
-      onSelect={handleOnSelect}
-      layoutId="version-group-indicator"
-    >
-      <OptionBarContent>
-        {versionList.map(({ versionGroup, content }) => (
-          <OptionBarItem key={versionGroup} value={versionGroup}>
-            {content}
-          </OptionBarItem>
-        ))}
-      </OptionBarContent>
-    </OptionBar>
+    <div className="flex">
+      <OptionBar initialValue={targetVersionGroup} onSelect={handleOnSelect}>
+        <OptionBarContent>
+          {versionList.map(({ versionGroup, content }) => (
+            <OptionBarItem key={versionGroup} value={versionGroup}>
+              {content}
+            </OptionBarItem>
+          ))}
+        </OptionBarContent>
+      </OptionBar>
+    </div>
   );
 }

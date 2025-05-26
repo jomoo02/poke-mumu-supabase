@@ -22,18 +22,16 @@ export default function OptionGen({
   };
 
   return (
-    <OptionBar
-      initialValue={String(targetGen)}
-      onSelect={handleOnSelect}
-      layoutId="gen-indicator"
-    >
-      <OptionBarContent>
-        {genStrigList.map((gen) => (
-          <OptionBarItem key={gen} value={gen}>
-            {gen}th
-          </OptionBarItem>
-        ))}
-      </OptionBarContent>
-    </OptionBar>
+    <div className="flex">
+      <OptionBar initialValue={String(targetGen)} onSelect={handleOnSelect}>
+        <OptionBarContent>
+          {genStrigList.map((gen) => (
+            <OptionBarItem key={gen} value={gen}>
+              {gen}th
+            </OptionBarItem>
+          ))}
+        </OptionBarContent>
+      </OptionBar>
+    </div>
   );
 }
