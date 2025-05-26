@@ -6,17 +6,15 @@ interface OptionBarItemProps {
 }
 
 export default function OptionBarItem({ value, children }: OptionBarItemProps) {
-  const { handleOnClick, itemRef, isSelected, layoutId, containerRef } =
+  const { handleOnClick, itemRef, isSelected, layoutId } =
     useOptionBarItem(value);
 
   return (
     <div className="relative" ref={itemRef}>
       {isSelected && (
         <motion.div
-          initial={false}
           layoutId={layoutId}
           className="absolute inset-0 bg-zinc-100 rounded-md z-0"
-          viewport={{ root: containerRef }}
           transition={{
             type: 'spring',
             stiffness: 300,
