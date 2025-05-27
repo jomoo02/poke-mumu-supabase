@@ -33,17 +33,6 @@ export default function Abilities({ abilities }: AbilitiesProps) {
           />
         ))}
       </div>
-      {/* <div className="border border-slate-300 bg-white rounded-lg shadow-md shadow-slate-300 grid divide-y divide-slate-300">
-        {formattedAbilities.map(({ id, name, flavorText, isHidden }) => (
-          <Ability
-            key={id}
-            name={name}
-            flavorText={flavorText}
-            isHidden={isHidden}
-          />
-        ))}
-
-      </div> */}
     </div>
   );
 }

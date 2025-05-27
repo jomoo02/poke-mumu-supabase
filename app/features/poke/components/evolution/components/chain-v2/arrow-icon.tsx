@@ -7,7 +7,7 @@ interface ArrowIconProps {
 
 export default function ArrowIcon({ maxWidth = 1 }: ArrowIconProps) {
   const color = '#1d293d';
-  const size = '27px';
+  const size = '1.75rem';
 
   return (
     <>

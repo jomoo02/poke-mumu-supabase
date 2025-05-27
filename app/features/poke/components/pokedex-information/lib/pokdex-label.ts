@@ -16,7 +16,18 @@ const pokedexLabelListKoMap: Record<string, string> = {
   'kalos-mountain': 'X/Y - 마운틴칼로스',
   'updated-hoenn': '오메가루비/알파사파이어',
   'original-alola': '썬/문',
+
+  'original-melemele': '썬/문 - 멜레멜레',
+  'original-akala': '썬/문 - 아칼라',
+  'original-ulaula': '썬/문 - 울라울라',
+  'original-poni': '썬/문 - 포니',
+
   'updated-alola': '울트라썬/울트라문',
+  'updated-melemele': '울트라썬/울트라문 - 멜레멜레',
+  'updated-akala': '울트라썬/울트라문 - 아칼라',
+  'updated-ulaula': '울트라썬/울트라문 - 울라울라',
+  'updated-poni': '울트라썬/울트라문 - 포니',
+
   'letsgo-kanto': '레츠고피카츄/레츠고이브이',
   galar: '소드/실드 - 가라르',
   'isle-of-armor': '소드/실드 - 갑옷섬',

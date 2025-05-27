@@ -7,7 +7,7 @@ type PokeAbilityData = {
   };
 }[];
 
-export function formatPokeAbilities(abilities: PokeAbilityData) {
+export const formatPokeAbilities = (abilities: PokeAbilityData) => {
   const formattedAbilities = abilities
     .map(({ slot, ability }) => {
       const { id, name_ko, flavor_text } = ability;
@@ -23,4 +23,4 @@ export function formatPokeAbilities(abilities: PokeAbilityData) {
     .sort((a, b) => a.slot - b.slot);
 
   return formattedAbilities;
-}
+};

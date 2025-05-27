@@ -13,7 +13,7 @@ export function HeldItem({ value }: ConditionComponentProps) {
   return (
     <>
       <ItemLinkWithParticle item={item} />
-      지닌채
+      <span>지닌채</span>
     </>
   );
 }

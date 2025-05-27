@@ -58,7 +58,7 @@ export const getAffectionText = (value: ConditionValue): ConditionText => {
 };
 
 export const getBeautyText = (value: ConditionValue): ConditionText => {
-  return `아름다움 수치 MAX(${value}) 상태에서`;
+  return `아름다움 수치 ${value} 상태에서`;
 };
 
 export const getHappinessText = (value: ConditionValue): ConditionText => {

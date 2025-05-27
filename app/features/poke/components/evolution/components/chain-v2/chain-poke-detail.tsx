@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import type { Detail } from '../../types/evolution';
-import { useChainMaxWidth, useChainMaxDepth } from './chain.context';
+// import { useChainMaxWidth, useChainMaxDepth } from './chain.context';
 import ConditionList from '../conditions';
 import Trigger from './trigger';
 import ArrowIcon from './arrow-icon';
@@ -12,8 +12,8 @@ interface ChainPokeDetailProps {
 export default function ChainPokeDetail({
   conditionDetails,
 }: ChainPokeDetailProps) {
-  const chainMaxWidth = useChainMaxWidth();
-  const chainMaxDepth = useChainMaxDepth();
+  // const chainMaxWidth = useChainMaxWidth();
+  // const chainMaxDepth = useChainMaxDepth();
 
   const widthVariants: Record<number, string> = {
     2: 'w-full',
@@ -31,13 +31,13 @@ export default function ChainPokeDetail({
     return null;
   }
 
-  const width = widthVariants[chainMaxWidth] || widthVariants[0];
-  console.log(width, chainMaxWidth);
-  const height = heightVariants[chainMaxDepth] || heightVariants[0];
+  // const width = widthVariants[chainMaxWidth] || widthVariants[0];
+  // console.log(width, chainMaxWidth);
+  // const height = heightVariants[chainMaxDepth] || heightVariants[0];
 
   return (
     <div
-      className={`flex flex-col items-center justify-center px-5 sm:px-1.5 lg:px-4 ${width} ${height}`}
+      className={`flex flex-col items-center justify-center px-5 sm:px-1.5 lg:px-4`}
     >
       <div className="text-[15px] text-zinc-900 text-center break-words space-x-1 w-full xl:px-4">
         {conditionDetails.map(({ trigger, condition }, index) => (
@@ -53,7 +53,7 @@ export default function ChainPokeDetail({
         ))}
       </div>
       <div className="flex justify-center mt-2 md:mt-0.5">
-        <ArrowIcon maxWidth={chainMaxWidth} />
+        <ArrowIcon maxWidth={1} />
       </div>
     </div>
   );

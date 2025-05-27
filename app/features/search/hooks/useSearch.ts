@@ -4,8 +4,11 @@ import { useDebouncedCallback } from 'use-debounce';
 import { checkEmptyText } from '@/app/utils/check-type';
 import { fetchSearchPoke } from '../api/search';
 import useLocalStoragePoke from './useLocalStoragePoke';
+import useLockBodyScroll from '@/app/hooks/useLockBodyScroll';
 
 export default function useSearch() {
+  useLockBodyScroll(true);
+
   const [inputValue, setInputValue] = useState<string>('');
 
   const debounced = useDebouncedCallback((e: ChangeEvent<HTMLInputElement>) => {

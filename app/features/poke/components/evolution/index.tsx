@@ -1,6 +1,7 @@
 import SectionHeader from '../section-header';
 import { fetchEvolution, fetchEvolutionPoke } from './api/evolution';
 import Chain from './components/chain';
+// import Chain2 from './components/chain-v2';
 import type { EvolutionData } from './types/evolution';
 
 interface EvolutionTreeProps {
@@ -43,7 +44,7 @@ export default async function EvolutionTree({
   return (
     <div>
       <SectionHeader id="evolution" sectionTitle="진화" />
-      <div className="border border-slate-300 bg-white rounded-lg shadow-md shadow-slate-300 grid divide-y divide-slate-300">
+      <div className="border border-zinc-300 bg-white rounded-lg shadow-md shadow-zinc-300 grid divide-y divide-zinc-300">
         <Chain
           evolutionData={evolutionData}
           evolutionPokeList={evolutionPokeList}

@@ -17,7 +17,7 @@ export function VarietyItem({
     <div ref={innerRef} data-active={isActive} className="h-10">
       <Link
         href={href}
-        className={`font-medium  w-full h-full flex items-center px-3.5 ${
+        className={`font-medium w-full h-full flex items-center px-3.5 ${
           isActive ? 'text-zinc-900' : 'text-zinc-500 hover:text-zinc-900'
         }`}
       >

@@ -29,8 +29,8 @@ export default function SearchResultPoke({ poke }: SearchResultPokeProps) {
 
   return (
     <Link href={`/pokedex/${no}/${pokeKey}`} onClick={handleLinkOnClick}>
-      <div className="flex w-full h-full items-center overflow-hidden gap-x-1 sm:gap-x-3 px-3 lg:px-5 active:bg-blue-200/50 hover:bg-blue-200/50">
-        <div className="c-text-base w-9">{formatPokedexNumber(no)}</div>
+      <div className="flex w-full h-full items-center overflow-hidden gap-x-1 sm:gap-x-3 px-3 lg:px-5 active:bg-zinc-100/80 hover:bg-zinc-100/80">
+        <div className="text-zinc-900 w-9">{formatPokedexNumber(no)}</div>
         <div className="relative w-[50px] h-[50px] lg:w-[55px] lg:h-[55px] mx-1 lg:mx-2 flex-shrink-0">
           <Image
             src={src}
@@ -43,11 +43,9 @@ export default function SearchResultPoke({ poke }: SearchResultPokeProps) {
           />
         </div>
         <p className="overflow-hidden flex flex-1 flex-col justify-center">
-          <span className="truncate c-text-base font-semibold">{nameKo}</span>
-          <span className="truncate c-text-base text-sm/4 lg:text-sm/4 text-slate-600">
-            {nameEn}
-          </span>
-          <span className="truncate c-text-xs lg:text-[13px] leading-5 text-slate-500 font-semibold">
+          <span className="truncate text-zinc-900">{nameKo}</span>
+          <span className="truncate text-sm/4 text-zinc-900">{nameEn}</span>
+          <span className="truncate text-sm  text-zinc-600 font-medium">
             {form}
           </span>
         </p>

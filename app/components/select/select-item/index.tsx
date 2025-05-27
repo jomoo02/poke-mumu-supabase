@@ -30,7 +30,7 @@ export default function SelectItem({ value, children }: SelectItemProps) {
         isActive ? 'bg-zinc-100' : 'bg-white'
       }`}
     >
-      <span className="truncate text-zinc-950 text-sm">{children}</span>
+      <span className="truncate text-zinc-900 text-sm">{children}</span>
       <div className="min-w-[0.9rem]">
         {isSelected && <CheckIcon size="0.9rem" stroke={2.5} color="#1d293d" />}
       </div>

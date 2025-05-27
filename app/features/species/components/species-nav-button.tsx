@@ -18,7 +18,7 @@ function Prev({ poke }: NavButtonProps) {
       className="flex items-center rounded-lg bg-transparent hover:bg-zinc-100  transition-colors duration-200 p-1 sm:p-2"
       prefetch
     >
-      <CaretLeftIcon size="1.1rem" color="#09090b" />
+      <CaretLeftIcon size="1.1rem" color="#1d293d" />
       <p className="text-[15px] font-medium text-zinc-900 px-1">
         {`${formatPokedexNumber(no)} ${name}`}
       </p>
@@ -35,7 +35,7 @@ function Next({ poke }: NavButtonProps) {
       className="flex items-center flex-row-reverse rounded-lg bg-transparent hover:bg-zinc-100 transition-colors duration-200 p-1 sm:p-2"
       prefetch
     >
-      <CaretRightIcon size="1.1rem" color="#09090b" />
+      <CaretRightIcon size="1.1rem" color="#1d293d" />
       <p className="text-[15px] font-medium text-zinc-900 px-1 ">
         {`${formatPokedexNumber(no)} ${name}`}
       </p>

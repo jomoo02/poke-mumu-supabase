@@ -20,10 +20,10 @@ export default function Search() {
   const { closeSearch } = useCloseSearch();
 
   return (
-    <div className="flex flex-col bg-white h-full lg:border lg:border-zinc-400/80 lg:rounded-xl py-0.5 lg:shadow-lg">
+    <div className="flex flex-col bg-white h-full lg:border lg:border-zinc-400/80 lg:rounded-xl py-0.5 lg:shadow-lg z-20 overflow-hidden">
       <SearchInput onChangeInput={handleInputValue} closeSearch={closeSearch} />
       <div className="h-[calc(100dvh-2.3rem)] flex-1 overflow-y-auto">
-        <div className="px-1.5 lg:px-2 py-1 border-b border-slate-300">
+        <div className="px-1.5 lg:px-2 py-1 border-b border-zinc-200">
           <SearchDescription
             inputValue={inputValue}
             isInputEmpty={isInputEmpty}

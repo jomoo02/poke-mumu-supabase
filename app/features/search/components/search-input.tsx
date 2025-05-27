@@ -18,13 +18,13 @@ export default function SearchInput({
   const handleCloseOnClick = () => closeSearch();
 
   return (
-    <div className="min-h-9 max-h-9 flex justify-center border-b border-slate-300 px-2 gap-x-0.5 items-center">
+    <div className="min-h-9 max-h-9 flex justify-center border-b border-zinc-200 px-2 gap-x-0.5 items-center">
       <SearchIcon size="1.45rem" />
       <input
         type="text"
         onChange={handleInputTextOnChange}
         placeholder={placeholderText}
-        className="flex-1 px-2 py-1 h-8 focus:outline-none c-text-base"
+        className="flex-1 px-2 py-1 h-8 focus:outline-none text-zinc-900"
       />
       <button
         type="button"

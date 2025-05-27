@@ -56,38 +56,5 @@ export default function useActiveHeading(titles: TocItem[]) {
     };
   }, [titles]);
 
-  // useEffect(() => {
-  //   const headings = Array.from(document.querySelectorAll('h2[id]'));
-
-  //   const observer = new IntersectionObserver(
-  //     (entries) => {
-  //       const visibleHeadings = entries
-  //         .filter((entry) => entry.isIntersecting)
-  //         .map((entry) => ({
-  //           id: entry.target.id,
-  //           top: entry.boundingClientRect.top,
-  //         }));
-
-  //       if (visibleHeadings.length > 0) {
-  //         // 가장 위에 위치한 heading을 활성화
-  //         const topHeading = visibleHeadings.reduce((a, b) =>
-  //           a.top < b.top ? a : b,
-  //         );
-  //         setActiveId(topHeading.id);
-  //       }
-  //     },
-  //     {
-  //       rootMargin: '0px 0px -80% 0px', // 상단에서 20% 지점에 도달하면 감지
-  //       threshold: 0,
-  //     },
-  //   );
-
-  //   headings.forEach((heading) => observer.observe(heading));
-
-  //   return () => {
-  //     headings.forEach((heading) => observer.unobserve(heading));
-  //   };
-  // }, [pathname, searchParams, titles]);
-
   return activeId;
 }

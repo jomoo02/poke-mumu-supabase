@@ -33,7 +33,7 @@ export default function VarietyList({
     useUnderlineMotion<HTMLDivElement>(params.form);
 
   return (
-    <div ref={containerRef} className="flex border-b border-slate-200 relative">
+    <div ref={containerRef} className="flex border-b border-zinc-200 relative">
       <div className="flex gap-x-3">
         {formattedVarietyList.map((v, index) => (
           <VarietyItem

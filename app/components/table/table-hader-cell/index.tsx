@@ -27,15 +27,13 @@ export default function TableHeaderCell({
       {sortAble ? (
         <button
           onClick={handleOnClick}
-          className={`flex w-full h-full hover:bg-zinc-100 rounded-sm px-2 items-center justify-between cursor-pointer focus:outline-none focus-visible:inset-ring ring-slate-500`}
+          className={`flex w-full h-full rounded-sm px-2 items-center justify-between cursor-pointer focus:outline-none focus-visible:inset-ring ring-zinc-500`}
         >
-          <span className="font-medium text-zinc-900 text-[15px]">
-            {children}
-          </span>
-          <SortIcon isSelect={isSorted} direction={direction} color="#404b5d" />
+          {children}
+          <SortIcon isSelect={isSorted} direction={direction} color="#1d293d" />
         </button>
       ) : (
-        <div className="flex justify-center items-center text-[15px] font-medium text-zinc-900 h-full w-full">
+        <div className="flex justify-center items-center text-[15px] h-full w-full">
           {children}
         </div>
       )}

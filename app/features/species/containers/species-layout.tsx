@@ -5,8 +5,8 @@ import {
 } from '../api/species';
 import SpeciesNav from '../components/species-nav';
 import SpeciesTitle from '../components/species-title';
-// import VarietyList from '../components/variety-list';
 import VarietyList from '../components/variety/variety-list';
+
 interface SpeciesLayoutProps {
   ndex: number;
 }

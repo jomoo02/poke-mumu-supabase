@@ -16,7 +16,7 @@ export default function Toc() {
           className={`text-[15px] py-px ${
             activeId === id
               ? 'text-zinc-900 font-semibold'
-              : 'text-zinc-500 font-medium hover:text-zinc-800 transition hover:-translate-y-0.5'
+              : 'text-zinc-500 font-medium hover:text-zinc-900 transition hover:-translate-y-0.5'
           }`}
         >
           <Link href={`#${id}`}>{content}</Link>
