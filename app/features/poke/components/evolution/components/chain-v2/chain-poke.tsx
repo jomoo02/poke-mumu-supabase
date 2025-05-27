@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { getHomePokeSprtieSrc } from '@/app/utils/sprite';
-import ChainPokeLink from './chain-poke-link';
-import { useChainMaxWidth, usePokeMap } from './chain.context';
+import PokeLink from './chain-poke-link';
+import { usePokeMap } from './chain.context';
 import type { Detail } from '../../types/evolution';
 import ChainPokeDetail from './chain-poke-detail';
 
@@ -46,7 +46,7 @@ export default function ChainPoke({
             style={{ objectFit: 'contain' }}
           />
         </div>
-        <ChainPokeLink pokeKey={poke_key} name={name_ko} no={no} form={form} />
+        <PokeLink pokeKey={poke_key} name={name_ko} no={no} form={form} />
       </div>
     </div>
   );

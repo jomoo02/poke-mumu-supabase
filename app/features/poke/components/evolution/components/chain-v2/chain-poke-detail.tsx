@@ -15,17 +15,17 @@ export default function ChainPokeDetail({
   // const chainMaxWidth = useChainMaxWidth();
   // const chainMaxDepth = useChainMaxDepth();
 
-  const widthVariants: Record<number, string> = {
-    2: 'w-full',
-    4: 'w-full md:w-80',
-    8: 'w-full',
-    0: 'w-full md:max-w-52 md:w-40 lg:w-52 xl:max-w-72 xl:w-72',
-  };
+  // const widthVariants: Record<number, string> = {
+  //   2: 'w-full',
+  //   4: 'w-full md:w-80',
+  //   8: 'w-full',
+  //   0: 'w-full md:max-w-52 md:w-40 lg:w-52 xl:max-w-72 xl:w-72',
+  // };
 
-  const heightVariants: Record<number, string> = {
-    8: 'min-h-40 md:min-h-36',
-    0: 'min-h-24 md:min-h-28',
-  };
+  // const heightVariants: Record<number, string> = {
+  //   8: 'min-h-40 md:min-h-36',
+  //   0: 'min-h-24 md:min-h-28',
+  // };
 
   if (conditionDetails?.length === 0) {
     return null;
