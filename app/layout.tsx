@@ -28,7 +28,8 @@ export default function RootLayout({
       <body className={`${pretendard.className} `}>
         <SWRProvider>
           <AppHeader />
-          <div>{modal}</div>
+          <div id="modal-root" />
+          {modal}
           {/* <main className="py-6 xl:max-w-screen-xl mx-auto">{children}</main> */}
           <main className="my-6 mx-auto">{children}</main>
         </SWRProvider>

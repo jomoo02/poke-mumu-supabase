@@ -10,6 +10,6 @@ export default function Modal() {
         <Search />
       </div>
     </div>,
-    document.body,
+    document.getElementById('modal-root')!,
   );
 }
