@@ -25,7 +25,6 @@ export default function SearchInput({
         onChange={handleInputTextOnChange}
         placeholder={placeholderText}
         className="flex-1 px-2 py-1 h-8 focus:outline-none text-zinc-900"
-        autoFocus
       />
       <button
         type="button"

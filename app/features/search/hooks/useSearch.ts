@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, useRef } from 'react';
+import { useState, ChangeEvent, useRef, useEffect } from 'react';
 import useSWR from 'swr';
 import { useDebouncedCallback } from 'use-debounce';
 import { checkEmptyText } from '@/app/utils/check-type';
@@ -24,6 +24,14 @@ export default function useSearch() {
   const isInputEmpty = checkEmptyText(inputValue);
 
   const result = isInputEmpty ? localPokeList : data || [];
+
+  useEffect(() => {
+    const frameId = requestAnimationFrame(() => {
+      modalRef.current?.focus();
+    });
+
+    return () => cancelAnimationFrame(frameId);
+  }, []);
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLDivElement> = (e) => {
     if (e.key !== 'Tab') {

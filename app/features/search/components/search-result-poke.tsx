@@ -52,7 +52,7 @@ export default function SearchResultPoke({ poke }: SearchResultPokeProps) {
           <span className="truncate text-zinc-900 text-[15px] font-medium">
             {nameKo}
           </span>
-          <span className="truncate text-sm leading-3.5 text-zinc-700 font-medium">
+          <span className="truncate text-sm text-zinc-700 font-medium">
             {nameEn}
           </span>
           <span className="truncate text-sm  text-zinc-500 font-medium">
