@@ -29,7 +29,7 @@ export default function Search() {
       ref={modalRef}
     >
       <SearchInput onChangeInput={handleInputValue} closeSearch={closeSearch} />
-      <div className="flex-1 overflow-y-auto min-h-0">
+      <div className="flex-1 overflow-y-auto min-h-0 mb-1">
         <div className="px-1.5 lg:px-2 py-1 border-b border-zinc-200">
           <SearchDescription
             inputValue={inputValue}
