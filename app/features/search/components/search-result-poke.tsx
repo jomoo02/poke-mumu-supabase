@@ -34,7 +34,7 @@ export default function SearchResultPoke({ poke }: SearchResultPokeProps) {
       className="outline-zinc-600"
     >
       <div className="flex w-full h-full items-center overflow-hidden gap-x-2 sm:gap-x-4 px-2.5 lg:px-4.5 active:bg-zinc-100/80 hover:bg-zinc-100/80">
-        <div className="text-zinc-900 w-9 text-[15px]">
+        <div className="text-zinc-900 w-9 text-[15px] font-medium">
           {formatPokedexNumber(no)}
         </div>
         <div className="relative w-[50px] h-[50px] lg:w-[55px] lg:h-[55px] mx-1 lg:mx-2 flex-shrink-0">
@@ -48,8 +48,8 @@ export default function SearchResultPoke({ poke }: SearchResultPokeProps) {
             }}
           />
         </div>
-        <p className="flex flex-1 flex-col overflow-hidden justify-center leading-tight">
-          <span className="text-zinc-900 truncate">{nameKo}</span>
+        <p className="flex flex-1 flex-col overflow-hidden justify-center leading-tight font-medium">
+          <span className="text-zinc-900 truncate text-[15px]">{nameKo}</span>
           {form && (
             <span className="text-sm text-zinc-600 truncate">{form}</span>
           )}
