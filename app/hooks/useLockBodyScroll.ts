@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 
-export default function useLockBodyScroll(lock: boolean) {
+export default function useLockBodyScroll(
+  lock: boolean,
+  allowScrollElement?: HTMLElement | null,
+) {
   useEffect(() => {
     const body = document.body;
     const originalOverflow = body.style.overflow;
@@ -9,8 +12,10 @@ export default function useLockBodyScroll(lock: boolean) {
     const scrollbarWidth =
       window.innerWidth - document.documentElement.clientWidth;
 
-    // prevent touch scroll on iOS
-    const preventScroll = (e: TouchEvent) => {
+    const preventTouchMove = (e: TouchEvent) => {
+      if (allowScrollElement && allowScrollElement.contains(e.target as Node)) {
+        return;
+      }
       e.preventDefault();
     };
 
@@ -20,22 +25,21 @@ export default function useLockBodyScroll(lock: boolean) {
         body.style.paddingRight = `${scrollbarWidth}px`;
       }
 
-      // prevent iOS touch scroll
-      document.addEventListener('touchmove', preventScroll, {
+      document.addEventListener('touchmove', preventTouchMove, {
         passive: false,
       });
     } else {
       body.style.overflow = originalOverflow;
       body.style.paddingRight = originalPaddingRight;
 
-      document.removeEventListener('touchmove', preventScroll);
+      document.removeEventListener('touchmove', preventTouchMove);
     }
 
     return () => {
       body.style.overflow = originalOverflow;
       body.style.paddingRight = originalPaddingRight;
 
-      document.removeEventListener('touchmove', preventScroll);
+      document.removeEventListener('touchmove', preventTouchMove);
     };
-  }, [lock]);
+  }, [lock, allowScrollElement]);
 }

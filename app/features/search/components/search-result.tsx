@@ -33,7 +33,7 @@ export default function SearchResult({
       ) : (
         <div className="divide-y divide-zinc-200 border-b border-zinc-200 z-1">
           {result.map((poke) => (
-            <div key={poke.id} className="h-[75px]">
+            <div key={poke.id} className="h-[75px] px-0.5">
               <SearchResultPoke poke={poke} />
             </div>
           ))}

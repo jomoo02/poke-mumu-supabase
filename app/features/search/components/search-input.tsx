@@ -25,10 +25,11 @@ export default function SearchInput({
         onChange={handleInputTextOnChange}
         placeholder={placeholderText}
         className="flex-1 px-2 py-1 h-8 focus:outline-none text-zinc-900"
+        autoFocus
       />
       <button
         type="button"
-        className="cursor-pointer"
+        className="cursor-pointer outline-zinc-600"
         onClick={handleCloseOnClick}
         aria-label="close-input-btn"
       >

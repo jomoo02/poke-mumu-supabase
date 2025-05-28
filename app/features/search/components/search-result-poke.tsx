@@ -28,9 +28,15 @@ export default function SearchResultPoke({ poke }: SearchResultPokeProps) {
   const handleLinkOnClick = () => addPokeToLocalPokeList(poke);
 
   return (
-    <Link href={`/pokedex/${no}/${pokeKey}`} onClick={handleLinkOnClick}>
-      <div className="flex w-full h-full items-center overflow-hidden gap-x-1 sm:gap-x-3 px-3 lg:px-5 active:bg-zinc-100/80 hover:bg-zinc-100/80">
-        <div className="text-zinc-900 w-9">{formatPokedexNumber(no)}</div>
+    <Link
+      href={`/pokedex/${no}/${pokeKey}`}
+      onClick={handleLinkOnClick}
+      className="outline-zinc-600"
+    >
+      <div className="flex w-full h-full items-center overflow-hidden gap-x-1 sm:gap-x-3 px-2.5 lg:px-4.5 active:bg-zinc-100/80 hover:bg-zinc-100/80">
+        <div className="text-zinc-900 w-9 text-[15px]">
+          {formatPokedexNumber(no)}
+        </div>
         <div className="relative w-[50px] h-[50px] lg:w-[55px] lg:h-[55px] mx-1 lg:mx-2 flex-shrink-0">
           <Image
             src={src}
@@ -43,9 +49,13 @@ export default function SearchResultPoke({ poke }: SearchResultPokeProps) {
           />
         </div>
         <p className="overflow-hidden flex flex-1 flex-col justify-center">
-          <span className="truncate text-zinc-900">{nameKo}</span>
-          <span className="truncate text-sm/4 text-zinc-900">{nameEn}</span>
-          <span className="truncate text-sm  text-zinc-600 font-medium">
+          <span className="truncate text-zinc-900 text-[15px] font-medium">
+            {nameKo}
+          </span>
+          <span className="truncate text-sm leading-3.5 text-zinc-700 font-medium">
+            {nameEn}
+          </span>
+          <span className="truncate text-sm  text-zinc-500 font-medium">
             {form}
           </span>
         </p>

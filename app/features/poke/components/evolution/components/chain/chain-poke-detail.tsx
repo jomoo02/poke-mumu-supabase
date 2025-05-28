@@ -32,7 +32,7 @@ export default function ChainPokeDetail({
   }
 
   const width = widthVariants[chainMaxWidth] || widthVariants[0];
-  console.log(width, chainMaxWidth);
+  // console.log(width, chainMaxWidth);
   const height = heightVariants[chainMaxDepth] || heightVariants[0];
 
   return (
