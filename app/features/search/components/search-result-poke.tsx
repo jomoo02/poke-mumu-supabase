@@ -33,7 +33,7 @@ export default function SearchResultPoke({ poke }: SearchResultPokeProps) {
       onClick={handleLinkOnClick}
       className="outline-zinc-600"
     >
-      <div className="flex w-full h-full items-center overflow-hidden gap-x-1 sm:gap-x-3 px-2.5 lg:px-4.5 active:bg-zinc-100/80 hover:bg-zinc-100/80">
+      <div className="flex w-full h-full items-center overflow-hidden gap-x-2 sm:gap-x-4 px-2.5 lg:px-4.5 active:bg-zinc-100/80 hover:bg-zinc-100/80">
         <div className="text-zinc-900 w-9 text-[15px]">
           {formatPokedexNumber(no)}
         </div>
@@ -48,16 +48,13 @@ export default function SearchResultPoke({ poke }: SearchResultPokeProps) {
             }}
           />
         </div>
-        <p className="overflow-hidden flex flex-1 flex-col justify-center">
-          <span className="truncate text-zinc-900 text-[15px] font-medium">
-            {nameKo}
-          </span>
-          <span className="truncate text-sm text-zinc-700 font-medium">
-            {nameEn}
-          </span>
-          <span className="truncate text-sm  text-zinc-500 font-medium">
-            {form}
-          </span>
+        <p className="flex flex-1 flex-col overflow-hidden justify-center leading-tight">
+          <span className="text-zinc-900 truncate">{nameKo}</span>
+          {form && (
+            <span className="text-sm text-zinc-600 truncate">{form}</span>
+          )}
+
+          {/* <span className="text-[14px] text-zinc-600 truncate ">{nameEn}</span> */}
         </p>
         <div className="flex flex-col gap-y-1 items-center lg:gap-y-1.5">
           <PokeTypeBadge type={type1} />
