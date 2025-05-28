@@ -25,7 +25,7 @@ export default function SearchResult({
   }
 
   return (
-    <div>
+    <>
       {result.length === 0 ? (
         <div className="px-1 lg:px-2 w-full relative top-52 lg:top-36 text-center text-zinc-900">
           {noPokeText}
@@ -39,6 +39,6 @@ export default function SearchResult({
           ))}
         </div>
       )}
-    </div>
+    </>
   );
 }
