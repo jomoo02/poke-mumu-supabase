@@ -9,10 +9,10 @@ interface SectionHeaderProps {
 function SectionHeaderFirst({ id, sectionTitle = '' }: SectionHeaderProps) {
   return (
     <h2
-      className="text-2xl font-bold pb-3 mb-6 scroll-mt-12 text-zinc-900 pt-10"
+      className="text-2xl font-bold pb-3 mb-6 scroll-mt-12 text-slate-900 pt-10"
       id={id}
     >
-      <Link href={`#${id}`} className="outline-zinc-500 rounded-sm p-1">
+      <Link href={`#${id}`} className="outline-gray-600 rounded-sm p-1">
         {sectionTitle}
       </Link>
     </h2>
@@ -29,10 +29,10 @@ export default function SectionHeader({
   }
   return (
     <h2
-      className="text-2xl font-bold pb-3 mt-12 mb-6 scroll-mt-12 text-zinc-900 pt-10 border-t border-zinc-200"
+      className="text-2xl font-bold pb-3 mt-12 mb-6 scroll-mt-12 text-slate-900 pt-10 border-t border-gray-200"
       id={id}
     >
-      <Link href={`#${id}`} className="outline-zinc-500 rounded-sm p-1">
+      <Link href={`#${id}`} className="outline-gray-600 rounded-sm py-1 px-0.5">
         {sectionTitle}
       </Link>
     </h2>

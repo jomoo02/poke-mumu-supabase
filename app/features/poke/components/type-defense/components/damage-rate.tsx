@@ -7,8 +7,8 @@ interface DamageRateProps {
 
 export default function DamageRate({ damageRate, types }: DamageRateProps) {
   return (
-    <div className="flex divide-x divide-zinc-200">
-      <div className="flex justify-center items-center border-zinc-200 min-w-[4.5rem] md:min-w-20 w-[4.5rem] md:w-20 text-[15px] text-zinc-900 p-2">
+    <div className="flex divide-x divide-gray-200">
+      <div className="flex justify-center items-center border-gray-200 min-w-[4.5rem] md:min-w-20 w-[4.5rem] md:w-20 text-[15px] text-slate-700 p-2">
         {`x ${damageRate}`}
       </div>
       <div className="p-2 md:p-3 flex flex-wrap gap-x-2 md:gap-x-3 gap-y-2 md:gap-y-3">

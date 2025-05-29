@@ -12,18 +12,18 @@ export default function SearchDescription({
 }: SearchDescriptionProps) {
   if (isInputEmpty) {
     return (
-      <span className="text-zinc-600 text-[15px]">최근 검색한 포켓몬</span>
+      <span className="text-slate-700 text-[15px]">최근 검색한 포켓몬</span>
     );
   }
 
   if (checkTextIntergerType(inputValue)) {
     return (
       <>
-        <span className="text-[15px] text-zinc-600">도감 번호</span>
-        <span className="underline mx-1 text-[15px] text-zinc-900">
+        <span className="text-[15px] text-slate-700">도감 번호</span>
+        <span className="underline mx-1 text-[15px] text-slate-800">
           {inputValue}
         </span>
-        <span className="text-[15px] text-zinc-600">포켓몬</span>
+        <span className="text-[15px] text-slate-700">포켓몬</span>
       </>
     );
   }
@@ -33,8 +33,8 @@ export default function SearchDescription({
 
   return (
     <>
-      <span className="underline text-zinc-900 text-[15px]">{inputValue}</span>
-      <span className="text-zinc-600 text-[15px]">{`${directionParticle} 검색한 포켓몬`}</span>
+      <span className="underline text-slate-800 text-[15px]">{inputValue}</span>
+      <span className="text-slate-700 text-[15px]">{`${directionParticle} 검색한 포켓몬`}</span>
     </>
   );
 }

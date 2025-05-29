@@ -18,17 +18,17 @@ export default function SearchInput({
   const handleCloseOnClick = () => closeSearch();
 
   return (
-    <div className="min-h-9 max-h-9 flex justify-center border-b border-zinc-200 px-2 gap-x-0.5 items-center">
+    <div className="min-h-9 max-h-9 flex justify-center border-b border-gray-200 px-2 gap-x-0.5 items-center">
       <SearchIcon size="1.45rem" />
       <input
         type="text"
         onChange={handleInputTextOnChange}
         placeholder={placeholderText}
-        className="flex-1 px-2 py-1 h-8 focus:outline-none text-zinc-900"
+        className="flex-1 px-2 py-1 h-8 focus:outline-none text-slate-800"
       />
       <button
         type="button"
-        className="cursor-pointer outline-zinc-600"
+        className="cursor-pointer outline-gray-600"
         onClick={handleCloseOnClick}
         aria-label="close-input-btn"
       >

@@ -24,13 +24,13 @@ export default function Search() {
   return (
     <div
       aria-modal
-      className="flex flex-col bg-white h-full lg:border lg:border-zinc-400/80 lg:rounded-xl py-0.5 lg:shadow-lg z-20 overflow-hidden"
+      className="flex flex-col bg-white h-full lg:border lg:border-gray-300 lg:rounded-xl py-0.5 lg:shadow-lg z-20 overflow-hidden"
       onKeyDown={handleKeyDown}
       ref={modalRef}
     >
       <SearchInput onChangeInput={handleInputValue} closeSearch={closeSearch} />
       <div className="flex-1 overflow-y-auto min-h-0 mb-1">
-        <div className="px-1.5 lg:px-2 py-1 border-b border-zinc-200">
+        <div className="px-1.5 lg:px-2 py-1 border-b border-gray-200">
           <SearchDescription
             inputValue={inputValue}
             isInputEmpty={isInputEmpty}

@@ -8,8 +8,8 @@ export default function AppHeader() {
       <div className="mx-auto xl:max-w-screen-xl flex justify-between items-center h-full px-5">
         <nav className="flex h-full items-center">
           <HomeButton />
-          <div className="text-slate-600 c-text-base font-bold flex items-center px-4 sm:px-14">
-            <Link href="/pokedex">포켓몬 도감</Link>
+          <div className="text-slate-800 font-medium flex items-center px-4 sm:px-14">
+            <Link href="/pokedex">도감</Link>
           </div>
         </nav>
 

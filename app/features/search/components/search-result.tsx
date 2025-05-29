@@ -18,7 +18,7 @@ export default function SearchResult({
 
   if (isError) {
     return (
-      <div className="px-1 lg:px-2 w-full relative top-52 lg:top-36 text-center text-zinc-900">
+      <div className="px-1 lg:px-2 w-full relative top-52 lg:top-36 text-center text-slate-800">
         에러 발생! 다시 검색해 주세요.
       </div>
     );
@@ -27,11 +27,11 @@ export default function SearchResult({
   return (
     <>
       {result.length === 0 ? (
-        <div className="px-1 lg:px-2 w-full relative top-52 lg:top-36 text-center text-zinc-900">
+        <div className="px-1 lg:px-2 w-full relative top-52 lg:top-36 text-center text-slate-800">
           {noPokeText}
         </div>
       ) : (
-        <div className="divide-y divide-zinc-200 border-b border-zinc-200 z-1">
+        <div className="divide-y divide-gray-200 border-b border-gray-200 z-1">
           {result.map((poke) => (
             <div key={poke.id} className="h-[75px] px-0.5">
               <SearchResultPoke poke={poke} />

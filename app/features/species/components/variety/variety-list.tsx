@@ -33,7 +33,7 @@ export default function VarietyList({
     useUnderlineMotion<HTMLDivElement>(params.form);
 
   return (
-    <div ref={containerRef} className="flex border-b border-zinc-200 relative">
+    <div ref={containerRef} className="flex border-b border-gray-200 relative">
       <div className="flex gap-x-3">
         {formattedVarietyList.map((v, index) => (
           <VarietyItem
@@ -46,7 +46,7 @@ export default function VarietyList({
         ))}
       </div>
       <motion.div
-        className="absolute bottom-0 h-0.5 bg-zinc-900"
+        className="absolute bottom-0 h-0.5 bg-gray-900"
         animate={indicatorStyle}
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
       />

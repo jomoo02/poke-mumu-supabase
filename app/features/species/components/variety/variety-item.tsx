@@ -18,7 +18,7 @@ export function VarietyItem({
       <Link
         href={href}
         className={`font-medium w-full h-full flex items-center px-3.5 ${
-          isActive ? 'text-zinc-900' : 'text-zinc-500 hover:text-zinc-900'
+          isActive ? 'text-slate-800' : 'text-slate-500 hover:text-slate-800'
         }`}
       >
         {name}

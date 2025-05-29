@@ -36,7 +36,7 @@ export default function Stats({ stats }: StatsProps) {
             selectItems={selectItems}
           />
         </div>
-        <div className="grid divide-y divide-zinc-200 border border-zinc-200 rounded-lg bg-white shadow-md shadow-zinc-200">
+        <div className="grid divide-y divide-gray-200 border border-gray-200 rounded-lg bg-white shadow-md shadow-gray-200">
           {statList.map(({ stat, value }) => (
             <Stat
               key={stat}

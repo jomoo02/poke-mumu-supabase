@@ -27,7 +27,7 @@ export default function TableHeaderCell({
       {sortAble ? (
         <button
           onClick={handleOnClick}
-          className={`flex w-full h-full rounded-sm px-2 items-center justify-between cursor-pointer focus:outline-none focus-visible:inset-ring ring-zinc-500`}
+          className={`flex w-full h-full rounded-sm px-2 items-center justify-between cursor-pointer focus:outline-none focus-visible:inset-ring ring-gray-600`}
         >
           {children}
           <SortIcon isSelect={isSorted} direction={direction} color="#1d293d" />

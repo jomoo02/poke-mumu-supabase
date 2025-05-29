@@ -18,7 +18,7 @@ export default function VersionGroup({ moves }: VersionGroupProps) {
   return (
     <>
       <div className="my-4">
-        <h3 className="text-zinc-900 text-lg font-semibold my-2">버전</h3>
+        <h3 className="text-slate-900 text-lg font-semibold my-2">버전</h3>
         <OptionVersionGroup
           versionGroups={versionGroups}
           targetVersionGroup={targetVersionGroup}

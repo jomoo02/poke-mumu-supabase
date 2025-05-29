@@ -44,7 +44,7 @@ export default async function EvolutionTree({
   return (
     <div>
       <SectionHeader id="evolution" sectionTitle="진화" />
-      <div className="border border-zinc-300 bg-white rounded-lg shadow-md shadow-zinc-300 grid divide-y divide-zinc-300">
+      <div className="my-4 pb-4">
         <Chain
           evolutionData={evolutionData}
           evolutionPokeList={evolutionPokeList}
