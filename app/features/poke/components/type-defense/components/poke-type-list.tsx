@@ -12,7 +12,7 @@ export default function PokeTypeList({ pokeTypes }: PokeTypeListProps) {
           <PokeTypeBadge key={type} type={type} />
         ))}
       </div>
-      <div className="text-slate-600 text-[15px] font-medium">타입 상성</div>
+      <div className="text-slate-700 text-[15px] font-medium">타입 상성</div>
     </div>
   );
 }

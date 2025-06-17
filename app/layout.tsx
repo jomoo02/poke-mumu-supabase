@@ -33,6 +33,7 @@ export default function RootLayout({
           {/* <main className="py-6 xl:max-w-screen-xl mx-auto">{children}</main> */}
           <main className="my-6 mx-auto">{children}</main>
         </SWRProvider>
+        <footer className="border-t border-gray-300 p-4 bg-neutral-50"></footer>
       </body>
     </html>
   );

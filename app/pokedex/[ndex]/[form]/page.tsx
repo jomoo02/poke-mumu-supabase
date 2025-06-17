@@ -1,5 +1,6 @@
 import PokeDetail from '@/app/features/poke/containers/poke-detail';
 import { Suspense } from 'react';
+import LoadingNdexForm from '@/app/features/poke/components/loading-ndex-form';
 
 export default async function FormPage({
   params,
@@ -9,7 +10,7 @@ export default async function FormPage({
   const { form } = await params;
 
   return (
-    <Suspense fallback={<div className="h-screen">loading</div>}>
+    <Suspense fallback={<LoadingNdexForm />}>
       <PokeDetail pokeKey={form} />
     </Suspense>
   );

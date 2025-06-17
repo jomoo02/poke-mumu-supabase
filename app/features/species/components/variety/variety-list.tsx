@@ -19,7 +19,7 @@ export default function VarietyList({
 
   const formattedVarietyList = speciesVarieties.map(
     ({ form, poke_key, name_ko }) => {
-      const name = form ? `${name_ko} (${form})` : name_ko;
+      const name = form ? form : name_ko;
       return {
         pokeKey: poke_key,
         name,
@@ -34,7 +34,7 @@ export default function VarietyList({
 
   return (
     <div ref={containerRef} className="flex border-b border-gray-200 relative">
-      <div className="flex gap-x-3">
+      <div className="flex">
         {formattedVarietyList.map((v, index) => (
           <VarietyItem
             key={v.form}

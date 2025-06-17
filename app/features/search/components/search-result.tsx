@@ -33,7 +33,10 @@ export default function SearchResult({
       ) : (
         <div className="divide-y divide-gray-200 border-b border-gray-200 z-1">
           {result.map((poke) => (
-            <div key={poke.id} className="h-[75px] px-0.5">
+            <div
+              key={poke.id}
+              className="h-[75px] focus-within:inset-ring ring-gray-600"
+            >
               <SearchResultPoke poke={poke} />
             </div>
           ))}

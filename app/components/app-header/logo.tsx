@@ -1,37 +1,9 @@
-// components/PokeMuMuLogo.tsx
-import React from 'react';
-
 type PokeMuMuLogoProps = {
-  color?: string;
-  width?: number;
-  height?: number;
+  className?: string;
 };
 
-const PokeMuMuLogo = ({
-  color = '#0f172a',
-  width = 135,
-  height = 40,
-}: PokeMuMuLogoProps) => {
-  return (
-    <svg
-      width={width}
-      height={height}
-      viewBox="0 0 190 61"
-      xmlns="http://www.w3.org/2000/svg"
-      style={{ color }}
-    >
-      <text
-        x="10"
-        y="38"
-        fontFamily="Verdana, sans-serif"
-        fontWeight="bold"
-        fontSize="26"
-        fill="currentColor"
-      >
-        POKÉ MUMU
-      </text>
-    </svg>
-  );
-};
-
-export default PokeMuMuLogo;
+export default function Logo({
+  className = 'w-36 h-11', // 기본값: width: 11rem (176px), height: 3rem (48px)
+}: PokeMuMuLogoProps) {
+  return <div className={className}>POKÉ MUMU</div>;
+}

@@ -1,22 +1,12 @@
 import { fetchPoke } from '../api/poke';
-// import Stats from '../modules/stats';
 import Stats from '../components/stats';
-// import TypeDefense from '../modules/type-defense';
 import TypeDefense from '../components/type-defense';
-// import Information from '../components/information';
-
-// import SectionHeader from '../components/section-header';
-// import Abilities from '../modules/abilities/containers/abilities';
 import Abilities from '../components/abilities';
-
-// import EvolutionTree from '../modules/evolution/containers/evolution-tree';
-import EvolutionTree from '../components/evolution';
-// import Location from '../modules/evolution/containers/location';
-// import Moves from '../modules/moves/containers/moves';
 import Moves from '../components/moves';
 import PokedexInformation from '../components/pokedex-information';
 import RestInformation from '../components/rest-information';
-// import SectionContainer from '../components/section-container';
+import EvolutionV2 from '../components/evolution';
+import { fetchEvolutionChains } from '../api/evolution-chain';
 
 interface PokeDetailProps {
   pokeKey: string;
@@ -49,27 +39,12 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
     pokedexInfo: data.pokedex_info,
     types,
   };
-  // console.log(data.pokedex_info);
-  // console.log(data.pokedex_number);
+
+  const evolutionData = await fetchEvolutionChains(evolution_id);
 
   return (
     <div className="flex w-full">
       <div className="w-full">
-        {/* <div className="hidden">
-          <Information
-            types={types}
-            ndex={data.no}
-            name={data.name_ko}
-            form={data.form}
-            pokedexNumbers={data.pokedex_number}
-            effortValue={data.poke_effort_value}
-            detail={data.poke_detail}
-            breeding={data.poke_breeding}
-            pokedexInfo={data.pokedex_info}
-            sprite={sprite}
-          />
-        </div> */}
-
         <PokedexInformation pokedexData={pokedexData} sprite={sprite} />
         <RestInformation
           detail={data.poke_detail}
@@ -82,12 +57,11 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
         <Stats stats={pokeStats} />
 
         <TypeDefense types={types} />
-
-        <EvolutionTree evolutionId={evolution_id} />
+        {evolutionData && <EvolutionV2 evolutionTree={evolutionData} />}
+        {/* <EvolutionTree evolutionId={evolution_id} /> */}
 
         <Moves pokeMoves={pokeMoves} />
       </div>
-      {/* <Toc /> */}
     </div>
   );
 }

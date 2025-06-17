@@ -1,55 +1,33 @@
+import type { EvolutionTreeUI } from './types';
+import ChainNode from './components/chain-node';
 import SectionHeader from '../section-header';
-import { fetchEvolution, fetchEvolutionPoke } from './api/evolution';
-import Chain from './components/chain';
-// import Chain2 from './components/chain-v2';
-import type { EvolutionData } from './types/evolution';
+import Area from './components/area';
 
-interface EvolutionTreeProps {
-  evolutionId: number | undefined | null;
+interface EvolutionProps {
+  evolutionTree: EvolutionTreeUI;
 }
 
-function NullCase() {
-  return null;
-  // return (
-  //   <div>
-  //     <SectionHeader id="evolution" sectionTitle="진화" />
-  //     <p className="font-medium text-slate-800">진화가 존재하지 않습니다.</p>
-  //   </div>
-  // );
-}
+export default function Evolution({ evolutionTree }: EvolutionProps) {
+  const displayVariants = {
+    default: 'flex lg:flex-col lg:items-center justify-center lg:gap-4 my-1',
+    multiple: 'flex flex-col items-center justify-center gap-4 my-1',
+  };
 
-export default async function EvolutionTree({
-  evolutionId,
-}: EvolutionTreeProps) {
-  if (!evolutionId) {
-    return <NullCase />;
-  }
-
-  const evolution = await fetchEvolution(evolutionId);
-
-  if (!evolution || !evolution.evolution_data) {
-    return <NullCase />;
-  }
-
-  const evolutionData = evolution.evolution_data as EvolutionData[];
-
-  const pokeIdList = evolutionData.map(({ to_poke_id }) => to_poke_id);
-
-  const evolutionPokeList = await fetchEvolutionPoke(pokeIdList);
-
-  if (!evolutionPokeList) {
-    return <NullCase />;
-  }
+  const containerCN =
+    evolutionTree.roots.length > 1
+      ? displayVariants.multiple
+      : displayVariants.default;
 
   return (
     <div>
       <SectionHeader id="evolution" sectionTitle="진화" />
-      <div className="my-4 pb-4">
-        <Chain
-          evolutionData={evolutionData}
-          evolutionPokeList={evolutionPokeList}
-        />
+      {/* <div>{evolutionTree.id}</div> */}
+      <div className={containerCN}>
+        {evolutionTree.roots.map((node) => (
+          <ChainNode key={node.id} evolutionId={evolutionTree.id} node={node} />
+        ))}
       </div>
+      <Area evolutionId={evolutionTree.id} />
     </div>
   );
 }
