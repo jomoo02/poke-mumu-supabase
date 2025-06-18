@@ -42,7 +42,7 @@ export default function ChainPoke({ poke }: ChainPokeProps) {
       >
         {name}
       </Link>
-      <div className="text-sm text-slate-700 h-6">{form}</div>
+      <div className="text-sm text-slate-700 h-5">{form}</div>
     </div>
   );
 }

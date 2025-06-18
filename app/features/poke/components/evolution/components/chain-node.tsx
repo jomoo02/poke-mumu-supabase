@@ -12,9 +12,9 @@ export default function ChainNode({ evolutionId, node }: ChainNodeProps) {
 
   const nextNodeGridClassNames: Record<number, string> = {
     1: 'grid',
-    2: 'grid grid-cols-2 lg:grid-cols-1  gap-x-1',
-    3: 'grid grid-cols-3 lg:grid-cols-1  gap-x-1',
-    8: 'grid grid-cols-2 sm:grid-cols-4  gap-x-1',
+    2: 'grid grid-cols-2 lg:grid-cols-1 gap-1',
+    3: 'grid grid-cols-3 lg:grid-cols-1 gap-1',
+    8: 'grid grid-cols-2 sm:grid-cols-4 gap-1 lg:gap-10',
     0: '',
   };
 
