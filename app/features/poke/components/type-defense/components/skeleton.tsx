@@ -2,7 +2,7 @@ export default function TypeDefenseSkeleton() {
   return (
     <div className="animate-pulse">
       <div className="pb-3 mt-12 mb-6 pt-10 border-t border-gray-200">
-        <div className="h-6.5 bg-neutral-200 rounded w-14" />
+        <div className="h-8 bg-neutral-200 rounded-md w-16" />
       </div>
       {/* 타입 */}
       <div className="flex gap-x-2 px-1 pb-4 justify-center items-center">
@@ -16,7 +16,7 @@ export default function TypeDefenseSkeleton() {
         <div className="flex gap-x-2 border-b border-gray-200">
           <div className="flex divide-x divide-gray-200">
             <div className="flex justify-center items-center border-gray-200 min-w-[4.5rem] md:min-w-20 w-[4.5rem] md:w-20 p-2">
-              <div className="w-8 h-4 rounded bg-neutral-200" />
+              <div className="w-8 h-4 rounded-md bg-neutral-200" />
             </div>
             <div className="p-2 md:p-3 flex flex-wrap gap-x-2 md:gap-x-3 gap-y-2 md:gap-y-3">
               <div className="w-[60px] h-[25px] bg-neutral-200 rounded-[5px]" />
@@ -29,7 +29,7 @@ export default function TypeDefenseSkeleton() {
         <div className="flex gap-x-2 border-b border-gray-200">
           <div className="flex divide-x divide-gray-200">
             <div className="flex justify-center items-center border-gray-200 min-w-[4.5rem] md:min-w-20 w-[4.5rem] md:w-20 p-2">
-              <div className="w-8 h-4 rounded bg-neutral-200" />
+              <div className="w-8 h-4 rounded-md bg-neutral-200" />
             </div>
             <div className="p-2 md:p-3 flex flex-wrap gap-x-2 md:gap-x-3 gap-y-2 md:gap-y-3">
               <div className="w-[60px] h-[25px] bg-neutral-200 rounded-[5px]" />
@@ -44,7 +44,7 @@ export default function TypeDefenseSkeleton() {
         <div className="flex gap-x-2 border-b border-gray-200">
           <div className="flex divide-x divide-gray-200">
             <div className="flex justify-center items-center border-gray-200 min-w-[4.5rem] md:min-w-20 w-[4.5rem] md:w-20 p-2">
-              <div className="w-8 h-4 rounded bg-neutral-200" />
+              <div className="w-8 h-4 rounded-md bg-neutral-200" />
             </div>
             <div className="p-2 md:p-3 flex flex-wrap gap-x-2 md:gap-x-3 gap-y-2 md:gap-y-3">
               <div className="w-[60px] h-[25px] bg-neutral-200 rounded-[5px]" />
@@ -60,7 +60,7 @@ export default function TypeDefenseSkeleton() {
         <div className="flex gap-x-2">
           <div className="flex divide-x divide-gray-200">
             <div className="flex justify-center items-center border-gray-200 min-w-[4.5rem] md:min-w-20 w-[4.5rem] md:w-20 p-2">
-              <div className="w-8 h-4 rounded bg-neutral-200" />
+              <div className="w-8 h-4 rounded-md bg-neutral-200" />
             </div>
             <div className="p-2 md:p-3 flex flex-wrap gap-x-2 md:gap-x-3 gap-y-2 md:gap-y-3">
               <div className="w-[60px] h-[25px] bg-neutral-200 rounded-[5px]" />

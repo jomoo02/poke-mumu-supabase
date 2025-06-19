@@ -2,7 +2,6 @@ import type { EvolutionTreeUI } from './types';
 import ChainNode from './components/chain-node';
 import SectionHeader from '../section-header';
 import Area from './components/area';
-import EvolutionSkeleton from './components/skeleton';
 
 interface EvolutionProps {
   evolutionTree: EvolutionTreeUI;
@@ -28,7 +27,6 @@ export default function Evolution({ evolutionTree }: EvolutionProps) {
           <ChainNode key={node.id} evolutionId={evolutionTree.id} node={node} />
         ))}
       </div>
-      <EvolutionSkeleton />
       <Area evolutionId={evolutionTree.id} />
     </div>
   );

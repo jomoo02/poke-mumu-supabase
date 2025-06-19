@@ -2,6 +2,7 @@ import SectionHeader from '../section-header';
 import type { Detail, Breeding, EffortValue } from './types';
 import BreedingInfoV3 from './components/breeding-info-v3';
 import DetailInfoV3 from './components/detail-info-v3';
+
 interface RestInformationProps {
   detail: Detail | null;
   breeding: Breeding | null;
@@ -20,8 +21,6 @@ export default function RestInformation({
         <BreedingInfoV3 breeding={breeding} />
         <DetailInfoV3 detail={detail} effortValues={effortValues} />
       </div>
-
-      {/* </div> */}
     </div>
   );
 }

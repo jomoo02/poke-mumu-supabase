@@ -34,8 +34,8 @@ function ChainNodeSkeleton() {
           style={{ objectFit: 'contain' }}
         />
       </div>
-      <div className="bg-neutral-200 h-4 rounded w-10" />
-      <div className="bg-neutral-200 h-4 rounded w-12 my-1" />
+      <div className="bg-neutral-200 h-4 rounded-md w-10" />
+      <div className="bg-neutral-200 h-4 rounded-md w-12 my-1" />
       <div className="h-5" />
     </div>
   );
@@ -44,7 +44,7 @@ function ChainNodeSkeleton() {
 function DetailSkeleton() {
   return (
     <div className="w-full lg:w-[200px] py-2.5 px-1 flex justify-center items-center flex-col gap-y-1">
-      <div className="bg-neutral-200 rounded w-1/4 lg:w-2/3 h-5" />
+      <div className="bg-neutral-200 rounded-md w-1/4 lg:w-2/3 h-4.5" />
       <ArrowIcon />
     </div>
   );
@@ -54,7 +54,7 @@ export default function EvolutionSkeleton() {
   return (
     <div className="animate-pulse">
       <div className="pb-3 mt-12 mb-6 pt-10 border-t border-gray-200">
-        <div className="h-6.5 bg-neutral-200 rounded w-14" />
+        <div className="h-8 bg-neutral-200 rounded-md w-16" />
       </div>
       <div className="flex lg:flex-col lg:items-center justify-center">
         <div className="flex flex-col lg:flex-row items-center w-full lg:w-fit">

@@ -11,7 +11,6 @@ import useLevel from './hooks/useStatLevel';
 import Stat from './components/basic-stat';
 import LevelSelect from './components/level-select';
 import SectionHeader from '../section-header';
-import StatsSkeleton from './components/skeleton';
 
 interface StatsProps {
   stats: PokeStats | null;
@@ -50,7 +49,6 @@ export default function Stats({ stats }: StatsProps) {
           <TotalStat totalStatValue={totalStatValue} />
         </div>
       </div>
-      <StatsSkeleton />
     </div>
   );
 }

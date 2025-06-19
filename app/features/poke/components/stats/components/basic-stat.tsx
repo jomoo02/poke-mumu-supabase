@@ -21,11 +21,11 @@ export default function Stat({
   const minStat = calculateMinStat(stat, value, level);
 
   return (
-    <div className="flex px-1.5 gap-x-1 sm:gap-x-3 items-center h-8 first:rounded-t-lg">
+    <div className="flex px-1.5 gap-x-1 md:gap-x-3 items-center h-8 first:rounded-t-lg">
       <div className="text-slate-800 text-right pr-1 w-[4.375rem] md:w-24">
         {statText}
       </div>
-      <div className="flex-1 flex items-center gap-x-1 md:gap-x-4 sm:px-2">
+      <div className="flex-1 flex items-center gap-x-1 md:gap-x-3">
         <div className="min-w-9 max-w-9 text-center text-slate-800">
           {value}
         </div>
