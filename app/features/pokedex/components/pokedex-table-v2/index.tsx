@@ -20,8 +20,6 @@ interface PokedexTableProps {
 }
 
 export default function PokedexTableV2({ pokeList }: PokedexTableProps) {
-  // const { sortedPokeList } = usePokedexSort(pokeList);
-
   const sortFn = (a: PokedexPoke, b: PokedexPoke, sortKey: string) => {
     const compareFnList: Record<
       string,
@@ -49,9 +47,12 @@ export default function PokedexTableV2({ pokeList }: PokedexTableProps) {
         tableData={pokeList}
         initialHeaderKey="no"
         sortFn={sortFn}
-        className="w-full table-fixed border-b border-gray-200"
+        className="w-full table-fixed border-separate border-spacing-0"
       >
-        <TableHeader className="sticky top-[55px] z-50" color="bg-neutral-100">
+        <TableHeader
+          className=" top-[55px] z-50 sticky bg-white shadow-[inset_-1px_0_0_0_rgba(229,231,235,1)]"
+          color="bg-neutral-100"
+        >
           <TableHeaderCell
             headerKey="no"
             sortAble
@@ -129,11 +130,11 @@ export default function PokedexTableV2({ pokeList }: PokedexTableProps) {
               <TableRow key={index} className="h-[4.25rem]">
                 <TableCell
                   align="right"
-                  className="text-slate-800 font-medium text-[15px] pr-1"
+                  className="text-slate-800 text-[15px] px-2 font-normal border-b border-gray-200"
                 >
                   {typeof poke.no === 'number' && formatPokedexNumber(poke.no)}
                 </TableCell>
-                <TableCell>
+                <TableCell className="border-b border-gray-200">
                   {typeof poke.sprite === 'string' && (
                     <div className="flex">
                       <div className="px-2 lg:px-3.5">
@@ -152,7 +153,7 @@ export default function PokedexTableV2({ pokeList }: PokedexTableProps) {
                           </div>
                         </Link>
                         {poke.form && (
-                          <div className="text-slate-600 font-medium text-sm">
+                          <div className="text-slate-700 text-sm">
                             {poke.form}
                           </div>
                         )}
@@ -160,7 +161,7 @@ export default function PokedexTableV2({ pokeList }: PokedexTableProps) {
                     </div>
                   )}
                 </TableCell>
-                <TableCell>
+                <TableCell className="border-b border-gray-200">
                   <div className="flex flex-col justify-center items-center gap-1">
                     {typeof poke.type1 === 'string' && (
                       <PokeTypeBadge type={poke.type1} />
@@ -172,43 +173,43 @@ export default function PokedexTableV2({ pokeList }: PokedexTableProps) {
                 </TableCell>
                 <TableCell
                   align="right"
-                  className="text-[15px] font-medium text-slate-800 pr-1 hidden md:table-cell"
+                  className="text-[15px] font-normal text-slate-800 pr-1 hidden md:table-cell border-b border-gray-200"
                 >
                   {poke.total}
                 </TableCell>
                 <TableCell
                   align="right"
-                  className="text-[15px] font-medium text-slate-800 pr-1 hidden lg:table-cell"
+                  className="text-[15px] font-normal text-slate-800 pr-1 hidden lg:table-cell border-b border-gray-200"
                 >
                   {poke.hp}
                 </TableCell>
                 <TableCell
                   align="right"
-                  className="text-[15px] font-medium text-slate-800 pr-1 hidden lg:table-cell"
+                  className="text-[15px] font-normal text-slate-800 pr-1 hidden lg:table-cell border-b border-gray-200"
                 >
                   {poke.attack}
                 </TableCell>
                 <TableCell
                   align="right"
-                  className="text-[15px] font-medium text-slate-800 pr-1 hidden lg:table-cell"
+                  className="text-[15px] font-normal text-slate-800 pr-1 hidden lg:table-cell border-b border-gray-200"
                 >
                   {poke.defense}
                 </TableCell>
                 <TableCell
                   align="right"
-                  className="text-[15px] font-medium text-slate-800 pr-1 hidden lg:table-cell"
+                  className="text-[15px] font-normal text-slate-800 pr-1 hidden lg:table-cell border-b border-gray-200"
                 >
                   {poke.special_attack}
                 </TableCell>
                 <TableCell
                   align="right"
-                  className="text-[15px] font-medium text-slate-800 pr-1 hidden lg:table-cell"
+                  className="text-[15px] font-normal text-slate-800 pr-1 hidden lg:table-cell border-b border-gray-200"
                 >
                   {poke.special_defense}
                 </TableCell>
                 <TableCell
                   align="right"
-                  className="text-[15px] font-medium text-slate-800 pr-1 hidden lg:table-cell"
+                  className="text-[15px] font-normal text-slate-800 pr-1 hidden lg:table-cell border-b border-gray-200"
                 >
                   {poke.speed}
                 </TableCell>
