@@ -20,10 +20,7 @@ export default function TableHeaderCell({
   );
 
   return (
-    <th
-      className={`select-none ${className} first:rounded-tl-md last:rounded-tr-md`}
-      aria-sort={ariaSort}
-    >
+    <th className={`select-none ${className}`} aria-sort={ariaSort}>
       {sortAble ? (
         <button
           onClick={handleOnClick}
