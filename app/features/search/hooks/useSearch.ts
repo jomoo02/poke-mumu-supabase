@@ -4,12 +4,13 @@ import { useDebouncedCallback } from 'use-debounce';
 import { checkEmptyText } from '@/app/utils/check-type';
 import { fetchSearchPoke } from '../api/search';
 import useLocalStoragePoke from './useLocalStoragePoke';
-import useLockBodyScroll from '@/app/hooks/useLockBodyScroll';
+// import useLockBodyScroll from '@/app/hooks/useLockBodyScroll';
+import useLockBodyScroll from './useLockScroll';
 
 export default function useSearch() {
   const modalRef = useRef<HTMLDivElement>(null);
 
-  useLockBodyScroll(true, modalRef.current);
+  useLockBodyScroll(true);
 
   const [inputValue, setInputValue] = useState<string>('');
 
