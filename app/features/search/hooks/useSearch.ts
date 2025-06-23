@@ -7,10 +7,10 @@ import useLocalStoragePoke from './useLocalStoragePoke';
 import useLockBodyScroll from './useLockScroll';
 
 export default function useSearch() {
-  // const modalRef = useRef<HTMLDivElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  useLockBodyScroll(true);
+  useLockBodyScroll(modalRef);
 
   const [inputValue, setInputValue] = useState<string>('');
 
@@ -91,7 +91,7 @@ export default function useSearch() {
     isInputEmpty,
     handleInputValue: debounced,
     handleKeyDown,
-    // modalRef,
+    modalRef,
     inputRef,
   };
 }
