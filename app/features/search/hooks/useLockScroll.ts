@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
 
-export default function useLockBodyScroll(
-  modalRef: React.RefObject<HTMLDivElement | null>,
-) {
+export default function useLockBodyScroll() {
   useEffect(() => {
     const body = document.body;
     const originalOverflow = body.style.overflow;
@@ -10,22 +8,6 @@ export default function useLockBodyScroll(
 
     const scrollbarWidth =
       window.innerWidth - document.documentElement.clientWidth;
-
-    const preventTouchMove = (e: TouchEvent) => {
-      const target = e.target as Node;
-
-      // 모달 내부에서만 스크롤 허용
-      if (modalRef.current && modalRef.current.contains(target)) {
-        return;
-      }
-
-      // 외부 영역 터치 → 스크롤 차단
-      e.preventDefault();
-    };
-
-    document.addEventListener('touchmove', preventTouchMove, {
-      passive: false,
-    });
 
     body.style.overflow = 'hidden';
 
@@ -36,9 +18,8 @@ export default function useLockBodyScroll(
     return () => {
       body.style.overflow = originalOverflow;
       body.style.paddingRight = originalPaddingRight;
-      document.removeEventListener('touchmove', preventTouchMove);
     };
-  }, [modalRef]);
+  }, []);
 }
 
 // export default function useLockBodyScroll(lock: boolean) {

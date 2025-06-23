@@ -16,7 +16,7 @@ export default function Search() {
     isInputEmpty,
     handleInputValue,
     handleKeyDown,
-    modalRef,
+    // modalRef,
     inputRef,
   } = useSearch();
 
@@ -28,7 +28,7 @@ export default function Search() {
       className="flex flex-col bg-white h-full lg:border lg:border-gray-300 lg:rounded-xl py-0.5 lg:shadow-lg z-20 overflow-hidden"
       onKeyDown={handleKeyDown}
       // tabIndex={-1}
-      ref={modalRef}
+      // ref={modalRef}
     >
       <SearchInput
         onChangeInput={handleInputValue}
