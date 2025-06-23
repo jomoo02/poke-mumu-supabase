@@ -24,7 +24,7 @@ export default function Search() {
   return (
     <div
       aria-modal
-      className="flex flex-col bg-white h-full border border-gray-300 rounded-lg lg:rounded-xl py-0.5 lg:shadow-lg z-20 overflow-hidden"
+      className="flex flex-col bg-white h-full lg:border lg:border-gray-300 lg:rounded-xl py-0.5 lg:shadow-lg z-20 overflow-hidden"
       onKeyDown={handleKeyDown}
       ref={modalRef}
     >

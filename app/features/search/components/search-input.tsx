@@ -24,6 +24,7 @@ export default function SearchInput({
         type="text"
         onChange={handleInputTextOnChange}
         placeholder={placeholderText}
+        inputMode="search"
         className="flex-1 px-2 py-1 h-8 focus:outline-none text-slate-800"
       />
       <button
