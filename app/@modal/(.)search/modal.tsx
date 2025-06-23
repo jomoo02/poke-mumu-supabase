@@ -1,15 +1,13 @@
 'use client';
 
 import Search from '@/app/features/search/containers/search';
-import { createPortal } from 'react-dom';
 
 export default function Modal() {
-  return createPortal(
+  return (
     <div className="backdrop-blur-sm bg-zinc-900/30 z-[5000] inset-0 fixed w-screen h-full flex justify-center lg:items-center">
       <div className="w-full h-full lg:w-[650px] lg:h-[500px]">
         <Search />
       </div>
-    </div>,
-    document.getElementById('modal-root')!,
+    </div>
   );
 }

@@ -28,9 +28,9 @@ export default function RootLayout({
       <body className={`${pretendard.className} `}>
         <SWRProvider>
           <AppHeader />
-          <main className="my-6 mx-auto">{children}</main>
-          <div id="modal-root" />
-          {modal}
+          {/* <main className="my-6 mx-auto">{children}</main> */}
+          <main>{children}</main>
+          <div>{modal}</div>
         </SWRProvider>
         <footer className="border-t border-gray-300 p-4 bg-neutral-50"></footer>
       </body>

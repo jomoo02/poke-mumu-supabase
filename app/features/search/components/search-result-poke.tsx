@@ -31,9 +31,9 @@ export default function SearchResultPoke({ poke }: SearchResultPokeProps) {
     <Link
       href={`/pokedex/${no}/${pokeKey}`}
       onClick={handleLinkOnClick}
-      className="outline-none"
+      className="outline-none block w-full h-full focus-visible:inset-ring ring-gray-600 "
     >
-      <div className="flex w-full h-full items-center overflow-hidden gap-x-2 sm:gap-x-4 px-2.5 lg:px-4.5 active:bg-neutral-100 hover:bg-neutral-100">
+      <div className="flex w-full h-full items-center overflow-hidden gap-x-2 sm:gap-x-4 px-2.5 lg:px-4.5 active:bg-neutral-100 hover:bg-neutral-100 transition-colors duration-100">
         <div className="text-slate-800 w-9 text-[15px]">
           {formatPokedexNumber(no)}
         </div>
@@ -51,7 +51,7 @@ export default function SearchResultPoke({ poke }: SearchResultPokeProps) {
         <p className="flex flex-1 flex-col overflow-hidden justify-center leading-tight">
           <span className="text-slate-800 truncate">{nameKo}</span>
           {form && (
-            <span className="text-sm text-slate-600 truncate">{form}</span>
+            <span className="text-sm text-slate-700 truncate">{form}</span>
           )}
 
           {/* <span className="text-[14px] text-zinc-600 truncate ">{nameEn}</span> */}

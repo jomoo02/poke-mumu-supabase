@@ -4,11 +4,11 @@ import { useDebouncedCallback } from 'use-debounce';
 import { checkEmptyText } from '@/app/utils/check-type';
 import { fetchSearchPoke } from '../api/search';
 import useLocalStoragePoke from './useLocalStoragePoke';
-// import useLockBodyScroll from '@/app/hooks/useLockBodyScroll';
 import useLockBodyScroll from './useLockScroll';
 
 export default function useSearch() {
-  const modalRef = useRef<HTMLDivElement>(null);
+  // const modalRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useLockBodyScroll(true);
 
@@ -28,7 +28,7 @@ export default function useSearch() {
 
   useEffect(() => {
     const frameId = requestAnimationFrame(() => {
-      modalRef.current?.focus();
+      inputRef.current?.focus();
     });
 
     return () => cancelAnimationFrame(frameId);
@@ -91,6 +91,7 @@ export default function useSearch() {
     isInputEmpty,
     handleInputValue: debounced,
     handleKeyDown,
-    modalRef,
+    // modalRef,
+    inputRef,
   };
 }

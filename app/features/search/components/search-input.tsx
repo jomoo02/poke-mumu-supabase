@@ -4,11 +4,13 @@ import CloseIcon from '@/app/components/icon/close';
 interface SearchInputProps {
   onChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
   closeSearch: () => void;
+  inputRef: React.ForwardedRef<HTMLInputElement>;
 }
 
 export default function SearchInput({
   onChangeInput,
   closeSearch,
+  inputRef,
 }: SearchInputProps) {
   const placeholderText = '도감 번호 또는 포켓몬 이름으로 검색';
 
@@ -22,6 +24,7 @@ export default function SearchInput({
       <SearchIcon size="1.45rem" />
       <input
         type="text"
+        ref={inputRef}
         onChange={handleInputTextOnChange}
         placeholder={placeholderText}
         inputMode="search"

@@ -16,7 +16,8 @@ export default function Search() {
     isInputEmpty,
     handleInputValue,
     handleKeyDown,
-    modalRef,
+    // modalRef,
+    inputRef,
   } = useSearch();
 
   const { closeSearch } = useCloseSearch();
@@ -26,9 +27,14 @@ export default function Search() {
       aria-modal
       className="flex flex-col bg-white h-full lg:border lg:border-gray-300 lg:rounded-xl py-0.5 lg:shadow-lg z-20 overflow-hidden"
       onKeyDown={handleKeyDown}
-      ref={modalRef}
+      // tabIndex={-1}
+      // ref={modalRef}
     >
-      <SearchInput onChangeInput={handleInputValue} closeSearch={closeSearch} />
+      <SearchInput
+        onChangeInput={handleInputValue}
+        closeSearch={closeSearch}
+        inputRef={inputRef}
+      />
       <div className="flex-1 overflow-y-auto min-h-0">
         <div className="px-1.5 lg:px-2 py-1 border-b border-gray-200">
           <SearchDescription
