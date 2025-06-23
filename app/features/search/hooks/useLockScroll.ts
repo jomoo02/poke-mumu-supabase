@@ -36,8 +36,9 @@ export default function useLockBodyScroll(
     return () => {
       body.style.overflow = originalOverflow;
       body.style.paddingRight = originalPaddingRight;
+      document.removeEventListener('touchmove', preventTouchMove);
     };
-  }, []);
+  }, [modalRef]);
 }
 
 // export default function useLockBodyScroll(lock: boolean) {
