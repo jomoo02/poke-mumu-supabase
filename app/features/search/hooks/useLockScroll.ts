@@ -5,12 +5,17 @@ export default function useLockBodyScroll(lock: boolean) {
     const body = document.body;
     const originalOverflow = body.style.overflow;
     const originalPaddingRight = body.style.paddingRight;
-
+    const scrollY = window.scrollY;
     const scrollbarWidth =
       window.innerWidth - document.documentElement.clientWidth;
 
     if (lock) {
       body.style.overflow = 'hidden';
+
+      body.style.position = 'fixed';
+      body.style.top = `-${scrollY}px`;
+      body.style.width = '100%';
+
       if (scrollbarWidth > 0) {
         body.style.paddingRight = `${scrollbarWidth}px`;
       }
@@ -19,6 +24,16 @@ export default function useLockBodyScroll(lock: boolean) {
     return () => {
       body.style.overflow = originalOverflow;
       body.style.paddingRight = originalPaddingRight;
+
+      const top = body.style.top;
+      body.style.position = '';
+      body.style.top = '';
+      body.style.width = '';
+
+      if (top) {
+        const scrollToY = parseInt(top) * -1;
+        window.scrollTo(0, scrollToY);
+      }
     };
   }, [lock]);
 }
