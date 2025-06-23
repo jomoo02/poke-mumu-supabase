@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom';
 
 export default function Modal() {
   return createPortal(
-    <div className="backdrop-blur-sm bg-zinc-900/30 z-[5000] top-0 bottom-0 left-0 fixed w-screen h-full flex justify-center lg:items-center">
+    <div className="backdrop-blur-sm bg-zinc-900/30 z-[5000] inset-0 fixed w-screen h-full flex justify-center lg:items-center">
       <div className="w-full h-full lg:w-[650px] lg:h-[500px]">
         <Search />
       </div>
