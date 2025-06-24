@@ -31,7 +31,9 @@ export default function SearchResult({
           {noPokeText}
         </div>
       ) : (
-        <div className="divide-y divide-gray-200 z-1">
+        <div
+          className={`divide-y divide-gray-200 z-1 ${result.length > 4 ? '' : 'border-b border-gray-200'}`}
+        >
           {result.map((poke) => (
             <div key={poke.id} className="h-[75px]">
               <SearchResultPoke poke={poke} />

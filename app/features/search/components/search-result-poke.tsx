@@ -31,7 +31,7 @@ export default function SearchResultPoke({ poke }: SearchResultPokeProps) {
     <Link
       href={`/pokedex/${no}/${pokeKey}`}
       onClick={handleLinkOnClick}
-      className="outline-none block w-full h-full focus-visible:inset-ring ring-gray-600 "
+      className="outline-none block w-full h-full focus-visible:inset-ring ring-gray-600"
     >
       <div className="flex w-full h-full items-center overflow-hidden gap-x-2 sm:gap-x-4 px-2.5 lg:px-4.5 active:bg-neutral-100 hover:bg-neutral-100 transition-colors duration-100">
         <div className="text-slate-800 w-9 text-[15px]">
