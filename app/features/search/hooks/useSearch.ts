@@ -5,12 +5,14 @@ import { checkEmptyText } from '@/app/utils/check-type';
 import { fetchSearchPoke } from '../api/search';
 import useLocalStoragePoke from './useLocalStoragePoke';
 import useLockBodyScroll from './useLockScroll';
+import useInputBlur from './useInputBlur';
 
 export default function useSearch() {
-  const modalRef = useRef<HTMLDivElement>(null);
+  // const modalRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  useLockBodyScroll(modalRef);
+  useLockBodyScroll();
+  useInputBlur();
 
   const [inputValue, setInputValue] = useState<string>('');
 
@@ -91,7 +93,7 @@ export default function useSearch() {
     isInputEmpty,
     handleInputValue: debounced,
     handleKeyDown,
-    modalRef,
+    // modalRef,
     inputRef,
   };
 }
