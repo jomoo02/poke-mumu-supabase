@@ -78,9 +78,23 @@ export default function useLockBodyScroll() {
       body.style.paddingRight = `${scrollbarWidth}px`;
     }
 
+    //
+    body.style.position = 'fixed';
+    body.style.top = `-${scrollY}px`;
+    body.style.width = '100%';
+    //
+
     return () => {
       body.style.overflow = originalOverflow;
       body.style.paddingRight = originalPaddingRight;
+
+      //
+      const scrollY = parseInt(body.style.top || '0');
+      window.scrollTo(0, -scrollY);
+      body.style.position = '';
+      body.style.top = '';
+      body.style.width = '';
+      //
     };
   }, []);
 }

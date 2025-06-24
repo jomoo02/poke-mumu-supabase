@@ -56,7 +56,7 @@ export default function Search() {
           />
         )}
       </div>
-      <div className="h-8 lg:h-4 border-t border-gray-200 bg-white z-10" />
+      <div className="h-9 lg:h-4 border-t border-gray-200 bg-white z-10" />
     </div>
   );
 }
