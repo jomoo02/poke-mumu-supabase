@@ -25,7 +25,7 @@ export default function Search() {
   return (
     <div
       aria-modal
-      className="flex flex-col bg-white h-full lg:border lg:border-gray-300 lg:rounded-xl py-0.5 lg:shadow-lg z-20 overflow-hidden"
+      className="flex flex-col bg-white h-full  border border-gray-300 rounded-xl py-0.5 lg:shadow-lg z-20 overflow-hidden"
       onKeyDown={handleKeyDown}
       // tabIndex={-1}
       // ref={modalRef}
@@ -56,7 +56,7 @@ export default function Search() {
           />
         )}
       </div>
-      <div className="h-9 lg:h-4 border-t border-gray-200 bg-white z-10" />
+      <div className="h-4 border-t border-gray-200 bg-white z-10" />
     </div>
   );
 }

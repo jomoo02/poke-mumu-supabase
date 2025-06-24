@@ -79,9 +79,9 @@ export default function useLockBodyScroll() {
     }
 
     //
-    body.style.position = 'fixed';
-    body.style.top = `-${scrollY}px`;
-    body.style.width = '100%';
+    // body.style.position = 'fixed';
+    // body.style.top = `-${scrollY}px`;
+    // body.style.width = '100%';
     //
 
     return () => {
@@ -89,11 +89,11 @@ export default function useLockBodyScroll() {
       body.style.paddingRight = originalPaddingRight;
 
       //
-      const scrollY = parseInt(body.style.top || '0');
-      window.scrollTo(0, -scrollY);
-      body.style.position = '';
-      body.style.top = '';
-      body.style.width = '';
+      // const scrollY = parseInt(body.style.top || '0');
+      // window.scrollTo(0, -scrollY);
+      // body.style.position = '';
+      // body.style.top = '';
+      // body.style.width = '';
       //
     };
   }, []);

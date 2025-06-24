@@ -50,13 +50,13 @@ export default function PokedexTableV2({ pokeList }: PokedexTableProps) {
         className="w-full table-fixed border-separate border-spacing-0"
       >
         <TableHeader
-          className=" top-[55px] z-50 sticky bg-white shadow-[inset_-1px_0_0_0_rgba(229,231,235,1)]"
+          className="top-[55px] z-50 sticky bg-white shadow-[inset_-1px_0_0_0_rgba(229,231,235,1)]"
           color="bg-neutral-100"
         >
           <TableHeaderCell
             headerKey="no"
             sortAble
-            className="h-10 text-[15px] text-slate-800 font-medium min-w-[4.5rem] w-[4.5rem] xl:min-w-[4.5rem] border-x border-white"
+            className="h-10 text-[15px] text-slate-800 font-medium min-w-[4.15rem] w-[4.15rem] xl:min-w-[4.15rem] border-x border-white"
           >
             번호
           </TableHeaderCell>
@@ -130,7 +130,7 @@ export default function PokedexTableV2({ pokeList }: PokedexTableProps) {
               <TableRow key={index} className="h-[4.25rem]">
                 <TableCell
                   align="right"
-                  className="text-slate-800 text-[15px] px-2 font-normal border-b border-gray-200"
+                  className="text-slate-800 text-[15px] px-2.5 font-normal border-b border-gray-200"
                 >
                   {typeof poke.no === 'number' && formatPokedexNumber(poke.no)}
                 </TableCell>
