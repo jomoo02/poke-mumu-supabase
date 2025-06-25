@@ -16,8 +16,8 @@ export default function SearchInput({
 
   return (
     <div className="px-3 py-2 border-b border-gray-200">
-      <div className=" flex rounded-lg justify-center items-center gap-x-0.5 px-3 bg-neutral-100 min-h-9.5 max-h-9.5">
-        <SearchIcon size="1.45rem" />
+      <div className=" flex rounded-lg justify-center items-center gap-x-0.5 px-2 bg-neutral-100 min-h-9.5 h-9.5 max-h-9.5">
+        <SearchIcon size="24px" />
         <input
           type="text"
           ref={inputRef}
