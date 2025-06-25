@@ -17,7 +17,7 @@ export default function SearchInput({
   return (
     <div className="px-3 py-2 border-b border-gray-200">
       <div className=" flex rounded-lg justify-center items-center gap-x-0.5 px-2 bg-neutral-100 min-h-9.5 h-9.5 max-h-9.5">
-        <SearchIcon size="24px" />
+        <SearchIcon size="24" />
         <input
           type="text"
           ref={inputRef}
@@ -32,7 +32,7 @@ export default function SearchInput({
           onClick={onClose}
           aria-label="close-input-btn"
         >
-          <CloseIcon size="1.75rem" />
+          <CloseIcon size="24" />
         </button>
       </div>
     </div>
