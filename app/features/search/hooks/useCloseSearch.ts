@@ -1,10 +1,10 @@
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 
 export default function useCloseSearch() {
   const router = useRouter();
 
-  const closeSearch = () => router.back();
+  const closeSearch = useCallback(() => router.back(), [router]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -22,7 +22,7 @@ export default function useCloseSearch() {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [closeSearch]);
 
   return { closeSearch };
 }

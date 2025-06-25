@@ -53,10 +53,8 @@ export default function SearchResultPoke({ poke }: SearchResultPokeProps) {
           {form && (
             <span className="text-sm text-slate-700 truncate">{form}</span>
           )}
-
-          {/* <span className="text-[14px] text-zinc-600 truncate ">{nameEn}</span> */}
         </p>
-        <div className="flex flex-col gap-y-1 items-center lg:gap-y-1.5">
+        <div className="flex flex-col gap-y-1 items-center">
           <PokeTypeBadge type={type1} />
           {type2 && <PokeTypeBadge type={type2} />}
         </div>

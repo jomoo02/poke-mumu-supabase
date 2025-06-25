@@ -1,7 +1,7 @@
 function NavButton() {
   return (
-    <div className="w-[100px] sm:w-[120px] p-1 sm:p-2">
-      <div className="w-full h-7.5 bg-neutral-100 rounded-lg" />
+    <div className="w-[100px] sm:w-[130px]">
+      <div className="w-full h-7.5 sm:h-9 bg-neutral-100 rounded-lg" />
     </div>
   );
 }

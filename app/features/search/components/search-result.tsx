@@ -32,7 +32,8 @@ export default function SearchResult({
         </div>
       ) : (
         <div
-          className={`divide-y divide-gray-200 z-1 ${result.length > 4 ? '' : 'border-b border-gray-200'}`}
+          className=" divide-y divide-gray-200 z-1 border-b border-gray-200 mb-2.5"
+          // className={`divide-y divide-gray-200 z-1 ${result.length > 4 ? '' : 'border-b border-gray-200'}`}
         >
           {result.map((poke) => (
             <div key={poke.id} className="h-[75px]">

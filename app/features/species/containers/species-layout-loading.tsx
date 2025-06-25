@@ -10,7 +10,7 @@ function SpeciesNavLoading({ ndex }: LoadingProps) {
   const nextCondition = ndex < 1025;
 
   return (
-    <div className="grid gap-y-3 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-0 ">
+    <div className="grid gap-y-3 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-0">
       {prevCondition && (
         <div className="flex border-2 rounded-lg h-[52px] md:h-14 lg:h-16 border-zinc-500">
           <div className="flex justify-center items-center border-r-2 border-zinc-500 px-3 sm:px-4">

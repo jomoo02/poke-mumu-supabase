@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import useLockBodyScroll from './useLockScroll';
+import useLockBodyScroll from './useLockBodyScroll';
 
 export default function useSearchModal() {
   const modalRef = useRef<HTMLDivElement>(null);

@@ -1,24 +1,15 @@
-import { useState, ChangeEvent, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import useSWR from 'swr';
-import { useDebouncedCallback } from 'use-debounce';
 import { checkEmptyText } from '@/app/utils/check-type';
-import { fetchSearchPoke } from '../api/search';
 import useLocalStoragePoke from './useLocalStoragePoke';
-import useLockBodyScroll from './useLockScroll';
 import useInputBlur from './useInputBlur';
+import useDebouncedInput from './useDebouncedInput';
+import { fetchSearchPoke } from '../api/search';
 
 export default function useSearch() {
-  // const modalRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  useLockBodyScroll();
-  useInputBlur();
-
-  const [inputValue, setInputValue] = useState<string>('');
-
-  const debounced = useDebouncedCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value.trim());
-  }, 300);
+  const { value: inputValue, handleChange } = useDebouncedInput();
 
   const { data, error, isLoading } = useSWR(inputValue, fetchSearchPoke);
 
@@ -28,18 +19,8 @@ export default function useSearch() {
 
   const result = isInputEmpty ? localPokeList : data || [];
 
-  useEffect(() => {
-    const frameId = requestAnimationFrame(() => {
-      inputRef.current?.focus();
-    });
-
-    return () => cancelAnimationFrame(frameId);
-  }, []);
-
   const handleKeyDown: React.KeyboardEventHandler<HTMLDivElement> = (e) => {
-    if (e.key !== 'Tab') {
-      return;
-    }
+    if (e.key !== 'Tab') return;
 
     const container = e.currentTarget as HTMLElement;
     // 조건: <a>, <input>, tabindex가 있는 <svg>
@@ -62,9 +43,7 @@ export default function useSearch() {
       );
     });
 
-    if (focusable.length === 0) {
-      return;
-    }
+    if (focusable.length === 0) return;
 
     const first = focusable[0];
     const last = focusable[focusable.length - 1];
@@ -85,15 +64,24 @@ export default function useSearch() {
     }
   };
 
+  useInputBlur();
+
+  useEffect(() => {
+    const frameId = requestAnimationFrame(() => {
+      inputRef.current?.focus();
+    });
+
+    return () => cancelAnimationFrame(frameId);
+  }, []);
+
   return {
     result,
-    error: error as Error,
-    isLoading: isLoading || isLocalLoading,
     inputValue,
     isInputEmpty,
-    handleInputValue: debounced,
     handleKeyDown,
-    // modalRef,
     inputRef,
+    error: error as Error,
+    isLoading: isLoading || isLocalLoading,
+    handleInputValue: handleChange,
   };
 }
