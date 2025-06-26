@@ -19,7 +19,7 @@ export default async function SpeciesLayout({ ndex }: SpeciesLayoutProps) {
   ]);
 
   return (
-    <div className="">
+    <div>
       <SpeciesNav speciesNav={speciesNav} />
       <SpeciesTitle pokeName={speciesTitle.name_ko} no={speciesTitle.no} />
       {speciesVarieties && (
