@@ -25,6 +25,10 @@ interface ComboboxContextValue {
   close: () => void;
   items: ComboboxItem[];
   registerItem: (item: ComboboxItem) => void;
+  filteredItems: ComboboxItem[];
+  inputValue: string;
+  onChangeInputValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  contentRef: RefObject<HTMLDivElement | null>;
 }
 
 const ComboboxContext = createContext<ComboboxContextValue | null>(null);
@@ -56,10 +60,10 @@ export function useActiveIndex() {
 }
 
 export function useItems() {
-  const { items } = useComboboxContext();
+  const { items, filteredItems } = useComboboxContext();
   const itemCount = items.length;
 
-  return { items, itemCount };
+  return { items, itemCount, filteredItems };
 }
 
 export function useRegisterItem() {
@@ -87,6 +91,19 @@ export function useListRef() {
   return { listRef };
 }
 
+export function useInputValue() {
+  const { inputValue, onChangeInputValue } = useComboboxContext();
+  return {
+    inputValue,
+    onChangeInputValue,
+  };
+}
+
+export function useContentRef() {
+  const { contentRef } = useComboboxContext();
+  return { contentRef };
+}
+
 export function ComboboxProvider({
   children,
   selectedItem,
@@ -101,6 +118,10 @@ export function ComboboxProvider({
   triggerRef,
   containerRef,
   listRef,
+  filteredItems,
+  inputValue,
+  onChangeInputValue,
+  contentRef,
 }: ComboboxContextValue & { children: React.ReactNode }) {
   const value = useMemo(
     () => ({
@@ -116,6 +137,10 @@ export function ComboboxProvider({
       triggerRef,
       listRef,
       containerRef,
+      filteredItems,
+      inputValue,
+      onChangeInputValue,
+      contentRef,
     }),
     [
       selectedItem,
@@ -130,6 +155,10 @@ export function ComboboxProvider({
       triggerRef,
       listRef,
       containerRef,
+      filteredItems,
+      inputValue,
+      onChangeInputValue,
+      contentRef,
     ],
   );
   return (

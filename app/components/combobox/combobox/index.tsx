@@ -1,3 +1,5 @@
+'use client';
+
 import { ComboboxProvider } from '../combobox.context';
 import useCombobox from './useCombobox';
 
@@ -20,6 +22,10 @@ export default function Combobox({ onSelect, children }: ComboboxProps) {
     open,
     close,
     selectedItem,
+    filteredItems,
+    inputValue,
+    handleChangeInputValue,
+    contentRef,
   } = useCombobox(onSelect);
 
   return (
@@ -36,6 +42,10 @@ export default function Combobox({ onSelect, children }: ComboboxProps) {
       open={open}
       close={close}
       selectedItem={selectedItem}
+      filteredItems={filteredItems}
+      inputValue={inputValue}
+      onChangeInputValue={handleChangeInputValue}
+      contentRef={contentRef}
     >
       {children}
     </ComboboxProvider>

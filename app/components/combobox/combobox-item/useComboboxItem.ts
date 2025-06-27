@@ -12,15 +12,15 @@ export default function useComboboxItem(item: ComboboxItem) {
   const { activeIndex, setActiveIndex } = useActiveIndex();
   const { onSelect } = useOnSelect();
   const { registerItem } = useRegisterItem();
-  const { items } = useItems();
+  const { filteredItems } = useItems();
   const { selectedItem } = useSelectedItem();
   const itemRef = useRef<HTMLDivElement>(null);
 
-  const index = items.map(({ value }) => value).indexOf(item.value);
+  const index = filteredItems.map(({ value }) => value).indexOf(item.value);
   const isActive = activeIndex === index;
   const isSelected = selectedItem?.value === item.value;
 
-  const handleClick = () => {
+  const handleMouseDown = () => {
     onSelect(item);
   };
 
@@ -34,12 +34,6 @@ export default function useComboboxItem(item: ComboboxItem) {
     }
   };
 
-  const handleMouseLeave = () => {
-    if (activeIndex === index) {
-      setActiveIndex(-1);
-    }
-  };
-
   useEffect(() => {
     registerItem(item);
   }, [item, registerItem]);
@@ -48,9 +42,8 @@ export default function useComboboxItem(item: ComboboxItem) {
     itemRef,
     isActive,
     isSelected,
-    handleClick,
+    handleMouseDown,
     handleMouseEnter,
     handleMouseMove,
-    handleMouseLeave,
   };
 }

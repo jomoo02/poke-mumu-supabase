@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useMemo } from 'react';
 import type { ComboboxItem } from '../combobox.context';
 
 export default function useCombobox(
@@ -9,9 +9,19 @@ export default function useCombobox(
   const containerRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
+  const [inputValue, setInputValue] = useState<string>('');
   const [items, setItems] = useState<ComboboxItem[]>([]);
   const [selectedItem, setSelectedItem] = useState<ComboboxItem | null>(null);
+
+  const filteredItems = useMemo(() => {
+    if (!inputValue) {
+      return items;
+    }
+
+    return items.filter(({ label }) => label.includes(inputValue));
+  }, [inputValue, items]);
 
   const registerItem = useCallback(({ value, label }: ComboboxItem) => {
     setItems((prev) => {
@@ -21,11 +31,15 @@ export default function useCombobox(
     });
   }, []);
 
+  const handleChangeInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
+
   const open = () => {
     setIsOpen(true);
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        listRef.current?.focus({ preventScroll: true });
+        contentRef.current?.focus({ preventScroll: true });
       });
     });
   };
@@ -58,5 +72,9 @@ export default function useCombobox(
     open,
     close,
     selectedItem,
+    filteredItems,
+    inputValue,
+    handleChangeInputValue,
+    contentRef,
   };
 }

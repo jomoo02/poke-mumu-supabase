@@ -1,5 +1,3 @@
-'use client';
-
 import { useState, useEffect } from 'react';
 import { useSelectOpen, useContentRef } from '../select.context';
 import useSelectContentPosition from './useSelectContentPosition';

@@ -1,3 +1,4 @@
+import NatureCombobox from '../features/nature/components/combobox';
 import NatureTable from '../features/nature/components/nature-table';
 
 export default function Page() {
@@ -22,6 +23,9 @@ export default function Page() {
         </div>
 
         <NatureTable />
+        <div className="pt-10 pb-64 flex justify-end">
+          <NatureCombobox />
+        </div>
       </div>
       <div className="min-w-36 w-36 xl:min-w-40 xl:w-40 leading-5" />
     </div>

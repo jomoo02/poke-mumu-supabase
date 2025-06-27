@@ -1,4 +1,9 @@
-import { naturesTable, naturesKoMap, type Nature } from '../data/nature';
+import {
+  naturesTable,
+  naturesKoMap,
+  natures,
+  type Nature,
+} from '../data/nature';
 
 export function getNatureKoNmae(value: string): string | null {
   if (value in naturesKoMap) {
@@ -30,4 +35,14 @@ export function getNatureTableData() {
     headerData,
     bodyData,
   };
+}
+
+export function getNatureComboboxData() {
+  const comboboxData = [...natures].map((nature) => {
+    const koNature = getNatureKoNmae(nature);
+    const label = `${koNature} · ${nature}`;
+    const value = nature;
+    return { label, value };
+  });
+  return comboboxData;
 }
