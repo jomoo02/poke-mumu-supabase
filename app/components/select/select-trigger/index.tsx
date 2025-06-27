@@ -8,6 +8,7 @@ export default function SelectTrigger() {
   return (
     <button
       ref={triggerRef}
+      role="button"
       onMouseDown={handleOnMouseDown}
       onKeyDown={handleOnKeyDown}
       className="flex justify-between items-center pl-3 pr-2 w-full border cursor-pointer border-gray-300 h-8 min-h-8 max-h-8 rounded-md outline-none focus:ring ring-gray-700"
