@@ -46,6 +46,9 @@ export default function useCombobox(
 
   const close = () => {
     setIsOpen(false);
+    // setTimeout(() => {
+    //   triggerRef.current?.focus({ preventScroll: true });
+    // }, 0);
     requestAnimationFrame(() => {
       triggerRef.current?.focus({ preventScroll: true });
     });
