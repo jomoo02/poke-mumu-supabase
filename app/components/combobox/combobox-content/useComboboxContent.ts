@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react';
-import { useListOpen, useContentRef } from '../combobox.context';
+import {
+  useListOpen,
+  useContentRef,
+  useHasPosition,
+} from '../combobox.context';
 import usePosition from './usePosition';
 import { useHandleKeyDown } from './useListHandle';
 import {
@@ -18,13 +22,13 @@ export default function useComboboxContent() {
   useClickOutsideEffect();
   useOrientationChangeEffect();
 
-  const [hasPosition, setHasPosition] = useState(false);
+  const { hasPosition, setHasPosition } = useHasPosition();
 
   useEffect(() => {
     const isValid =
       typeof position.top === 'number' && typeof position.left === 'number';
     setHasPosition(isValid);
-  }, [position, isOpen]);
+  }, [position, isOpen, setHasPosition]);
 
   useEffect(() => {
     if (isOpen) {

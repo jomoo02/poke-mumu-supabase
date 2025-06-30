@@ -14,6 +14,7 @@ export default function useCombobox(
   const [inputValue, setInputValue] = useState<string>('');
   const [items, setItems] = useState<ComboboxItem[]>([]);
   const [selectedItem, setSelectedItem] = useState<ComboboxItem | null>(null);
+  const [hasPosition, setHasPosition] = useState<boolean>(false);
 
   const filteredItems = useMemo(() => {
     if (!inputValue) {
@@ -47,6 +48,7 @@ export default function useCombobox(
   const close = () => {
     console.log('combobox close');
     setIsOpen(false);
+    setHasPosition(false);
     requestAnimationFrame(() => {
       triggerRef.current?.focus({ preventScroll: true });
     });
@@ -77,5 +79,7 @@ export default function useCombobox(
     inputValue,
     handleChangeInputValue,
     contentRef,
+    hasPosition,
+    setHasPosition,
   };
 }

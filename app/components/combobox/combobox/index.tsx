@@ -26,6 +26,8 @@ export default function Combobox({ onSelect, children }: ComboboxProps) {
     inputValue,
     handleChangeInputValue,
     contentRef,
+    hasPosition,
+    setHasPosition,
   } = useCombobox(onSelect);
 
   return (
@@ -46,6 +48,8 @@ export default function Combobox({ onSelect, children }: ComboboxProps) {
       inputValue={inputValue}
       onChangeInputValue={handleChangeInputValue}
       contentRef={contentRef}
+      hasPosition={hasPosition}
+      setHasPosition={setHasPosition}
     >
       {children}
     </ComboboxProvider>

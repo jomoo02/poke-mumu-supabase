@@ -29,6 +29,8 @@ interface ComboboxContextValue {
   inputValue: string;
   onChangeInputValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
   contentRef: RefObject<HTMLDivElement | null>;
+  hasPosition: boolean;
+  setHasPosition: Dispatch<SetStateAction<boolean>>;
 }
 
 const ComboboxContext = createContext<ComboboxContextValue | null>(null);
@@ -104,6 +106,11 @@ export function useContentRef() {
   return { contentRef };
 }
 
+export function useHasPosition() {
+  const { hasPosition, setHasPosition } = useComboboxContext();
+  return { hasPosition, setHasPosition };
+}
+
 export function ComboboxProvider({
   children,
   selectedItem,
@@ -122,6 +129,8 @@ export function ComboboxProvider({
   inputValue,
   onChangeInputValue,
   contentRef,
+  hasPosition,
+  setHasPosition,
 }: ComboboxContextValue & { children: React.ReactNode }) {
   const value = useMemo(
     () => ({
@@ -141,6 +150,8 @@ export function ComboboxProvider({
       inputValue,
       onChangeInputValue,
       contentRef,
+      hasPosition,
+      setHasPosition,
     }),
     [
       selectedItem,
@@ -159,6 +170,8 @@ export function ComboboxProvider({
       inputValue,
       onChangeInputValue,
       contentRef,
+      hasPosition,
+      setHasPosition,
     ],
   );
   return (
