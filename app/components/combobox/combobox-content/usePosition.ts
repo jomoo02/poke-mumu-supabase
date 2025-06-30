@@ -90,7 +90,7 @@ export default function usePosition() {
         handleScrollOrResize,
       );
     };
-  }, [isOpen, itemCount, calculatePosition]);
+  }, [isOpen, itemCount]);
 
   return { position };
 }
