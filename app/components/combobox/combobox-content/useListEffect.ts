@@ -19,6 +19,7 @@ export function useClickOutsideEffect() {
     if (!isOpen) return;
 
     const handleClickOutside = (e: MouseEvent) => {
+      e.preventDefault();
       if (Date.now() - openedAt < 200) return;
 
       if (
@@ -30,9 +31,7 @@ export function useClickOutsideEffect() {
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside, {
-      passive: true,
-    });
+    document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);

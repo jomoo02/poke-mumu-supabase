@@ -21,7 +21,6 @@ export default function ComboboxInput({
         value={inputValue}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
-        autoFocus={true}
       />
     </div>
   );
