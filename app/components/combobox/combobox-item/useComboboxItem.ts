@@ -38,6 +38,12 @@ export default function useComboboxItem(item: ComboboxItem) {
     registerItem(item);
   }, [item, registerItem]);
 
+  useEffect(() => {
+    if (isActive && itemRef.current) {
+      itemRef.current.scrollIntoView({ block: 'nearest' });
+    }
+  }, [isActive]);
+
   return {
     itemRef,
     isActive,

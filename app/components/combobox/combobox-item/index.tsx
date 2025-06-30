@@ -10,7 +10,7 @@ interface ComboboxItemProps {
 
 export default function ComboboxItem({ item }: ComboboxItemProps) {
   const {
-    // itemRef,
+    itemRef,
     isActive,
     isSelected,
     handleMouseDown,
@@ -20,6 +20,7 @@ export default function ComboboxItem({ item }: ComboboxItemProps) {
 
   return (
     <div
+      ref={itemRef}
       role="option"
       aria-selected={isSelected}
       onMouseDown={handleMouseDown}
