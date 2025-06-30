@@ -35,7 +35,9 @@ export default function usePosition() {
     const scrollY = window.scrollY || document.documentElement.scrollTop;
     const scrollX = window.scrollX || document.documentElement.scrollLeft;
 
-    const spaceBelow = window.innerHeight - triggerRect.bottom;
+    const visualHeight = window.visualViewport?.height || window.innerHeight;
+
+    const spaceBelow = visualHeight - triggerRect.bottom;
     const spaceAbove = triggerRect.top;
 
     const shouldOpenAbove =
@@ -78,12 +80,17 @@ export default function usePosition() {
 
     window.addEventListener('scroll', handleScrollOrResize, true); // capture 단계
     window.addEventListener('resize', handleScrollOrResize);
+    window.visualViewport?.addEventListener('resize', handleScrollOrResize);
 
     return () => {
       window.removeEventListener('scroll', handleScrollOrResize, true);
       window.removeEventListener('resize', handleScrollOrResize);
+      window.visualViewport?.removeEventListener(
+        'resize',
+        handleScrollOrResize,
+      );
     };
-  }, [isOpen, itemCount]);
+  }, [isOpen, itemCount, calculatePosition]);
 
   return { position };
 }
