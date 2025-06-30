@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useListOpen, useContentRef } from '../combobox.context';
 import usePosition from './usePosition';
-import useContentBlur from './useContentBlur';
 import { useHandleKeyDown } from './useListHandle';
 import {
   useClickOutsideEffect,
@@ -15,7 +14,6 @@ export default function useComboboxContent() {
   const { contentRef } = useContentRef();
 
   const { handleKeyDown } = useHandleKeyDown();
-  const { handleBlur } = useContentBlur();
 
   useClickOutsideEffect();
   useOrientationChangeEffect();
@@ -41,7 +39,6 @@ export default function useComboboxContent() {
     position,
     show,
     contentRef,
-    handleBlur,
     handleKeyDown,
     hasPosition,
   };

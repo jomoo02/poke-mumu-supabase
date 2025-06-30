@@ -11,6 +11,7 @@ export default function useComboboxTrigger() {
   const content = selectedItem ? selectedItem.label : '성격을 골라주세요...';
 
   const handleMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
+    console.log('trigger mouse-down');
     e.preventDefault();
     if (isOpen) {
       close();

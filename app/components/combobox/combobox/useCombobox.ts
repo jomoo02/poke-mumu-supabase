@@ -45,6 +45,7 @@ export default function useCombobox(
   };
 
   const close = () => {
+    console.log('combobox close');
     setIsOpen(false);
     requestAnimationFrame(() => {
       triggerRef.current?.focus({ preventScroll: true });
