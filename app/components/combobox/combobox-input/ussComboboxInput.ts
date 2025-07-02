@@ -5,6 +5,9 @@ import {
   useHasPosition,
 } from '../combobox.context';
 import { useHandleKeyDown } from './useListHandle';
+// import { useRef } from 'react';
+// import { useInputValue } from '../combobox.context';
+// import { useHandleKeyDown } from './useListHandle';
 
 export default function useComboboxInput() {
   const inputRef = useRef<HTMLInputElement>(null);
