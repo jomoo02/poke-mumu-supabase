@@ -25,6 +25,7 @@ export default function ComboboxContent({ children }: ComboboxContentProps) {
   return createPortal(
     <div
       ref={contentRef}
+      tabIndex={-1}
       style={hasPosition ? position : hiddenStyle}
       className={`bg-white shadow-xl p-1 w-full border border-gray-300 rounded-md outline-none focus:outline-none  h-52 max-h-52 overflow-hidden
         transition-opacity duration-200 ease-out transform z-50

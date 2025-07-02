@@ -16,6 +16,7 @@ export function useClickOutsideEffect() {
 
   // PC: 클릭으로 닫기
   useEffect(() => {
+    console.log(isOpen);
     if (!isOpen) {
       return;
     }
