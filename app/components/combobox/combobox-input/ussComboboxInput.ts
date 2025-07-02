@@ -18,15 +18,7 @@ export default function useComboboxInput() {
 
   useEffect(() => {
     if (isOpen && hasPosition) {
-      const id1 = requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          inputRef.current?.focus({ preventScroll: true });
-        });
-      });
-
-      return () => {
-        cancelAnimationFrame(id1);
-      };
+      inputRef.current?.focus({ preventScroll: true });
     }
   }, [isOpen, hasPosition]);
 
