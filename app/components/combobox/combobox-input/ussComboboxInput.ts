@@ -18,7 +18,9 @@ export default function useComboboxInput() {
 
   useEffect(() => {
     if (isOpen && hasPosition) {
-      inputRef.current?.focus({ preventScroll: true });
+      setTimeout(() => {
+        inputRef.current?.focus({ preventScroll: true });
+      }, 100);
     }
   }, [isOpen, hasPosition]);
 
