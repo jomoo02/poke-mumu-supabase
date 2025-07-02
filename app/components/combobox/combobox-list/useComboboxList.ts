@@ -8,7 +8,6 @@ export default function useComboboxList() {
   return {
     listRef,
     filteredItems,
-    // handleBlur,
     inputValue,
   };
 }

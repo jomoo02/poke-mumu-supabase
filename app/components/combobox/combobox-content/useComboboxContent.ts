@@ -5,7 +5,6 @@ import {
   useHasPosition,
 } from '../combobox.context';
 import usePosition from './usePosition';
-import { useHandleKeyDown } from './useListHandle';
 import {
   useClickOutsideEffect,
   useOrientationChangeEffect,
@@ -16,8 +15,6 @@ export default function useComboboxContent() {
   const [show, setShow] = useState(false);
   const { position } = usePosition();
   const { contentRef } = useContentRef();
-
-  const { handleKeyDown } = useHandleKeyDown();
 
   useClickOutsideEffect();
   useOrientationChangeEffect();
@@ -43,7 +40,6 @@ export default function useComboboxContent() {
     position,
     show,
     contentRef,
-    handleKeyDown,
     hasPosition,
   };
 }
