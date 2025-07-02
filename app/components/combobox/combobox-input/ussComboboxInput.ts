@@ -17,11 +17,17 @@ export default function useComboboxInput() {
   const { hasPosition } = useHasPosition();
 
   useEffect(() => {
-    if (isOpen && hasPosition) {
-      setTimeout(() => {
-        inputRef.current?.focus({ preventScroll: true });
-      }, 100);
-    }
+    if (!isOpen) return;
+
+    const waitForFocus = () => {
+      if (inputRef.current && hasPosition) {
+        inputRef.current.focus({ preventScroll: true });
+      } else {
+        requestAnimationFrame(waitForFocus);
+      }
+    };
+
+    waitForFocus();
   }, [isOpen, hasPosition]);
 
   return {
