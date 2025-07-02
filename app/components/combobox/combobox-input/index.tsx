@@ -15,13 +15,13 @@ export default function ComboboxInput({
   return (
     <div>
       <input
+        name="combobox-input"
         ref={inputRef}
         placeholder={placeholder}
         className={className}
         value={inputValue}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
-        autoFocus={true}
       />
     </div>
   );
