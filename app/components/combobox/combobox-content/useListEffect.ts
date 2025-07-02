@@ -76,7 +76,7 @@ export function useClickOutsideEffect() {
       passive: true,
     });
     document.addEventListener('touchmove', handleTouchMove, { passive: true });
-    document.addEventListener('touchend', handleTouchEnd);
+    document.addEventListener('touchend', handleTouchEnd, { passive: false });
 
     return () => {
       document.removeEventListener('touchstart', handleTouchStart);

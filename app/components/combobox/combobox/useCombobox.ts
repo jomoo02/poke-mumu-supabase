@@ -38,14 +38,10 @@ export default function useCombobox(
 
   const open = () => {
     setIsOpen(true);
-    // requestAnimationFrame(() => {
-    //   requestAnimationFrame(() => {
-    //     contentRef.current?.focus({ preventScroll: true });
-    //   });
-    // });
   };
 
   const close = () => {
+    console.log('close');
     setIsOpen(false);
     setHasPosition(false);
 

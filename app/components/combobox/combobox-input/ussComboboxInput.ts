@@ -25,11 +25,6 @@ export default function useComboboxInput() {
         cancelAnimationFrame(id1);
       };
     }
-    // if (isOpen && hasPosition) {
-    //   setTimeout(() => {
-    //     inputRef.current?.focus({ preventScroll: true });
-    //   }, 0);
-    // }
   }, [isOpen, hasPosition]);
 
   return {
