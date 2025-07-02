@@ -12,7 +12,7 @@ export default function ComboboxTrigger() {
       onKeyDown={handleKeyDown}
       className="flex justify-between items-center pl-3 pr-2 w-full border cursor-pointer border-gray-300 min-h-8 h-8 rounded-md outline-none focus:ring ring-gray-700"
     >
-      <span className="truncate text-sm text-slate-800">{content}</span>
+      <span className="truncate text-[15px] text-slate-800">{content}</span>
     </button>
   );
 }

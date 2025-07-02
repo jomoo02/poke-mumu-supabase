@@ -20,11 +20,18 @@ export function useHandleKeyDown() {
     switch (e.key) {
       case 'ArrowDown':
         e.preventDefault();
-        setActiveIndex((prev: number) => (prev + 1) % itemCount);
+        setActiveIndex((prev: number) => {
+          if (prev >= itemCount - 1) return itemCount - 1;
+          return prev + 1;
+        });
         break;
       case 'ArrowUp':
         e.preventDefault();
-        setActiveIndex((prev: number) => (prev - 1 + itemCount) % itemCount);
+        setActiveIndex((prev: number) => {
+          if (prev <= 0) return 0;
+          return prev - 1;
+        });
+
         break;
       case 'Enter':
         e.preventDefault();

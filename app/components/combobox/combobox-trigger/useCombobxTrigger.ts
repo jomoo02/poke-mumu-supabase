@@ -2,6 +2,8 @@ import {
   useTriggerRef,
   useListOpen,
   useSelectedItem,
+  //,
+  useInputRef,
 } from '../combobox.context';
 
 export default function useComboboxTrigger() {
@@ -10,12 +12,18 @@ export default function useComboboxTrigger() {
   const { selectedItem } = useSelectedItem();
   const content = selectedItem ? selectedItem.label : '성격을 골라주세요...';
 
+  //
+  const { inputRef } = useInputRef();
+
   const handleMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (isOpen) {
       close();
     } else {
       open();
+      console.log(inputRef);
+
+      inputRef.current?.focus({ preventScroll: true });
     }
   };
 

@@ -16,6 +16,7 @@ export default function useCombobox(
   const [selectedItem, setSelectedItem] = useState<ComboboxItem | null>(null);
   const [hasPosition, setHasPosition] = useState<boolean>(false);
 
+  const inputRef = useRef<HTMLInputElement>(null);
   const filteredItems = useMemo(() => {
     if (!inputValue) {
       return items;
@@ -39,15 +40,16 @@ export default function useCombobox(
   const open = () => {
     setIsOpen(true);
 
-    // requestAnimationFrame(() => {
-    //   contentRef.current?.focus({ preventScroll: true });
-    // });
+    requestAnimationFrame(() => {
+      contentRef.current?.focus({ preventScroll: true });
+    });
   };
 
   const close = () => {
-    console.log('close');
     setIsOpen(false);
     setHasPosition(false);
+    setInputValue('');
+    setActiveIndex(-1);
 
     requestAnimationFrame(() => {
       triggerRef.current?.focus({ preventScroll: true });
@@ -81,5 +83,6 @@ export default function useCombobox(
     contentRef,
     hasPosition,
     setHasPosition,
+    inputRef,
   };
 }

@@ -20,6 +20,13 @@ export default function useComboboxItem(item: ComboboxItem) {
   const isActive = activeIndex === index;
   const isSelected = selectedItem?.value === item.value;
 
+  // const isActive = (() => {
+  //   if (activeIndex === -1) {
+  //     return isSelected;
+  //   }
+  //   return activeIndex === index;
+  // })();
+
   const handleMouseDown = () => {
     onSelect(item);
   };

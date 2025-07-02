@@ -5,8 +5,10 @@ import {
   useHasPosition,
 } from '../combobox.context';
 import { useHandleKeyDown } from './useListHandle';
+import { isMobileDevice } from '@/app/utils/device';
+
 // import { useRef } from 'react';
-// import { useInputValue } from '../combobox.context';
+// import { useInputValue, useInputRef } from '../combobox.context';
 // import { useHandleKeyDown } from './useListHandle';
 
 export default function useComboboxInput() {
@@ -17,16 +19,26 @@ export default function useComboboxInput() {
   const { hasPosition } = useHasPosition();
 
   useEffect(() => {
-    if (
-      isOpen &&
-      hasPosition &&
-      inputRef.current &&
-      inputRef.current.offsetParent !== null
-    ) {
-      console.log(inputRef.current);
-      inputRef.current?.focus({ preventScroll: true });
+    if (isOpen && hasPosition && !isMobileDevice()) {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          inputRef.current?.focus({ preventScroll: true });
+        });
+      });
     }
   }, [isOpen, hasPosition]);
+
+  // useEffect(() => {
+  //   if (isOpen) {
+  //     inputRef.current?.focus({ preventScroll: true });
+  //   }
+  // }, [isOpen]);
+
+  // useLayoutEffect(() => {
+  //   if (isOpen && hasPosition && inputRef.current) {
+  //     inputRef.current.focus({ preventScroll: true });
+  //   }
+  // }, [isOpen, hasPosition]);
 
   return {
     inputRef,
