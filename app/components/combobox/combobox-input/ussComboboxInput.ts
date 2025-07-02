@@ -15,10 +15,21 @@ export default function useComboboxInput() {
 
   useEffect(() => {
     if (isOpen && hasPosition) {
-      setTimeout(() => {
-        inputRef.current?.focus({ preventScroll: true });
-      }, 0);
+      const id1 = requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          inputRef.current?.focus({ preventScroll: true });
+        });
+      });
+
+      return () => {
+        cancelAnimationFrame(id1);
+      };
     }
+    // if (isOpen && hasPosition) {
+    //   setTimeout(() => {
+    //     inputRef.current?.focus({ preventScroll: true });
+    //   }, 0);
+    // }
   }, [isOpen, hasPosition]);
 
   return {

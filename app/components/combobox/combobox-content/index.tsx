@@ -26,7 +26,7 @@ export default function ComboboxContent({ children }: ComboboxContentProps) {
     <div
       ref={contentRef}
       style={hasPosition ? position : hiddenStyle}
-      tabIndex={-1}
+      // tabIndex={-1}
       // onKeyDown={handleKeyDown}
       className={`bg-white shadow-xl p-1 w-full border border-gray-300 rounded-md outline-none focus:outline-none  h-52 max-h-52 overflow-hidden
         transition-opacity duration-200 ease-out transform z-50
