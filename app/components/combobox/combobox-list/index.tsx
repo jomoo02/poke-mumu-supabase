@@ -12,8 +12,7 @@ export default function ComboboxList({ children }: ComboboxProps) {
     <div
       role="listbox"
       ref={listRef}
-      className="bg-white outline-none overflow-auto h-44 "
-      // className="bg-white shadow-xl p-1 w-full border border-gray-300 rounded-md outline-none focus:outline-none max-h-60 overflow-auto z-50"
+      className="bg-white outline-none overflow-auto h-44"
     >
       {filteredItems.map((item) => (
         <ComboboxItem key={`${item.value}-${inputValue}`} item={item} />

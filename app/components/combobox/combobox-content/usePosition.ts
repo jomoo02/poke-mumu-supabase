@@ -4,6 +4,7 @@ import {
   useListOpen,
   useItems,
   useContentRef,
+  useHasPosition,
 } from '../combobox.context';
 
 export default function usePosition() {
@@ -12,9 +13,9 @@ export default function usePosition() {
   const { isOpen } = useListOpen();
   const { itemCount } = useItems();
 
-  const [position, setPosition] = useState<CSSProperties>({});
-  const [isAbove, setIsAbove] = useState<boolean>(false); // 위에 렌더링 여부
-  const ticking = useRef(false); // requestAnimationFrame 중복 방지
+  const [position, setPosition] = useState<CSSProperties | null>(null);
+  const { hasPosition, setHasPosition } = useHasPosition();
+  const ticking = useRef(false);
 
   const calculatePosition = () => {
     if (
@@ -23,6 +24,7 @@ export default function usePosition() {
       !isOpen ||
       itemCount === 0
     ) {
+      setHasPosition(false);
       return;
     }
 
@@ -34,7 +36,6 @@ export default function usePosition() {
 
     const scrollY = window.scrollY || document.documentElement.scrollTop;
     const scrollX = window.scrollX || document.documentElement.scrollLeft;
-
     const visualHeight = window.visualViewport?.height || window.innerHeight;
 
     const spaceBelow = visualHeight - triggerRect.bottom;
@@ -43,24 +44,22 @@ export default function usePosition() {
     const shouldOpenAbove =
       spaceBelow < contentHeight && spaceAbove > contentHeight;
 
-    // 이전 방향과 다를 때만 업데이트
-    if (shouldOpenAbove !== isAbove) {
-      setIsAbove(shouldOpenAbove);
-    }
-
     const top = shouldOpenAbove
       ? triggerRect.top + scrollY - contentHeight - 3
       : triggerRect.bottom + scrollY + 3;
 
     const left = triggerRect.left + scrollX;
 
-    setPosition({
+    const newPosition: CSSProperties = {
       position: 'absolute',
       top,
       left,
       width: trigger.offsetWidth,
       zIndex: 100,
-    });
+    };
+
+    setPosition(newPosition);
+    setHasPosition(true);
   };
 
   useLayoutEffect(() => {
@@ -78,7 +77,7 @@ export default function usePosition() {
       }
     };
 
-    window.addEventListener('scroll', handleScrollOrResize, true); // capture 단계
+    window.addEventListener('scroll', handleScrollOrResize, true);
     window.addEventListener('resize', handleScrollOrResize);
     window.visualViewport?.addEventListener('resize', handleScrollOrResize);
 
@@ -92,5 +91,8 @@ export default function usePosition() {
     };
   }, [isOpen, itemCount]);
 
-  return { position };
+  return {
+    position,
+    hasPosition,
+  };
 }

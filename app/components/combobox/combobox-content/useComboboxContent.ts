@@ -19,13 +19,7 @@ export default function useComboboxContent() {
   useClickOutsideEffect();
   useOrientationChangeEffect();
 
-  const { hasPosition, setHasPosition } = useHasPosition();
-
-  useEffect(() => {
-    const isValid =
-      typeof position.top === 'number' && typeof position.left === 'number';
-    setHasPosition(isValid);
-  }, [position, isOpen, setHasPosition]);
+  const { hasPosition } = useHasPosition();
 
   useEffect(() => {
     if (isOpen) {

@@ -1,42 +1,34 @@
-import { useRef, useEffect } from 'react';
-import {
-  useInputValue,
-  useListOpen,
-  useHasPosition,
-} from '../combobox.context';
+import { useInputValue, useInputRef } from '../combobox.context';
 import { useHandleKeyDown } from './useListHandle';
-import { isMobileDevice } from '@/app/utils/device';
-
-// import { useRef } from 'react';
-// import { useInputValue, useInputRef } from '../combobox.context';
-// import { useHandleKeyDown } from './useListHandle';
+// import { isMobileDevice } from '@/app/utils/device';
 
 export default function useComboboxInput() {
-  const inputRef = useRef<HTMLInputElement>(null);
+  // const inputRef = useRef<HTMLInputElement>(null);
+  const { inputRef } = useInputRef();
   const { inputValue, onChangeInputValue } = useInputValue();
-  const { isOpen } = useListOpen();
   const { handleKeyDown } = useHandleKeyDown();
-  const { hasPosition } = useHasPosition();
+  // useEffect(() => {
+  //   if (!isOpen || !hasPosition) return;
 
-  useEffect(() => {
-    if (isOpen && hasPosition && !isMobileDevice()) {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          inputRef.current?.focus({ preventScroll: true });
-        });
-      });
-    }
-  }, [isOpen, hasPosition]);
+  //   if (typeof window === 'undefined') return;
+
+  //   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+  //   // 모바일은 사용자 interaction 이후만 허용
+  //   if (isMobile) return;
+
+  //   requestAnimationFrame(() => {
+  //     inputRef.current?.focus({ preventScroll: true });
+  //   });
+  // }, [isOpen, hasPosition, inputRef]);
 
   // useEffect(() => {
-  //   if (isOpen) {
-  //     inputRef.current?.focus({ preventScroll: true });
-  //   }
-  // }, [isOpen]);
-
-  // useLayoutEffect(() => {
-  //   if (isOpen && hasPosition && inputRef.current) {
-  //     inputRef.current.focus({ preventScroll: true });
+  //   if (isOpen && hasPosition && !isMobileDevice()) {
+  //     requestAnimationFrame(() => {
+  //       requestAnimationFrame(() => {
+  //         inputRef.current?.focus({ preventScroll: true });
+  //       });
+  //     });
   //   }
   // }, [isOpen, hasPosition]);
 

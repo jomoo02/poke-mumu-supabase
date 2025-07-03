@@ -19,7 +19,7 @@ export default function CustomCombobox() {
         <ComboboxTrigger />
         <ComboboxContent>
           <ComboboxInput
-            placeholder="성격을 선택해 주세요."
+            placeholder="성격을 입력하세요"
             className="outline-none"
           />
           <ComboboxList>

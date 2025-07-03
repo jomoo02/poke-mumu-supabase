@@ -1,4 +1,5 @@
 import NatureCombobox from '../features/nature/components/combobox';
+import InputTest from '../features/nature/components/input-test';
 import NatureTable from '../features/nature/components/nature-table';
 
 export default function Page() {
@@ -6,6 +7,7 @@ export default function Page() {
     <div className="max-w-screen min-h-screen mx-auto lg:flex relative my-8">
       <div className="hidden xl:block min-w-40 w-40" />
       <div className="w-full max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto px-3 sm:px-6">
+        {/* <InputTest /> */}
         <h1 className="my-4 text-slate-900 text-3xl font-bold">포켓몬 성격</h1>
         {/* 소개 */}
         <div className="text-slate-800">
