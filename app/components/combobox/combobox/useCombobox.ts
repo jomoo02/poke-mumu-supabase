@@ -17,12 +17,15 @@ export default function useCombobox(
   const [hasPosition, setHasPosition] = useState<boolean>(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
+
   const filteredItems = useMemo(() => {
     if (!inputValue) {
       return items;
     }
 
-    return items.filter(({ label }) => label.includes(inputValue));
+    return items.filter(({ label }) =>
+      label.toLowerCase().includes(inputValue.toLowerCase()),
+    );
   }, [inputValue, items]);
 
   const registerItem = useCallback(({ value, label }: ComboboxItem) => {

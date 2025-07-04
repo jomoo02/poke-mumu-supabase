@@ -36,7 +36,9 @@ export function useHandleKeyDown() {
       case 'Enter':
         e.preventDefault();
         const value = filteredItems[activeIndex];
-        onSelect(value);
+        if (value) {
+          onSelect(value);
+        }
         break;
       case 'Escape':
         e.preventDefault();

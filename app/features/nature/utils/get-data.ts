@@ -2,6 +2,7 @@ import {
   naturesTable,
   naturesKoMap,
   natures,
+  natureStatMap,
   type Nature,
 } from '../data/nature';
 
@@ -40,9 +41,16 @@ export function getNatureTableData() {
 export function getNatureComboboxData() {
   const comboboxData = [...natures].map((nature) => {
     const koNature = getNatureKoNmae(nature);
-    const label = `${koNature} · ${nature}`;
+    const label = `${koNature} · ${nature[0].toUpperCase() + nature.slice(1)}`;
     const value = nature;
     return { label, value };
   });
   return comboboxData;
 }
+
+export const getSelectedNatureData = (selectedNature: Nature) => {
+  const { increase, decrease } = natureStatMap[selectedNature];
+  const koNature = getNatureKoNmae(selectedNature);
+  const nature = `${koNature} · ${selectedNature[0].toUpperCase() + selectedNature.slice(1)}`;
+  return { nature, increase, decrease };
+};

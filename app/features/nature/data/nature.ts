@@ -64,3 +64,42 @@ export const naturesKoMap: Record<Nature, string> = {
   naive: '천진난만',
   serious: '성실',
 };
+
+type Stat = '공격' | '방어' | '특수공격' | '특수방어' | '스피드';
+
+type NatureEffect = {
+  increase: Stat | null;
+  decrease: Stat | null;
+};
+
+export const natureStatMap: Record<Nature, NatureEffect> = {
+  hardy: { increase: null, decrease: null },
+  lonely: { increase: '공격', decrease: '방어' },
+  adamant: { increase: '공격', decrease: '특수공격' },
+  naughty: { increase: '공격', decrease: '특수방어' },
+  brave: { increase: '공격', decrease: '스피드' },
+
+  bold: { increase: '방어', decrease: '공격' },
+  docile: { increase: null, decrease: null },
+  impish: { increase: '방어', decrease: '특수공격' },
+  lax: { increase: '방어', decrease: '특수방어' },
+  relaxed: { increase: '방어', decrease: '스피드' },
+
+  modest: { increase: '특수공격', decrease: '공격' },
+  mild: { increase: '특수공격', decrease: '방어' },
+  bashful: { increase: null, decrease: null },
+  rash: { increase: '특수공격', decrease: '특수방어' },
+  quiet: { increase: '특수공격', decrease: '스피드' },
+
+  calm: { increase: '특수방어', decrease: '공격' },
+  gentle: { increase: '특수방어', decrease: '방어' },
+  careful: { increase: '특수방어', decrease: '특수공격' },
+  quirky: { increase: null, decrease: null },
+  sassy: { increase: '특수방어', decrease: '스피드' },
+
+  timid: { increase: '스피드', decrease: '공격' },
+  hasty: { increase: '스피드', decrease: '방어' },
+  jolly: { increase: '스피드', decrease: '특수공격' },
+  naive: { increase: '스피드', decrease: '특수방어' },
+  serious: { increase: null, decrease: null },
+};

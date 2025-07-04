@@ -1,10 +1,10 @@
-import NatureCombobox from '../features/nature/components/combobox';
-import InputTest from '../features/nature/components/input-test';
+// import NatureCombobox from '../features/nature/components/combobox';
 import NatureTable from '../features/nature/components/nature-table';
+import NatureCombobox from '../features/nature/components/nature-combobox';
 
 export default function Page() {
   return (
-    <div className="max-w-screen min-h-screen mx-auto lg:flex relative my-8">
+    <div className="max-w-screen min-h-screen mx-auto lg:flex relative mt-8 mb-20 pb-20">
       <div className="hidden xl:block min-w-40 w-40" />
       <div className="w-full max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto px-3 sm:px-6">
         {/* <InputTest /> */}
@@ -24,10 +24,15 @@ export default function Page() {
           </p>
         </div>
 
-        <NatureTable />
-        <div className="pt-10 pb-64 flex justify-end">
+        <h2 className="text-2xl font-bold pb-3 mt-12 mb-6 scroll-mt-12 text-slate-900 pt-10 border-t border-gray-200">
+          성격에 따른 능력치 변화
+        </h2>
+        {/* <div className="overflow-hidden"> */}
+        <div className="flex flex-col lg:flex-row lg:justify-between overflow-hidden p-1 gap-y-14">
+          <NatureTable />
           <NatureCombobox />
         </div>
+        {/* </div> */}
       </div>
       <div className="min-w-36 w-36 xl:min-w-40 xl:w-40 leading-5" />
     </div>

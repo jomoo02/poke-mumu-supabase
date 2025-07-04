@@ -11,6 +11,9 @@ export default function AppHeader() {
           <div className="text-slate-800 font-medium flex items-center px-4 sm:px-14">
             <Link href="/pokedex">도감</Link>
           </div>
+          <div className="text-slate-800 font-medium flex items-center px-4 sm:px-14">
+            <Link href="/natures">성격</Link>
+          </div>
         </nav>
 
         <div>
