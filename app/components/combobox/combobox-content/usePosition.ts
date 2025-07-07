@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState, useRef, type CSSProperties } from 'react';
+import { useLayoutEffect, useState, useRef } from 'react';
 import {
   useTriggerRef,
   useListOpen,
@@ -12,9 +12,9 @@ export default function usePosition() {
   const { contentRef } = useContentRef();
   const { isOpen } = useListOpen();
   const { itemCount } = useItems();
-
-  const [position, setPosition] = useState<CSSProperties | null>(null);
   const { hasPosition, setHasPosition } = useHasPosition();
+
+  const [position, setPosition] = useState<React.CSSProperties | null>(null);
   const ticking = useRef(false);
 
   const calculatePosition = () => {
@@ -28,34 +28,30 @@ export default function usePosition() {
       return;
     }
 
-    const trigger = triggerRef.current;
+    const triggerRect = triggerRef.current.getBoundingClientRect();
     const content = contentRef.current;
+    console.log(content);
 
-    const triggerRect = trigger.getBoundingClientRect();
     const contentHeight = content.offsetHeight;
+    console.log(contentHeight);
 
-    const scrollY = window.scrollY || document.documentElement.scrollTop;
-    const scrollX = window.scrollX || document.documentElement.scrollLeft;
     const visualHeight = window.visualViewport?.height || window.innerHeight;
-
     const spaceBelow = visualHeight - triggerRect.bottom;
     const spaceAbove = triggerRect.top;
 
     const shouldOpenAbove =
       spaceBelow < contentHeight && spaceAbove > contentHeight;
 
-    const top = shouldOpenAbove
-      ? triggerRect.top + scrollY - contentHeight - 3
-      : triggerRect.bottom + scrollY + 3;
+    const x = triggerRect.left;
+    const y = shouldOpenAbove
+      ? triggerRect.top - contentHeight - 3
+      : triggerRect.bottom + 3;
 
-    const left = triggerRect.left + scrollX;
-
-    const newPosition: CSSProperties = {
-      position: 'absolute',
-      top,
-      left,
-      width: trigger.offsetWidth,
-      zIndex: 100,
+    const newPosition: React.CSSProperties = {
+      position: 'fixed',
+      transform: `translate(${x}px, ${y}px)`,
+      minWidth: 'max-content',
+      zIndex: 50,
     };
 
     setPosition(newPosition);
@@ -67,7 +63,7 @@ export default function usePosition() {
 
     calculatePosition();
 
-    const handleScrollOrResize = () => {
+    const handleUpdate = () => {
       if (!ticking.current) {
         ticking.current = true;
         requestAnimationFrame(() => {
@@ -77,17 +73,14 @@ export default function usePosition() {
       }
     };
 
-    window.addEventListener('scroll', handleScrollOrResize, true);
-    window.addEventListener('resize', handleScrollOrResize);
-    window.visualViewport?.addEventListener('resize', handleScrollOrResize);
+    window.addEventListener('scroll', handleUpdate, true);
+    window.addEventListener('resize', handleUpdate);
+    window.visualViewport?.addEventListener('resize', handleUpdate);
 
     return () => {
-      window.removeEventListener('scroll', handleScrollOrResize, true);
-      window.removeEventListener('resize', handleScrollOrResize);
-      window.visualViewport?.removeEventListener(
-        'resize',
-        handleScrollOrResize,
-      );
+      window.removeEventListener('scroll', handleUpdate, true);
+      window.removeEventListener('resize', handleUpdate);
+      window.visualViewport?.removeEventListener('resize', handleUpdate);
     };
   }, [isOpen, itemCount]);
 

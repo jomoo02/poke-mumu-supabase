@@ -3,6 +3,7 @@ import {
   naturesKoMap,
   natures,
   natureStatMap,
+  naturesTableV2,
   type Nature,
 } from '../data/nature';
 
@@ -53,4 +54,10 @@ export const getSelectedNatureData = (selectedNature: Nature) => {
   const koNature = getNatureKoNmae(selectedNature);
   const nature = `${koNature} · ${selectedNature[0].toUpperCase() + selectedNature.slice(1)}`;
   return { nature, increase, decrease };
+};
+
+export const getNatureTableV2Data = () => {
+  const headerData = ['성격', '영칭', '상승', '하락'];
+  const bodyData = naturesTableV2;
+  return { headerData, bodyData };
 };

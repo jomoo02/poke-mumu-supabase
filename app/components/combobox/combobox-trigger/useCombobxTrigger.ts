@@ -21,7 +21,6 @@ export default function useComboboxTrigger() {
       close();
     } else {
       open();
-      console.log(inputRef);
 
       inputRef.current?.focus({ preventScroll: true });
     }

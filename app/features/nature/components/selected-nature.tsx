@@ -15,7 +15,7 @@ export default function SelectedNature({
   const { nature, increase, decrease } = getSelectedNatureData(selectedNature);
 
   return (
-    <div>
+    <div className="text-[15px]">
       <div className="mt-4 flex flex-col gap-1.5">
         <div className="flex items-center gap-2">
           <span className="text-slate-700">성격:</span>

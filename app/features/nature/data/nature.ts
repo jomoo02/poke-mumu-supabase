@@ -103,3 +103,194 @@ export const natureStatMap: Record<Nature, NatureEffect> = {
   naive: { increase: '스피드', decrease: '특수방어' },
   serious: { increase: null, decrease: null },
 };
+
+export type NatureTableV2 = {
+  nature: Nature;
+  ko: string;
+  en: string;
+  increase: Stat | null;
+  decrease: Stat | null;
+};
+
+export const naturesTableV2: NatureTableV2[] = [
+  {
+    nature: 'lonely',
+    ko: naturesKoMap.lonely,
+    en: 'lonely',
+    increase: '공격',
+    decrease: '방어',
+  },
+  {
+    nature: 'adamant',
+    ko: naturesKoMap.adamant,
+    en: 'adamant',
+    increase: '공격',
+    decrease: '특수공격',
+  },
+  {
+    nature: 'naughty',
+    ko: naturesKoMap.naughty,
+    en: 'naughty',
+    increase: '공격',
+    decrease: '특수방어',
+  },
+  {
+    nature: 'brave',
+    ko: naturesKoMap.brave,
+    en: 'brave',
+    increase: '공격',
+    decrease: '스피드',
+  },
+
+  {
+    nature: 'bold',
+    ko: naturesKoMap.bold,
+    en: 'bold',
+    increase: '방어',
+    decrease: '공격',
+  },
+  {
+    nature: 'impish',
+    ko: naturesKoMap.impish,
+    en: 'impish',
+    increase: '방어',
+    decrease: '특수공격',
+  },
+  {
+    nature: 'lax',
+    ko: naturesKoMap.lax,
+    en: 'lax',
+    increase: '방어',
+    decrease: '특수방어',
+  },
+  {
+    nature: 'relaxed',
+    ko: naturesKoMap.relaxed,
+    en: 'relaxed',
+    increase: '방어',
+    decrease: '스피드',
+  },
+
+  {
+    nature: 'modest',
+    ko: naturesKoMap.modest,
+    en: 'modest',
+    increase: '특수공격',
+    decrease: '공격',
+  },
+  {
+    nature: 'mild',
+    ko: naturesKoMap.mild,
+    en: 'mild',
+    increase: '특수공격',
+    decrease: '방어',
+  },
+  {
+    nature: 'rash',
+    ko: naturesKoMap.rash,
+    en: 'rash',
+    increase: '특수공격',
+    decrease: '특수방어',
+  },
+  {
+    nature: 'quiet',
+    ko: naturesKoMap.quiet,
+    en: 'quiet',
+    increase: '특수공격',
+    decrease: '스피드',
+  },
+
+  {
+    nature: 'calm',
+    ko: naturesKoMap.calm,
+    en: 'calm',
+    increase: '특수방어',
+    decrease: '공격',
+  },
+  {
+    nature: 'gentle',
+    ko: naturesKoMap.gentle,
+    en: 'gentle',
+    increase: '특수방어',
+    decrease: '방어',
+  },
+  {
+    nature: 'careful',
+    ko: naturesKoMap.careful,
+    en: 'careful',
+    increase: '특수방어',
+    decrease: '특수공격',
+  },
+  {
+    nature: 'sassy',
+    ko: naturesKoMap.sassy,
+    en: 'sassy',
+    increase: '특수방어',
+    decrease: '스피드',
+  },
+
+  {
+    nature: 'timid',
+    ko: naturesKoMap.timid,
+    en: 'timid',
+    increase: '스피드',
+    decrease: '공격',
+  },
+  {
+    nature: 'hasty',
+    ko: naturesKoMap.hasty,
+    en: 'hasty',
+    increase: '스피드',
+    decrease: '방어',
+  },
+  {
+    nature: 'jolly',
+    ko: naturesKoMap.jolly,
+    en: 'jolly',
+    increase: '스피드',
+    decrease: '특수공격',
+  },
+  {
+    nature: 'naive',
+    ko: naturesKoMap.naive,
+    en: 'naive',
+    increase: '스피드',
+    decrease: '특수방어',
+  },
+
+  {
+    nature: 'hardy',
+    ko: naturesKoMap.hardy,
+    en: 'hardy',
+    increase: null,
+    decrease: null,
+  },
+  {
+    nature: 'docile',
+    ko: naturesKoMap.docile,
+    en: 'docile',
+    increase: null,
+    decrease: null,
+  },
+  {
+    nature: 'bashful',
+    ko: naturesKoMap.bashful,
+    en: 'bashful',
+    increase: null,
+    decrease: null,
+  },
+  {
+    nature: 'quirky',
+    ko: naturesKoMap.quirky,
+    en: 'quirky',
+    increase: null,
+    decrease: null,
+  },
+  {
+    nature: 'serious',
+    ko: naturesKoMap.serious,
+    en: 'serious',
+    increase: null,
+    decrease: null,
+  },
+];

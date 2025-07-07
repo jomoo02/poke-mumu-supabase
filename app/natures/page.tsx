@@ -1,7 +1,7 @@
 // import NatureCombobox from '../features/nature/components/combobox';
-import NatureTable from '../features/nature/components/nature-table';
+// import NatureTable from '../features/nature/components/nature-table';
 import NatureCombobox from '../features/nature/components/nature-combobox';
-
+import NatureTableV2 from '../features/nature/components/nature-table-v2';
 export default function Page() {
   return (
     <div className="max-w-screen min-h-screen mx-auto lg:flex relative mt-8 mb-20 pb-20">
@@ -29,9 +29,11 @@ export default function Page() {
         </h2>
         {/* <div className="overflow-hidden"> */}
         <div className="flex flex-col lg:flex-row lg:justify-between overflow-hidden p-1 gap-y-14">
-          <NatureTable />
+          {/* <NatureTable /> */}
+          <NatureTableV2 />
           <NatureCombobox />
         </div>
+
         {/* </div> */}
       </div>
       <div className="min-w-36 w-36 xl:min-w-40 xl:w-40 leading-5" />
