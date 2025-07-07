@@ -29,13 +29,12 @@ export default function usePosition() {
     }
 
     const triggerRect = triggerRef.current.getBoundingClientRect();
-    const content = contentRef.current;
-    console.log(content);
+    const contentHeight = contentRef.current.offsetHeight;
 
-    const contentHeight = content.offsetHeight;
-    console.log(contentHeight);
+    const visualViewport = window.visualViewport;
+    const visualHeight = visualViewport?.height || window.innerHeight;
+    const visualOffsetTop = visualViewport?.offsetTop || 0;
 
-    const visualHeight = window.visualViewport?.height || window.innerHeight;
     const spaceBelow = visualHeight - triggerRect.bottom;
     const spaceAbove = triggerRect.top;
 
@@ -47,9 +46,12 @@ export default function usePosition() {
       ? triggerRect.top - contentHeight - 3
       : triggerRect.bottom + 3;
 
+    // visualViewport offsetTop 보정
+    const adjustedY = y + visualOffsetTop;
+
     const newPosition: React.CSSProperties = {
       position: 'fixed',
-      transform: `translate(${x}px, ${y}px)`,
+      transform: `translate(${x}px, ${adjustedY}px)`,
       minWidth: 'max-content',
       zIndex: 50,
     };
@@ -76,11 +78,13 @@ export default function usePosition() {
     window.addEventListener('scroll', handleUpdate, true);
     window.addEventListener('resize', handleUpdate);
     window.visualViewport?.addEventListener('resize', handleUpdate);
+    window.visualViewport?.addEventListener('scroll', handleUpdate); // 모바일 키보드 대응
 
     return () => {
       window.removeEventListener('scroll', handleUpdate, true);
       window.removeEventListener('resize', handleUpdate);
       window.visualViewport?.removeEventListener('resize', handleUpdate);
+      window.visualViewport?.removeEventListener('scroll', handleUpdate);
     };
   }, [isOpen, itemCount]);
 
