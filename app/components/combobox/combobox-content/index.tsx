@@ -20,8 +20,8 @@ export default function ComboboxContent({
     <div
       ref={contentRef}
       style={position ?? { position: 'fixed', transform: 'translate(0, 0)' }}
-      className={`transition-opacity duration-200 ease-out transform z-100 bg-white top-0 left-0 flex flex-col
-        max-w-[224px] max-h-52 overflow-hidden rounded-md border border-gray-300 shadow-xl
+      className={`transition-opacity duration-300 ease-out transform z-100 bg-white top-0 left-0 flex flex-col
+   max-h-52 overflow-hidden rounded-md border border-gray-300 shadow-xl
         ${hasPosition ? 'opacity-100 scale-100' : 'opacity-0 scale-95'} ${className}
       `}
       tabIndex={-1}

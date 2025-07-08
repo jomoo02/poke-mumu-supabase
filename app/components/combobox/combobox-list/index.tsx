@@ -26,8 +26,6 @@ export default function ComboboxList({ children, className }: ComboboxProps) {
           ))}
         </>
       )}
-
-      {}
       <div className="hidden">{children}</div>
     </div>
   );

@@ -7,8 +7,12 @@ export default function useNatureCombobox() {
   const isNature = (value: string): value is Nature =>
     natures.includes(value as Nature);
 
-  const selectNature = (targetNature: string) => {
-    if (isNature(targetNature)) {
+  const selectNature = (targetNature: string | null) => {
+    if (!targetNature) {
+      setSelectedNature(null);
+    }
+
+    if (targetNature && isNature(targetNature)) {
       setSelectedNature(targetNature);
     }
   };

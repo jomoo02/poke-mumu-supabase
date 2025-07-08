@@ -37,7 +37,7 @@ export default function usePosition() {
 
     const spaceBelow = visualHeight - triggerRect.bottom;
     const spaceAbove = triggerRect.top;
-
+    const width = triggerRect.width;
     const shouldOpenAbove =
       spaceBelow < contentHeight && spaceAbove > contentHeight;
 
@@ -50,9 +50,9 @@ export default function usePosition() {
     const adjustedY = y + visualOffsetTop;
 
     const newPosition: React.CSSProperties = {
+      width,
       position: 'fixed',
       transform: `translate(${x}px, ${adjustedY}px)`,
-      minWidth: 'max-content',
       zIndex: 50,
     };
 

@@ -69,6 +69,7 @@ export default function PokedexTableV2({ pokeList }: PokedexTableProps) {
           </TableHeaderCell>
           <TableHeaderCell
             headerKey="type"
+            align="center"
             className="border-x border-white text-slate-800 text-[15px] font-medium h-10 min-w-20 w-20 max-w-20"
           >
             타입

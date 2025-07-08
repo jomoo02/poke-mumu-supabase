@@ -1,8 +1,14 @@
 import useComboboxTrigger from './useCombobxTrigger';
 
-export default function ComboboxTrigger() {
+interface ComboboxTriggerProps {
+  defaultLabel: string;
+}
+
+export default function ComboboxTrigger({
+  defaultLabel,
+}: ComboboxTriggerProps) {
   const { triggerRef, handleKeyDown, handleMouseDown, content } =
-    useComboboxTrigger();
+    useComboboxTrigger(defaultLabel);
 
   return (
     <button
@@ -10,9 +16,11 @@ export default function ComboboxTrigger() {
       role="button"
       onMouseDown={handleMouseDown}
       onKeyDown={handleKeyDown}
-      className="flex justify-between items-center pl-3 pr-2 w-full border cursor-pointer border-gray-300 min-h-8.5 h-8.5 rounded-md outline-none focus:ring ring-gray-700"
+      className="flex items-center w-full border cursor-pointer border-gray-300 min-h-8.5 h-8.5 rounded-md outline-none focus:ring ring-gray-700"
     >
-      <span className="truncate text-slate-800">{content}</span>
+      <span className="truncate  text-slate-800 w-full text-center">
+        {content}
+      </span>
     </button>
   );
 }

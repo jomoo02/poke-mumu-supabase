@@ -4,7 +4,7 @@ import { ComboboxProvider } from '../combobox.context';
 import useCombobox from './useCombobox';
 
 interface ComboboxProps {
-  onSelect?: (value: string) => void;
+  onSelect?: (value: string | null) => void;
   children: React.ReactNode;
 }
 

@@ -1,7 +1,7 @@
 import { IconX } from '@tabler/icons-react';
 
 interface CloseIconProps {
-  size?: string;
+  size?: string | number;
   color?: string;
 }
 

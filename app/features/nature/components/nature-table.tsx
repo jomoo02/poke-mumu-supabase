@@ -1,55 +1,92 @@
-import { getNatureTableData } from '../utils/get-data';
+'use client';
 
-export default function NatureTable() {
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHeader,
+  TableHeaderCell,
+  TableRow,
+} from '@/app/components/table';
+import CloseIcon from '@/app/components/icon/close';
+import { getNatureTableData } from '../utils/get-data';
+import { Nature } from '../data/nature';
+
+interface NatureTableProps {
+  targetNature: Nature | null;
+}
+
+export default function NatureTable({ targetNature }: NatureTableProps) {
   const { headerData, bodyData } = getNatureTableData();
 
+  const tableRows = targetNature
+    ? bodyData.filter(({ nature }) => nature === targetNature)
+    : bodyData;
+
   return (
-    <div className="flex">
-      <div className="overflow-auto border border-gray-300 rounded-md">
-        <table className="table-fixed">
-          <thead>
-            <tr>
-              {headerData.map((d, index) => (
-                <th
-                  key={`${d}-${index}`}
-                  className={`border-b border-gray-200 min-w-20 w-20 h-14 text-red-800 text-[15px] sm:text-base font-medium bg-neutral-50 ${
-                    index > 0 ? 'border-l' : ''
-                  }`}
-                >
-                  {d}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {bodyData.map((row, rowIndex) => (
-              <tr
-                key={row[0].ko}
-                className={`${rowIndex >= 4 ? '' : 'border-b border-gray-200'}`}
-              >
-                {row.map((d, index) => (
-                  <td
-                    key={d.ko}
+    <div className="overflow-auto min-h-[300px]">
+      <Table tableData={tableRows}>
+        <TableHeader color="bg-transparent">
+          {headerData.map(({ key, value, align }) => (
+            <TableHeaderCell
+              headerKey={key}
+              key={key}
+              sortAble={false}
+              align={align}
+              className="h-9 min-w-[5.5rem] md:min-w-28  md:w-28 w-[5.5rem] text-slate-700 font-medium px-2"
+            >
+              {value}
+            </TableHeaderCell>
+          ))}
+        </TableHeader>
+        <TableBody>
+          {(bodyData) =>
+            bodyData.map((d) => (
+              <TableRow key={d.nature as string} className="h-9">
+                <TableCell className="text-slate-800 px-2">{d.ko}</TableCell>
+                <TableCell className="text-slate-800 px-2">{d.en}</TableCell>
+                {d.increase ? (
+                  <TableCell className="text-pink-800" align="center">
+                    {d.increase}
+                  </TableCell>
+                ) : (
+                  <TableCell align="center">
+                    <CloseIcon size={18} />
+                  </TableCell>
+                )}
+                {d.decrease ? (
+                  <TableCell className="text-sky-800" align="center">
+                    {d.decrease}
+                  </TableCell>
+                ) : (
+                  <TableCell align="center">
+                    <CloseIcon size={18} />
+                  </TableCell>
+                )}
+                {d.like && d.dislike ? (
+                  <>
+                    <TableCell className="text-slate-800" align="center">
+                      {d.like ? <>{d.like}</> : <CloseIcon size={18} />}
+                    </TableCell>
+
+                    <TableCell className="text-slate-800" align="center">
+                      {d.dislike ? <>{d.dislike}</> : <CloseIcon size={18} />}
+                    </TableCell>
+                  </>
+                ) : (
+                  <TableCell
+                    className="text-slate-800"
                     align="center"
-                    className={`h-14 ${index > 0 ? 'border-l border-gray-200' : ''}`}
+                    colSpan={2}
                   >
-                    {index === 0 ? (
-                      <div className="text-green-800 text-[15px] sm:text-base font-medium bg-neutral-50 h-full w-full flex items-center justify-center">
-                        {d.ko}
-                      </div>
-                    ) : (
-                      <div className="text-slate-800 font-normal text-[15px] sm:text-base">
-                        <div>{d.ko}</div>
-                        {/* <div className="capitalize">{d.en}</div> */}
-                      </div>
-                    )}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+                    아무거나 잘먹음
+                  </TableCell>
+                )}
+              </TableRow>
+            ))
+          }
+        </TableBody>
+      </Table>
     </div>
   );
 }

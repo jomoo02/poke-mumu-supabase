@@ -1,108 +1,62 @@
 export const natures = [
-  'hardy',
   'lonely',
   'adamant',
   'naughty',
   'brave',
   'bold',
-  'docile',
   'impish',
   'lax',
   'relaxed',
   'modest',
   'mild',
-  'bashful',
   'rash',
   'quiet',
   'calm',
   'gentle',
   'careful',
-  'quirky',
   'sassy',
   'timid',
   'hasty',
   'jolly',
   'naive',
+  'hardy',
+  'docile',
+  'bashful',
+  'quirky',
   'serious',
 ] as const;
 
 export type Nature = (typeof natures)[number];
 
-export const naturesTable = [
-  ['', '- 공격', '- 방어', '- 특공', '- 특방', '- 스피드'],
-  ['+ 공격', 'hardy', 'lonely', 'adamant', 'naughty', 'brave'],
-  ['+ 방어', 'bold', 'docile', 'impish', 'lax', 'relaxed'],
-  ['+ 특공', 'modest', 'mild', 'bashful', 'rash', 'quiet'],
-  ['+ 특방', 'calm', 'gentle', 'careful', 'quirky', 'sassy'],
-  ['+ 스피드', 'timid', 'hasty', 'jolly', 'naive', 'serious'],
-];
-
 export const naturesKoMap: Record<Nature, string> = {
-  hardy: '노력',
   lonely: '외로움',
   adamant: '고집',
   naughty: '개구쟁이',
   brave: '용감',
   bold: '대담',
-  docile: '온순',
   impish: '장난꾸러기',
   lax: '촐랑',
   relaxed: '무사태평',
   modest: '조심',
   mild: '의젓',
-  bashful: '수줍음',
   rash: '덜렁',
   quiet: '냉정',
   calm: '차분',
   gentle: '얌전',
   careful: '신중',
-  quirky: '변덕',
   sassy: '건방',
   timid: '겁쟁이',
   hasty: '성급',
   jolly: '명랑',
   naive: '천진난만',
+  hardy: '노력',
+  docile: '온순',
+  bashful: '수줍음',
+  quirky: '변덕',
   serious: '성실',
 };
 
 type Stat = '공격' | '방어' | '특수공격' | '특수방어' | '스피드';
-
-type NatureEffect = {
-  increase: Stat | null;
-  decrease: Stat | null;
-};
-
-export const natureStatMap: Record<Nature, NatureEffect> = {
-  hardy: { increase: null, decrease: null },
-  lonely: { increase: '공격', decrease: '방어' },
-  adamant: { increase: '공격', decrease: '특수공격' },
-  naughty: { increase: '공격', decrease: '특수방어' },
-  brave: { increase: '공격', decrease: '스피드' },
-
-  bold: { increase: '방어', decrease: '공격' },
-  docile: { increase: null, decrease: null },
-  impish: { increase: '방어', decrease: '특수공격' },
-  lax: { increase: '방어', decrease: '특수방어' },
-  relaxed: { increase: '방어', decrease: '스피드' },
-
-  modest: { increase: '특수공격', decrease: '공격' },
-  mild: { increase: '특수공격', decrease: '방어' },
-  bashful: { increase: null, decrease: null },
-  rash: { increase: '특수공격', decrease: '특수방어' },
-  quiet: { increase: '특수공격', decrease: '스피드' },
-
-  calm: { increase: '특수방어', decrease: '공격' },
-  gentle: { increase: '특수방어', decrease: '방어' },
-  careful: { increase: '특수방어', decrease: '특수공격' },
-  quirky: { increase: null, decrease: null },
-  sassy: { increase: '특수방어', decrease: '스피드' },
-
-  timid: { increase: '스피드', decrease: '공격' },
-  hasty: { increase: '스피드', decrease: '방어' },
-  jolly: { increase: '스피드', decrease: '특수공격' },
-  naive: { increase: '스피드', decrease: '특수방어' },
-  serious: { increase: null, decrease: null },
-};
 
 export type NatureTableV2 = {
   nature: Nature;
@@ -110,15 +64,19 @@ export type NatureTableV2 = {
   en: string;
   increase: Stat | null;
   decrease: Stat | null;
+  like: string | null;
+  dislike: string | null;
 };
 
-export const naturesTableV2: NatureTableV2[] = [
+export const naturesTable: NatureTableV2[] = [
   {
     nature: 'lonely',
     ko: naturesKoMap.lonely,
     en: 'lonely',
     increase: '공격',
     decrease: '방어',
+    like: '매운맛',
+    dislike: '신맛',
   },
   {
     nature: 'adamant',
@@ -126,6 +84,8 @@ export const naturesTableV2: NatureTableV2[] = [
     en: 'adamant',
     increase: '공격',
     decrease: '특수공격',
+    like: '매운맛',
+    dislike: '떫은맛',
   },
   {
     nature: 'naughty',
@@ -133,6 +93,8 @@ export const naturesTableV2: NatureTableV2[] = [
     en: 'naughty',
     increase: '공격',
     decrease: '특수방어',
+    like: '매운맛',
+    dislike: '쓴맛',
   },
   {
     nature: 'brave',
@@ -140,6 +102,8 @@ export const naturesTableV2: NatureTableV2[] = [
     en: 'brave',
     increase: '공격',
     decrease: '스피드',
+    like: '매운맛',
+    dislike: '단맛',
   },
 
   {
@@ -148,6 +112,8 @@ export const naturesTableV2: NatureTableV2[] = [
     en: 'bold',
     increase: '방어',
     decrease: '공격',
+    like: '신맛',
+    dislike: '매운맛',
   },
   {
     nature: 'impish',
@@ -155,6 +121,8 @@ export const naturesTableV2: NatureTableV2[] = [
     en: 'impish',
     increase: '방어',
     decrease: '특수공격',
+    like: '신맛',
+    dislike: '떫은맛',
   },
   {
     nature: 'lax',
@@ -162,6 +130,8 @@ export const naturesTableV2: NatureTableV2[] = [
     en: 'lax',
     increase: '방어',
     decrease: '특수방어',
+    like: '신맛',
+    dislike: '쓴맛',
   },
   {
     nature: 'relaxed',
@@ -169,6 +139,8 @@ export const naturesTableV2: NatureTableV2[] = [
     en: 'relaxed',
     increase: '방어',
     decrease: '스피드',
+    like: '신맛',
+    dislike: '단맛',
   },
 
   {
@@ -177,6 +149,8 @@ export const naturesTableV2: NatureTableV2[] = [
     en: 'modest',
     increase: '특수공격',
     decrease: '공격',
+    like: '떫은맛',
+    dislike: '매운맛',
   },
   {
     nature: 'mild',
@@ -184,6 +158,8 @@ export const naturesTableV2: NatureTableV2[] = [
     en: 'mild',
     increase: '특수공격',
     decrease: '방어',
+    like: '떫은맛',
+    dislike: '신맛',
   },
   {
     nature: 'rash',
@@ -191,6 +167,8 @@ export const naturesTableV2: NatureTableV2[] = [
     en: 'rash',
     increase: '특수공격',
     decrease: '특수방어',
+    like: '떫은맛',
+    dislike: '쓴맛',
   },
   {
     nature: 'quiet',
@@ -198,6 +176,8 @@ export const naturesTableV2: NatureTableV2[] = [
     en: 'quiet',
     increase: '특수공격',
     decrease: '스피드',
+    like: '떫은맛',
+    dislike: '단맛',
   },
 
   {
@@ -206,6 +186,8 @@ export const naturesTableV2: NatureTableV2[] = [
     en: 'calm',
     increase: '특수방어',
     decrease: '공격',
+    like: '쓴맛',
+    dislike: '매운맛',
   },
   {
     nature: 'gentle',
@@ -213,6 +195,8 @@ export const naturesTableV2: NatureTableV2[] = [
     en: 'gentle',
     increase: '특수방어',
     decrease: '방어',
+    like: '쓴맛',
+    dislike: '신맛',
   },
   {
     nature: 'careful',
@@ -220,6 +204,8 @@ export const naturesTableV2: NatureTableV2[] = [
     en: 'careful',
     increase: '특수방어',
     decrease: '특수공격',
+    like: '쓴맛',
+    dislike: '떫은맛',
   },
   {
     nature: 'sassy',
@@ -227,6 +213,8 @@ export const naturesTableV2: NatureTableV2[] = [
     en: 'sassy',
     increase: '특수방어',
     decrease: '스피드',
+    like: '쓴맛',
+    dislike: '단맛',
   },
 
   {
@@ -235,6 +223,8 @@ export const naturesTableV2: NatureTableV2[] = [
     en: 'timid',
     increase: '스피드',
     decrease: '공격',
+    like: '단맛	',
+    dislike: '매운맛',
   },
   {
     nature: 'hasty',
@@ -242,6 +232,8 @@ export const naturesTableV2: NatureTableV2[] = [
     en: 'hasty',
     increase: '스피드',
     decrease: '방어',
+    like: '단맛	',
+    dislike: '신맛',
   },
   {
     nature: 'jolly',
@@ -249,6 +241,8 @@ export const naturesTableV2: NatureTableV2[] = [
     en: 'jolly',
     increase: '스피드',
     decrease: '특수공격',
+    like: '단맛	',
+    dislike: '떫은맛',
   },
   {
     nature: 'naive',
@@ -256,6 +250,8 @@ export const naturesTableV2: NatureTableV2[] = [
     en: 'naive',
     increase: '스피드',
     decrease: '특수방어',
+    like: '단맛	',
+    dislike: '쓴맛',
   },
 
   {
@@ -264,6 +260,8 @@ export const naturesTableV2: NatureTableV2[] = [
     en: 'hardy',
     increase: null,
     decrease: null,
+    like: null,
+    dislike: null,
   },
   {
     nature: 'docile',
@@ -271,6 +269,8 @@ export const naturesTableV2: NatureTableV2[] = [
     en: 'docile',
     increase: null,
     decrease: null,
+    like: null,
+    dislike: null,
   },
   {
     nature: 'bashful',
@@ -278,6 +278,8 @@ export const naturesTableV2: NatureTableV2[] = [
     en: 'bashful',
     increase: null,
     decrease: null,
+    like: null,
+    dislike: null,
   },
   {
     nature: 'quirky',
@@ -285,6 +287,8 @@ export const naturesTableV2: NatureTableV2[] = [
     en: 'quirky',
     increase: null,
     decrease: null,
+    like: null,
+    dislike: null,
   },
   {
     nature: 'serious',
@@ -292,5 +296,7 @@ export const naturesTableV2: NatureTableV2[] = [
     en: 'serious',
     increase: null,
     decrease: null,
+    like: null,
+    dislike: null,
   },
 ];

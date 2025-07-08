@@ -1,3 +1,4 @@
+import SearchIcon from '@/app/components/icon/search';
 import useComboboxInput from './ussComboboxInput';
 
 interface ComboboxInputProps {
@@ -14,7 +15,8 @@ export default function ComboboxInput({
 
   return (
     <div className="border-b border-gray-300 px-2 py-1 flex items-center min-h-8 h-8 bg-white">
-      <div className="w-full">
+      <div className="w-full flex items-center gap-2">
+        <SearchIcon size={20} />
         <input
           ref={inputRef}
           autoFocus

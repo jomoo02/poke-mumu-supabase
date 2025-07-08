@@ -1,7 +1,7 @@
 import { IconSearch } from '@tabler/icons-react';
 
 interface SearchIconProps {
-  size?: string;
+  size?: string | number;
   color?: string;
 }
 

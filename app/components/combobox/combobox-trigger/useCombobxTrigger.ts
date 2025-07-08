@@ -6,11 +6,11 @@ import {
   useInputRef,
 } from '../combobox.context';
 
-export default function useComboboxTrigger() {
+export default function useComboboxTrigger(defaultLabel: string) {
   const { triggerRef } = useTriggerRef();
   const { open, isOpen, close } = useListOpen();
   const { selectedItem } = useSelectedItem();
-  const content = selectedItem ? selectedItem.label : '성격을 골라주세요...';
+  const content = selectedItem ? selectedItem.label : defaultLabel;
 
   //
   const { inputRef } = useInputRef();

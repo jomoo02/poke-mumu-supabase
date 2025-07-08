@@ -10,6 +10,7 @@ export default function TableHeader({
   color,
 }: TableHeaderProps) {
   const bgColor = color ? color : 'bg-neutral-50';
+
   return (
     <thead className={className}>
       <tr className={`text-nowrap border-b border-gray-200 ${bgColor}`}>

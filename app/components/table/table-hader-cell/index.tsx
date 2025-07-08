@@ -6,12 +6,14 @@ interface TableHeaderCellProps {
   sortAble?: boolean;
   children: React.ReactNode;
   className?: string;
+  align?: 'left' | 'center' | 'right' | 'justify' | 'char';
 }
 
 export default function TableHeaderCell({
   headerKey,
   children,
   className,
+  align,
   sortAble = false,
 }: TableHeaderCellProps) {
   const { isSorted, direction, ariaSort, handleOnClick } = useTableHeaderCell(
@@ -20,7 +22,11 @@ export default function TableHeaderCell({
   );
 
   return (
-    <th className={`select-none ${className}`} aria-sort={ariaSort}>
+    <th
+      className={`select-none ${className}`}
+      aria-sort={ariaSort}
+      align={align}
+    >
       {sortAble ? (
         <button
           onClick={handleOnClick}
@@ -30,9 +36,8 @@ export default function TableHeaderCell({
           <SortIcon isSelect={isSorted} direction={direction} color="#1d293d" />
         </button>
       ) : (
-        <div className="flex justify-center items-center text-[15px] h-full w-full">
-          {children}
-        </div>
+        <>{children}</>
+        // <div className="flex items-center h-full">{children}</div>
       )}
     </th>
   );

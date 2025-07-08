@@ -1,11 +1,11 @@
-import { useState, useRef, useCallback, useMemo } from 'react';
+import { useState, useRef, useCallback, useMemo, useEffect } from 'react';
 import type { ComboboxItem } from '../combobox.context';
 
 export default function useCombobox(
-  onSelect: ((value: string) => void) | undefined,
+  onSelect: ((value: string | null) => void) | undefined,
 ) {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(-1);
+  const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -51,7 +51,7 @@ export default function useCombobox(
     setIsOpen(false);
     setHasPosition(false);
     setInputValue('');
-    setActiveIndex(-1);
+    setActiveIndex(0);
 
     requestAnimationFrame(() => {
       triggerRef.current?.focus({ preventScroll: true });
@@ -60,11 +60,23 @@ export default function useCombobox(
 
   const handleSelect = (targetItem: ComboboxItem) => {
     close();
-    setSelectedItem(targetItem);
-    if (onSelect) {
-      onSelect(targetItem.value);
+
+    if (targetItem.value === selectedItem?.value) {
+      setSelectedItem(null);
+      if (onSelect) {
+        onSelect(null);
+      }
+    } else {
+      setSelectedItem(targetItem);
+      if (onSelect) {
+        onSelect(targetItem.value);
+      }
     }
   };
+
+  useEffect(() => {
+    setActiveIndex(0);
+  }, [inputValue]);
 
   return {
     isOpen,
