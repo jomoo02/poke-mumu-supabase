@@ -27,6 +27,7 @@ export default function Select({
     selectedValue,
     itemValueMap,
     selectedContent,
+    lastInteraction,
   } = useSelect({ onSelect, initialItem });
 
   return (
@@ -38,6 +39,7 @@ export default function Select({
       onClose={onClose}
       activeIndex={activeIndex}
       setActiveIndex={setActiveIndex}
+      lastInteraction={lastInteraction}
       items={items}
       registerItem={registerItem}
       containerRef={containerRef}

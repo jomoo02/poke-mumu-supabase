@@ -1,11 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useMemo,
-  RefObject,
-  Dispatch,
-  SetStateAction,
-} from 'react';
+import { createContext, useContext, useMemo, RefObject } from 'react';
 
 export type SelectItem = {
   value: string;
@@ -16,7 +9,10 @@ interface SelectContextValue {
   selectedValue: string | null;
   isOpen: boolean;
   activeIndex: number;
-  setActiveIndex: Dispatch<SetStateAction<number>>;
+  setActiveIndex: (
+    index: number,
+    source: 'keyboard' | 'mouse' | 'programmatic',
+  ) => void;
   containerRef: RefObject<HTMLDivElement | null>;
   triggerRef: RefObject<HTMLButtonElement | null>;
   contentRef: RefObject<HTMLDivElement | null>;
@@ -27,6 +23,7 @@ interface SelectContextValue {
   itemValueMap: Map<string, React.ReactNode>;
   registerItem: (item: SelectItem) => void;
   selectedContent: React.ReactNode | null;
+  lastInteraction: 'keyboard' | 'mouse' | 'programmatic';
 }
 
 const SelectContext = createContext<SelectContextValue | null>(null);
@@ -53,8 +50,8 @@ export function useSelectOpen() {
 }
 
 export function useActiveIndex() {
-  const { activeIndex, setActiveIndex } = useSelectContext();
-  return { activeIndex, setActiveIndex };
+  const { activeIndex, setActiveIndex, lastInteraction } = useSelectContext();
+  return { activeIndex, setActiveIndex, lastInteraction };
 }
 
 export function useItems() {
@@ -105,6 +102,7 @@ export function SelectProvider({
   containerRef,
   contentRef,
   selectedContent,
+  lastInteraction,
 }: SelectContextValue & { children: React.ReactNode }) {
   const value = useMemo(
     () => ({
@@ -122,6 +120,7 @@ export function SelectProvider({
       containerRef,
       contentRef,
       selectedContent,
+      lastInteraction,
     }),
     [
       selectedValue,
@@ -138,6 +137,7 @@ export function SelectProvider({
       containerRef,
       contentRef,
       selectedContent,
+      lastInteraction,
     ],
   );
 

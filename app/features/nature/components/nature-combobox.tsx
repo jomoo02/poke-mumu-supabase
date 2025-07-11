@@ -16,12 +16,16 @@ interface CustomComboboxProps {
 
 export default function NatureCombobox({ onSelect }: CustomComboboxProps) {
   const data = getNatureComboboxData();
+  console.log(1);
 
   return (
     <div className="w-48">
       <Combobox onSelect={onSelect}>
-        <ComboboxTrigger defaultLabel="성격을 골라주세요" />
-        <ComboboxContent className="w-full max-h-52 sm:max-h-56">
+        <ComboboxTrigger
+          defaultLabel="성격을 골라주세요"
+          className="shadow-sm shadow-gray-200"
+        />
+        <ComboboxContent className="w-full max-h-48 sm:max-h-56">
           <ComboboxInput
             placeholder="성격을 입력하세요"
             className="outline-none w-full text-slate-800 text-base"

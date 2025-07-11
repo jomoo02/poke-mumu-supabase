@@ -41,7 +41,7 @@ export default function MoveTable({
   return (
     <div className="overflow-hidden">
       <Title method={method} machineType={machineType} />
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto ">
         <div className="flex">
           <div className="border border-gray-200 rounded-md overflow-auto">
             <Table
@@ -55,7 +55,7 @@ export default function MoveTable({
                 <FirstHeaderCell method={method} machineType={machineType} />
                 <TableHeaderCell
                   headerKey="name"
-                  className="min-w-40 w-44 max-w-44 h-9.5 text-slate-700 font-medium text-[15px]"
+                  className="min-w-40 w-44 px-1 max-w-44 h-9.5 text-slate-700 font-medium text-[15px]"
                   sortAble
                 >
                   기술
@@ -69,21 +69,21 @@ export default function MoveTable({
                 </TableHeaderCell>
                 <TableHeaderCell
                   headerKey="damageClass"
-                  className="min-w-20 w-24 h-9.5 text-slate-700 font-medium text-[15px]"
+                  className="min-w-20 w-24 h-9.5 px-1 text-slate-700 font-medium text-[15px]"
                   sortAble
                 >
                   분류
                 </TableHeaderCell>
                 <TableHeaderCell
                   headerKey="power"
-                  className="min-w-20 w-24 h-9.5 text-slate-700 font-medium text-[15px]"
+                  className="min-w-20 w-24 h-9.5 px-1 text-slate-700 font-medium text-[15px]"
                   sortAble
                 >
                   위력
                 </TableHeaderCell>
                 <TableHeaderCell
                   headerKey="accuracy"
-                  className="min-w-20 w-24 h-9.5 text-slate-700 font-medium text-[15px] rounded-tr-md"
+                  className="min-w-20 w-24 h-9.5 px-1 text-slate-700 font-medium text-[15px] rounded-tr-md"
                   sortAble
                 >
                   명중률

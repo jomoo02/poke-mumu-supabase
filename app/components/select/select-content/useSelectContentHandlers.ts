@@ -22,10 +22,13 @@ export function useHandleKeyDown() {
 
     switch (e.key) {
       case 'ArrowDown':
-        setActiveIndex((prev: number) => (prev + 1) % itemCount);
+        const next =
+          activeIndex + 1 >= itemCount ? activeIndex : activeIndex + 1;
+        setActiveIndex(next, 'keyboard');
         break;
       case 'ArrowUp':
-        setActiveIndex((prev: number) => (prev - 1 + itemCount) % itemCount);
+        const before = activeIndex - 1 <= 0 ? 0 : activeIndex - 1;
+        setActiveIndex(before, 'keyboard');
         break;
       case 'Enter':
         const value = items[activeIndex];

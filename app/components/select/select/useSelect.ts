@@ -2,6 +2,8 @@ import { useState, useRef, useCallback, useEffect } from 'react';
 import useLockBodyScroll from '@/app/hooks/useLockBodyScroll';
 import type { SelectItem } from '../select.context';
 
+type Interaction = 'keyboard' | 'mouse' | 'programmatic';
+
 export type InitialItem = {
   value: string;
   content: React.ReactNode;
@@ -15,7 +17,7 @@ export default function useSelect({
   initialItem: InitialItem | undefined;
 }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(-1);
+  const [activeIndex, _setActiveIndex] = useState(-1);
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -30,7 +32,18 @@ export default function useSelect({
   const [selectedContent, setSelectedContent] =
     useState<React.ReactNode | null>(initialItem?.content ?? null);
 
+  const [lastInteraction, setLastInteraction] =
+    useState<Interaction>('programmatic');
+
   useLockBodyScroll(isOpen);
+
+  const setActiveIndex = useCallback(
+    (index: number, source: Interaction = 'programmatic') => {
+      _setActiveIndex(index);
+      setLastInteraction(source);
+    },
+    [],
+  );
 
   const registerItem = useCallback(({ value, content }: SelectItem) => {
     setItems((prev) => {
@@ -74,9 +87,9 @@ export default function useSelect({
   useEffect(() => {
     if (isOpen) {
       const index = items.findIndex((item) => item === selectedValue);
-      setActiveIndex(index);
+      setActiveIndex(index, 'programmatic');
     } else {
-      setActiveIndex(-1);
+      // setActiveIndex(-1, 'programmatic');
     }
   }, [isOpen, items, selectedValue]);
 
@@ -101,5 +114,6 @@ export default function useSelect({
     selectedValue,
     itemValueMap,
     selectedContent,
+    lastInteraction,
   };
 }

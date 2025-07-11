@@ -11,7 +11,7 @@ export default function useSelectItem(
   value: string,
   children: React.ReactNode,
 ) {
-  const { activeIndex, setActiveIndex } = useActiveIndex();
+  const { activeIndex, setActiveIndex, lastInteraction } = useActiveIndex();
   const { onSelect } = useOnSelect();
   const { registerItem } = useRegisterItem();
   const { items } = useItems();
@@ -27,24 +27,34 @@ export default function useSelectItem(
   };
 
   const handleMouseEnter = () => {
-    setActiveIndex(index);
+    setActiveIndex(index, 'mouse');
   };
 
   const handleMouseMove = () => {
     if (activeIndex !== index) {
-      setActiveIndex(index);
+      setActiveIndex(index, 'mouse');
     }
   };
 
   const handleMouseLeave = () => {
     if (activeIndex === index) {
-      setActiveIndex(-1);
+      setActiveIndex(-1, 'mouse');
     }
   };
 
   useEffect(() => {
     registerItem({ value, content: children });
   }, [value, registerItem, children]);
+
+  useEffect(() => {
+    if (isActive) {
+      if (lastInteraction === 'keyboard') {
+        itemRef.current?.scrollIntoView({ block: 'nearest' });
+      } else if (lastInteraction === 'programmatic' && index > 0) {
+        itemRef.current?.scrollIntoView({ block: 'center' });
+      }
+    }
+  }, [isActive, lastInteraction]);
 
   return {
     itemRef,

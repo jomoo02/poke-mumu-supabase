@@ -56,70 +56,70 @@ export default function PokedexTableV2({ pokeList }: PokedexTableProps) {
           <TableHeaderCell
             headerKey="no"
             sortAble
-            className="h-10 text-[15px] text-slate-800 font-medium min-w-[4.15rem] w-[4.15rem] xl:min-w-[4.15rem] border-x border-white"
+            className="h-10 px-0.5 text-[15px] text-slate-800 font-medium min-w-[4.15rem] w-[4.15rem] xl:min-w-[4.15rem] border-x border-white"
           >
             번호
           </TableHeaderCell>
           <TableHeaderCell
             headerKey="name"
             sortAble
-            className=" text-slate-800 text-[15px] font-medium h-10 border-x border-white w-full"
+            className="px-0.5  text-slate-800 text-[15px] font-medium h-10 border-x border-white w-full"
           >
             이름
           </TableHeaderCell>
           <TableHeaderCell
             headerKey="type"
             align="center"
-            className="border-x border-white text-slate-800 text-[15px] font-medium h-10 min-w-20 w-20 max-w-20"
+            className="px-0.5 border-x border-white text-slate-800 text-[15px] font-medium h-10 min-w-20 w-20 max-w-20"
           >
             타입
           </TableHeaderCell>
           <TableHeaderCell
             headerKey="total"
             sortAble
-            className="hidden md:table-cell border-x border-white text-slate-800 text-[15px] font-medium h-10 'min-w-[5.5rem] w-[5.5rem] max-w-[5.5rem]"
+            className="px-0.5 hidden md:table-cell border-x border-white text-slate-800 text-[15px] font-medium h-10 'min-w-[5.5rem] w-[5.5rem] max-w-[5.5rem]"
           >
             종족값
           </TableHeaderCell>
           <TableHeaderCell
             headerKey="hp"
             sortAble
-            className="hidden lg:table-cell border-x border-white text-slate-800 text-[15px] font-medium h-10 'min-w-[5.5rem] w-[5.5rem] max-w-[5.5rem]"
+            className="px-0.5 hidden lg:table-cell border-x border-white text-slate-800 text-[15px] font-medium h-10 'min-w-[5.5rem] w-[5.5rem] max-w-[5.5rem]"
           >
             체력
           </TableHeaderCell>
           <TableHeaderCell
             headerKey="attack"
             sortAble
-            className="hidden lg:table-cell border-x border-white text-slate-800 text-[15px] font-medium h-10 'min-w-[5.5rem] w-[5.5rem] max-w-[5.5rem]"
+            className="px-0.5 hidden lg:table-cell border-x border-white text-slate-800 text-[15px] font-medium h-10 'min-w-[5.5rem] w-[5.5rem] max-w-[5.5rem]"
           >
             공격
           </TableHeaderCell>
           <TableHeaderCell
             headerKey="defense"
             sortAble
-            className="hidden lg:table-cell border-x border-white text-slate-800 text-[15px] font-medium h-10 'min-w-[5.5rem] w-[5.5rem] max-w-[5.5rem]"
+            className="px-0.5 hidden lg:table-cell border-x border-white text-slate-800 text-[15px] font-medium h-10 'min-w-[5.5rem] w-[5.5rem] max-w-[5.5rem]"
           >
             방어
           </TableHeaderCell>
           <TableHeaderCell
             headerKey="specialAttack"
             sortAble
-            className="hidden lg:table-cell border-x border-white text-slate-800 text-[15px] font-medium h-10 'min-w-[5.5rem] w-[5.5rem] max-w-[5.5rem]"
+            className="px-0.5 hidden lg:table-cell border-x border-white text-slate-800 text-[15px] font-medium h-10 'min-w-[5.5rem] w-[5.5rem] max-w-[5.5rem]"
           >
             특수공격
           </TableHeaderCell>
           <TableHeaderCell
             headerKey="specialDefense"
             sortAble
-            className="hidden lg:table-cell border-x border-white text-slate-800 text-[15px] font-medium h-10 'min-w-[5.5rem] w-[5.5rem] max-w-[5.5rem]"
+            className="px-0.5 hidden lg:table-cell border-x border-white text-slate-800 text-[15px] font-medium h-10 'min-w-[5.5rem] w-[5.5rem] max-w-[5.5rem]"
           >
             특수방어
           </TableHeaderCell>
           <TableHeaderCell
             headerKey="speed"
             sortAble
-            className="hidden lg:table-cell border-l border-white text-slate-800 text-[15px] font-medium h-10 'min-w-[5.5rem] w-[5.5rem] max-w-[5.5rem]"
+            className="px-0.5 hidden lg:table-cell border-l border-white text-slate-800 text-[15px] font-medium h-10 'min-w-[5.5rem] w-[5.5rem] max-w-[5.5rem]"
           >
             스피드
           </TableHeaderCell>
@@ -174,43 +174,43 @@ export default function PokedexTableV2({ pokeList }: PokedexTableProps) {
                 </TableCell>
                 <TableCell
                   align="right"
-                  className="text-[15px] font-normal text-slate-800 pr-1 hidden md:table-cell border-b border-gray-200"
+                  className="text-[15px] font-normal text-slate-800 px-2 hidden md:table-cell border-b border-gray-200"
                 >
                   {poke.total}
                 </TableCell>
                 <TableCell
                   align="right"
-                  className="text-[15px] font-normal text-slate-800 pr-1 hidden lg:table-cell border-b border-gray-200"
+                  className="text-[15px] font-normal text-slate-800 px-2 hidden lg:table-cell border-b border-gray-200"
                 >
                   {poke.hp}
                 </TableCell>
                 <TableCell
                   align="right"
-                  className="text-[15px] font-normal text-slate-800 pr-1 hidden lg:table-cell border-b border-gray-200"
+                  className="text-[15px] font-normal text-slate-800 px-2 hidden lg:table-cell border-b border-gray-200"
                 >
                   {poke.attack}
                 </TableCell>
                 <TableCell
                   align="right"
-                  className="text-[15px] font-normal text-slate-800 pr-1 hidden lg:table-cell border-b border-gray-200"
+                  className="text-[15px] font-normal text-slate-800 px-2 hidden lg:table-cell border-b border-gray-200"
                 >
                   {poke.defense}
                 </TableCell>
                 <TableCell
                   align="right"
-                  className="text-[15px] font-normal text-slate-800 pr-1 hidden lg:table-cell border-b border-gray-200"
+                  className="text-[15px] font-normal text-slate-800 px-2 hidden lg:table-cell border-b border-gray-200"
                 >
                   {poke.special_attack}
                 </TableCell>
                 <TableCell
                   align="right"
-                  className="text-[15px] font-normal text-slate-800 pr-1 hidden lg:table-cell border-b border-gray-200"
+                  className="text-[15px] font-normal text-slate-800 px-2 hidden lg:table-cell border-b border-gray-200"
                 >
                   {poke.special_defense}
                 </TableCell>
                 <TableCell
                   align="right"
-                  className="text-[15px] font-normal text-slate-800 pr-1 hidden lg:table-cell border-b border-gray-200"
+                  className="text-[15px] font-normal text-slate-800 px-2 hidden lg:table-cell border-b border-gray-200"
                 >
                   {poke.speed}
                 </TableCell>

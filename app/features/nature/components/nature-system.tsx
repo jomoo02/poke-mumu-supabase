@@ -37,8 +37,10 @@ export default function NatureSystem() {
           </p>
           <p className="break-keep text-pretty text-slate-800">
             싱크로 특성을 지닌 포켓몬을 파티 선두에 두면, 야생 포켓몬이 50%
-            확률로 같은 성격을 가지게 됩니다. (※ 단, 9세대부터는 이 효과가
-            제거되었습니다.)
+            확률로 같은 성격을 가지게 됩니다.
+          </p>
+          <p className="break-keep text-pretty text-slate-800">
+            (단, 9세대부터는 이 효과가 제거되었습니다.)
           </p>
         </div>
 

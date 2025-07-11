@@ -38,7 +38,7 @@ export default function ChainPoke({ poke }: ChainPokeProps) {
       <div className="text-sm text-slate-800">No.{formatPokedexNumber(no)}</div>
       <Link
         href={href}
-        className="text-slate-800 font-medium hover:underline underline-offset-2 decoration-slate-800"
+        className="text-slate-800 font-medium hover:underline active:underline underline-offset-4 decoration-slate-800"
       >
         {name}
       </Link>

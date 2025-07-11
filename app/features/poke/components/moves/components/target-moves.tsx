@@ -18,7 +18,7 @@ export default function TargetMoves({
 
   return (
     <div className="flex flex-col gap-y-10 w-full my-10">
-      <div className="flex flex-col gap-y-10 overflow-auto">
+      <div className="flex flex-col gap-y-10 ">
         {moves.map(({ method, moves }) => (
           <MoveTable
             key={method}

@@ -25,10 +25,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${pretendard.className} `}>
+      <body className={`${pretendard.className} relative`}>
         <SWRProvider>
           <AppHeader />
           {/* <main className="my-6 mx-auto">{children}</main> */}
+
+          <div id="ttt" className="sticky top-14 z-60" />
           <main>{children}</main>
           <div>{modal}</div>
         </SWRProvider>
