@@ -13,7 +13,10 @@ export default function useLockBodyScroll(
       window.innerWidth - document.documentElement.clientWidth;
 
     const preventTouchMove = (e: TouchEvent) => {
-      if (allowScrollElement && allowScrollElement.contains(e.target as Node)) {
+      if (
+        allowScrollElement &&
+        allowScrollElement?.contains(e.target as Node)
+      ) {
         return;
       }
       e.preventDefault();

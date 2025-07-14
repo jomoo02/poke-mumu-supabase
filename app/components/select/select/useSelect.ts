@@ -35,7 +35,16 @@ export default function useSelect({
   const [lastInteraction, setLastInteraction] =
     useState<Interaction>('programmatic');
 
-  useLockBodyScroll(isOpen);
+  const [isContentMounted, setIsContentMounted] = useState(false);
+
+  useEffect(() => {
+    if (isOpen && contentRef.current) {
+      setIsContentMounted(true);
+    } else {
+      setIsContentMounted(false);
+    }
+  }, [isOpen]);
+  useLockBodyScroll(isContentMounted, contentRef.current);
 
   const setActiveIndex = useCallback(
     (index: number, source: Interaction = 'programmatic') => {
