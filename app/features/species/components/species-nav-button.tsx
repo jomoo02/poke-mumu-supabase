@@ -15,7 +15,7 @@ function Prev({ poke }: NavButtonProps) {
   return (
     <Link
       href={`/pokedex/${no}/${species}`}
-      className="flex items-center rounded-lg bg-transparent hover:bg-neutral-100 active:bg-neutral-100 transition-colors duration-200 p-1 sm:p-2"
+      className="flex items-center rounded-lg hover:bg-neutral-100 active:bg-neutral-100 transition-colors duration-200 px-2 h-10"
       prefetch
     >
       <CaretLeftIcon size="1.1rem" color="#1d293d" />
@@ -32,7 +32,7 @@ function Next({ poke }: NavButtonProps) {
   return (
     <Link
       href={`/pokedex/${no}/${species}`}
-      className="flex items-center flex-row-reverse rounded-lg bg-transparent hover:bg-neutral-100 active:bg-neutral-100 transition-colors duration-200 p-1 sm:p-2"
+      className="flex items-center flex-row-reverse rounded-lg bg-transparent hover:bg-neutral-100 active:bg-neutral-100 transition-colors duration-200 px-2 h-10"
       prefetch
     >
       <CaretRightIcon size="1.1rem" color="#1d293d" />

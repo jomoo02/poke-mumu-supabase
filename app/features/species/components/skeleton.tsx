@@ -1,7 +1,7 @@
 function NavButton() {
   return (
     <div className="w-[100px] sm:w-[130px]">
-      <div className="w-full h-7.5 sm:h-9 bg-neutral-100 rounded-lg" />
+      <div className="w-full h-10 bg-neutral-100 rounded-lg" />
     </div>
   );
 }
@@ -18,8 +18,8 @@ export default function SpeciesLayoutSkeleton() {
       </div>
 
       <div className="flex border-b border-gray-200 relative">
-        <div className="flex w-full h-8 items-center">
-          <div className="w-16 h-6 bg-neutral-100 rounded-lg" />
+        <div className="flex min-h-10 w-full items-center">
+          <div className="w-16 h-7 bg-neutral-100 rounded-lg" />
         </div>
       </div>
     </div>

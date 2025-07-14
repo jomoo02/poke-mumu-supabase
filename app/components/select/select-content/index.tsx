@@ -14,20 +14,24 @@ export default function SelectContent({ children }: SelectContentProps) {
   }
 
   return createPortal(
-    <div
-      role="listbox"
-      ref={contentRef}
-      tabIndex={0}
-      style={position}
-      onKeyDown={handleKeyDown}
-      onBlur={handleBlur}
-      className={`bg-white shadow-xl p-1 w-full border border-gray-300 rounded-md outline-none focus:outline-none max-h-60 overflow-auto
-        transition-opacity duration-200 ease-out transform z-50 absolute
+    <>
+      <div className="fixed inset-0 z-100 pointer-events-auto" />
+      <div
+        role="listbox"
+        ref={contentRef}
+        tabIndex={0}
+        style={position}
+        onKeyDown={handleKeyDown}
+        onBlur={handleBlur}
+        className={`bg-white shadow-xl pointer-events-auto p-1 w-full border border-gray-300 rounded-md outline-none focus:outline-none max-h-60 overflow-auto
+        transition-opacity duration-200 ease-out transform z-70 absolute
         scale-95 opacity-0 ${show && 'scale-100 opacity-100'}
       `}
-    >
-      {children}
-    </div>,
+      >
+        {children}
+      </div>
+    </>,
+
     document.body,
   );
 }

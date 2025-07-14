@@ -23,18 +23,19 @@ export function useOnClickOutsideEffect() {
         return;
       }
 
-      // e.preventDefault();
       if (
         contentRef.current &&
         !contentRef.current.contains(e.target as Node) &&
         !triggerRef.current?.contains(e.target as Node)
       ) {
         onClose();
+        e.stopPropagation();
+        e.preventDefault();
       }
     };
 
     document.addEventListener('mousedown', handleClickOutside, {
-      passive: true,
+      passive: false,
     });
 
     return () => {
@@ -54,6 +55,7 @@ export function useOnClickOutsideEffect() {
         !contentRef.current?.contains(target) &&
         !triggerRef.current?.contains(target)
       ) {
+        e.stopPropagation();
         e.preventDefault();
         onClose();
       }

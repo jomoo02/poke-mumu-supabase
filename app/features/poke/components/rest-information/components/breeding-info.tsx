@@ -19,9 +19,14 @@ export default function BreedingInfo({ breeding }: BreedingInfoProps) {
       <div className="grid max-w-2xl">
         <InfoHeader />
         <Info category="알그룹">
-          {eggGroups.map((group) => (
-            <div key={group}>{group}</div>
-          ))}
+          <div className="flex">
+            {eggGroups.map((group, index) => (
+              <div key={group}>
+                {index > 0 && ', '}
+                {group}
+              </div>
+            ))}
+          </div>
         </Info>
         <Info category="성비">
           <p className="flex gap-x-2">
@@ -41,7 +46,7 @@ export default function BreedingInfo({ breeding }: BreedingInfoProps) {
         </Info>
         <Info category="부화 카운트">{hatchCounter}</Info>
       </div>
-      <ul className="text-slate-800 mt-8 list-disc list-inside p-1">
+      <ul className="text-slate-800 mt-8 list-disc list-inside p-1 space-y-0.5">
         {eggGroups[0] === '미발견' && (
           <li>
             알그룹이 <span className="font-medium">미발견</span>인 경우, 교배가

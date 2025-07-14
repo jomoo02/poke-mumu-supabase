@@ -49,20 +49,29 @@ export default function DetailInfo({ detail, effortValues }: DetailInfoProps) {
         <Info category="성장">
           <div>
             <p>{growthRate}</p>
-            <p className="p-px text-[15px] text-slate-600">
+            {/* <p className="p-px text-[15px] text-slate-600">
               {atLevel50Text}: {expPointAtLevel50.toLocaleString()}
             </p>
             <p className="p-px text-[15px]  text-slate-600">
               {atLevel100Text}: {expPointAtLevel100.toLocaleString()}
-            </p>
+            </p> */}
           </div>
         </Info>
       </div>
-      <ul className="text-slate-800 mt-8 list-disc list-inside p-1">
+      <ul className="text-slate-800 mt-8 list-disc list-inside p-1 space-y-0.5">
         <li className="text-pretty break-keep">
           체력이 가득 찼을 때 포획 확률(몬스터볼):{' '}
           <span className="font-medium">약 {catchRate}%</span>
         </li>
+        <li>성장에 필요한 경험치</li>
+        <ul className="list-[circle] list-inside px-2">
+          <li className="text-pretty break-keep">
+            {atLevel50Text}: {expPointAtLevel50.toLocaleString()}
+          </li>
+          <li className="text-pretty break-keep">
+            {atLevel100Text}: {expPointAtLevel100.toLocaleString()}
+          </li>
+        </ul>
       </ul>
     </div>
   );
