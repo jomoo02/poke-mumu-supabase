@@ -41,7 +41,7 @@ export default function MoveTable({
   return (
     <div className="overflow-hidden">
       <Title method={method} machineType={machineType} />
-      <div className="overflow-x-auto ">
+      <div className="overflow-x-auto">
         <div className="flex">
           <div className="border border-gray-200 rounded-md overflow-auto">
             <Table

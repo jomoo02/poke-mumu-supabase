@@ -1,7 +1,7 @@
 import SectionHeader from '../section-header';
 import type { Detail, Breeding, EffortValue } from './types';
-import BreedingInfoV3 from './components/breeding-info-v3';
-import DetailInfoV3 from './components/detail-info-v3';
+import DetailInfo from './components/detail-info';
+import BreedingInfo from './components/breeding-info';
 
 interface RestInformationProps {
   detail: Detail | null;
@@ -17,9 +17,9 @@ export default function RestInformation({
   return (
     <div>
       <SectionHeader id="rest-information" sectionTitle="기타 정보" />
-      <div className="flex flex-col gap-14 sm:justify-between p-1">
-        <BreedingInfoV3 breeding={breeding} />
-        <DetailInfoV3 detail={detail} effortValues={effortValues} />
+      <div className="grid gap-20">
+        <BreedingInfo breeding={breeding} />
+        <DetailInfo detail={detail} effortValues={effortValues} />
       </div>
     </div>
   );
