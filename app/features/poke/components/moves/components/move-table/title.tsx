@@ -15,6 +15,7 @@ export default function Title({ method, machineType }: TitleProps) {
     HM: '기술머신 HM으로 익히는 기술',
     TM: '기술머신 TM으로 익히는 기술',
     TR: '기술머신 TR로 익히는 기술',
+    evolution: '진화 시 익히는 기술',
     default: '기술',
   } as const;
 
@@ -23,5 +24,7 @@ export default function Title({ method, machineType }: TitleProps) {
     titleMap[method] ||
     titleMap.default;
 
-  return <h3 className="text-slate-800 text-lg font-medium my-4">{title}</h3>;
+  return (
+    <h3 className="text-slate-800 text-lg font-medium mt-4 mb-2">{title}</h3>
+  );
 }

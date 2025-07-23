@@ -11,6 +11,7 @@ export default function BreedingInfo({ breeding }: BreedingInfoProps) {
   const { eggGroups, genderRatio, hatchCounter } = formatBreeding(breeding);
   const [male, female] = genderRatio.split('-');
 
+  console.log(hatchCounter);
   return (
     <div className=" justify-center">
       <h3 className="text-slate-800 text-lg font-semibold mx-1 mb-2">
@@ -44,7 +45,9 @@ export default function BreedingInfo({ breeding }: BreedingInfoProps) {
             )}
           </p>
         </Info>
-        <Info category="부화 카운트">{hatchCounter}</Info>
+        <Info category="부화 카운트">
+          {eggGroups[0] !== '미발견' ? hatchCounter : '—'}
+        </Info>
       </div>
       <ul className="text-slate-800 mt-8 list-disc list-inside p-1 space-y-0.5">
         {eggGroups[0] === '미발견' && (
@@ -54,7 +57,7 @@ export default function BreedingInfo({ breeding }: BreedingInfoProps) {
           </li>
         )}
 
-        {hatchCounter && (
+        {eggGroups[0] !== '미발견' && hatchCounter !== '—' && (
           <li>
             알이 부화하려면 약{' '}
             <span className="font-medium">{Number(hatchCounter) * 256}</span>

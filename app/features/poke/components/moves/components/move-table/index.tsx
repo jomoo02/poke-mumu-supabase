@@ -83,10 +83,17 @@ export default function MoveTable({
                 </TableHeaderCell>
                 <TableHeaderCell
                   headerKey="accuracy"
-                  className="min-w-20 w-24 h-9.5 px-1 text-slate-700 font-medium text-[15px] rounded-tr-md"
+                  className="min-w-20 w-24 h-9.5 px-1 text-slate-700 font-medium text-[15px]"
                   sortAble
                 >
                   명중률
+                </TableHeaderCell>
+                <TableHeaderCell
+                  headerKey="pp"
+                  className="min-w-16 w-20 h-9.5 px-1 text-slate-700 font-medium text-[15px] rounded-tr-md"
+                  sortAble
+                >
+                  PP
                 </TableHeaderCell>
               </TableHeader>
               <TableBody className="">
@@ -124,6 +131,12 @@ export default function MoveTable({
                         className="px-3 text-nowrap text-[15px] text-slate-800"
                       >
                         {row.accuracy || '—'}
+                      </TableCell>
+                      <TableCell
+                        align="right"
+                        className="px-3 text-nowrap text-[15px] text-slate-800"
+                      >
+                        {row.pp || '—'}
                       </TableCell>
                     </TableRow>
                   ))

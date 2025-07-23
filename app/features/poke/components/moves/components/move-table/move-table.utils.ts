@@ -20,5 +20,12 @@ export const sortMoveTable = (
 
   const compare = compareFunctionList[headerKey];
 
-  return compare ? compare(a, b) : 0;
+  if (!compare) {
+    return 0;
+  }
+
+  const result = compare(a, b);
+
+  return result !== 0 ? result : a.name.localeCompare(b.name);
+  // return compare ? compare(a, b) : 0;
 };

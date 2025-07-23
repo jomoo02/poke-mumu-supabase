@@ -25,7 +25,8 @@ export type MoveMethod =
   | 'tutor'
   | 'reminder'
   | 'machine'
-  | 'pre';
+  | 'pre'
+  | 'evolution';
 
 export type PokeMoveJsonByMethod = {
   pre?: PokeMove[];
@@ -34,6 +35,7 @@ export type PokeMoveJsonByMethod = {
   egg?: PokeMove[];
   tutor?: PokeMove[];
   reminder?: PokeMove[];
+  evolution?: PokeMove[];
 };
 
 export type PokeMoveTableWithVersion = {

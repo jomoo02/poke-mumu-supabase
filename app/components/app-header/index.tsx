@@ -13,7 +13,13 @@ export default function AppHeader() {
             <Link href="/pokedex">도감</Link>
           </div>
           <div className="text-slate-800 font-medium items-center px-4 hidden sm:flex">
+            <Link href="/move">기술</Link>
+          </div>
+          <div className="text-slate-800 font-medium items-center px-4 hidden sm:flex">
             <Link href="/natures">성격</Link>
+          </div>
+          <div className="text-slate-800 font-medium items-center px-4 hidden sm:flex">
+            <Link href="/evolution">진화</Link>
           </div>
         </nav>
         <div className="flex gap-x-4 items-center">

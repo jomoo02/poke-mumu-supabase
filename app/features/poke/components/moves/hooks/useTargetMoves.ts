@@ -7,7 +7,7 @@ type TargetMove = {
 };
 
 const sortMoveGroups = (targetMoves: TargetMove[]) => {
-  const order = ['level_up', 'egg', 'tutor', 'pre', 'reminder'];
+  const order = ['level_up', 'evolution', 'reminder', 'egg', 'tutor', 'pre'];
   const orderMap = new Map(order.map((key, index) => [key, index]));
 
   return [...targetMoves].sort((a, b) => {

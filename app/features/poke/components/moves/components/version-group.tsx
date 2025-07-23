@@ -1,7 +1,7 @@
 import useVersionGroup from '../hooks/useVersionGroup';
 import type { PokeMoveListItem } from '../types';
 import OptionVersionGroup from './option-version-group';
-import TatgetMoves from './target-moves';
+import TargetMoves from './target-moves';
 
 interface VersionGroupProps {
   moves: PokeMoveListItem[];
@@ -15,6 +15,7 @@ export default function VersionGroup({ moves }: VersionGroupProps) {
     handleTargetVersion,
   } = useVersionGroup(moves);
 
+  console.log(targetMoves);
   return (
     <>
       <div className="my-4">
@@ -27,7 +28,7 @@ export default function VersionGroup({ moves }: VersionGroupProps) {
       </div>
 
       {targetMoves && (
-        <TatgetMoves
+        <TargetMoves
           targetMoves={targetMoves}
           versionGroup={targetVersionGroup}
         />

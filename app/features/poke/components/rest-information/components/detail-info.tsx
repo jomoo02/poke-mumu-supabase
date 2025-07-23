@@ -46,15 +46,9 @@ export default function DetailInfo({ detail, effortValues }: DetailInfoProps) {
           ))}
         </Info>
         <Info category="기초 친밀도">{baseFriendShip}</Info>
-        <Info category="성장">
+        <Info category="필요 경험치">
           <div>
             <p>{growthRate}</p>
-            {/* <p className="p-px text-[15px] text-slate-600">
-              {atLevel50Text}: {expPointAtLevel50.toLocaleString()}
-            </p>
-            <p className="p-px text-[15px]  text-slate-600">
-              {atLevel100Text}: {expPointAtLevel100.toLocaleString()}
-            </p> */}
           </div>
         </Info>
       </div>
@@ -66,10 +60,16 @@ export default function DetailInfo({ detail, effortValues }: DetailInfoProps) {
         <li>성장에 필요한 경험치</li>
         <ul className="list-[circle] list-inside px-2">
           <li className="text-pretty break-keep">
-            {atLevel50Text}: {expPointAtLevel50.toLocaleString()}
+            {atLevel50Text}:{' '}
+            <span className="font-medium">
+              {expPointAtLevel50.toLocaleString()}
+            </span>
           </li>
           <li className="text-pretty break-keep">
-            {atLevel100Text}: {expPointAtLevel100.toLocaleString()}
+            {atLevel100Text}:{' '}
+            <span className="font-medium">
+              {expPointAtLevel100.toLocaleString()}
+            </span>
           </li>
         </ul>
       </ul>

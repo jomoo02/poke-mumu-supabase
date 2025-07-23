@@ -56,10 +56,26 @@ export default function MenuMobile() {
                 </li>
                 <li>
                   <Link
+                    href={'/move'}
+                    className={`font-medium ${pathName === '/move' ? 'text-slate-900' : ' text-slate-600'}`}
+                  >
+                    기술
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href={'/natures'}
                     className={`font-medium ${pathName === '/natures' ? 'text-slate-900' : ' text-slate-600'}`}
                   >
                     성격
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={'/evolution'}
+                    className={`font-medium ${pathName === '/evolution' ? 'text-slate-900' : ' text-slate-600'}`}
+                  >
+                    진화
                   </Link>
                 </li>
               </ul>

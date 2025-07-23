@@ -1,5 +1,6 @@
 'use server';
 
+import { cache } from 'react';
 import dbConnect from '@/app/utils/mongoose/dbConnect';
 import EvolutionChainsModel, {
   type EvolutionChain,
@@ -32,3 +33,26 @@ export async function fetchEvolutionChains(evolutionId: number | null) {
     return null;
   }
 }
+
+export const fetchEvolutionChainAll = cache(async () => {
+  try {
+    await dbConnect();
+
+    const query = {};
+    const projection = { _id: 0 };
+
+    const evolutionChains = await EvolutionChainsModel.find(
+      query,
+      projection,
+    ).lean<EvolutionChain[]>();
+
+    if (!evolutionChains) {
+      return [];
+    }
+
+    return evolutionChains.map(formatEvolutionData);
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+});

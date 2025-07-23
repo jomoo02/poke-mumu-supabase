@@ -16,6 +16,7 @@ export default function TargetMoves({
 }: TargetMovesProps) {
   const { moves, machineMoves } = useTargetMoves(targetMoves);
 
+  console.log(moves);
   return (
     <div className="flex flex-col gap-y-10 w-full my-10">
       <div className="flex flex-col gap-y-10 ">
