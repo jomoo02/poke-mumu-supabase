@@ -12,10 +12,10 @@ const checkAreaCase = (evolutionId: number) => {
 
 const setAreaMap = (evolutionId: number) => {
   const areaMap: Record<EvolutionAreaKey, number[]> = {
-    'magnetic-field': [34, 123],
+    'magnetic-field': [34, 123, 265],
     'mossy-rock': [62],
     'icy-rock': [62],
-    'mount-lanakila': [265],
+    'mount-lanakila': [],
   };
 
   return evolutionAreas.filter((location) =>

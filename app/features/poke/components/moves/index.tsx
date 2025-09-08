@@ -14,7 +14,7 @@ export default function Moves({ pokeMoves }: MovesProps) {
   const { gens, targetGen, handleTargetGen, targetGenMoves } =
     useMoves(pokeMoves);
 
-  console.log(pokeMoves);
+  // console.log(pokeMoves);
   return (
     <div>
       <SectionHeader id="move" sectionTitle="기술" />

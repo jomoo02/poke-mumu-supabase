@@ -8,6 +8,10 @@ import RestInformation from '../components/rest-information';
 import EvolutionV2 from '../components/evolution';
 import { fetchEvolutionChains } from '../api/evolution-chain';
 
+import Moves2 from '../components/moves2';
+import PokeMoves from '../components/moves-3';
+import { formatPokeMove } from '../utils/format-move';
+
 interface PokeDetailProps {
   pokeKey: string;
 }
@@ -25,7 +29,7 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
     poke_ability,
     evolution_id,
     sprite,
-    poke_moves_2: pokeMoves,
+    poke_moves: pokeMoves,
     poke_stat: pokeStats,
   } = data;
 
@@ -60,7 +64,7 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
         {evolutionData && <EvolutionV2 evolutionTree={evolutionData} />}
         {/* <EvolutionTree evolutionId={evolution_id} /> */}
 
-        <Moves pokeMoves={pokeMoves} />
+        <PokeMoves pokeMoves={formatPokeMove(pokeMoves)} />
       </div>
     </div>
   );

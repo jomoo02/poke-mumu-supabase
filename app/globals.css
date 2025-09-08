@@ -1,8 +1,45 @@
 @import 'tailwindcss';
 
 @theme {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --primary: oklch(0.4665 0.1763 260.0083);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.96 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --border: oklch(0.922 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --border: oklch(0.922 0 0);
+  --ring: #2563eb;
+
   --text-shadow-type: 1px 1px 2.5px rgba(0, 0, 0, 0.7);
-  --color-primary: oklch(21% 0.006 285.885);
+  /* --color-primary: oklch(21% 0.006 285.885); */
+
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-border: var(--border);
+
+  --color-ring: var(--ring);
+
+  --color-primary-100: #84b1f5;
+  --color-primary-200: #5b97f2;
+  --color-primary-300: #317dee;
+  --color-primary-400: #1265e1;
+  --color-primary-500: #0f52ba;
+  --color-primary-600: #0e4dab;
+  --color-primary-700: #0d479e;
+  --color-primary-800: #0c4191;
+  --color-primary-900: #0b3b83;
 }
 
 /* @layer base {

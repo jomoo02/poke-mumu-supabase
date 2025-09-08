@@ -11,7 +11,7 @@ export default function TableCell({
   children,
 }: TableCellProps) {
   return (
-    <td align={align} className={`${className} px-1.5`} colSpan={colSpan}>
+    <td align={align} className={` ${className}`} colSpan={colSpan}>
       {children}
     </td>
   );

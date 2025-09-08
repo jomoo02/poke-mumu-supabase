@@ -30,10 +30,10 @@ export const getNatureTableData = () => {
   }[] = [
     { key: 'nature', value: '성격', align: 'left' },
     { key: 'en', value: '영칭', align: 'left' },
-    { key: 'increase', value: '상승', align: 'center' },
-    { key: 'decrease', value: '하락', align: 'center' },
-    { key: 'like', value: '좋아하는맛', align: 'center' },
-    { key: 'dislike', value: '싫어하는맛', align: 'center' },
+    { key: 'increase', value: '상승', align: 'left' },
+    { key: 'decrease', value: '하락', align: 'left' },
+    { key: 'like', value: '좋아하는맛', align: 'left' },
+    { key: 'dislike', value: '싫어하는맛', align: 'left' },
   ];
 
   const bodyData = naturesTable.map(({ en, ...rest }) => ({

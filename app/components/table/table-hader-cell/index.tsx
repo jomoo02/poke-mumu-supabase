@@ -23,14 +23,14 @@ export default function TableHeaderCell({
 
   return (
     <th
-      className={`select-none ${className}`}
+      className={`select-none ${className} `}
       aria-sort={ariaSort}
       align={align}
     >
       {sortAble ? (
         <button
           onClick={handleOnClick}
-          className={`flex w-full h-full rounded-sm px-1.5 items-center justify-between cursor-pointer focus:outline-none focus-visible:inset-ring ring-gray-600`}
+          className={`flex w-full h-full rounded-sm px-1.5 justify-between items-center cursor-pointer focus:outline-none focus-visible:inset-ring ring-gray-600`}
         >
           {children}
           <SortIcon isSelect={isSorted} direction={direction} color="#1d293d" />

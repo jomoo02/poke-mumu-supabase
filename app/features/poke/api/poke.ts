@@ -34,7 +34,7 @@ export async function fetchPoke(pokeKey: string) {
           )
         ),
         evolution_id,
-        poke_moves_2 (
+        poke_moves (
           id,
           version_group (
             id,

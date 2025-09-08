@@ -2,7 +2,7 @@ import {
   OptionBar,
   OptionBarItem,
   OptionBarContent,
-} from '@/app/components/option-bar';
+} from '@/app/components/option-bar-before';
 
 interface OptionGenProps {
   gens: number[];

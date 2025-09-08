@@ -3,32 +3,32 @@ import { OptionBarProvider } from '../option-bar.context';
 
 interface OptionBarProps {
   initialValue?: string;
-  onSelect?: (value: string) => void;
+  onValueSelect?: (value: string) => void;
   children: React.ReactNode;
 }
 
 export default function OptionBar({
   initialValue,
-  onSelect,
+  onValueSelect,
   children,
 }: OptionBarProps) {
   const {
     selectedValue,
-    handleOnSelect,
-    registerItem,
-    items,
-    itemRefs,
-    containerRef,
-  } = useOptionBar(initialValue, onSelect);
+    handleValueSelect,
+    registerOption,
+    optionValues,
+    optionValueRefMap,
+    contentRef,
+  } = useOptionBar(initialValue, onValueSelect);
 
   return (
     <OptionBarProvider
       selectedValue={selectedValue}
-      onSelect={handleOnSelect}
-      registerItem={registerItem}
-      items={items}
-      itemRefs={itemRefs}
-      containerRef={containerRef}
+      onValueSelect={handleValueSelect}
+      registerOption={registerOption}
+      optionValues={optionValues}
+      optionValueRefMap={optionValueRefMap}
+      contentRef={contentRef}
     >
       {children}
     </OptionBarProvider>

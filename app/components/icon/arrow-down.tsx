@@ -8,7 +8,7 @@ interface ArrowDownIconProps {
 
 export default function ArrowDownIcon({
   size = '1rem',
-  color = '#344155',
+  color = '#0a0a0a',
 }: ArrowDownIconProps) {
   return <IconArrowDown size={size} stroke={2} color={color} />;
 }

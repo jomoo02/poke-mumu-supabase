@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${pretendard.className} relative`}>
+      <body className={`${pretendard.className} relative bg-background`}>
         <SWRProvider>
           <AppHeader />
           {/* <main className="my-6 mx-auto">{children}</main> */}

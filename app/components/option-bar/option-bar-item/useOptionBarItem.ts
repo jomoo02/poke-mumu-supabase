@@ -1,32 +1,29 @@
 import { useEffect, useRef } from 'react';
 import {
-  useOnSelect,
-  useItem,
+  useOnValueSelect,
+  useRegisterOption,
   useSelectedValue,
-  useContainerRef,
 } from '../option-bar.context';
 
 export default function useOptionBarItem(value: string) {
   const itemRef = useRef<HTMLDivElement | null>(null);
-  const { onSelect } = useOnSelect();
-  const { registerItem } = useItem();
+  const { onValueSelct } = useOnValueSelect();
+  const { registerOption } = useRegisterOption();
   const { selectedValue } = useSelectedValue();
-  const { containerRef } = useContainerRef();
 
   const isSelected = selectedValue === value;
 
-  const handleOnClick = () => {
-    onSelect(value);
+  const handleItemClick = () => {
+    onValueSelct(value);
   };
 
   useEffect(() => {
-    registerItem(value, itemRef.current);
-  }, [value, registerItem]);
+    registerOption(value, itemRef.current);
+  }, [value, registerOption]);
 
   return {
     isSelected,
-    handleOnClick,
+    handleItemClick,
     itemRef,
-    containerRef,
   };
 }

@@ -149,7 +149,7 @@ export default function PokedexTableV2({ pokeList }: PokedexTableProps) {
                           href={`/pokedex/${poke.no}/${poke.pokeKey}`}
                           className="hover:underline underline-offset-2 decoration-slate-800"
                         >
-                          <div className="truncate w-auto text-slate-800 font-medium">
+                          <div className="truncate w-auto text-slate-800 font-medium hover:text-primary-500">
                             {poke.name}
                           </div>
                         </Link>

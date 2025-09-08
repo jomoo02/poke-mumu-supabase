@@ -1,84 +1,87 @@
-import { createContext, RefObject, useContext, useMemo } from 'react';
+import { createContext, createRef, RefObject, useContext } from 'react';
 
-interface OptionBarContextValue {
+interface OptionBarProviderProps {
   selectedValue: string | undefined;
-  onSelect: (value: string) => void;
-  items: string[];
-  itemRefs: RefObject<Map<string, HTMLDivElement | null>>;
-  containerRef: RefObject<HTMLDivElement | null>;
-  registerItem: (value: string, ref: HTMLDivElement | null) => void;
+  onValueSelect: (value: string) => void;
+  optionValues: string[];
+  optionValueRefMap: RefObject<Map<string, HTMLDivElement | null> | null>;
+  contentRef: RefObject<HTMLDivElement | null>;
+  registerOption: (value: string, ref: HTMLDivElement | null) => void;
 }
 
-const OptionBarContext = createContext<OptionBarContextValue | null>(null);
+const SelectedValueContext =
+  createContext<OptionBarProviderProps['selectedValue']>(undefined);
 
-function useOptionBarContext() {
-  const context = useContext(OptionBarContext);
+const OnValueSelectContext = createContext<
+  OptionBarProviderProps['onValueSelect']
+>(() => {});
 
-  if (!context) {
-    throw new Error('OptionBarContext must be used within OptionBarProvider');
-  }
+const OptionValuesContext = createContext<
+  OptionBarProviderProps['optionValues']
+>([]);
 
-  return context;
-}
+const OptionValueRefMapContext =
+  createContext<OptionBarProviderProps['optionValueRefMap']>(createRef());
 
-export function useSelectedValue() {
-  const { selectedValue } = useOptionBarContext();
+const ContentRefContext =
+  createContext<OptionBarProviderProps['contentRef']>(createRef());
 
-  return {
-    selectedValue,
-  };
-}
-
-export function useOnSelect() {
-  const { onSelect } = useOptionBarContext();
-
-  return { onSelect };
-}
-
-export function useItem() {
-  const { items, registerItem, itemRefs } = useOptionBarContext();
-
-  return { items, registerItem, itemRefs };
-}
-
-export function useContainerRef() {
-  const { containerRef } = useOptionBarContext();
-  return { containerRef };
-}
+const RegisterOptionContext = createContext<
+  OptionBarProviderProps['registerOption']
+>(() => {});
 
 export function OptionBarProvider({
   children,
   selectedValue,
-  onSelect,
-  items,
-  registerItem,
-  itemRefs,
-  containerRef,
-}: OptionBarContextValue & { children: React.ReactNode }) {
-  const value = useMemo(
-    () => ({
-      children,
-      selectedValue,
-      onSelect,
-      items,
-      registerItem,
-      itemRefs,
-      containerRef,
-    }),
-    [
-      children,
-      selectedValue,
-      onSelect,
-      items,
-      registerItem,
-      itemRefs,
-      containerRef,
-    ],
-  );
-
+  onValueSelect,
+  optionValues,
+  registerOption,
+  optionValueRefMap,
+  contentRef,
+}: OptionBarProviderProps & { children: React.ReactNode }) {
   return (
-    <OptionBarContext.Provider value={value}>
-      {children}
-    </OptionBarContext.Provider>
+    <SelectedValueContext.Provider value={selectedValue}>
+      <OnValueSelectContext.Provider value={onValueSelect}>
+        <OptionValuesContext.Provider value={optionValues}>
+          <RegisterOptionContext.Provider value={registerOption}>
+            <OptionValueRefMapContext.Provider value={optionValueRefMap}>
+              <ContentRefContext.Provider value={contentRef}>
+                {children}
+              </ContentRefContext.Provider>
+            </OptionValueRefMapContext.Provider>
+          </RegisterOptionContext.Provider>
+        </OptionValuesContext.Provider>
+      </OnValueSelectContext.Provider>
+    </SelectedValueContext.Provider>
   );
+}
+
+export function useSelectedValue() {
+  const selectedValue = useContext(SelectedValueContext);
+  return { selectedValue };
+}
+
+export function useOnValueSelect() {
+  const onValueSelct = useContext(OnValueSelectContext);
+  return { onValueSelct };
+}
+
+export function useOptionValues() {
+  const optionValues = useContext(OptionValuesContext);
+  return { optionValues };
+}
+
+export function useRegisterOption() {
+  const registerOption = useContext(RegisterOptionContext);
+  return { registerOption };
+}
+
+export function useOptionValueRefMap() {
+  const optionValueRefMap = useContext(OptionValueRefMapContext);
+  return { optionValueRefMap };
+}
+
+export function useContentRef() {
+  const contentRef = useContext(ContentRefContext);
+  return { contentRef };
 }
