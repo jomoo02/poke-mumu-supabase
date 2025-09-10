@@ -12,6 +12,7 @@ import {
 import { getNatureTableColumns, getNatureTableRows } from './utils';
 import useTable from '@/app/hooks/useTable';
 import Input from '@/app/components/input';
+import Checkbox from '@/app/components/ui/checkbox';
 
 export default function NatureTable2({}) {
   const rows = getNatureTableRows();
@@ -19,7 +20,8 @@ export default function NatureTable2({}) {
   const table = useTable({ data: rows, columns: cols });
 
   return (
-    <div className="w-full  p-4  max-w-3xl mx-auto ">
+    <div className="w-full p-4 max-w-3xl mx-auto">
+      <Checkbox defaultChecked="indeterminate" />
       <div className="max-w-[300px] my-4">
         <Input
           id="nature-input"
@@ -31,7 +33,7 @@ export default function NatureTable2({}) {
           }}
         />
       </div>
-      <div className="border border-border rounded-md shadow-xs min-h-[400px]">
+      <div className="border border-border rounded-md shadow-xs ">
         <Table>
           <TableHeader>
             <TableRow className="border-border">
@@ -44,7 +46,7 @@ export default function NatureTable2({}) {
             {table.rows.map((row) => (
               <TableRow
                 key={row.id}
-                className="border-border"
+                className="border-border h-10"
                 data-state={row.isSelected && 'selected'}
               >
                 {!row.like && !row.dislike ? (

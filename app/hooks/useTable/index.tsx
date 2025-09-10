@@ -37,8 +37,10 @@ export default function useTable<T>({
   const [sortingState, setSortingState] = useState<SortingState | undefined>(
     sorting,
   );
+
   const [filterState, setFilterState] =
     useState<FilterState>(initialFilterState);
+
   const [visibilityState, setVisibilityState] = useState<VisibilityState>(
     initialVisibilityState,
   );
@@ -62,8 +64,15 @@ export default function useTable<T>({
     setSelectionState(Object.fromEntries(next));
   };
 
-  const getIsAllPageRowsSelected = () =>
-    Object.entries(selectionState).every((v) => v[1] === true);
+  const getIsAllRowsSelected = () =>
+    Object.entries(selectionState).every(
+      ([, isSelected]) => isSelected === true,
+    );
+
+  const getIsSomeRowSelected = () =>
+    Object.entries(selectionState).some(
+      ([, isSelected]) => isSelected === true,
+    );
 
   const { columnsState, getColumn } = useColumn({
     sortingState,
@@ -75,7 +84,8 @@ export default function useTable<T>({
     columnDefs: columns,
     table: {
       toggleAllPageRowsSelected,
-      getIsAllPageRowsSelected,
+      getIsAllRowsSelected,
+      getIsSomeRowSelected,
     },
   });
 

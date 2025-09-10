@@ -29,7 +29,8 @@ export default function useColumn<T>({
   setFilterState: React.Dispatch<React.SetStateAction<FilterState>>;
   table: {
     toggleAllPageRowsSelected: (value: boolean) => void;
-    getIsAllPageRowsSelected: () => boolean;
+    getIsAllRowsSelected: () => boolean;
+    getIsSomeRowSelected: () => boolean;
   };
 }) {
   const columnsState = useMemo(() => {

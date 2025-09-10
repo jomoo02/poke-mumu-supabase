@@ -29,7 +29,8 @@ export type Row<T> = T & {
 
 export type Table = {
   toggleAllPageRowsSelected: (v: boolean) => void;
-  getIsAllPageRowsSelected: () => boolean;
+  getIsAllRowsSelected: () => boolean;
+  getIsSomeRowSelected: () => boolean;
 };
 
 export type ColumnDef<T> = {

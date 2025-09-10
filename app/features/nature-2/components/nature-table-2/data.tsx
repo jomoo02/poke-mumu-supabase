@@ -1,6 +1,7 @@
 import type { ColumnDef } from '@/app/hooks/useTable/type';
 import ArrowUpIcon from '@/app/components/icon/arrow-up';
 import ArrowDownIcon from '@/app/components/icon/arrow-down';
+import Checkbox from '@/app/components/ui/checkbox';
 import { naturesKoMap, type Nature } from '../../data/nature';
 
 type Stat = '공격' | '방어' | '특수공격' | '특수방어' | '스피드';
@@ -19,22 +20,16 @@ export const natureTableColumns: ColumnDef<TNature>[] = [
   {
     id: 'selection',
     header: ({ table }) => (
-      <div className="flex px-2">
-        <input
-          type="checkbox"
-          onChange={(v) => table.toggleAllPageRowsSelected(v.target.checked)}
-          checked={table.getIsAllPageRowsSelected()}
-        />
-      </div>
+      <Checkbox
+        checked={
+          table.getIsAllRowsSelected() ||
+          (table.getIsSomeRowSelected() && 'indeterminate')
+        }
+        onCheckedChange={(v) => table.toggleAllPageRowsSelected(!!v)}
+      />
     ),
     cell: ({ row }) => (
-      <div className="flex px-2">
-        <input
-          type="checkbox"
-          onChange={row.toggleSelect}
-          checked={row.isSelected}
-        />
-      </div>
+      <Checkbox checked={row.isSelected} onCheckedChange={row.toggleSelect} />
     ),
   },
   {
