@@ -11,8 +11,9 @@ import {
 
 import { getNatureTableColumns, getNatureTableRows } from './utils';
 import useTable from '@/app/hooks/useTable';
-import Input from '@/app/components/input';
+import Input from '@/app/components/ui/input';
 import Checkbox from '@/app/components/ui/checkbox';
+import FloatingInput from '@/app/components/ui/floating-input';
 
 export default function NatureTable2({}) {
   const rows = getNatureTableRows();
@@ -23,9 +24,9 @@ export default function NatureTable2({}) {
     <div className="w-full p-4 max-w-3xl mx-auto">
       <Checkbox defaultChecked="indeterminate" />
       <div className="max-w-[300px] my-4">
-        <Input
+        <FloatingInput
           id="nature-input"
-          placeholder="성격 입력"
+          placeholder="성격"
           value={table.getColumn('ko')?.getFilterValue() ?? ''}
           onChange={(e) => {
             table.getColumn('ko')?.setFilterValue(e.target.value);
