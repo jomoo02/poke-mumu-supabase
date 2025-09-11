@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 type CheckedState = boolean | 'indeterminate';
 
@@ -34,18 +34,16 @@ export interface CheckboxProviderProps<
   required?: boolean;
   onCheckedChange?(checked: State | boolean): void;
   name?: string;
-  // form?: string;
   disabled?: boolean;
-  // value?: string | number | readonly string[];
   children?: React.ReactNode;
 }
 
 export function CheckboxProvider(props: CheckboxProviderProps<CheckedState>) {
   const {
-    checked: controlledChecked,
     defaultChecked,
     children,
     onCheckedChange,
+    checked: controlledChecked,
     ...rest
   } = props;
 
@@ -58,33 +56,28 @@ export function CheckboxProvider(props: CheckboxProviderProps<CheckedState>) {
   const setChecked: React.Dispatch<React.SetStateAction<CheckedState>> = (
     next,
   ) => {
-    if (typeof next === 'function') {
-      const updater = next as (prev: CheckedState) => CheckedState;
-      if (isControlled) {
-        const nextValue = updater(controlledChecked as CheckedState);
-        onCheckedChange?.(nextValue);
-      } else {
-        setInternalChecked((prev) => {
-          const nextValue = updater(prev);
-          onCheckedChange?.(nextValue);
-          return nextValue;
-        });
-      }
-    } else {
-      const nextValue = next as CheckedState;
-      if (!isControlled) setInternalChecked(nextValue);
+    const prev = isControlled ? controlledChecked : internalChecked;
+
+    const nextValue = typeof next === 'function' ? next(prev) : next;
+
+    if (!isControlled) {
+      setInternalChecked(nextValue);
+    }
+
+    // 변경이 실제로 일어났을 때만 콜백(선택)
+    if (nextValue !== prev) {
       onCheckedChange?.(nextValue);
     }
   };
 
   const currentChecked: CheckedState = isControlled
-    ? (controlledChecked as CheckedState)
+    ? controlledChecked
     : internalChecked;
 
   const value: CheckboxContextValue<CheckedState> = {
+    setChecked,
     checked: currentChecked,
     defaultChecked: defaultChecked,
-    setChecked,
     ...rest,
   };
 
