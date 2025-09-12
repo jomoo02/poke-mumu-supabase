@@ -74,7 +74,7 @@ export default function useTable<T>({
       ([, isSelected]) => isSelected === true,
     );
 
-  const { columnsState, getColumn } = useColumn({
+  const { columnsState, getColumn, getVisibleColumns } = useColumn({
     sortingState,
     setSortingState,
     filterState,
@@ -109,5 +109,6 @@ export default function useTable<T>({
     rows: rowsState,
     getColumn,
     toggleAllPageRowsSelected,
+    getVisibleColumns,
   };
 }

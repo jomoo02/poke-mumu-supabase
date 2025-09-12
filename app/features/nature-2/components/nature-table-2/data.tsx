@@ -37,12 +37,14 @@ export const natureTableColumns: ColumnDef<TNature>[] = [
     header: () => <div>성격</div>,
     cell: ({ row }) => <div className="font-medium">{row.ko}</div>,
     filterable: true,
+    enableHide: true,
   },
   {
     id: 'en',
     header: () => <div>영칭</div>,
     cell: ({ row }) => <div>{row.en}</div>,
     filterable: true,
+    enableHide: true,
   },
   {
     id: 'increase',
@@ -56,6 +58,7 @@ export const natureTableColumns: ColumnDef<TNature>[] = [
       ) : (
         <div>—</div>
       ),
+    enableHide: true,
   },
 
   {
@@ -70,17 +73,20 @@ export const natureTableColumns: ColumnDef<TNature>[] = [
       ) : (
         <div>—</div>
       ),
+    enableHide: true,
   },
 
   {
     id: 'like',
     header: () => <div>좋아하는맛</div>,
     cell: ({ row }) => <div>{row.like ?? '아무거나 잘먹음'}</div>,
+    enableHide: true,
   },
   {
     id: 'dislike',
     header: () => <div>싫어하는맛</div>,
-    cell: ({ row }) => <div>{row.dislike}</div>,
+    cell: ({ row }) => <div>{row.dislike ?? ''}</div>,
+    enableHide: true,
   },
 ];
 

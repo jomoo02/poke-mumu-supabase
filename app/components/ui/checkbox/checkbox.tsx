@@ -6,7 +6,7 @@ import {
   useCheckbox,
   CheckboxProvider,
   CheckboxProviderProps,
-} from './checkbox.context';
+} from './context';
 
 function CheckboxIndicator({ className }: { className: string }) {
   const { checked } = useCheckbox();

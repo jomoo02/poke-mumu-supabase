@@ -64,7 +64,7 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
         {evolutionData && <EvolutionV2 evolutionTree={evolutionData} />}
         {/* <EvolutionTree evolutionId={evolution_id} /> */}
 
-        <PokeMoves pokeMoves={formatPokeMove(pokeMoves)} />
+        {/* <PokeMoves pokeMoves={formatPokeMove(pokeMoves)} /> */}
       </div>
     </div>
   );

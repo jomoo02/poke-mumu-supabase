@@ -19,6 +19,7 @@ export type Column = {
   getFilterValue: () => string;
   getIsVisible: () => boolean;
   toggleVisibility: () => void;
+  getCanHide: () => boolean;
 };
 
 export type Row<T> = T & {

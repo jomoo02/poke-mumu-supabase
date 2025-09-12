@@ -70,8 +70,11 @@ export default function useColumn<T>({
       const toggleVisibility = () => {
         if (colDef.enableHide) {
           setVisibilityState((prev) => ({ ...prev, [id]: !prev[id] }));
+          console.log(visibilityState, colDef.enableHide);
         }
       };
+
+      const getCanHide = () => colDef?.enableHide || false;
 
       const column: Column = {
         id,
@@ -82,6 +85,7 @@ export default function useColumn<T>({
         setFilterValue,
         toggleVisibility,
         getSortedDirection,
+        getCanHide,
       };
 
       return {
@@ -105,17 +109,24 @@ export default function useColumn<T>({
     table,
   ]);
 
-  const visibieColumns = useMemo(
-    () => columnsState.filter((column) => visibilityState[column.id]),
-    [columnsState, visibilityState],
-  );
+  // const visibieColumns = useMemo(
+  //   () => columnsState.filter((column) => visibilityState[column.id]),
+  //   [columnsState, visibilityState],
+  // );
 
   const getColumn = useCallback(
     (columnId: string) => columnsState.find(({ id }) => id === columnId),
     [columnsState],
   );
+
+  const getVisibleColumns = useCallback(
+    () => columnsState.filter((col) => visibilityState[col.id]),
+    [columnsState, visibilityState],
+  );
+
   return {
-    columnsState: visibieColumns,
+    columnsState,
     getColumn,
+    getVisibleColumns,
   };
 }

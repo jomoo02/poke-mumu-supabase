@@ -1,6 +1,6 @@
 import { cn } from '@/app/lib/utils';
 import { CheckboxIndicator, CheckboxRoot } from './checkbox';
-import type { CheckboxProviderProps } from './checkbox.context';
+import type { CheckboxProviderProps } from './context';
 
 export default function Checkbox({
   className,
