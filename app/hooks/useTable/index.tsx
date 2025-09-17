@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import type {
   ColumnDef,
   FilterState,
@@ -56,23 +56,36 @@ export default function useTable<T>({
     Object.fromEntries(dataWithId.map(({ id }) => [id, false])),
   );
 
-  const toggleAllPageRowsSelected = (value: boolean) => {
-    const next = Object.entries(selectionState).map((state) => [
-      state[0],
-      value,
-    ]);
-    setSelectionState(Object.fromEntries(next));
-  };
+  const toggleAllPageRowsSelected = useCallback((value: boolean) => {
+    setSelectionState((prev) => {
+      const next = Object.keys(prev).reduce((acc, id) => {
+        acc[id] = value;
+        return acc;
+      }, {} as SelectionState);
+      return next;
+    });
+  }, []);
 
-  const getIsAllRowsSelected = () =>
-    Object.entries(selectionState).every(
-      ([, isSelected]) => isSelected === true,
-    );
+  const getIsAllRowsSelected = useCallback(
+    () =>
+      Object.values(selectionState).length > 0 &&
+      Object.values(selectionState).every(Boolean),
+    [selectionState],
+  );
 
-  const getIsSomeRowSelected = () =>
-    Object.entries(selectionState).some(
-      ([, isSelected]) => isSelected === true,
-    );
+  const getIsSomeRowSelected = useCallback(
+    () => Object.values(selectionState).some(Boolean),
+    [selectionState],
+  );
+
+  const tableApi = useMemo(
+    () => ({
+      toggleAllPageRowsSelected,
+      getIsAllRowsSelected,
+      getIsSomeRowSelected,
+    }),
+    [toggleAllPageRowsSelected, getIsAllRowsSelected, getIsSomeRowSelected],
+  );
 
   const { columnsState, getColumn, getVisibleColumns } = useColumn({
     sortingState,
@@ -82,11 +95,7 @@ export default function useTable<T>({
     visibilityState,
     setVisibilityState,
     columnDefs: columns,
-    table: {
-      toggleAllPageRowsSelected,
-      getIsAllRowsSelected,
-      getIsSomeRowSelected,
-    },
+    table: tableApi,
   });
 
   const { rowsState } = useRow({

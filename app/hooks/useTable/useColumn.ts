@@ -70,7 +70,6 @@ export default function useColumn<T>({
       const toggleVisibility = () => {
         if (colDef.enableHide) {
           setVisibilityState((prev) => ({ ...prev, [id]: !prev[id] }));
-          console.log(visibilityState, colDef.enableHide);
         }
       };
 

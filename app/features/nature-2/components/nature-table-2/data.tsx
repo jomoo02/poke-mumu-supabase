@@ -37,7 +37,6 @@ export const natureTableColumns: ColumnDef<TNature>[] = [
     header: () => <div>성격</div>,
     cell: ({ row }) => <div className="font-medium">{row.ko}</div>,
     filterable: true,
-    enableHide: true,
   },
   {
     id: 'en',

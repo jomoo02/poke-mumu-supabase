@@ -1,6 +1,6 @@
 'use client';
 
-import Input from '@/app/components/input';
+// import Input from '@/app/components/input';
 import NatureTable from './nature-table';
 import { useState } from 'react';
 import NatureTable2 from './nature-table-2';
