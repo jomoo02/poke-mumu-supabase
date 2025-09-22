@@ -5,56 +5,57 @@ import {
   FloatingPortal,
 } from '@floating-ui/react';
 import { cn } from '@/app/lib/utils';
-import { useDropdownMenuContext } from './context';
+import { useSelectContext } from './context';
+import useLockBodyScroll from '@/app/hooks/useLockBodyScroll';
 
-interface DropdownMenuContentProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+interface SelectCotentProps {
   children: React.ReactNode;
   className?: string;
 }
 
-export default function DropdownMenuContent({
+export default function SelectContent({
   children,
   className,
-}: DropdownMenuContentProps) {
+}: SelectCotentProps) {
   const {
-    elementsRef,
-    labelsRef,
     isOpen,
     context,
     refs,
     floatingStyles,
     getFloatingProps,
-    parentId,
-  } = useDropdownMenuContext();
+    elementsRef,
+    labelsRef,
+  } = useSelectContext();
 
-  const isNested = parentId !== null;
+  useLockBodyScroll(isOpen);
 
   return (
-    <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
+    <>
       {isOpen && (
         <FloatingPortal>
-          {!isNested && <FloatingOverlay lockScroll />}
+          <FloatingOverlay />
+          {/* <div className="fixed inset-0 z-100 pointer-events-auto" /> */}
           <FloatingFocusManager
             context={context}
+            // initialFocus={refs.floating}
             modal={false}
-            initialFocus={isNested ? -1 : 0}
-            returnFocus={!isNested}
           >
             <div
               ref={refs.setFloating}
               style={floatingStyles}
-              {...getFloatingProps()}
               className={cn(
                 'border border-border bg-white rounded-md p-1 outline-none shadow-lg z-50',
                 className,
               )}
+              {...getFloatingProps()}
             >
-              {children}
+              <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
+                {children}
+              </FloatingList>
             </div>
           </FloatingFocusManager>
         </FloatingPortal>
       )}
-    </FloatingList>
+    </>
   );
 }

@@ -9,7 +9,10 @@ import {
 } from './lib';
 import useLevel from './hooks/useStatLevel';
 import Stat from './components/basic-stat';
+
 import LevelSelect from './components/level-select';
+import LevelSelectTests from './components/select-test';
+
 import SectionHeader from '../section-header';
 
 interface StatsProps {
@@ -30,7 +33,7 @@ export default function Stats({ stats }: StatsProps) {
       <SectionHeader id="stats" sectionTitle="능력치" />
       <div className="relative">
         <div className="flex justify-end absolute right-0 -top-9.5">
-          <LevelSelect
+          <LevelSelectTests
             initialLevel={initialLevel}
             handleOnSelect={handleOnSelect}
             selectItems={selectItems}

@@ -28,7 +28,7 @@ export default function DropdownMenuTrigger({
       className={cn(
         'border border-border focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
         'shadow-xs',
-        'flex cursor-default items-center rounded-md h-full px-2.5 py-1.5 text-sm outline-hidden select-none data-[inset]:pl-8',
+        'flex cursor-default items-center rounded-md hover:not-focus-visible:bg-accent h-full px-2.5 py-1.5 text-sm outline-hidden select-none data-[inset]:pl-8',
         className,
       )}
       {...getReferenceProps()}

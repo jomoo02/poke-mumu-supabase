@@ -15,9 +15,9 @@ export default async function NdexLayout({
 
   return (
     <LayoutV1 toc={<Toc />}>
-      <Suspense fallback={<SpeciesLayoutSkeleton />}>
+      {/* <Suspense fallback={<SpeciesLayoutSkeleton />}>
         <SpeciesLayout ndex={ndex} />
-      </Suspense>
+      </Suspense> */}
       {children}
     </LayoutV1>
     // <div className="max-w-screen mx-auto lg:flex relative my-8">
