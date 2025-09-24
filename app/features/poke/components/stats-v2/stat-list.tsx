@@ -30,21 +30,31 @@ export default function StatList() {
 
           return (
             <TableRow key={stat} className="border-border">
-              <TableCell className="text-right">{text}</TableCell>
-              <TableCell className="text-center">{value}</TableCell>
+              <TableCell className="text-right text-foreground">
+                {text}
+              </TableCell>
+              <TableCell className="text-center text-foreground">
+                {value}
+              </TableCell>
               <TableCell className="px-2" colSpan={2}>
                 <StatBar value={value} max={maxStatValue} />
               </TableCell>
-              <TableCell className="text-right ">{maxValue}</TableCell>
-              <TableCell className="text-right ">{minValue}</TableCell>
+              <TableCell className="text-right  text-foreground">
+                {minValue}
+              </TableCell>
+              <TableCell className="text-right  text-foreground">
+                {maxValue}
+              </TableCell>
             </TableRow>
           );
         })}
       </TableBody>
       <TableFooter className="border-border">
         <TableRow>
-          <TableCell className="text-right">총합</TableCell>
-          <TableCell className="text-center">{total}</TableCell>
+          <TableCell className="text-right text-foreground font-normal">
+            총합
+          </TableCell>
+          <TableCell className="text-center text-foreground">{total}</TableCell>
           <TableCell colSpan={4} />
         </TableRow>
       </TableFooter>

@@ -49,10 +49,7 @@ export default function PokedexTableV2({ pokeList }: PokedexTableProps) {
         sortFn={sortFn}
         className="w-full table-fixed border-separate border-spacing-0"
       >
-        <TableHeader
-          className="top-[55px] z-50 sticky bg-white shadow-[inset_-1px_0_0_0_rgba(229,231,235,1)]"
-          color="bg-neutral-100"
-        >
+        <TableHeader className="top-[55px] z-50 sticky bg-white shadow-[inset_-1px_0_0_0_rgba(229,231,235,1)]">
           <TableHeaderCell
             headerKey="no"
             sortAble

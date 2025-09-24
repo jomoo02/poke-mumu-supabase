@@ -10,7 +10,7 @@ export default function PokeImage({
   alt,
 }: PokeImageProps) {
   return (
-    <div className="w-[50px] h-[48px] xl:w-[58px] xl:h-[56px] relative">
+    <div className="w-12 h-12 relative">
       <Image
         placeholder="blur"
         blurDataURL="/pokeball.svg"

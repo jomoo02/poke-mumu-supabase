@@ -27,7 +27,7 @@ export default function LevelSelect() {
       </SelectTrigger>
       <SelectContent className="w-24">
         {levels.map((lv) => (
-          <SelectItem key={lv} value={lv} className="py-1 felx justify-between">
+          <SelectItem key={lv} value={lv} className="py-1 flex justify-between">
             <span>Lv.{lv}</span>
             {level === lv && <CheckIcon className="size-3.5 text-foreground" />}
           </SelectItem>

@@ -11,15 +11,15 @@ export default function StatBar({ value, max }: StatBarProps) {
     return barWidth;
   })();
 
-  const barColor = (() => {
-    if (value > 200) return '#06b6d4';
-    if (value >= 130) return '#22c55e';
-    if (value >= 100) return '#84cc16';
-    if (value >= 70) return '#42381e';
-    if (value >= 30) return '#f97316';
-    return '#dc2626';
-  })();
+  const ranges = [
+    { min: 150, color: '#1D4ED8' }, // darkest
+    { min: 125, color: '#2563EB' },
+    { min: 100, color: '#3B82F6' }, // primary
+    { min: 50, color: '#60A5FA' },
+    { min: -Infinity, color: '#93C5FD' }, // lightest
+  ];
 
+  const barColor = ranges.find((r) => value >= r.min)!.color;
   return (
     <svg width="100%" height="12">
       <g className="bars">

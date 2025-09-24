@@ -48,7 +48,7 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
   const evolutionData = await fetchEvolutionChains(evolution_id);
 
   return (
-    <div className="flex w-full">
+    <div className="flex w-full flex-col gap-6 px-4 ">
       <div className="w-full">
         {/* <PokedexInformation pokedexData={pokedexData} sprite={sprite} /> */}
         <RestInformation
@@ -57,12 +57,12 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
           breeding={data.poke_breeding}
         />
 
-        {/* <Abilities abilities={poke_ability} /> */}
+        <Abilities abilities={poke_ability} />
 
         <Stats stats={pokeStats} />
         {pokeStats && <PokeStats stats={pokeStats} />}
 
-        {/* <TypeDefense types={types} /> */}
+        <TypeDefense types={types} />
         {/* {evolutionData && <EvolutionV2 evolutionTree={evolutionData} />} */}
         {/* <EvolutionTree evolutionId={evolution_id} /> */}
 

@@ -7,13 +7,15 @@ interface LayoutV1Props {
 
 export default function LayoutV1({ children, toc }: LayoutV1Props) {
   return (
-    <div className="max-w-screen mx-auto lg:flex relative my-8">
-      <div className="hidden xl:block min-w-40 w-40" />
-      <div className="w-full max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto px-3 sm:px-6 lg:px-10">
-        {children}
-      </div>
-      <div className="min-w-36 w-36 xl:min-w-40 xl:w-40">
-        {toc ? toc : null}
+    <div className="max-w-screen mx-auto flex relative my-8">
+      <div className="hidden xl:block min-w-40 w-64" />
+      <div className="flex-1 flex">
+        <div className="w-full flex-1 min-w-0 max-w-4xl mx-auto">
+          {children}
+        </div>
+        <div className="min-w-72 w-72 max-w-72 hidden xl:block">
+          {toc ? toc : null}
+        </div>
       </div>
     </div>
   );

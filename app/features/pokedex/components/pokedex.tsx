@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react';
 import { getPokeTypeList, getPokeTypeKo } from '@/app/lib/poke-type';
 import type { PokedexPoke } from '../types';
 import TypeSelect from './type-select';
-import PokedexTableV2 from './pokedex-table-v2';
+import PokedexTableV3 from './pokedex-table-v3';
 
 interface PokedexProps {
   pokeList: PokedexPoke[];
@@ -29,15 +29,16 @@ export default function Pokedex({ pokeList }: PokedexProps) {
     return pokeList.filter(
       ({ type1, type2 }) => type1 === targetType || type2 === targetType,
     );
-  }, [targetType]);
+  }, [pokeList, targetType]);
+
   return (
     <div>
       <TypeSelect
-        initialType={{ value: 'all', content: '모든타입' }}
-        onSelect={setTargetType}
-        selectItems={selectItmes}
-      ></TypeSelect>
-      <PokedexTableV2 pokeList={targetPokeList} />
+        type={targetType}
+        handleTypeChange={setTargetType}
+        typeItems={selectItmes}
+      />
+      <PokedexTableV3 pokes={targetPokeList} />
     </div>
   );
 }

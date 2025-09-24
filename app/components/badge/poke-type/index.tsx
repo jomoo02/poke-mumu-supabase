@@ -1,5 +1,6 @@
 // import './type.css';
 import { getPokeTypeKo } from '@/app/lib/poke-type';
+import { cn } from '@/app/lib/utils';
 
 interface PokeTypeBadgeProps {
   type: string;
@@ -15,32 +16,60 @@ export default function PokeTypeBadge({
   const content = getPokeTypeKo(pokeType);
 
   const bgVariants: Record<string, string> = {
-    normal: 'bg-[#949495]',
-    fire: 'bg-[#e56c3e]',
-    water: 'bg-[#5185c5]',
-    grass: 'bg-[#66a945]',
-    electric: 'bg-[#ebce3d]',
-    ice: 'bg-[#6dc8eb]',
-    fighting: 'bg-[#e09c40]',
-    poison: 'bg-[#735198]',
-    ground: 'bg-[#9c7743]',
-    flying: 'bg-[#a2c3e7]',
-    psychic: 'bg-[#dd6b7b]',
-    bug: 'bg-[#9fa244]',
-    rock: 'bg-[#bfb889]',
-    ghost: 'bg-[#684870]',
-    dragon: 'bg-[#535ca8]',
-    dark: 'bg-[#4c4948]',
-    steel: 'bg-[#69a9c7]',
-    fairy: 'bg-[#dab4d4]',
-    unknown: 'bg-fuchsia-900',
+    normal: 'bg-normal',
+    fire: 'bg-fire',
+    water: 'bg-water',
+    grass: 'bg-grass',
+    electric: 'bg-electric',
+    ice: 'bg-ice',
+    fighting: 'bg-fighting',
+    poison: 'bg-poison',
+    ground: 'bg-ground',
+    flying: 'bg-flying',
+    psychic: 'bg-psychic',
+    bug: 'bg-bug',
+    rock: 'bg-rock',
+    ghost: 'bg-ghost',
+    dragon: 'bg-dragon',
+    dark: 'bg-dark',
+    steel: 'bg-steel',
+    fairy: 'bg-fairy',
+    unknown: 'bg-unknown',
+  };
+
+  const borderColorVariatns: Record<string, string> = {
+    normal: 'border-border-normal',
+    fire: 'border-border-fire',
+    water: 'border-border-water',
+    grass: 'border-border-grass',
+    electric: 'border-border-electric',
+    ice: 'border-border-ice',
+    fighting: 'border-border-fighting',
+    poison: 'border-border-poison',
+    ground: 'border-border-ground',
+    flying: 'border-border-flying',
+    psychic: 'border-border-psychic',
+    bug: 'border-border-bug',
+    rock: 'border-border-rock',
+    ghost: 'border-border-ghost',
+    dragon: 'border-border-dragon',
+    dark: 'border-border-dark',
+    steel: 'border-border-steel',
+    fairy: 'border-border-fairy',
+    unknown: 'border-border-unknown',
   };
 
   const bg = bgVariants[pokeType];
+  const borderColor = borderColorVariatns[pokeType];
 
   return (
     <div
-      className={`${width} h-[25px] px-px font-bold text-sm flex items-center justify-center rounded-[5px] border border-gray-700/80 text-white ${bg} text-shadow-type shrink-0`}
+      className={cn(
+        'h-6.5 px-px font-medium text-sm flex items-center justify-center rounded-md border text-white text-shadow-type shrink-0',
+        bg,
+        borderColor,
+        width,
+      )}
     >
       {content}
     </div>
