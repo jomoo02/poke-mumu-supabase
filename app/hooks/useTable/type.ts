@@ -36,7 +36,11 @@ export type Table = {
 
 export type ColumnDef<T> = {
   id: string;
-  header: (opts: { column: Column; table: Table }) => React.ReactNode;
+  header: (opts: {
+    column: Column;
+    table: Table;
+    content?: string;
+  }) => React.ReactNode;
   cell: (ctx: { row: Row<T> }) => React.ReactNode;
   sortable?: boolean;
   filterable?: boolean;

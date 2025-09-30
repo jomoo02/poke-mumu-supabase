@@ -89,10 +89,11 @@ export default function useColumn<T>({
 
       return {
         ...column,
-        render: () =>
+        render: (content?: string) =>
           colDef.header({
             column,
             table,
+            content,
           }),
         cell: colDef.cell,
       };

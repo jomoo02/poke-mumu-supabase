@@ -55,17 +55,20 @@ export const pokedexTableColumns: ColumnDef<PokedexPoke>[] = [
     ),
     cell: ({ row }) => (
       <div className="flex gap-4 pr-1">
-        <PokeImage src={getHomePokeSprtieSrc(row.sprite)} alt={row.sprite} />
+        <Link href={`/pokedex/${row.no}/${row.pokeKey}`}>
+          <PokeImage src={getHomePokeSprtieSrc(row.sprite)} alt={row.sprite} />
+        </Link>
 
         <div className="flex flex-col justify-center w-[6.5rem] max-w-[6.5rem] overflow-hidden">
-          <Link
-            href={`/pokedex/${row.no}/${row.pokeKey}`}
-            className="hover:underline"
-          >
-            <span className="text-foreground font-medium truncate">
+          <div>
+            <Link
+              href={`/pokedex/${row.no}/${row.pokeKey}`}
+              className="hover:underline text-foreground truncate font-medium"
+            >
               {row.name}
-            </span>
-          </Link>
+            </Link>
+          </div>
+
           {row.form && (
             <div className="text-muted-foreground truncate">{row.form}</div>
           )}
@@ -114,7 +117,7 @@ export const pokedexTableColumns: ColumnDef<PokedexPoke>[] = [
     id: 'hp',
     header: ({ column }) => (
       <Button
-        className="flex justify-center gap-1 px-1 w-full h-full hover:bg-accent"
+        className="flex justify-between gap-1 px-1 w-full h-full hover:bg-accent"
         onClick={column.toggleSorting}
       >
         <span>체력</span>

@@ -20,16 +20,18 @@ export default function LevelSelect() {
     <Select items={levels} value={level} onValueChange={handleValueChange}>
       <SelectTrigger
         placeholder="select level"
-        className="py-1 flex justify-between w-24"
+        className="py-1 flex justify-between w-24 "
       >
-        <span>Lv.{level}</span>
+        <span className="">Lv.{level}</span>
         <ChevronDown className="size-4 text-muted-foreground" />
       </SelectTrigger>
       <SelectContent className="w-24">
         {levels.map((lv) => (
           <SelectItem key={lv} value={lv} className="py-1 flex justify-between">
-            <span>Lv.{lv}</span>
-            {level === lv && <CheckIcon className="size-3.5 text-foreground" />}
+            <span className="">Lv.{lv}</span>
+            {level === lv && (
+              <CheckIcon className="size-3.5 text-foreground " />
+            )}
           </SelectItem>
         ))}
       </SelectContent>

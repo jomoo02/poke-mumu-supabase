@@ -34,12 +34,7 @@ export default function SelectContent({
       {isOpen && (
         <FloatingPortal>
           <FloatingOverlay />
-          {/* <div className="fixed inset-0 z-100 pointer-events-auto" /> */}
-          <FloatingFocusManager
-            context={context}
-            // initialFocus={refs.floating}
-            modal={false}
-          >
+          <FloatingFocusManager context={context} modal={false}>
             <div
               ref={refs.setFloating}
               style={floatingStyles}

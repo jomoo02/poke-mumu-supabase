@@ -1,9 +1,10 @@
 interface StatBarProps {
   value: number;
   max: number;
+  color?: string;
 }
 
-export default function StatBar({ value, max }: StatBarProps) {
+export default function StatBar({ value, max, color }: StatBarProps) {
   const width = (() => {
     const scaleFactor = max < 200 ? 255 : 300;
     const barWidth = `${(value / scaleFactor) * 100}%`;
@@ -19,11 +20,12 @@ export default function StatBar({ value, max }: StatBarProps) {
     { min: -Infinity, color: '#93C5FD' }, // lightest
   ];
 
-  const barColor = ranges.find((r) => value >= r.min)!.color;
+  const barColor = color ?? ranges.find((r) => value >= r.min)!.color;
+
   return (
-    <svg width="100%" height="12">
+    <svg width="100%" height="14">
       <g className="bars">
-        <rect fill={barColor} width={width} height="12" rx="4" />
+        <rect fill={barColor} width={width} height="14" rx="4" />
       </g>
     </svg>
   );

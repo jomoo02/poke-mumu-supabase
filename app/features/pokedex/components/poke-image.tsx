@@ -10,15 +10,15 @@ export default function PokeImage({
   alt,
 }: PokeImageProps) {
   return (
-    <div className="w-12 h-12 relative">
+    <div className="w-14 h-14 relative">
       <Image
         placeholder="blur"
         blurDataURL="/pokeball.svg"
-        src={src}
-        // src="/pokeball.svg"
+        // src={src}
+        src="/pokeball.svg"
         alt={alt}
         fill
-        sizes="48px"
+        sizes="64px"
         style={{
           objectFit: 'contain',
         }}

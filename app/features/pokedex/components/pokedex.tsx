@@ -32,7 +32,7 @@ export default function Pokedex({ pokeList }: PokedexProps) {
   }, [pokeList, targetType]);
 
   return (
-    <div>
+    <div className="mb-8">
       <TypeSelect
         type={targetType}
         handleTypeChange={setTargetType}

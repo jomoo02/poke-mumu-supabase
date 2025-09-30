@@ -77,6 +77,11 @@
     font-weight: var(--font-weight-bold);
     color: var(--color-foreground);
   }
+  h3 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-foreground);
+  }
 }
 
 @utility scrollbar-hidden {

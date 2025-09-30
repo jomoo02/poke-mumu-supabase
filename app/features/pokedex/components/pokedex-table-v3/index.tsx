@@ -12,7 +12,7 @@ import useTable from '@/app/hooks/useTable';
 import { PokedexPoke } from '../../types';
 import { pokedexTableColumns } from './table-columns';
 import { cn } from '@/app/lib/utils';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 
 interface PokedexTableProps {
   pokes: PokedexPoke[];
@@ -31,11 +31,14 @@ export default function PokedexTableV3({ pokes }: PokedexTableProps) {
     <Table>
       <TableHeader>
         <TableRow className="hover:bg-transparent h-11 border-border">
-          {table.getVisibleColumns().map((header) => (
-            <TableHead key={header.id} className="py-1">
-              {header.render()}
-            </TableHead>
-          ))}
+          {table
+            .getVisibleColumns()
+
+            .map((header) => (
+              <TableHead key={header.id} className="py-1">
+                {header.render()}
+              </TableHead>
+            ))}
         </TableRow>
       </TableHeader>
       <TableBody>

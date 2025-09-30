@@ -9,8 +9,10 @@ import EvolutionV2 from '../components/evolution';
 import { fetchEvolutionChains } from '../api/evolution-chain';
 
 import Moves2 from '../components/moves2';
-import PokeMoves from '../components/moves-3';
+// import PokeMoves from '../components/moves-3';
 import { formatPokeMove } from '../utils/format-move';
+import PokeMoves from '../components/moves-v4';
+
 import PokeStats from '../components/stats-v2';
 
 interface PokeDetailProps {
@@ -48,26 +50,24 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
   const evolutionData = await fetchEvolutionChains(evolution_id);
 
   return (
-    <div className="flex w-full flex-col gap-6 px-4 ">
-      <div className="w-full">
-        {/* <PokedexInformation pokedexData={pokedexData} sprite={sprite} /> */}
-        <RestInformation
-          detail={data.poke_detail}
-          effortValues={data.poke_effort_value}
-          breeding={data.poke_breeding}
-        />
+    <div className="flex flex-col flex-1">
+      {/* <PokedexInformation pokedexData={pokedexData} sprite={sprite} /> */}
+      <RestInformation
+        detail={data.poke_detail}
+        effortValues={data.poke_effort_value}
+        breeding={data.poke_breeding}
+      />
 
-        <Abilities abilities={poke_ability} />
+      <Abilities abilities={poke_ability} />
 
-        <Stats stats={pokeStats} />
-        {pokeStats && <PokeStats stats={pokeStats} />}
+      {/* <Stats stats={pokeStats} /> */}
+      {pokeStats && <PokeStats stats={pokeStats} />}
 
-        <TypeDefense types={types} />
-        {/* {evolutionData && <EvolutionV2 evolutionTree={evolutionData} />} */}
-        {/* <EvolutionTree evolutionId={evolution_id} /> */}
+      <TypeDefense types={types} />
+      {/* {evolutionData && <EvolutionV2 evolutionTree={evolutionData} />} */}
+      {/* <EvolutionTree evolutionId={evolution_id} /> */}
 
-        {/* <PokeMoves pokeMoves={formatPokeMove(pokeMoves)} /> */}
-      </div>
+      <PokeMoves pokeMoves={formatPokeMove(pokeMoves)} />
     </div>
   );
 }

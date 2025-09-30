@@ -40,7 +40,6 @@ export default function PokeMoves({ pokeMoves }: PokeMovesProps) {
           onSelect={selectVersionGroup}
         />
       </div>
-      <TableTest moves={moves} />
 
       {/* {!isLoading && (
         <MoveList

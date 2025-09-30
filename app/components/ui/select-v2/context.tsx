@@ -42,7 +42,9 @@ const SelectContext = createContext<SelectContextValue | null>(null);
 function useSelectContext() {
   const context = useContext(SelectContext);
 
-  if (!context) throw new Error('SelectContext Error');
+  if (!context) {
+    throw new Error('SelectContext Error');
+  }
 
   return context;
 }
