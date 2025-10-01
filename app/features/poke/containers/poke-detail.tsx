@@ -1,7 +1,7 @@
 import { fetchPoke } from '../api/poke';
 import Stats from '../components/stats';
 import TypeDefense from '../components/type-defense';
-import Abilities from '../components/abilities';
+// import Abilities from '../components/abilities';
 import Moves from '../components/moves';
 import PokedexInformation from '../components/pokedex-information';
 import RestInformation from '../components/rest-information';
@@ -14,7 +14,7 @@ import { formatPokeMove } from '../utils/format-move';
 import PokeMoves from '../components/moves-v4';
 
 import PokeStats from '../components/stats-v2';
-
+import Abilities from '../components/abilities-v2';
 interface PokeDetailProps {
   pokeKey: string;
 }

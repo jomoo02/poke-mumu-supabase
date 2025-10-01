@@ -6,6 +6,7 @@ import GenTabs from './components/gen-tabs';
 import VersionGroupTabs from './components/version-group-tabs';
 import usePokeMove from './hooks/usePokeMove';
 import MoveList from './components/move-list';
+import MoveTableSkeleton from './components/move-table/skeleton';
 
 interface PokeMovesProps {
   pokeMoves: PokeMove[];
@@ -36,13 +37,15 @@ export default function PokeMoves({ pokeMoves }: PokeMovesProps) {
         onVersionGroupChange={handleVersionGroupChange}
         versionGroups={versionGroups}
       />
-      {!isLoading && (
+      {!isLoading ? (
         <MoveList
           levelUpMoves={levelUpMoves}
           machineMoves={machineMoves}
           restMoves={restMoves}
           versionGroup={selectedVersionGroup}
         />
+      ) : (
+        <MoveTableSkeleton />
       )}
     </div>
   );
