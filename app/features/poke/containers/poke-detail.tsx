@@ -14,7 +14,8 @@ import { formatPokeMove } from '../utils/format-move';
 import PokeMoves from '../components/moves-v4';
 
 import PokeStats from '../components/stats-v2';
-import Abilities from '../components/abilities-v2';
+import PokeAbilities from '../components/abilities-v2';
+import { formatPokeAbilities } from '../utils/format-abilities';
 interface PokeDetailProps {
   pokeKey: string;
 }
@@ -58,7 +59,7 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
         breeding={data.poke_breeding}
       />
 
-      <Abilities abilities={poke_ability} />
+      <PokeAbilities abilities={formatPokeAbilities(poke_ability)} />
 
       {/* <Stats stats={pokeStats} /> */}
       {pokeStats && <PokeStats stats={pokeStats} />}

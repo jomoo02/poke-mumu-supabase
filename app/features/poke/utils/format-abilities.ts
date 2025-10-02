@@ -1,4 +1,4 @@
-type PokeAbilityData = {
+type AbilityData = {
   slot: number;
   ability: {
     id: number;
@@ -7,7 +7,15 @@ type PokeAbilityData = {
   };
 }[];
 
-export const formatPokeAbilities = (abilities: PokeAbilityData) => {
+export type Ability = {
+  slot: number;
+  id: number;
+  name: string;
+  flavorText: string;
+  isHidden: boolean;
+};
+
+export const formatPokeAbilities = (abilities: AbilityData) => {
   const formattedAbilities = abilities
     .map(({ slot, ability }) => {
       const { id, name_ko, flavor_text } = ability;

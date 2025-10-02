@@ -1,31 +1,22 @@
 import SectionHeader from '../section-header';
-import AbilityV2 from './components/ability-v2';
-import { formatPokeAbilities } from './lib/format-abilities';
+import Ability from './ability';
+import type { Ability as FormattedAbility } from '../../utils/format-abilities';
 
-interface AbilitiesProps {
-  abilities: {
-    slot: number;
-    ability: {
-      name_ko: string;
-      flavor_text: string;
-      id: number;
-    };
-  }[];
+interface PokeAbilitiesProps {
+  abilities: FormattedAbility[];
 }
 
-export default function Abilities({ abilities }: AbilitiesProps) {
+export default function PokeAbilities({ abilities }: PokeAbilitiesProps) {
   if (!abilities || abilities.length === 0) {
     return null;
   }
 
-  const formattedAbilities = formatPokeAbilities(abilities);
-
   return (
-    <div className="">
+    <div>
       <SectionHeader id="ability" sectionTitle="특성" />
-      <div className="grid gap-4 xl:gap-8 xl:grid-cols-3">
-        {formattedAbilities.map(({ id, name, flavorText, isHidden }) => (
-          <AbilityV2
+      <div className="grid gap-6 xl:gap-8 lg:grid-cols-3">
+        {abilities.map(({ id, name, flavorText, isHidden }) => (
+          <Ability
             key={id}
             name={name}
             flavorText={flavorText}

@@ -3,6 +3,11 @@ import { formatDetail } from '../lib/format-detail';
 import InfoHeader from './info-header';
 import Info from './info';
 import { getCatchProbability } from '../utils/capture-rate';
+import Card from './card';
+
+import { ArrowBigUp, Smile, Hand, Dot } from 'lucide-react';
+import { IconPacman } from '@tabler/icons-react';
+import Alert from './alert';
 
 interface DetailInfoProps {
   detail: Detail | null;
@@ -30,16 +35,60 @@ export default function DetailInfo({ detail, effortValues }: DetailInfoProps) {
       }) * 1000,
     ) / 10;
 
+  // console.log(formattedEffortValues);
+
   return (
-    <div className="">
+    <div className="flex flex-col gap-6">
       <h3 className="text-slate-800 text-lg font-semibold mb-2 mx-1">
         훈련 정보
       </h3>
-      <div className="grid max-w-2xl">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-4 gap-x-6 sm:gap-y-6">
+        <Card title="포획률" icon={<Hand className="size-6" />}>
+          <div className="font-medium text-foreground">{captureRate}</div>
+        </Card>
+        <Card title="노력치" icon={<ArrowBigUp className="size-6" />}>
+          <div className="font-medium text-foreground flex items-center">
+            {formattedEffortValues.map((v, index) => (
+              <div key={v} className="truncate flex items-center">
+                {index > 0 && <Dot className="size-4" />}
+                {v}
+              </div>
+            ))}
+          </div>
+        </Card>
+        <Card title="기초 친밀도" icon={<Smile className="size-6" />}>
+          <div className="font-medium text-foreground">{baseFriendShip}</div>
+        </Card>
+        <Card title="필요 경험치" icon={<IconPacman className="size-6" />}>
+          <div className="font-medium text-foreground">{growthRate}</div>
+        </Card>
+      </div>
+      <Alert>
+        <div className="text-pretty break-keep text-foreground">
+          체력이 가득 찼을 때 포획 확률(몬스터볼) :{' '}
+          <span className="font-medium">약 {catchRate}%</span>
+        </div>
+      </Alert>
+      <Alert>
+        <div>성장에 필요한 경험치</div>
+        <div className="text-pretty break-keep">
+          {atLevel50Text}:{' '}
+          <span className="font-medium">
+            {expPointAtLevel50.toLocaleString()}
+          </span>
+        </div>
+        <div className="text-pretty break-keep">
+          {atLevel100Text}:{' '}
+          <span className="font-medium">
+            {expPointAtLevel100.toLocaleString()}
+          </span>
+        </div>
+      </Alert>
+      {/* <div className="grid max-w-2xl">
         <InfoHeader />
         <Info category="포획률">{captureRate}</Info>
         <Info category="노력치">
-          {formattedEffortValues.map((v) => (
+          {formattedEffortValues.map((v, index) => (
             <div key={v} className="truncate">
               {v}
             </div>
@@ -72,7 +121,7 @@ export default function DetailInfo({ detail, effortValues }: DetailInfoProps) {
             </span>
           </li>
         </ul>
-      </ul>
+      </ul> */}
     </div>
   );
 }

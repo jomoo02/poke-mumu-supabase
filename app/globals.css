@@ -30,6 +30,9 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
+  --font-suit: var(--font-suit);
+  --font-suite: var(--font-suite);
+
   --color-normal: #949495;
   --color-fire: #e56c3e;
   --color-water: #5185c5;
