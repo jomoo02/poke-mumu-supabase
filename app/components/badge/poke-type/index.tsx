@@ -65,7 +65,7 @@ export default function PokeTypeBadge({
   return (
     <div
       className={cn(
-        'h-6.5 px-px font-bold text-sm flex items-center justify-center rounded-md border text-white text-shadow-type shrink-0',
+        'h-7 px-px font-bold text-sm flex items-center justify-center rounded-md border text-white text-shadow-type shrink-0',
         bg,
         borderColor,
         width,
