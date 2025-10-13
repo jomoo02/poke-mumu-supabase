@@ -18,10 +18,10 @@ export default function RestInformation({
   return (
     <div className="">
       <SectionHeader id="rest-information" sectionTitle="기타 정보" />
-      <div className="grid lg:grid-cols-3 gap-8">
-        <BreedingInfo breeding={breeding} />
+      <div className="grid lg:grid-cols-2 gap-8 lg:gap-14">
         <DetailInfo detail={detail} effortValues={effortValues} />
-        <TestInfo />
+        <BreedingInfo breeding={breeding} />
+        {/* <TestInfo breeding={breeding} /> */}
       </div>
     </div>
   );

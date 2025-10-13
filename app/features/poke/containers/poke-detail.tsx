@@ -16,6 +16,10 @@ import PokeMoves from '../components/moves-v4';
 import PokeStats from '../components/stats-v2';
 import PokeAbilities from '../components/abilities-v2';
 import { formatPokeAbilities } from '../utils/format-abilities';
+import RestInformationV2 from '../components/rest-information-v2';
+import RestInformationV3 from '../components/rest-information-v3';
+import PokeStatsV3 from '../components/stats-v3';
+
 interface PokeDetailProps {
   pokeKey: string;
 }
@@ -51,18 +55,29 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
   const evolutionData = await fetchEvolutionChains(evolution_id);
 
   return (
-    <div className="flex flex-col flex-1">
-      {/* <PokedexInformation pokedexData={pokedexData} sprite={sprite} /> */}
-      <RestInformation
+    <div className="flex flex-col flex-1 my-10">
+      <PokedexInformation pokedexData={pokedexData} sprite={sprite} />
+      {/* <RestInformation
+        detail={data.poke_detail}
+        effortValues={data.poke_effort_value}
+        breeding={data.poke_breeding}
+      /> */}
+      <RestInformationV2
         detail={data.poke_detail}
         effortValues={data.poke_effort_value}
         breeding={data.poke_breeding}
       />
+      {/* <RestInformationV3
+        detail={data.poke_detail}
+        effortValues={data.poke_effort_value}
+        breeding={data.poke_breeding}
+      /> */}
 
       <PokeAbilities abilities={formatPokeAbilities(poke_ability)} />
 
       {/* <Stats stats={pokeStats} /> */}
-      {pokeStats && <PokeStats stats={pokeStats} />}
+      {/* {pokeStats && <PokeStats stats={pokeStats} />} */}
+      {pokeStats && <PokeStatsV3 stats={pokeStats} />}
 
       <TypeDefense types={types} />
       {/* {evolutionData && <EvolutionV2 evolutionTree={evolutionData} />} */}

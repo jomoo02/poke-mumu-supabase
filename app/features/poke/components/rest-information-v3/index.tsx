@@ -2,7 +2,6 @@ import SectionHeader from '../section-header';
 import type { Detail, Breeding, EffortValue } from './types';
 import DetailInfo from './components/detail-info';
 import BreedingInfo from './components/breeding-info';
-import TestInfo from './components/test';
 
 interface RestInformationProps {
   detail: Detail | null;
@@ -18,10 +17,9 @@ export default function RestInformation({
   return (
     <div className="">
       <SectionHeader id="rest-information" sectionTitle="기타 정보" />
-      <div className="grid lg:grid-cols-3 gap-8">
+      <div className="grid gap-8">
         <BreedingInfo breeding={breeding} />
         <DetailInfo detail={detail} effortValues={effortValues} />
-        <TestInfo />
       </div>
     </div>
   );

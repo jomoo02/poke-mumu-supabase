@@ -34,7 +34,6 @@ function TabsProvider({
 
   const selectedValue = controlledValue ?? unControlledValue;
   const handleValueChange = onValueChange ?? setUnControlledValue;
-  // console.log(onValueChange, handleValueChange);
 
   const value = {
     selectedValue,

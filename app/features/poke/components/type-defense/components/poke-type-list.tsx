@@ -13,7 +13,7 @@ export default function PokeTypeList({ pokeTypes }: PokeTypeListProps) {
             <PokeTypeBadge key={type} type={type} />
           ))}
         </div>
-        <div className="text-muted-foreground text-sm inset-x-0 text-center font-medium font-suite">
+        <div className="text-muted-foreground text-sm inset-x-0 text-center font-semibold font-suite">
           타입이 받는 피해
         </div>
       </div>

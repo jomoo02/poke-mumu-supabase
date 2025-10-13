@@ -6,7 +6,7 @@ import InfoHeader from './info-header';
 import { IconNumber100Small, IconNumber50Small } from '@tabler/icons-react';
 import { VenusAndMars, Dot, Egg, Footprints } from 'lucide-react';
 
-import Card from './card';
+import { Card, CardV2 } from './card';
 import Alert from './alert';
 
 interface BreedingInfoProps {
@@ -18,28 +18,28 @@ export default function BreedingInfo({ breeding }: BreedingInfoProps) {
   const [male, female] = genderRatio.split('-');
 
   return (
-    <div className="  border-border rounded-xl p-4 shadow-accent shadow-sm bg-[#F1F4FD]">
-      <h3 className="text-slate-800 text-lg font-semibold mx-1 ">유전</h3>
+    <div>
+      <h3 className="text-slate-800 text-lg font-semibold mx-1 mb-2">유전</h3>
       {/* <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"> */}
-      {/* <div className="grid  lg:grid-cols-4  gap-4"> */}
-      <div className="grid ">
-        <Card title="성비" icon={<VenusAndMars className="size-6" />}>
-          <div className="flex items-center min-w-0">
-            <span className="font-medium truncate block min-w-0">
-              {' '}
-              {male === '무성' ? (
-                <>{male}</>
-              ) : (
-                <>
-                  {male !== '0' && <>수컷 {male}%</>}
-                  {female !== '0' && <>암컷 {female}%</>}
-                </>
-              )}
-            </span>
+      <div className="grid  gap-2">
+        <CardV2 title="성비" icon={<VenusAndMars className="size-6" />}>
+          <div className="flex  items-center text-ellipsis">
+            {male === '무성' ? (
+              <>{male}</>
+            ) : (
+              <div className="flex items-center text-nowrap">
+                {male !== '0' && <span>수컷 {male}%</span>}
+                {male !== '0' && female !== '0' && (
+                  <span className="mx-0.5 font-bold">:</span>
+                )}
+                {female !== '0' && <span>암컷 {female}%</span>}
+              </div>
+            )}
           </div>
-        </Card>
-        <Card title="알그룹" icon={<Egg className="size-6" />}>
-          <div className="flex font-medium text-foreground">
+        </CardV2>
+
+        <CardV2 title="알그룹" icon={<Egg className="size-6" />}>
+          <div className="flex  text-foreground">
             {eggGroups.map((group, index) => (
               <div key={group} className="flex items-center">
                 {index > 0 && <Dot className="size-4" />}
@@ -47,9 +47,10 @@ export default function BreedingInfo({ breeding }: BreedingInfoProps) {
               </div>
             ))}
           </div>
-        </Card>
-        <Card title="부화카운트" icon={<Footprints className="size-6" />}>
-          <div className="flex font-medium text-foreground">
+        </CardV2>
+
+        <CardV2 title="부화카운트" icon={<Footprints className="size-6" />}>
+          <div className="flex  text-foreground">
             {eggGroups[0] !== '미발견' ? hatchCounter : '—'}
             {eggGroups[0] !== '미발견' && hatchCounter !== '—' && (
               <span className="mx-1">
@@ -57,44 +58,19 @@ export default function BreedingInfo({ breeding }: BreedingInfoProps) {
               </span>
             )}
           </div>
-        </Card>
+        </CardV2>
       </div>
-
-      {/* <Card
-        title="Lv.50 경험치"
-        icon={
-          <IconNumber50Small className="size-6" />
-          // <div className="w-full h-full flex items-center justify-center font-black text-sm text-center font-suite">
-          //   EXP
-          // </div>
-        }
-      >
-        <div className="flex font-medium text-foreground">1,059,860</div>
-      </Card>
-      <Card
-        title="Lv.100 경험치"
-        icon={
-          <IconNumber100Small className="size-6" />
-          // <div className="w-full h-full flex items-center justify-center font-black text-sm text-center font-suite">
-          //   EXP
-          // </div>
-        }
-      >
-        <div className="flex font-medium text-foreground">1,059,860</div>
-      </Card> */}
-      {/* </div> */}
       {/* <Alert> */}
       {eggGroups[0] === '미발견' && (
         <Alert>
-          알그룹이 <span className="font-medium">미발견</span>인 경우, 교배가
-          불가능합니다.
+          알그룹이 <span className="">미발견</span>인 경우, 교배가 불가능합니다.
         </Alert>
       )}
 
       {/* {eggGroups[0] !== '미발견' && hatchCounter !== '—' && (
           <div>
             알이 부화하려면 약{' '}
-            <span className="font-medium">{Number(hatchCounter) * 256}</span>
+            <span className="">{Number(hatchCounter) * 256}</span>
             걸음이 필요합니다.
           </div>
         )} */}
@@ -135,7 +111,7 @@ export default function BreedingInfo({ breeding }: BreedingInfoProps) {
       <ul className="text-slate-800 mt-8 list-disc list-inside p-1 space-y-0.5">
         {eggGroups[0] === '미발견' && (
           <li>
-            알그룹이 <span className="font-medium">미발견</span>인 경우, 교배가
+            알그룹이 <span className="">미발견</span>인 경우, 교배가
             불가능합니다.
           </li>
         )}
@@ -143,7 +119,7 @@ export default function BreedingInfo({ breeding }: BreedingInfoProps) {
         {eggGroups[0] !== '미발견' && hatchCounter !== '—' && (
           <li>
             알이 부화하려면 약{' '}
-            <span className="font-medium">{Number(hatchCounter) * 256}</span>
+            <span className="">{Number(hatchCounter) * 256}</span>
             걸음이 필요합니다.
           </li>
         )}

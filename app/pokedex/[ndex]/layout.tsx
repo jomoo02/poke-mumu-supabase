@@ -14,7 +14,7 @@ export default async function NdexLayout({
   const ndex = Number((await params).ndex);
 
   return (
-    <LayoutV1 toc={<Toc />}>
+    <LayoutV1>
       <Suspense fallback={<SpeciesLayoutSkeleton />}>
         <SpeciesLayout ndex={ndex} />
       </Suspense>

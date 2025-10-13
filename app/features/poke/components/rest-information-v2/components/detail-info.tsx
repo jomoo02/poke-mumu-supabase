@@ -3,7 +3,7 @@ import { formatDetail } from '../lib/format-detail';
 import InfoHeader from './info-header';
 import Info from './info';
 import { getCatchProbability } from '../utils/capture-rate';
-import Card from './card';
+import { Card, CardV2 } from './card';
 
 import { ArrowBigUp, Smile, Hand, Dot } from 'lucide-react';
 import { IconPacman, IconPokeball } from '@tabler/icons-react';
@@ -38,11 +38,9 @@ export default function DetailInfo({ detail, effortValues }: DetailInfoProps) {
   // console.log(formattedEffortValues);
 
   return (
-    <div className=" border border-border shadow-sm rounded-xl p-4">
-      <h3 className="text-slate-800 text-lg font-semibold mx-1">훈련</h3>
-      {/* <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6"> */}
-      <div className="grid">
-        {' '}
+    <div>
+      <h3 className="text-slate-800 text-lg font-semibold mb-2 mx-1">훈련</h3>
+      <div className="grid gap-2">
         <Card title="포획률" icon={<IconPokeball className="size-6" />}>
           <div className="font-medium text-foreground">{captureRate}</div>
         </Card>
@@ -59,11 +57,11 @@ export default function DetailInfo({ detail, effortValues }: DetailInfoProps) {
         <Card title="기초 친밀도" icon={<Smile className="size-6" />}>
           <div className="font-medium text-foreground">{baseFriendShip}</div>
         </Card>
-        {/* <Card title="필요 경험치" icon={<IconPacman className="size-6" />}>
+        <Card title="필요 경험치" icon={<IconPacman className="size-6" />}>
           <div className="font-medium text-foreground text-pretty break-keep">
             {growthRate}
           </div>
-        </Card> */}
+        </Card>
       </div>
 
       {/* <Alert>

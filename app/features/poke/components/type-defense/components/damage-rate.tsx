@@ -7,9 +7,9 @@ interface DamageRateProps {
 
 export default function DamageRate({ damageRate, types }: DamageRateProps) {
   return (
-    <div className="border border-border rounded-xl p-4 shadow-sm sm:p-6">
-      <div className="flex mb-4 sm:justify-center">
-        <div className="flex justify-center items-center text-lg font-medium rounded-2xl font-suite">
+    <div className="border border-border rounded-xl p-4 shadow-md sm:p-6">
+      <div className="flex mb-4 px-2">
+        <div className="flex justify-center items-center text-xl font-medium rounded-xl font-suite">
           {`${damageRate}배`}
         </div>
       </div>

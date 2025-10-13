@@ -4,6 +4,8 @@ import SectionHeader from '../section-header';
 import { formatData } from './lib/format';
 import PokedexImage from './components/pokedex-image';
 import Info from './components/info';
+import { MarsIcon, VenusIcon } from 'lucide-react';
+import InfoV2 from './components/info-v2';
 
 export type PokedexData = {
   types: string[];
@@ -38,32 +40,49 @@ export default function PokedexInformation({
   return (
     <div>
       <SectionHeader id="pokedex-info" sectionTitle="도감 정보" isFirst />
-      <div className="flex gap-11 flex-col lg:flex-row lg:justify-around py-4 px-2.5 sm:px-4">
-        <PokedexImage src={src} alt={name} />
-        <div>
-          <Info subject="도감번호">No.{ndex}</Info>
-          <Info subject="이름">{name}</Info>
-          <Info subject="분류">{genera}</Info>
-          {form && <Info subject="모습">{form}</Info>}
-          <Info subject="타입">
-            <div className="flex gap-x-2">
-              {types.map((type) => (
-                <PokeTypeBadge key={type} type={type} />
-              ))}
+
+      <div className="grid xl:grid-cols-2 w-full gap-14">
+        <div className="p-2 ">
+          <PokedexImage src={src} alt={name} />
+        </div>
+        <div className="flex flex-col justify-between gap-4">
+          <div className=" w-full gap-2 ">
+            {' '}
+            <div className="text-xl text-muted-foreground font-medium">
+              No.{ndex}
             </div>
-          </Info>
-          <Info subject="신장">{height}</Info>
-          <Info subject="무게">{weight}</Info>
-          <Info subject="지역도감">
-            {pokedexNumbers.map(({ dex, dexNumber, id }) => (
-              <p
-                key={id}
-                className="flex items-center overflow-hidden p-0.5 text-pretty text-[15px]"
-              >
-                {`${dex} : ${dexNumber}`}
-              </p>
-            ))}
-          </Info>
+            <div className="text-3xl text-foreground font-medium">{name}</div>
+            <div className="text-xl text-muted-foreground font-medium">
+              {form}
+            </div>
+          </div>
+
+          <div>
+            <div className="rounded-xl p-4 grid grid-cols-2 w-full sm:grid-cols-3 border border-border h-full shadow-sm">
+              {/* <InfoV2 subject="도감번호">No.{ndex}</InfoV2>
+            <InfoV2 subject="이름">{name}</InfoV2> */}
+
+              <InfoV2 subject="분류">{genera}</InfoV2>
+              {/* {form && <InfoV2 subject="모습">{form}</InfoV2>} */}
+              <InfoV2 subject="타입">
+                <div className="flex gap-x-2">
+                  {types.map((type) => (
+                    <PokeTypeBadge key={type} type={type} />
+                  ))}
+                </div>
+              </InfoV2>
+
+              <InfoV2 subject="신장">{height}</InfoV2>
+              <InfoV2 subject="무게">{weight}</InfoV2>
+              <InfoV2 subject="성별 ">
+                <div className="flex gap-x-1">
+                  <MarsIcon className="size-6 text-blue-900" />
+                  <VenusIcon className="size-6 text-rose-900" />
+                </div>
+              </InfoV2>
+              {/* <InfoV2 subject="">{weight}</InfoV2> */}
+            </div>
+          </div>
         </div>
       </div>
     </div>
