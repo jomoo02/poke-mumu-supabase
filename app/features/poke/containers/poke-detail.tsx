@@ -5,7 +5,7 @@ import TypeDefense from '../components/type-defense';
 import Moves from '../components/moves';
 import PokedexInformation from '../components/pokedex-information';
 import RestInformation from '../components/rest-information';
-import EvolutionV2 from '../components/evolution';
+import EvolutionV2 from '../components/evolution-v2';
 import { fetchEvolutionChains } from '../api/evolution-chain';
 
 import Moves2 from '../components/moves2';
@@ -19,6 +19,8 @@ import { formatPokeAbilities } from '../utils/format-abilities';
 import RestInformationV2 from '../components/rest-information-v2';
 import RestInformationV3 from '../components/rest-information-v3';
 import PokeStatsV3 from '../components/stats-v3';
+import PokeStatsV4 from '../components/stats-v4';
+import PokedexInformationV2 from '../components/pokedex-information-v2';
 
 interface PokeDetailProps {
   pokeKey: string;
@@ -56,31 +58,37 @@ export default async function PokeDetail({ pokeKey }: PokeDetailProps) {
 
   return (
     <div className="flex flex-col flex-1 my-10">
-      <PokedexInformation pokedexData={pokedexData} sprite={sprite} />
-      {/* <RestInformation
-        detail={data.poke_detail}
-        effortValues={data.poke_effort_value}
-        breeding={data.poke_breeding}
-      /> */}
-      <RestInformationV2
+      {/* <PokedexInformation pokedexData={pokedexData} sprite={sprite} /> */}
+
+      {/* <RestInformationV2
         detail={data.poke_detail}
         effortValues={data.poke_effort_value}
         breeding={data.poke_breeding}
       />
-      {/* <RestInformationV3
+      <RestInformationV3
         detail={data.poke_detail}
         effortValues={data.poke_effort_value}
         breeding={data.poke_breeding}
       /> */}
+      <div className="grid lg:grid-cols-2 gap-4">
+        <PokedexInformationV2 pokedexData={pokedexData} sprite={sprite} />
 
+        <RestInformation
+          detail={data.poke_detail}
+          effortValues={data.poke_effort_value}
+          breeding={data.poke_breeding}
+        />
+      </div>
+      {/* {pokeStats && <PokeStatsV4 stats={pokeStats} />} */}
+      {pokeStats && <PokeStatsV3 stats={pokeStats} />}
       <PokeAbilities abilities={formatPokeAbilities(poke_ability)} />
 
       {/* <Stats stats={pokeStats} /> */}
-      {/* {pokeStats && <PokeStats stats={pokeStats} />} */}
-      {pokeStats && <PokeStatsV3 stats={pokeStats} />}
+      {/* {pokeStats && <PokeStats stats={pokeStats} />}
+      {pokeStats && <PokeStatsV3 stats={pokeStats} />} */}
 
       <TypeDefense types={types} />
-      {/* {evolutionData && <EvolutionV2 evolutionTree={evolutionData} />} */}
+      {evolutionData && <EvolutionV2 evolutionTree={evolutionData} />}
       {/* <EvolutionTree evolutionId={evolution_id} /> */}
 
       <PokeMoves pokeMoves={formatPokeMove(pokeMoves)} />

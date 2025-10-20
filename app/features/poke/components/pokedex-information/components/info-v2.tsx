@@ -1,15 +1,18 @@
+import { cn } from '@/app/lib/utils';
+
 interface InfoProps {
   subject: string;
   children: React.ReactNode;
+  className?: string;
 }
 
-export default function InfoV2({ subject, children }: InfoProps) {
+export default function InfoV2({ subject, children, className }: InfoProps) {
   return (
-    <div className="p-4">
-      <div className="text-muted-foreground font-semibold font-suite mb-1">
+    <div className={cn('flex flex-col  py-2', className)}>
+      <div className="text-muted-foreground font-medium font-suite">
         {subject}
       </div>
-      <div className="text-foreground font-suit font-medium">{children}</div>
+      <div className="text-foreground font-suit text-lg">{children}</div>
     </div>
   );
 }

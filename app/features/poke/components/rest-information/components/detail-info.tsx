@@ -6,7 +6,12 @@ import { getCatchProbability } from '../utils/capture-rate';
 import Card from './card';
 
 import { ArrowBigUp, Smile, Hand, Dot } from 'lucide-react';
-import { IconPacman, IconPokeball } from '@tabler/icons-react';
+import {
+  IconNumber100Small,
+  IconNumber50Small,
+  IconPacman,
+  IconPokeball,
+} from '@tabler/icons-react';
 import Alert from './alert';
 
 interface DetailInfoProps {
@@ -38,8 +43,8 @@ export default function DetailInfo({ detail, effortValues }: DetailInfoProps) {
   // console.log(formattedEffortValues);
 
   return (
-    <div className=" border border-border shadow-sm rounded-xl p-4">
-      <h3 className="text-slate-800 text-lg font-semibold mx-1">훈련</h3>
+    <div className=" ">
+      <h3 className="text-slate-800 text-lg font-semibold">훈련</h3>
       {/* <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6"> */}
       <div className="grid">
         {' '}
@@ -64,6 +69,33 @@ export default function DetailInfo({ detail, effortValues }: DetailInfoProps) {
             {growthRate}
           </div>
         </Card> */}
+        <Card title="필요 경험치" icon={<IconPacman className="size-6" />}>
+          <div className="font-medium text-foreground text-pretty break-keep">
+            항상 빠름
+          </div>
+        </Card>
+        <Card
+          title="Lv.50 경험치"
+          icon={
+            <IconNumber50Small className="size-6" />
+            // <div className="w-full h-full flex items-center justify-center font-black text-sm text-center font-suite">
+            //   EXP
+            // </div>
+          }
+        >
+          <div className="flex font-medium text-foreground">1,059,860</div>
+        </Card>
+        <Card
+          title="Lv.100 경험치"
+          icon={
+            <IconNumber100Small className="size-6" />
+            // <div className="w-full h-full flex items-center justify-center font-black text-sm text-center font-suite">
+            //   EXP
+            // </div>
+          }
+        >
+          <div className="flex font-medium text-foreground">1,059,860</div>
+        </Card>
       </div>
 
       {/* <Alert>

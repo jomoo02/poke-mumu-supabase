@@ -2,7 +2,8 @@ import PokedexContainer from '../features/pokedex/containers/pokedex-container';
 
 export default function PokedexPage() {
   return (
-    <div className="max-w-5xl mx-auto min-h-screen px-2 md:px-4">
+    // <div className="flex-1 min-w-0 flex flex-col max-w-5xl mx-auto"></div>
+    <div className="flex-1 min-w-0 flex flex-col w-full max-w-6xl mx-auto px-2 sm:px-4">
       <h1 className="my-10">전국도감 포켓몬 목록</h1>
       <div className="grid">
         <p className="text-foreground break-keep text-pretty">

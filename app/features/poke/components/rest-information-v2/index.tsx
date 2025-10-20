@@ -18,7 +18,7 @@ export default function RestInformation({
   return (
     <div className="">
       <SectionHeader id="rest-information" sectionTitle="기타 정보" />
-      <div className="grid lg:grid-cols-2 gap-8 lg:gap-14">
+      <div className="grid lg:grid-cols-2 gap-8">
         <DetailInfo detail={detail} effortValues={effortValues} />
         <BreedingInfo breeding={breeding} />
         {/* <TestInfo breeding={breeding} /> */}

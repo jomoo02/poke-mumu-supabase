@@ -4,10 +4,19 @@ import Info from './info';
 import InfoHeader from './info-header';
 
 import { IconNumber100Small, IconNumber50Small } from '@tabler/icons-react';
-import { VenusAndMars, Dot, Egg, Footprints } from 'lucide-react';
+import {
+  VenusAndMars,
+  Dot,
+  Egg,
+  Footprints,
+  BarChartBig,
+  Mars,
+  Venus,
+} from 'lucide-react';
 
 import Card from './card';
 import Alert from './alert';
+import StatBar from './stat-bar';
 
 interface BreedingInfoProps {
   breeding: Breeding | null;
@@ -18,24 +27,33 @@ export default function BreedingInfo({ breeding }: BreedingInfoProps) {
   const [male, female] = genderRatio.split('-');
 
   return (
-    <div className="  border-border rounded-xl p-4 shadow-accent shadow-sm bg-[#F1F4FD]">
-      <h3 className="text-slate-800 text-lg font-semibold mx-1 ">유전</h3>
+    <div className="  border-border rounded-xl">
+      <h3 className="text-slate-800 text-lg font-semibold">유전</h3>
       {/* <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"> */}
       {/* <div className="grid  lg:grid-cols-4  gap-4"> */}
-      <div className="grid ">
-        <Card title="성비" icon={<VenusAndMars className="size-6" />}>
-          <div className="flex items-center min-w-0">
-            <span className="font-medium truncate block min-w-0">
-              {' '}
-              {male === '무성' ? (
-                <>{male}</>
-              ) : (
-                <>
-                  {male !== '0' && <>수컷 {male}%</>}
-                  {female !== '0' && <>암컷 {female}%</>}
-                </>
-              )}
-            </span>
+
+      <div className="grid">
+        <Card
+          className="col-span"
+          title="성비"
+          icon={<VenusAndMars className="size-6" />}
+        >
+          <div className="w-full">
+            {/* <StatBar
+              male={!isNaN(Number(male)) ? Number(male) : undefined}
+              female={!isNaN(Number(female)) ? Number(female) : undefined}
+            /> */}
+            <div className="flex font-medium justify-between text-foreground text-base">
+              <div className="flex items-center">
+                <Mars className="size-4 text-blue-600" />
+                {male}%
+              </div>
+
+              <div className="flex items-center">
+                <Venus className="size-4 text-pink-800" />
+                {female}%
+              </div>
+            </div>
           </div>
         </Card>
         <Card title="알그룹" icon={<Egg className="size-6" />}>
@@ -48,6 +66,7 @@ export default function BreedingInfo({ breeding }: BreedingInfoProps) {
             ))}
           </div>
         </Card>
+
         <Card title="부화카운트" icon={<Footprints className="size-6" />}>
           <div className="flex font-medium text-foreground">
             {eggGroups[0] !== '미발견' ? hatchCounter : '—'}

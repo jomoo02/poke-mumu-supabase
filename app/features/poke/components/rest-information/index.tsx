@@ -16,12 +16,13 @@ export default function RestInformation({
   effortValues,
 }: RestInformationProps) {
   return (
-    <div className="">
-      <SectionHeader id="rest-information" sectionTitle="기타 정보" />
-      <div className="grid lg:grid-cols-3 gap-8">
+    <div className="flex flex-col justify-end lg:items-center">
+      {/* <SectionHeader id="rest-information" sectionTitle="기타 정보" /> */}
+
+      <div className="grid gap-8 lg:px-8">
         <BreedingInfo breeding={breeding} />
         <DetailInfo detail={detail} effortValues={effortValues} />
-        <TestInfo />
+        <div className="grid">{/* <TestInfo /> */}</div>
       </div>
     </div>
   );

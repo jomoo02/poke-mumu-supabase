@@ -1,6 +1,7 @@
 // import './type.css';
 import { getPokeTypeKo } from '@/app/lib/poke-type';
 import { cn } from '@/app/lib/utils';
+import Image from 'next/image';
 
 interface PokeTypeBadgeProps {
   type: string;

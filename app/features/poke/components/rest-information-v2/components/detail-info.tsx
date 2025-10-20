@@ -40,7 +40,7 @@ export default function DetailInfo({ detail, effortValues }: DetailInfoProps) {
   return (
     <div>
       <h3 className="text-slate-800 text-lg font-semibold mb-2 mx-1">훈련</h3>
-      <div className="grid gap-2">
+      <div className="grid">
         <Card title="포획률" icon={<IconPokeball className="size-6" />}>
           <div className="font-medium text-foreground">{captureRate}</div>
         </Card>

@@ -21,9 +21,9 @@ export default function BreedingInfo({ breeding }: BreedingInfoProps) {
     <div>
       <h3 className="text-slate-800 text-lg font-semibold mx-1 mb-2">유전</h3>
       {/* <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"> */}
-      <div className="grid  gap-2">
+      <div className="grid">
         <CardV2 title="성비" icon={<VenusAndMars className="size-6" />}>
-          <div className="flex  items-center text-ellipsis">
+          <div className="flex  items-center text-ellipsis text-lg">
             {male === '무성' ? (
               <>{male}</>
             ) : (
@@ -41,7 +41,7 @@ export default function BreedingInfo({ breeding }: BreedingInfoProps) {
         <CardV2 title="알그룹" icon={<Egg className="size-6" />}>
           <div className="flex  text-foreground">
             {eggGroups.map((group, index) => (
-              <div key={group} className="flex items-center">
+              <div key={group} className="flex items-center text-lg">
                 {index > 0 && <Dot className="size-4" />}
                 {group}
               </div>
@@ -50,7 +50,7 @@ export default function BreedingInfo({ breeding }: BreedingInfoProps) {
         </CardV2>
 
         <CardV2 title="부화카운트" icon={<Footprints className="size-6" />}>
-          <div className="flex  text-foreground">
+          <div className="flex  text-foreground text-lg">
             {eggGroups[0] !== '미발견' ? hatchCounter : '—'}
             {eggGroups[0] !== '미발견' && hatchCounter !== '—' && (
               <span className="mx-1">

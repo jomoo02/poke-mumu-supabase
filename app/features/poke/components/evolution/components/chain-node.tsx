@@ -1,3 +1,4 @@
+import { cn } from '@/app/lib/utils';
 import type { EvolutionNodeUI } from '../types';
 import ChainPoke from './chain-poke';
 import Details from './details';
@@ -13,7 +14,7 @@ export default function ChainNode({ evolutionId, node }: ChainNodeProps) {
   const nextNodeGridClassNames: Record<number, string> = {
     1: 'grid',
     2: 'grid grid-cols-2 lg:grid-cols-1 gap-1',
-    3: 'grid grid-cols-3 lg:grid-cols-1 gap-1',
+    3: 'grid grid-cols-2 lg:grid-cols-1 gap-1',
     8: 'grid grid-cols-2 sm:grid-cols-4 gap-1 lg:gap-10',
     0: '',
   };
@@ -28,12 +29,15 @@ export default function ChainNode({ evolutionId, node }: ChainNodeProps) {
       <ChainPoke poke={poke} />
       {next && next.length > 0 && (
         <div className={nextNodeGridClassName}>
-          {next.map((childNode) => (
-            <ChainNode
+          {next.map((childNode, i) => (
+            <div
               key={childNode.id}
-              evolutionId={evolutionId}
-              node={childNode}
-            />
+              className={cn(
+                (i + 1) % 3 === 0 ? 'col-span-2 sm:col-span-1' : '',
+              )}
+            >
+              <ChainNode evolutionId={evolutionId} node={childNode} />
+            </div>
           ))}
         </div>
       )}

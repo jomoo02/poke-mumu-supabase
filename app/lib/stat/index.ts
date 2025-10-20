@@ -12,7 +12,7 @@ export type Stat =
   | 'default';
 
 const statKoMap: Record<Stat, string> = {
-  hp: '체력',
+  hp: 'HP',
   attack: '공격',
   defense: '방어',
   special_attack: '특수공격',

@@ -11,7 +11,7 @@ export default function LayoutV1({ children, toc }: LayoutV1Props) {
       <div className="hidden xl:block min-w-48 w-48" />
 
       <div className="w-full h-full flex">
-        <div className="flex-1 min-w-0 flex flex-col max-w-5xl mx-auto">
+        <div className="flex-1 min-w-0 flex flex-col max-w-6xl mx-auto">
           {children}
         </div>
         <div className="min-w-48 w-48 max-w-48 hidden xl:block">

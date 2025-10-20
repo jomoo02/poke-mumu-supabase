@@ -9,7 +9,7 @@ export default function Toc() {
   const activeId = useActiveHeading(tocs);
 
   return (
-    <div className="sticky top-20 h-60 min-w-36 w-36 xl:min-w-40 xl:w-40 hidden xl:block px-1.5">
+    <div className="sticky top-20 h-60 min-w-36 w-36 xl:min-w-40 xl:w-40 hidden xl:block pl-10">
       {tocs.map(({ id, content }) => (
         <div
           key={id}

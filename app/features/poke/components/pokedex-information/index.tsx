@@ -1,3 +1,5 @@
+'use client';
+
 import PokeTypeBadge from '@/app/components/badge/poke-type';
 import type { PokedexInfo, PokedexNumber } from './types';
 import SectionHeader from '../section-header';
@@ -6,6 +8,8 @@ import PokedexImage from './components/pokedex-image';
 import Info from './components/info';
 import { MarsIcon, VenusIcon } from 'lucide-react';
 import InfoV2 from './components/info-v2';
+import { useState } from 'react';
+import { cn } from '@/app/lib/utils';
 
 export type PokedexData = {
   types: string[];
@@ -37,6 +41,8 @@ export default function PokedexInformation({
     src,
   } = formatData(pokedexData, sprite);
 
+  const [visible, setVisible] = useState(false);
+
   return (
     <div>
       <SectionHeader id="pokedex-info" sectionTitle="도감 정보" isFirst />
@@ -45,9 +51,8 @@ export default function PokedexInformation({
         <div className="p-2 ">
           <PokedexImage src={src} alt={name} />
         </div>
-        <div className="flex flex-col justify-between gap-4">
+        <div className="flex flex-col gap-4">
           <div className=" w-full gap-2 ">
-            {' '}
             <div className="text-xl text-muted-foreground font-medium">
               No.{ndex}
             </div>
@@ -57,15 +62,11 @@ export default function PokedexInformation({
             </div>
           </div>
 
-          <div>
-            <div className="rounded-xl p-4 grid grid-cols-2 w-full sm:grid-cols-3 border border-border h-full shadow-sm">
-              {/* <InfoV2 subject="도감번호">No.{ndex}</InfoV2>
-            <InfoV2 subject="이름">{name}</InfoV2> */}
-
+          <div className="mt-4">
+            <div className="grid grid-cols-2 w-full h-full divide-border">
               <InfoV2 subject="분류">{genera}</InfoV2>
-              {/* {form && <InfoV2 subject="모습">{form}</InfoV2>} */}
               <InfoV2 subject="타입">
-                <div className="flex gap-x-2">
+                <div className="flex gap-2 ">
                   {types.map((type) => (
                     <PokeTypeBadge key={type} type={type} />
                   ))}
@@ -80,7 +81,21 @@ export default function PokedexInformation({
                   <VenusIcon className="size-6 text-rose-900" />
                 </div>
               </InfoV2>
-              {/* <InfoV2 subject="">{weight}</InfoV2> */}
+              <InfoV2 subject="지역도감" className="col-span-2">
+                <button
+                  onClick={() => setVisible(!visible)}
+                  className="rounded-md"
+                >
+                  펄쳐보기
+                </button>
+                <div className={cn(visible ? 'flex flex-col' : 'hidden')}>
+                  {pokedexNumbers.map(({ id, dex, dexNumber }) => (
+                    <div key={id} className="text-base p-px">
+                      {dex} : {dexNumber}
+                    </div>
+                  ))}
+                </div>
+              </InfoV2>
             </div>
           </div>
         </div>

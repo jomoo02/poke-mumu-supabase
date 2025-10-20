@@ -9,8 +9,8 @@ export default function DamageRate({ damageRate, types }: DamageRateProps) {
   return (
     <div className="border border-border rounded-xl p-4 shadow-md sm:p-6">
       <div className="flex mb-4 px-2">
-        <div className="flex justify-center items-center text-xl font-medium rounded-xl font-suite">
-          {`${damageRate}배`}
+        <div className="flex justify-center items-center text-lg font-suite text-foreground font-medium">
+          {`x ${damageRate}`}
         </div>
       </div>
 

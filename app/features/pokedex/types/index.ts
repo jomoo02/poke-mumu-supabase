@@ -16,6 +16,24 @@ export type TargetPokeStat = Omit<
 
 export type PokeList = (TargetPoke & { poke_stat: TargetPokeStat })[];
 
+// export type PokedexPoke = {
+//   form: string | null;
+//   id: number;
+//   name: string;
+//   no: number;
+//   pokeKey: string;
+//   sprite: string;
+//   type1: string;
+//   type2: string | null;
+//   attack: number;
+//   defense: number;
+//   hp: number;
+//   special_attack: number;
+//   special_defense: number;
+//   speed: number;
+//   total: number;
+// };
+
 export type PokedexPoke = {
   form: string | null;
   id: number;
@@ -28,8 +46,8 @@ export type PokedexPoke = {
   attack: number;
   defense: number;
   hp: number;
-  special_attack: number;
-  special_defense: number;
+  specialAttack: number;
+  specialDefense: number;
   speed: number;
   total: number;
 };

@@ -22,11 +22,11 @@ export default function TestInfo({}) {
   // const [male, female] = genderRatio.split('-');
 
   return (
-    <div className=" border border-border shadow-sm rounded-xl p-4">
-      <h3 className="text-slate-800 text-lg font-semibold mx-1 ">성장</h3>
+    <div className="">
+      {/* <h3 className="text-slate-800 text-lg font-semibold mx-1 ">성장</h3> */}
       {/* <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"> */}
       {/* <div className="grid  lg:grid-cols-4  gap-4"> */}
-      <div className="grid ">
+      <div className="grid lg:grid-cols-3 ">
         <Card title="필요 경험치" icon={<IconPacman className="size-6" />}>
           <div className="font-medium text-foreground text-pretty break-keep">
             항상 빠름

@@ -39,13 +39,15 @@ export default function DetailInfo({ detail, effortValues }: DetailInfoProps) {
 
   return (
     <div>
-      <h3 className="text-slate-800 text-lg font-semibold mb-2 mx-1">훈련</h3>
-      <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-2">
+      <h3 className=" text-lg font-suite mb-3 mx-1 font-medium">훈련</h3>
+      <div className="grid gap-3 md:gap-5 md:grid-cols-2 lg:grid-cols-4">
         <Card title="포획률" icon={<IconPokeball className="size-6" />}>
-          <div className="font-medium text-foreground">{captureRate}</div>
+          <div className=" text-foreground text-lg font-medium">
+            {captureRate}
+          </div>
         </Card>
         <Card title="노력치" icon={<ArrowBigUp className="size-6" />}>
-          <div className="font-medium text-foreground flex items-center">
+          <div className=" text-foreground text-lg flex items-center">
             {formattedEffortValues.map((v, index) => (
               <div key={v} className="truncate flex items-center">
                 {index > 0 && <Dot className="size-4" />}
@@ -55,10 +57,10 @@ export default function DetailInfo({ detail, effortValues }: DetailInfoProps) {
           </div>
         </Card>
         <Card title="기초 친밀도" icon={<Smile className="size-6" />}>
-          <div className="font-medium text-foreground">{baseFriendShip}</div>
+          <div className=" text-foreground text-lg">{baseFriendShip}</div>
         </Card>
         <Card title="필요 경험치" icon={<IconPacman className="size-6" />}>
-          <div className="font-medium text-foreground text-pretty break-keep">
+          <div className=" text-foreground text-lg text-pretty break-keep">
             {growthRate}
           </div>
         </Card>
@@ -67,20 +69,20 @@ export default function DetailInfo({ detail, effortValues }: DetailInfoProps) {
       {/* <Alert>
         <div className="text-pretty break-keep text-foreground">
           체력이 가득 찼을 때 포획 확률(몬스터볼) :{' '}
-          <span className="font-medium">약 {catchRate}%</span>
+          <span className="">약 {catchRate}%</span>
         </div>
       </Alert>
       <Alert>
         <div>성장에 필요한 경험치</div>
         <div className="text-pretty break-keep">
           {atLevel50Text}:{' '}
-          <span className="font-medium">
+          <span className="">
             {expPointAtLevel50.toLocaleString()}
           </span>
         </div>
         <div className="text-pretty break-keep">
           {atLevel100Text}:{' '}
-          <span className="font-medium">
+          <span className="">
             {expPointAtLevel100.toLocaleString()}
           </span>
         </div>
@@ -105,19 +107,19 @@ export default function DetailInfo({ detail, effortValues }: DetailInfoProps) {
       <ul className="text-slate-800 mt-8 list-disc list-inside p-1 space-y-0.5">
         <li className="text-pretty break-keep">
           체력이 가득 찼을 때 포획 확률(몬스터볼):{' '}
-          <span className="font-medium">약 {catchRate}%</span>
+          <span className="">약 {catchRate}%</span>
         </li>
         <li>성장에 필요한 경험치</li>
         <ul className="list-[circle] list-inside px-2">
           <li className="text-pretty break-keep">
             {atLevel50Text}:{' '}
-            <span className="font-medium">
+            <span className="">
               {expPointAtLevel50.toLocaleString()}
             </span>
           </li>
           <li className="text-pretty break-keep">
             {atLevel100Text}:{' '}
-            <span className="font-medium">
+            <span className="">
               {expPointAtLevel100.toLocaleString()}
             </span>
           </li>

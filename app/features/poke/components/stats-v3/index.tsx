@@ -17,9 +17,9 @@ export default function PokeStatsV3({ stats }: PokeStatsProps) {
       <SectionHeader id="stats" sectionTitle="능력치" />
       {/* <div className="py-4 flex justify-end"></div> */}
       {/* <div className="flex flex-col lg:flex-row gap-10"> */}
-      <div className="grid lg:grid-cols-3 gap-10">
+      <div className="w-full mx-auto">
         <StatList />
-        <MinMax />
+        {/* <MinMax /> */}
       </div>
     </StatProvider>
   );

@@ -18,7 +18,7 @@ export default function MoveList({
   versionGroup,
 }: MoveListProps) {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="grid grid-cols-2 gap-6">
       <LevelUpTable key={versionGroup} moves={levelUpMoves} />
       {restMoves.map(({ method, moves }) => (
         <RestTable

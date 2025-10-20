@@ -9,6 +9,7 @@ import {
   TableRow,
   TableCell,
 } from '@/app/components/ui/table';
+import { Fragment } from 'react';
 function Stat({
   stat,
   value,
@@ -37,65 +38,45 @@ export default function StatList() {
   const { statData, maxStatValue, statKeys, total } = useStatContext();
 
   return (
-    <div className="flex-1 lg:col-span-2 border-border rounded-xl">
-      <div className="text-lg font-suite h-8 my-4">종족값</div>
-      <Table className="table-fixed">
-        {/* <TableHeader>
-          <TableRow className="border-border">
-            <TableHead />
-            <TableHead />
-            <TableHead />
-          </TableRow>
-        </TableHeader> */}
-        <TableHeader>
-          <TableRow className="border-border hover:bg-transparent">
-            <TableHead className="w-1/4" />
-            <TableHead className="w-1/4" />
-            <TableHead className="w-1/2" />
-          </TableRow>
-        </TableHeader>
+    <div className="max-w-4xl mx-auto">
+      <Table className="">
+        <colgroup>
+          <col className="w-auto" />
+          <col className="w-auto" />
+          <col className="w-full" />
+        </colgroup>
         <TableBody>
           {statKeys.map((stat) => (
             <TableRow
               key={stat}
-              className="border-border odd:bg-muted/60 odd:hover:bg-muted/60 even:hover:bg-transparent"
+              className="border-0 h-11.5 hover:bg-transparent"
             >
-              <TableCell className="text-base text-right">
+              <TableCell className="text-base text-right lg:px-4">
                 {statData[stat].text}
               </TableCell>
-              <TableCell className="text-base text-center">
+              <TableCell className="text-base text-center ">
                 {statData[stat].value}
               </TableCell>
-              <TableCell className="">
-                <div className="flex">
-                  <StatBar value={statData[stat].value} max={maxStatValue} />
+              <TableCell className="flex-1 relative">
+                <div className="absolute flex -top-1 right-3 gap-4.5 text-sm">
+                  <div>min {statData[stat].minValue}</div>
+                  <div>max {statData[stat].maxValue}</div>
                 </div>
+
+                <StatBar value={statData[stat].value} max={maxStatValue} />
               </TableCell>
             </TableRow>
           ))}
         </TableBody>
-        <TableFooter className="border-border">
-          <TableRow>
-            <TableCell className="text-base text-right">총합</TableCell>
+
+        <TableFooter className="border-0 bg-transparent">
+          <TableRow className="h-11.5 hover:bg-transparent">
+            <TableCell className="text-base text-right lg:px-4">총합</TableCell>
             <TableCell className="text-center text-base">{total}</TableCell>
             <TableCell />
           </TableRow>
         </TableFooter>
       </Table>
-      {/* <div className="grid divide-y divide-border">
-        {statKeys.map((stat) => (
-          <Stat
-            key={stat}
-            maxStatValue={maxStatValue}
-            stat={statData[stat].text}
-            value={statData[stat].value}
-          />
-        ))}
-        <div className="flex justify-between">
-          <div>총합</div>
-          <div>{total}</div>
-        </div>
-      </div> */}
     </div>
   );
 }

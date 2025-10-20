@@ -5,40 +5,26 @@ import { getPokeTypeList, getPokeTypeKo } from '@/app/lib/poke-type';
 import type { PokedexPoke } from '../types';
 import TypeSelect from './type-select';
 import PokedexTableV3 from './pokedex-table-v3';
+import PokeCard from './poke-card';
+import usePokedex from '../hooks/usePokedex';
+import { cn } from '@/app/lib/utils';
+
+import { PokedexProvider } from './pokedex.context';
+import PokeCardList from './poke-card-list';
+import SortButtonList from './sort-button-list';
 
 interface PokedexProps {
   pokeList: PokedexPoke[];
 }
 
 export default function Pokedex({ pokeList }: PokedexProps) {
-  const [targetType, setTargetType] = useState('all');
-
-  const typeList = getPokeTypeList()
-    .filter((type) => type !== 'unknown')
-    .map((type) => {
-      const value = type;
-      const content = getPokeTypeKo(type);
-      return { value, content };
-    });
-  const selectItmes = [{ value: 'all', content: '모든타입' }, ...typeList];
-
-  const targetPokeList = useMemo(() => {
-    if (targetType === 'all') {
-      return pokeList;
-    }
-    return pokeList.filter(
-      ({ type1, type2 }) => type1 === targetType || type2 === targetType,
-    );
-  }, [pokeList, targetType]);
-
   return (
-    <div className="mb-8">
-      <TypeSelect
-        type={targetType}
-        handleTypeChange={setTargetType}
-        typeItems={selectItmes}
-      />
-      <PokedexTableV3 pokes={targetPokeList} />
-    </div>
+    <PokedexProvider pokes={pokeList}>
+      <div className="mb-8 flex flex-col gap-3">
+        <TypeSelect />
+        <SortButtonList />
+        <PokeCardList />
+      </div>
+    </PokedexProvider>
   );
 }
