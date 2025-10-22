@@ -74,7 +74,7 @@
   --color-border-unknown: #5f1663;
 }
 
-@layer base {
+/* @layer base {
   h1 {
     font-size: var(--text-3xl);
     font-weight: var(--font-weight-bold);
@@ -85,7 +85,7 @@
     font-weight: var(--font-weight-bold);
     color: var(--color-foreground);
   }
-}
+} */
 
 @utility scrollbar-hidden {
   &::-webkit-scrollbar {

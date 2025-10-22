@@ -6,11 +6,13 @@ import Image from 'next/image';
 interface PokeTypeBadgeProps {
   type: string;
   width?: string;
+  className?: string;
 }
 
 export default function PokeTypeBadge({
   type,
   width = 'w-[60px] xs:w-[63px]',
+  className,
 }: PokeTypeBadgeProps) {
   const pokeType = type ?? 'unknown';
 
@@ -70,6 +72,7 @@ export default function PokeTypeBadge({
         bg,
         borderColor,
         width,
+        className,
       )}
     >
       {content}

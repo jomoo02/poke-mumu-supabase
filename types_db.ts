@@ -7,7 +7,7 @@ export type Json =
   | Json[]
 
 export type Database = {
-  // Allows to automatically instanciate createClient with right options
+  // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
     PostgrestVersion: "12.2.3 (519615d)"
@@ -1372,6 +1372,45 @@ export type Database = {
             columns: ["poke_id"]
             isOneToOne: false
             referencedRelation: "poke"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      regional_pokedex: {
+        Row: {
+          id: number
+          poke_id: number
+          regional_dex_number: number
+          subdex_code: string
+          version_group_id: number
+        }
+        Insert: {
+          id?: number
+          poke_id: number
+          regional_dex_number: number
+          subdex_code?: string
+          version_group_id: number
+        }
+        Update: {
+          id?: number
+          poke_id?: number
+          regional_dex_number?: number
+          subdex_code?: string
+          version_group_id?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "regional_pokedex_poke_id_fkey"
+            columns: ["poke_id"]
+            isOneToOne: false
+            referencedRelation: "poke"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "regional_pokedex_version_group_id_fkey"
+            columns: ["version_group_id"]
+            isOneToOne: false
+            referencedRelation: "version_group"
             referencedColumns: ["id"]
           },
         ]
