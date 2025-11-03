@@ -1,15 +1,9 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import localFont from 'next/font/local';
-import AppHeader from './components/app-header';
-import { SWRProvider } from './components/provider/swr';
 
-const pretendard = localFont({
-  src: '../public/fonts/PretendardVariable.woff2',
-  display: 'swap',
-  variable: '--font-pretendard',
-  weight: '45 920',
-});
+import { SWRProvider } from './context/swr';
+import Header from './shared/ui/header';
 
 const suit = localFont({
   src: '../public/fonts/SUIT-Variable.woff2',
@@ -44,8 +38,7 @@ export default function RootLayout({
     >
       <body className={`relative bg-background min-h-svh flex flex-col`}>
         <SWRProvider>
-          <AppHeader />
-
+          <Header />
           <div id="ttt" className="sticky top-14 z-60" />
           <main className="flex flex-1 flex-col font-suit">{children}</main>
           <div>{modal}</div>

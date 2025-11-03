@@ -1,4 +1,4 @@
-import PokedexPage from '../features/pokedex/pages/pokedex-page';
+import PokedexPage from '../pages/pokedex';
 
 export default function Page() {
   return <PokedexPage />;

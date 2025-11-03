@@ -1,5 +1,5 @@
-import SearchModal from '../features/search/containers/search-modal';
+import SearchPage from '../pages/search';
 
 export default function Page() {
-  return <SearchModal />;
+  return <SearchPage />;
 }

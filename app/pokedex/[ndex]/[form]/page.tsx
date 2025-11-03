@@ -1,4 +1,3 @@
-import PokeDetail from '@/app/features/poke/containers/poke-detail';
 import { Suspense } from 'react';
 import Loading from './loading';
 
@@ -11,7 +10,8 @@ export default async function FormPage({
 
   return (
     <Suspense fallback={<Loading />}>
-      <PokeDetail pokeKey={form} />
+      <div>{form}</div>
+      {/* <PokeDetail pokeKey={form} /> */}
     </Suspense>
   );
 }

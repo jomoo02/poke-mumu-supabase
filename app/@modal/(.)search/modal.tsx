@@ -1,6 +1,7 @@
 'use client';
 
-import Search from '@/app/features/search/containers/search';
+// import Search from '@/app/_features/search/containers/search';
+import Search from '@/app/pages/search/ui/search';
 
 export default function Modal() {
   return (

@@ -1,4 +1,4 @@
-import PokedexAllPage from '@/app/features/pokedex/pages/pokedex-all-page';
+import PokedexAllPage from '@/app/pages/pokedex-all';
 
 export default function Page() {
   return <PokedexAllPage />;
