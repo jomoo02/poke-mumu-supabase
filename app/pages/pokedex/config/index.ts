@@ -81,4 +81,13 @@ export const REGIONAL_DEX_LIST = [
       { sprite: '0501', alt: '수댕이' },
     ],
   },
+  {
+    dexGroup: 'X·Y',
+    href: '/pokedex/game/x-y',
+    imageItems: [
+      { sprite: '0495', alt: '주리비안' },
+      { sprite: '0498', alt: '뚜꾸리' },
+      { sprite: '0501', alt: '수댕이' },
+    ],
+  },
 ];

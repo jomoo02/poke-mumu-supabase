@@ -1,8 +1,9 @@
 import { createClient } from '@/app/utils/supabase/client';
 import { fetchTypeAll } from '@/app/entities/type/api';
 import { TypeDto } from '@/app/entities/type/model';
-import { NationalPoke } from '../model';
 import { getStatTotal } from '@/app/entities/stat/model';
+
+import { NationalPoke } from '../model';
 
 interface NationalPokeDto {
   id: number;
@@ -110,6 +111,8 @@ export const fetchNationalPokedex = async (): Promise<{
   ]);
 
   const pokes = adaptNationalPokedexDtoWithTypeDto(nationPokedexDto, typeDtos);
+
+  console.log(pokes[0]);
   const types = typeDtos;
   return { pokes, types };
 };

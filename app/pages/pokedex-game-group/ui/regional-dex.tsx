@@ -1,11 +1,9 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
 
 import { formatNumber } from '@/app/shared/lib';
-import { TypeBadge } from '@/app/entities/type/ui';
-import { PokeSprite } from '@/app/entities/poke/ui';
+import { TypeBadge } from '@/app/entities/type/ui/type-badge';
+import { PokeSpriteWithBlur } from '@/app/entities/poke/ui';
 
 import { type RegionalPoke } from '../model';
 
@@ -26,7 +24,7 @@ function PokeCard({ poke, maxLength }: PokeCardProps) {
   return (
     <div className="flex flex-col items-center w-full bg-white p-4 rounded-lg">
       <Link href={href}>
-        <PokeSprite poke={poke} />
+        <PokeSpriteWithBlur poke={poke} />
       </Link>
       <div className="text-muted-foreground">{`No.${dexNumber}`}</div>
       <Link

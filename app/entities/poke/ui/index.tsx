@@ -1,1 +1,1 @@
-export { PokeSprite, PokeInfoSprite } from './sprite';
+export { PokeSprite, PokeInfoSprite, PokeSpriteWithBlur } from './sprite';

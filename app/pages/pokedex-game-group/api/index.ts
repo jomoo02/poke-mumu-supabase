@@ -1,4 +1,4 @@
-import { createClient } from '@/app/shared/api/supabase/server';
+import { createClient } from '@/app/shared/api/supabase/client';
 import { Poke } from '@/app/entities/poke/model';
 
 import { RegionalPoke } from '../model';
@@ -32,7 +32,7 @@ interface RegionalDex {
 }
 
 export const fetchRegionalDexDto = async (gameGroup: string) => {
-  const supabase = await createClient();
+  const supabase = createClient();
 
   const { data, error } = await supabase
     .from('dex_group')
@@ -124,4 +124,16 @@ export const fetchRegionalPokedex = async (gameGroup: string) => {
     typeDtoAll,
   );
   return regionalPokedex;
+};
+
+export const getGameGroupAll = async () => {
+  const supabase = createClient();
+  const { data, error } = await supabase
+    .from('dex_group')
+    .select('group:game_group');
+
+  if (error) {
+    throw new Error(`Error getGameGroupAll: ${error}`);
+  }
+  return data;
 };

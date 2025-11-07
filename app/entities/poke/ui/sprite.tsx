@@ -22,7 +22,7 @@ export function PokeSprite({
     <div className={cn('w-14 h-14 relative', className)}>
       <Image
         placeholder="blur"
-        blurDataURL="/pokeball.svg"
+        blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
         src={src}
         alt={alt}
         fill
@@ -63,6 +63,37 @@ export function PokeInfoSprite({
           objectFit: 'contain',
         }}
         priority={priority}
+      />
+    </div>
+  );
+}
+
+interface PokeSpriteWithBlurProps {
+  poke: Poke;
+  className?: string;
+}
+
+export function PokeSpriteWithBlur({
+  poke,
+  className,
+}: PokeSpriteWithBlurProps) {
+  const src = getSpriteSrc(poke);
+  const alt = poke.name;
+  const blurDataUrl =
+    'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
+
+  return (
+    <div className={cn('w-14 h-14 relative', className)}>
+      <Image
+        placeholder="blur"
+        blurDataURL={blurDataUrl}
+        src={src}
+        alt={alt}
+        fill
+        // sizes="64px"
+        style={{
+          objectFit: 'contain',
+        }}
       />
     </div>
   );

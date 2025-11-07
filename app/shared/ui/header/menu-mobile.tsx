@@ -10,11 +10,9 @@ export default function MenuMobile() {
   const [isOpen, setIsOpen] = useState(false);
   const pathName = usePathname();
 
-  useEffect(() => {
-    if (isOpen) {
-      setIsOpen(false);
-    }
-  }, [isOpen, pathName]);
+  // useEffect(() => {
+  //   setIsOpen(false);
+  // }, [pathName]);
 
   useEffect(() => {
     if (isOpen) {
@@ -30,7 +28,7 @@ export default function MenuMobile() {
 
   if (!isOpen) {
     return (
-      <button className="sm:hidden" onClick={() => setIsOpen(true)}>
+      <button className="sm:hidden size-5.5" onClick={() => setIsOpen(true)}>
         <MenuIcon className="size-5.5" />
       </button>
     );
@@ -43,7 +41,7 @@ export default function MenuMobile() {
       </button>
       {typeof window !== 'undefined' && document.getElementById('ttt')
         ? createPortal(
-            <div className="absolute inset-0 bg-white overflow-hidden w-screen h-screen z-60">
+            <div className="absolute inset-0 bg-white overflow-hidden w-screen h-screen z-60 sm:hidden">
               <ul className="p-5 space-y-4">
                 <li>
                   <Link
