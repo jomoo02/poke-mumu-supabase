@@ -1,6 +1,8 @@
 import { Suspense } from 'react';
+
 import { SearchParams } from './model';
 import Pokedex from './ui/pokedex';
+import Skeleton from './ui/skeleton';
 
 export default async function PokedexAllPage({ ...props }: SearchParams) {
   return (
@@ -17,7 +19,7 @@ export default async function PokedexAllPage({ ...props }: SearchParams) {
           타입 필터를 사용하면 원하는 타입의 포켓몬만 골라볼 수 있습니다.
         </p>
       </div>
-      <Suspense fallback={<div>loading...</div>}>
+      <Suspense fallback={<Skeleton />}>
         <Pokedex {...props} />
       </Suspense>
     </div>

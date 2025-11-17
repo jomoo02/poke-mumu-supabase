@@ -7,6 +7,7 @@ export interface NationalPoke extends Poke, StatDto {
   type1: TypeDto | null;
   type2: TypeDto | null;
 }
+
 export type SearchParams = {
   sortBy?: string;
   type?: string;

@@ -5,7 +5,6 @@ import { Tables } from '@/types_db';
 import { fetchTypeAll } from '@/app/entities/type/api';
 
 import type { NationalPoke, SearchParams } from '../model';
-// import type { SearchParams } from '..';
 
 type NationalPokeDto = Tables<'national_pokedex_with_stat'>;
 

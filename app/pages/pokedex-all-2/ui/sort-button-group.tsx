@@ -103,7 +103,7 @@ export default function SortButtonGroup() {
           id={d.id}
           onClick={handleSortClick}
           isActive={optimisticSortBy === d.id}
-          direction={sortBy === d.id ? direction : undefined}
+          direction={optimisticSortBy === d.id ? direction : undefined}
         >
           {d.children}
         </SortButton>

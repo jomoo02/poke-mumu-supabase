@@ -15,7 +15,7 @@ export default async function Pokedex({
     direction,
   });
   return (
-    <div className="flex flex-col gap-4 ">
+    <div className="flex flex-col gap-4">
       <TypeSelect types={types} />
       <SortButtonGroup />
       <NationalDex pokes={pokes} />
