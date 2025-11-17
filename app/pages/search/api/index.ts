@@ -2,9 +2,9 @@
 
 import { createClient } from '@/app/utils/supabase/server';
 import { checkTextLanguageKo, checkTextIntergerType } from '../lib';
-import type { SearchPoke } from '../model';
+// import type { SearchPoke } from '../model';
 import type { TypeDto } from '@/app/entities/type/model';
-import { fetchTypeAll } from '@/app/entities/type/api';
+// import { fetchTypeAll } from '@/app/entities/type/api';
 
 const getSearchColumn = (inputValue: string) => {
   if (checkTextIntergerType(inputValue)) {
@@ -52,7 +52,7 @@ const adaptSearchPokeDtoWithTypeDto = (
   });
 };
 
-const getSearchPokeDtos = async (inputValue: string) => {
+export const getSearchPokes = async (inputValue: string) => {
   const supabase = await createClient();
 
   const { column, value } = getSearchColumn(inputValue);
@@ -68,8 +68,16 @@ const getSearchPokeDtos = async (inputValue: string) => {
       nameEn:name_en,
       sprite,
       form,
-      type1:type_1,
-      type2:type_2`,
+      typeDto1: type!type_1_id (
+        id,
+        identifier,
+        typeKo:type_ko
+      ),
+      typeDto2: type!type_2_id (
+        id,
+        identifier,
+        typeKo:type_ko
+      )`,
     )
     .order('id', { ascending: true });
 
@@ -78,13 +86,13 @@ const getSearchPokeDtos = async (inputValue: string) => {
     : ((await query.like(column, `%${value}%`)).data ?? []);
 };
 
-export const getSearchPokes = async (
-  inputValue: string,
-): Promise<SearchPoke[]> => {
-  const [serachPokeDtos, typeDtos] = await Promise.all([
-    getSearchPokeDtos(inputValue),
-    fetchTypeAll(),
-  ]);
+// export const getSearchPokes = async (
+//   inputValue: string,
+// ): Promise<SearchPoke[]> => {
+//   const [serachPokeDtos, typeDtos] = await Promise.all([
+//     getSearchPokeDtos(inputValue),
+//     fetchTypeAll(),
+//   ]);
 
-  return adaptSearchPokeDtoWithTypeDto(serachPokeDtos, typeDtos);
-};
+//   return adaptSearchPokeDtoWithTypeDto(serachPokeDtos, typeDtos);
+// };

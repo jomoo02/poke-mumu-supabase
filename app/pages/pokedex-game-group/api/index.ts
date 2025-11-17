@@ -1,35 +1,6 @@
 import { createClient } from '@/app/shared/api/supabase/client';
-import { Poke } from '@/app/entities/poke/model';
 
 import { RegionalPoke } from '../model';
-import { fetchTypeAll } from '@/app/entities/type/api';
-import { TypeDto } from '@/app/entities/type/model';
-
-interface RegionalDexDTO {
-  gameGroup: string;
-  description: string;
-  dexRegion: {
-    id: number;
-    region: string;
-    regionKo: string | null;
-    entries: {
-      id: number;
-      regionalDexNumber: number;
-      poke: Poke;
-    }[];
-  }[];
-}
-
-interface RegionalDex {
-  gameGroup: string;
-  description: string;
-  dexRegion: {
-    id: number;
-    region: string;
-    regionKo: string | null;
-    entries: RegionalPoke[];
-  }[];
-}
 
 export const fetchRegionalDexDto = async (gameGroup: string) => {
   const supabase = createClient();
@@ -52,8 +23,16 @@ export const fetchRegionalDexDto = async (gameGroup: string) => {
               dexNumber:no,
               sprite,
               name:name_ko,
-              type1:type_1,
-              type2:type_2,
+              typeDto1: type!type_1_id (
+                id,
+                identifier,
+                typeKo:type_ko
+              ),
+              typeDto2: type!type_2_id (
+                id,
+                identifier,
+                typeKo:type_ko
+              ),
               pokeKey:poke_key
             )
           )
@@ -85,45 +64,23 @@ export const fetchRegionalDexDto = async (gameGroup: string) => {
   return data;
 };
 
-const adaptRegionalDexDtoWithTypeDto = (
-  regionalDexDto: RegionalDexDTO,
-  typeDtos: TypeDto[],
-): RegionalDex => {
-  const typeDtoMap = Object.fromEntries(
-    typeDtos.map((typeDto) => [typeDto.identifier, typeDto]),
-  );
-
-  const dexRegion = regionalDexDto.dexRegion.map(({ entries, ...rest }) => {
-    const dexEntries = entries.map(({ poke, ...rest }) => ({
-      ...rest,
-      ...poke,
-      typeDto1: typeDtoMap[poke.type1],
-      typeDto2: poke.type2 ? typeDtoMap[poke.type2] : null,
-    }));
-
-    return {
-      ...rest,
-      entries: dexEntries,
-    };
-  });
-
-  return {
-    ...regionalDexDto,
-    dexRegion,
-  };
-};
-
 export const fetchRegionalPokedex = async (gameGroup: string) => {
-  const [regionalDexDto, typeDtoAll] = await Promise.all([
-    fetchRegionalDexDto(gameGroup),
-    fetchTypeAll(),
-  ]);
-
-  const regionalPokedex = adaptRegionalDexDtoWithTypeDto(
-    regionalDexDto,
-    typeDtoAll,
-  );
-  return regionalPokedex;
+  const { dexRegion, ...rest } = await fetchRegionalDexDto(gameGroup);
+  return {
+    ...rest,
+    dexRegion: dexRegion.map((d) => {
+      const entries: RegionalPoke[] = d.entries.map(
+        ({ poke, regionalDexNumber }) => ({
+          regionalDexNumber,
+          ...poke,
+        }),
+      );
+      return {
+        ...d,
+        entries,
+      };
+    }),
+  };
 };
 
 export const getGameGroupAll = async () => {

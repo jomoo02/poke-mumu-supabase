@@ -51,7 +51,7 @@ export default function SearchResultPoke({ poke }: SearchResultPokeProps) {
           )}
         </p>
         <div className="flex flex-col gap-y-1 items-center">
-          <TypeBadge type={typeDto1} />
+          {typeDto1 && <TypeBadge type={typeDto1} />}
           {typeDto2 && <TypeBadge type={typeDto2} />}
         </div>
       </div>

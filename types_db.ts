@@ -84,6 +84,13 @@ export type Database = {
             foreignKeyName: 'dex_entry_poke_id_fkey';
             columns: ['poke_id'];
             isOneToOne: false;
+            referencedRelation: 'national_pokedex_with_stat';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'dex_entry_poke_id_fkey';
+            columns: ['poke_id'];
+            isOneToOne: false;
             referencedRelation: 'poke';
             referencedColumns: ['id'];
           },
@@ -175,7 +182,21 @@ export type Database = {
             foreignKeyName: 'evolution_chain_from_poke_id_fkey';
             columns: ['from_poke_id'];
             isOneToOne: false;
+            referencedRelation: 'national_pokedex_with_stat';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'evolution_chain_from_poke_id_fkey';
+            columns: ['from_poke_id'];
+            isOneToOne: false;
             referencedRelation: 'poke';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'evolution_chain_to_poke_id_fkey';
+            columns: ['to_poke_id'];
+            isOneToOne: false;
+            referencedRelation: 'national_pokedex_with_stat';
             referencedColumns: ['id'];
           },
           {
@@ -1063,7 +1084,9 @@ export type Database = {
           species_id: number;
           sprite: string;
           type_1: string;
+          type_1_id: number;
           type_2: string | null;
+          type_2_id: number | null;
         };
         Insert: {
           created_at?: string;
@@ -1078,7 +1101,9 @@ export type Database = {
           species_id: number;
           sprite: string;
           type_1: string;
+          type_1_id: number;
           type_2?: string | null;
+          type_2_id?: number | null;
         };
         Update: {
           created_at?: string;
@@ -1093,7 +1118,9 @@ export type Database = {
           species_id?: number;
           sprite?: string;
           type_1?: string;
+          type_1_id?: number;
           type_2?: string | null;
+          type_2_id?: number | null;
         };
         Relationships: [
           {
@@ -1101,6 +1128,20 @@ export type Database = {
             columns: ['species_id'];
             isOneToOne: false;
             referencedRelation: 'species';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'poke_type_1_id_fkey';
+            columns: ['type_1_id'];
+            isOneToOne: false;
+            referencedRelation: 'type';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'poke_type_2_id_fkey';
+            columns: ['type_2_id'];
+            isOneToOne: false;
+            referencedRelation: 'type';
             referencedColumns: ['id'];
           },
         ];
@@ -1133,6 +1174,13 @@ export type Database = {
             columns: ['ability_id'];
             isOneToOne: false;
             referencedRelation: 'ability';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'poke_ability_poke_id_fkey';
+            columns: ['poke_id'];
+            isOneToOne: false;
+            referencedRelation: 'national_pokedex_with_stat';
             referencedColumns: ['id'];
           },
           {
@@ -1177,6 +1225,13 @@ export type Database = {
             foreignKeyName: 'poke_breeding_poke_id_fkey';
             columns: ['poke_id'];
             isOneToOne: true;
+            referencedRelation: 'national_pokedex_with_stat';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'poke_breeding_poke_id_fkey';
+            columns: ['poke_id'];
+            isOneToOne: true;
             referencedRelation: 'poke';
             referencedColumns: ['id'];
           },
@@ -1208,6 +1263,13 @@ export type Database = {
           poke_id?: number;
         };
         Relationships: [
+          {
+            foreignKeyName: 'poke_detail_poke_id_fkey';
+            columns: ['poke_id'];
+            isOneToOne: true;
+            referencedRelation: 'national_pokedex_with_stat';
+            referencedColumns: ['id'];
+          },
           {
             foreignKeyName: 'poke_detail_poke_id_fkey';
             columns: ['poke_id'];
@@ -1244,6 +1306,13 @@ export type Database = {
             foreignKeyName: 'poke_effort_value_poke_id_fkey';
             columns: ['poke_id'];
             isOneToOne: false;
+            referencedRelation: 'national_pokedex_with_stat';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'poke_effort_value_poke_id_fkey';
+            columns: ['poke_id'];
+            isOneToOne: false;
             referencedRelation: 'poke';
             referencedColumns: ['id'];
           },
@@ -1272,6 +1341,13 @@ export type Database = {
           version_group_id?: number;
         };
         Relationships: [
+          {
+            foreignKeyName: 'poke_move_poke_id_fkey';
+            columns: ['poke_id'];
+            isOneToOne: false;
+            referencedRelation: 'national_pokedex_with_stat';
+            referencedColumns: ['id'];
+          },
           {
             foreignKeyName: 'poke_move_poke_id_fkey';
             columns: ['poke_id'];
@@ -1312,6 +1388,13 @@ export type Database = {
             foreignKeyName: 'poke_moves_poke_id_fkey';
             columns: ['poke_id'];
             isOneToOne: false;
+            referencedRelation: 'national_pokedex_with_stat';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'poke_moves_poke_id_fkey';
+            columns: ['poke_id'];
+            isOneToOne: false;
             referencedRelation: 'poke';
             referencedColumns: ['id'];
           },
@@ -1348,6 +1431,13 @@ export type Database = {
             foreignKeyName: 'poke_moves_2_poke_id_fkey';
             columns: ['poke_id'];
             isOneToOne: false;
+            referencedRelation: 'national_pokedex_with_stat';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'poke_moves_2_poke_id_fkey';
+            columns: ['poke_id'];
+            isOneToOne: false;
             referencedRelation: 'poke';
             referencedColumns: ['id'];
           },
@@ -1371,6 +1461,7 @@ export type Database = {
           special_attack: number;
           special_defense: number;
           speed: number;
+          total: number | null;
         };
         Insert: {
           attack: number;
@@ -1382,6 +1473,7 @@ export type Database = {
           special_attack: number;
           special_defense: number;
           speed: number;
+          total?: number | null;
         };
         Update: {
           attack?: number;
@@ -1393,8 +1485,16 @@ export type Database = {
           special_attack?: number;
           special_defense?: number;
           speed?: number;
+          total?: number | null;
         };
         Relationships: [
+          {
+            foreignKeyName: 'poke_stat_poke_id_fkey';
+            columns: ['poke_id'];
+            isOneToOne: true;
+            referencedRelation: 'national_pokedex_with_stat';
+            referencedColumns: ['id'];
+          },
           {
             foreignKeyName: 'poke_stat_poke_id_fkey';
             columns: ['poke_id'];
@@ -1431,6 +1531,13 @@ export type Database = {
             foreignKeyName: 'pokedex_info_poke_id_fkey';
             columns: ['poke_id'];
             isOneToOne: true;
+            referencedRelation: 'national_pokedex_with_stat';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'pokedex_info_poke_id_fkey';
+            columns: ['poke_id'];
+            isOneToOne: true;
             referencedRelation: 'poke';
             referencedColumns: ['id'];
           },
@@ -1456,6 +1563,13 @@ export type Database = {
           poke_id?: number | null;
         };
         Relationships: [
+          {
+            foreignKeyName: 'pokedex_number_poke_id_fkey';
+            columns: ['poke_id'];
+            isOneToOne: false;
+            referencedRelation: 'national_pokedex_with_stat';
+            referencedColumns: ['id'];
+          },
           {
             foreignKeyName: 'pokedex_number_poke_id_fkey';
             columns: ['poke_id'];
@@ -1488,6 +1602,13 @@ export type Database = {
           version_group_id?: number;
         };
         Relationships: [
+          {
+            foreignKeyName: 'regional_pokedex_poke_id_fkey';
+            columns: ['poke_id'];
+            isOneToOne: false;
+            referencedRelation: 'national_pokedex_with_stat';
+            referencedColumns: ['id'];
+          },
           {
             foreignKeyName: 'regional_pokedex_poke_id_fkey';
             columns: ['poke_id'];
@@ -1651,6 +1772,28 @@ export type Database = {
         };
         Relationships: [];
       };
+      national_pokedex_with_stat: {
+        Row: {
+          attack: number | null;
+          defense: number | null;
+          dex_number: number | null;
+          form: string | null;
+          hp: number | null;
+          id: number | null;
+          name: string | null;
+          poke_key: string | null;
+          special_attack: number | null;
+          special_defense: number | null;
+          speed: number | null;
+          sprite: string | null;
+          total: number | null;
+          type1_identifier: string | null;
+          type1_typeko: string | null;
+          type2_identifier: string | null;
+          type2_typeko: string | null;
+        };
+        Relationships: [];
+      };
       poke_move_view: {
         Row: {
           moves: Json | null;
@@ -1658,6 +1801,13 @@ export type Database = {
           version_group_id: number | null;
         };
         Relationships: [
+          {
+            foreignKeyName: 'poke_move_poke_id_fkey';
+            columns: ['poke_id'];
+            isOneToOne: false;
+            referencedRelation: 'national_pokedex_with_stat';
+            referencedColumns: ['id'];
+          },
           {
             foreignKeyName: 'poke_move_poke_id_fkey';
             columns: ['poke_id'];

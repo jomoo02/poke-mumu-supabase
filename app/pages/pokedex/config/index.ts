@@ -90,4 +90,87 @@ export const REGIONAL_DEX_LIST = [
       { sprite: '0501', alt: '수댕이' },
     ],
   },
+
+  {
+    dexGroup: '오메가루비·알파사파이어',
+    href: '/pokedex/game/omega-ruby-alpha-sapphire',
+    // imageItems: [
+    //   { sprite: '0495', alt: '주리비안' },
+    //   { sprite: '0498', alt: '뚜꾸리' },
+    //   { sprite: '0501', alt: '수댕이' },
+    // ],
+  },
+  {
+    dexGroup: '썬·문',
+    href: '/pokedex/game/sun-moon',
+    // imageItems: [
+    //   { sprite: '0495', alt: '주리비안' },
+    //   { sprite: '0498', alt: '뚜꾸리' },
+    //   { sprite: '0501', alt: '수댕이' },
+    // ],
+  },
+  {
+    dexGroup: '울트라썬·울트라문',
+    href: '/pokedex/game/ultra-sun-ultra-moon',
+    // imageItems: [
+    //   { sprite: '0495', alt: '주리비안' },
+    //   { sprite: '0498', alt: '뚜꾸리' },
+    //   { sprite: '0501', alt: '수댕이' },
+    // ],
+  },
+
+  {
+    dexGroup: '레츠고! 피카츄·레츠고! 이브이',
+    href: '/pokedex/game/lets-go-pikachu-eevee',
+    // imageItems: [
+    //   { sprite: '0495', alt: '주리비안' },
+    //   { sprite: '0498', alt: '뚜꾸리' },
+    //   { sprite: '0501', alt: '수댕이' },
+    // ],
+  },
+  {
+    dexGroup: '소드·실드',
+    href: '/pokedex/game/sword-shield',
+    // imageItems: [
+    //   { sprite: '0495', alt: '주리비안' },
+    //   { sprite: '0498', alt: '뚜꾸리' },
+    //   { sprite: '0501', alt: '수댕이' },
+    // ],
+  },
+  {
+    dexGroup: '브릴리언트 다이아몬드·샤이닝 펄',
+    href: '/pokedex/game/brilliant-diamond-shining-pearl',
+    // imageItems: [
+    //   { sprite: '0495', alt: '주리비안' },
+    //   { sprite: '0498', alt: '뚜꾸리' },
+    //   { sprite: '0501', alt: '수댕이' },
+    // ],
+  },
+  {
+    dexGroup: 'LEGENDS 아르세우스',
+    href: '/pokedex/game/legends-arceus',
+    // imageItems: [
+    //   { sprite: '0495', alt: '주리비안' },
+    //   { sprite: '0498', alt: '뚜꾸리' },
+    //   { sprite: '0501', alt: '수댕이' },
+    // ],
+  },
+  {
+    dexGroup: '스칼렛·바이올렛',
+    href: '/pokedex/game/scarlet-violet',
+    // imageItems: [
+    //   { sprite: '0495', alt: '주리비안' },
+    //   { sprite: '0498', alt: '뚜꾸리' },
+    //   { sprite: '0501', alt: '수댕이' },
+    // ],
+  },
+  {
+    dexGroup: 'LEGENDS Z-A',
+    href: '/pokedex/game/legends-z-a',
+    // imageItems: [
+    //   { sprite: '0495', alt: '주리비안' },
+    //   { sprite: '0498', alt: '뚜꾸리' },
+    //   { sprite: '0501', alt: '수댕이' },
+    // ],
+  },
 ];

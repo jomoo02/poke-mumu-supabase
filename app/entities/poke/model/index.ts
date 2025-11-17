@@ -4,8 +4,6 @@ export interface Poke {
   pokeKey: string;
   sprite: string;
   name: string;
-  type1: string;
-  type2: string | null;
   form?: string | null;
 }
 

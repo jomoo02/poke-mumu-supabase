@@ -1,7 +1,7 @@
 export interface TypeDto {
-  id: number;
+  id?: number;
   identifier: string;
+  typeKo: string;
   generation?: number;
   damageClassId?: number | null;
-  typeKo: string;
 }

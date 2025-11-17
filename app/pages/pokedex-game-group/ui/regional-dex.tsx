@@ -34,7 +34,7 @@ function PokeCard({ poke, maxLength }: PokeCardProps) {
         {name}
       </Link>
       <div className="grid grid-cols-2 gap-1">
-        <TypeBadge type={typeDto1} className="h-6.5 w-15" />
+        {typeDto1 && <TypeBadge type={typeDto1} className="h-6.5 w-15" />}
         {typeDto2 && <TypeBadge type={typeDto2} className="h-6.5 w-15" />}
       </div>
     </div>

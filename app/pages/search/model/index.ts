@@ -3,6 +3,6 @@ import { TypeDto } from '@/app/entities/type/model';
 
 export interface SearchPoke extends Poke {
   nameEn: string;
-  typeDto1: TypeDto;
+  typeDto1: TypeDto | null;
   typeDto2: TypeDto | null;
 }

@@ -8,7 +8,7 @@ import { REGIONAL_DEX_LIST } from '../config';
 interface RegionalDexProps {
   dexGroup: string;
   href: string;
-  imageItems: { sprite: string; alt: string }[];
+  imageItems?: { sprite: string; alt: string }[];
 }
 
 function RegionalDex({ dexGroup, href, imageItems }: RegionalDexProps) {
@@ -25,7 +25,7 @@ function RegionalDex({ dexGroup, href, imageItems }: RegionalDexProps) {
         {dexGroup}
       </div>
       <div className="flex gap-x-1">
-        {imageItems.map(({ sprite, alt }) => (
+        {imageItems?.map(({ sprite, alt }) => (
           <Image
             key={sprite}
             src={getInfoPokeSpriteSrc(sprite)}
