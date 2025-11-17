@@ -1,21 +1,8 @@
-import { getNationPokedexData } from './api';
+import { Suspense } from 'react';
 import { SearchParams } from './model';
-import NationalDex from './ui/national-dex';
-import TypeSelect from './ui/type-select';
-import SortButtonGroup from './ui/sort-button-group';
+import Pokedex from './ui/pokedex';
 
-export default async function PokedexAllPage({
-  sortBy,
-  type,
-  direction,
-}: SearchParams) {
-  console.log(sortBy, type, direction);
-  const { pokes, types } = await getNationPokedexData({
-    sortBy,
-    type,
-    direction,
-  });
-
+export default async function PokedexAllPage({ ...props }: SearchParams) {
   return (
     <div className="max-w-6xl mx-auto flex flex-col w-full px-2 sm:px-4 py-6 sm:py-14 min-w-0 flex-1 gap-8 group">
       <h1 className="scroll-m-20 text-3xl font-semibold text-foreground">
@@ -30,11 +17,9 @@ export default async function PokedexAllPage({
           타입 필터를 사용하면 원하는 타입의 포켓몬만 골라볼 수 있습니다.
         </p>
       </div>
-      <div className="flex flex-col gap-4 ">
-        <TypeSelect types={types} />
-        <SortButtonGroup />
-        <NationalDex pokes={pokes} />
-      </div>
+      <Suspense fallback={<div>loading...</div>}>
+        <Pokedex {...props} />
+      </Suspense>
     </div>
   );
 }

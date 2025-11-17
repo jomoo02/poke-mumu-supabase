@@ -44,7 +44,7 @@ export default function TypeSelect({ types }: TypeSelectProps) {
       setTargetTypeOptimistic(v);
       const next = new URLSearchParams(Array.from(params.entries()));
       next.set('type', v);
-      router.push(`?${next.toString()}`);
+      router.push(`?${next.toString()}`, { scroll: false });
     });
   };
 

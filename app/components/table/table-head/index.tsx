@@ -22,7 +22,7 @@ export default function TableHead({
     headerKey,
     sortAble,
   );
-  console.log(props.id);
+  // console.log(props.id);
 
   return (
     <th

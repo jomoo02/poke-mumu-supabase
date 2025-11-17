@@ -7,8 +7,6 @@ import Button from '@/app/shared/ui/button';
 import { useOptimistic, useTransition } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 
-// import { usePokedexContext } from '../model';
-
 interface SortButtonProps {
   id: string;
   children: React.ReactNode;
@@ -84,7 +82,7 @@ export default function SortButtonGroup() {
         next.set('direction', 'asc');
       }
 
-      router.push(`?${next.toString()}`);
+      router.push(`?${next.toString()}`, { scroll: false });
     });
   };
 
