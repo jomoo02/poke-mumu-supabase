@@ -42,13 +42,13 @@ function SortButtonGroupSkeleton() {
   );
 }
 
-export default function Skeleton() {
+export default function PokedexSkeleton() {
   return (
-    <div className="flex flex-col gap-4 animate-pulse opacity-70">
+    <div className="flex flex-col gap-4 animate-pulse">
       <TypeSelectSkeleton />
       <SortButtonGroupSkeleton />
       <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-5">
-        {Array.from({ length: 101 }, (_, i) => i).map((idx) => (
+        {Array.from({ length: 400 }, (_, i) => i).map((idx) => (
           <div
             key={idx}
             className="bg-accent border border-border rounded-xl shadow-sm p-4 h-42"

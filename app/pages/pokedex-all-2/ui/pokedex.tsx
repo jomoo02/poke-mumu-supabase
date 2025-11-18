@@ -14,6 +14,7 @@ export default async function Pokedex({
     type,
     direction,
   });
+
   return (
     <div className="flex flex-col gap-4">
       <TypeSelect types={types} />

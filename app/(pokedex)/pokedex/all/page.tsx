@@ -1,7 +1,7 @@
 // import PokedexAllPage from '@/app/pages/pokedex-all';
 import PokedexAllPage2 from '@/app/pages/pokedex-all-2';
 
-export default async function Page({
+export default function Page({
   searchParams,
 }: {
   searchParams: Promise<{
@@ -10,8 +10,5 @@ export default async function Page({
     type: string | undefined;
   }>;
 }) {
-  const filters = await searchParams;
-  const { sortBy, direction, type } = filters;
-
-  return <PokedexAllPage2 sortBy={sortBy} direction={direction} type={type} />;
+  return <PokedexAllPage2 searchParams={searchParams} />;
 }

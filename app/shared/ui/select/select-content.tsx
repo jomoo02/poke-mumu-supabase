@@ -28,13 +28,13 @@ export default function SelectContent({
     labelsRef,
   } = useSelectContext();
 
-  useLockBodyScroll(isOpen);
+  // useLockBodyScroll(isOpen);
 
   return (
     <>
       {isOpen && (
         <FloatingPortal>
-          <FloatingOverlay />
+          <FloatingOverlay lockScroll />
           <FloatingFocusManager context={context} modal={false}>
             <div
               ref={refs.setFloating}
